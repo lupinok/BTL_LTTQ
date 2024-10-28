@@ -14,6 +14,11 @@ namespace DAL_QLNS
 		{
 		}
 
+		public SoYeuLiLich_DaoTao_DAL()
+			: base("Data Source=DESKTOP-14IEBEU\\SQLEXPRESS;Initial Catalog=BTLMonLTTQ;Integrated Security=True")
+		{
+		}
+
 		// Method to retrieve all records from SoYeuLyLich table
 		public DataTable GetAllSoYeuLyLich()
 		{

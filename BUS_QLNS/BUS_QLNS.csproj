@@ -47,11 +47,16 @@
     <Compile Include="IChamCong_BUS.cs" />
     <Compile Include="IDangNhap_BUS.cs" />
     <Compile Include="IDuAn_BUS.cs" />
+    <Compile Include="IHopDong_BaoHiem_BUS.cs" />
+    <Compile Include="IKhenThuong_KyLuat_BUS.cs" />
     <Compile Include="IPhongBan_BUS.cs" />
+    <Compile Include="ISoYeuLiLich_DaoTao_BUS.cs" />
+    <Compile Include="ITinhLuong_BUS.cs" />
     <Compile Include="ITrangChu_BUS.cs" />
     <Compile Include="ITrangQuanTri_BUS.cs" />
     <Compile Include="PhongBan_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SoYeuLiLich_DaoTao_BUS.cs" />
     <Compile Include="TrangChu_BUS.cs" />
     <Compile Include="TrangQuanTri_BUS.cs" />
   </ItemGroup>

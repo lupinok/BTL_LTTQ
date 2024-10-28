@@ -88,12 +88,6 @@
     <Compile Include="LSHoatDong.Designer.cs">
       <DependentUpon>LSHoatDong.cs</DependentUpon>
     </Compile>
-    <Compile Include="Login.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Login.Designer.cs">
-      <DependentUpon>Login.cs</DependentUpon>
-    </Compile>
     <Compile Include="LyLich.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -141,9 +135,6 @@
     <EmbeddedResource Include="DuAn.resx">
       <DependentUpon>DuAn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Login.resx">
-      <DependentUpon>Login.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="LSHoatDong.resx">
       <DependentUpon>LSHoatDong.cs</DependentUpon>
     </EmbeddedResource>
@@ -184,6 +175,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS_QLNS\BUS_QLNS.csproj">
+      <Project>{55ED0560-F979-427D-8136-27F64FA4057F}</Project>
+      <Name>BUS_QLNS</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL_QLNS.csproj">
+      <Project>{51ed1fd1-488d-4e70-a0ab-ee706482569a}</Project>
+      <Name>DAL_QLNS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
