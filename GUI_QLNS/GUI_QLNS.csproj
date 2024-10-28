@@ -33,14 +33,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DevExpress.CodeParser.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.Desktop.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.DataAccess.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.DataAccess.v24.1.UI, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Diagram.v24.1.Core, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Drawing.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Images.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v24.1.Core, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.RichEdit.v24.1.Core, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Utils.v24.1.UI, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraDiagram.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraGrid.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraLayout.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPrinting.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraRichEdit.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraTreeList.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +67,7 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaoHiem.cs">
@@ -93,6 +111,90 @@
     </Compile>
     <Compile Include="LyLich.Designer.cs">
       <DependentUpon>LyLich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\BaoHiem\BaoHiem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\BaoHiem\BaoHiem.Designer.cs">
+      <DependentUpon>BaoHiem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\BaoHiem\ThemBaoHiemXaHoi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\BaoHiem\ThemBaoHiemXaHoi.Designer.cs">
+      <DependentUpon>ThemBaoHiemXaHoi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\BaoHiem\ThemBHYT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\BaoHiem\ThemBHYT.Designer.cs">
+      <DependentUpon>ThemBHYT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\ChamCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\ChamCong.Designer.cs">
+      <DependentUpon>ChamCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\ThemChamCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\ThemChamCong.Designer.cs">
+      <DependentUpon>ThemChamCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\DaoTao\DaoTao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\DaoTao\DaoTao.Designer.cs">
+      <DependentUpon>DaoTao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\DaoTao\ThemKhoaDT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\DaoTao\ThemKhoaDT.Designer.cs">
+      <DependentUpon>ThemKhoaDT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\HopDong\HopDong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\HopDong\HopDong.Designer.cs">
+      <DependentUpon>HopDong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\HopDong\ThemHD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\HopDong\ThemHD.Designer.cs">
+      <DependentUpon>ThemHD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\Luong\BangLuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\Luong\BangLuong.Designer.cs">
+      <DependentUpon>BangLuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\LyLich\LyLich.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\LyLich\LyLich.Designer.cs">
+      <DependentUpon>LyLich.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\ThuongPhat\ThemKhenThuong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ThuongPhat\ThemKhenThuong.Designer.cs">
+      <DependentUpon>ThemKhenThuong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\ThuongPhat\ThuongPhat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ThuongPhat\ThuongPhat.Designer.cs">
+      <DependentUpon>ThuongPhat.cs</DependentUpon>
     </Compile>
     <Compile Include="PhongBan.cs">
       <SubType>Form</SubType>
@@ -141,6 +243,48 @@
     <EmbeddedResource Include="LyLich.resx">
       <DependentUpon>LyLich.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\BaoHiem\BaoHiem.resx">
+      <DependentUpon>BaoHiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\BaoHiem\ThemBaoHiemXaHoi.resx">
+      <DependentUpon>ThemBaoHiemXaHoi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\BaoHiem\ThemBHYT.resx">
+      <DependentUpon>ThemBHYT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ChamCong\ChamCong.resx">
+      <DependentUpon>ChamCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ChamCong\ThemChamCong.resx">
+      <DependentUpon>ThemChamCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\DaoTao\DaoTao.resx">
+      <DependentUpon>DaoTao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\DaoTao\ThemKhoaDT.resx">
+      <DependentUpon>ThemKhoaDT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\HopDong\HopDong.resx">
+      <DependentUpon>HopDong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\HopDong\ThemHD.resx">
+      <DependentUpon>ThemHD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\Luong\BangLuong.resx">
+      <DependentUpon>BangLuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\LyLich\LyLich.resx">
+      <DependentUpon>LyLich.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ThuongPhat\ThemKhenThuong.resx">
+      <DependentUpon>ThemKhenThuong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ThuongPhat\ThuongPhat.resx">
+      <DependentUpon>ThuongPhat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PhongBan.resx">
       <DependentUpon>PhongBan.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +297,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="ThanhToan.resx">
       <DependentUpon>ThanhToan.cs</DependentUpon>
@@ -185,6 +330,10 @@
       <Project>{51ed1fd1-488d-4e70-a0ab-ee706482569a}</Project>
       <Name>DAL_QLNS</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\ic_bhxh.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
