@@ -70,5 +70,22 @@ namespace BUS_QLNS
 		{
 			throw new NotImplementedException("Need to implement DaoTao methods in DAL first");
 		}
+
+		public DataTable GetThongTinDaoTao()
+		{
+			return _syllDal.GetThongTinDaoTao();
+		}
+		public DataTable TimKiemDaoTao(string maNV, string maDT, string tenKhoa, string queQuan, string gioiTinh)
+		{
+			return _syllDal.TimKiemDaoTao(maNV, maDT, tenKhoa, queQuan, gioiTinh);
+		}
+
+		public DataTable TimKiemSYLL(string maNV, string trinhDoHV, string kinhNghiem,
+	string kyNang, string chungChi, string ngoaiNgu, string ngayTao,
+	string gioiTinh, string queQuan, string giaCanh)
+		{
+			return _syllDal.TimKiemSYLL(maNV, trinhDoHV, kinhNghiem, kyNang,
+				chungChi, ngoaiNgu, ngayTao, gioiTinh, queQuan, giaCanh);
+		}
 	}
 }

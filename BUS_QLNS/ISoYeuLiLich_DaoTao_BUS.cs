@@ -16,5 +16,6 @@ namespace BUS_QLNS
         bool InsertDaoTao(int maDaoTao, string tenKhoa, string noiDung, DateTime ngayBatDau, DateTime ngayKetThuc, decimal chiPhi);
         bool UpdateDaoTao(int maDaoTao, string tenKhoa, string noiDung, DateTime ngayBatDau, DateTime ngayKetThuc, decimal chiPhi);
         bool DeleteDaoTao(int maDaoTao);
+		DataTable GetThongTinDaoTao();
 	}
 }
