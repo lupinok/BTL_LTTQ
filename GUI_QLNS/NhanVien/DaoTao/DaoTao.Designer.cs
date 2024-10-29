@@ -32,38 +32,58 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
+            this.chiTietKhoaDaoTaoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bTLMonLTTQDataSet3 = new GUI_QLNS.BTLMonLTTQDataSet3();
+            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMaNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaDaoTao1 = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colThoiGianDuKien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colDanhGiaKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.daoTaoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bTLMonLTTQDataSet2 = new GUI_QLNS.BTLMonLTTQDataSet2();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.colMaDaoTao = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTenKhoa = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNoiDung = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNgayBatDau = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNgayKetThuc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colChiPhi = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.tabbedControlGroup1 = new DevExpress.XtraLayout.TabbedControlGroup();
+            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
-            this.gridControl2 = new DevExpress.XtraGrid.GridControl();
-            this.gridView2 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.daoTaoTableAdapter = new GUI_QLNS.BTLMonLTTQDataSet2TableAdapters.DaoTaoTableAdapter();
+            this.chiTietKhoaDaoTaoTableAdapter = new GUI_QLNS.BTLMonLTTQDataSet3TableAdapters.ChiTietKhoaDaoTaoTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chiTietKhoaDaoTaoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daoTaoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -101,6 +121,19 @@
             this.barButtonItem1.Caption = "Thêm";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Nạp lại";
+            this.barButtonItem2.Id = 1;
+            this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Xuất Excel";
+            this.barButtonItem3.Id = 2;
+            this.barButtonItem3.Name = "barButtonItem3";
             // 
             // barDockControlTop
             // 
@@ -138,18 +171,6 @@
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 317);
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Nạp lại";
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
-            // barButtonItem3
-            // 
-            this.barButtonItem3.Caption = "Xuất Excel";
-            this.barButtonItem3.Id = 2;
-            this.barButtonItem3.Name = "barButtonItem3";
-            // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.gridControl2);
@@ -162,18 +183,79 @@
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
-            // Root
+            // gridControl2
             // 
-            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
-            this.Root.GroupBordersVisible = false;
-            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlGroup1});
-            this.Root.Name = "Root";
-            this.Root.Size = new System.Drawing.Size(737, 317);
-            this.Root.TextVisible = false;
+            this.gridControl2.DataSource = this.chiTietKhoaDaoTaoBindingSource;
+            this.gridControl2.Location = new System.Drawing.Point(36, 90);
+            this.gridControl2.MainView = this.gridView2;
+            this.gridControl2.MenuManager = this.barManager1;
+            this.gridControl2.Name = "gridControl2";
+            this.gridControl2.Size = new System.Drawing.Size(665, 191);
+            this.gridControl2.TabIndex = 5;
+            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView2});
+            // 
+            // chiTietKhoaDaoTaoBindingSource
+            // 
+            this.chiTietKhoaDaoTaoBindingSource.DataMember = "ChiTietKhoaDaoTao";
+            this.chiTietKhoaDaoTaoBindingSource.DataSource = this.bTLMonLTTQDataSet3;
+            // 
+            // bTLMonLTTQDataSet3
+            // 
+            this.bTLMonLTTQDataSet3.DataSetName = "BTLMonLTTQDataSet3";
+            this.bTLMonLTTQDataSet3.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView2
+            // 
+            this.gridView2.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMaNhanVien,
+            this.colMaDaoTao1,
+            this.colThoiGianDuKien,
+            this.colDanhGiaKhoa});
+            this.gridView2.GridControl = this.gridControl2;
+            this.gridView2.Name = "gridView2";
+            this.gridView2.OptionsFind.AlwaysVisible = true;
+            this.gridView2.OptionsView.ShowGroupPanel = false;
+            // 
+            // colMaNhanVien
+            // 
+            this.colMaNhanVien.FieldName = "MaNhanVien";
+            this.colMaNhanVien.MinWidth = 25;
+            this.colMaNhanVien.Name = "colMaNhanVien";
+            this.colMaNhanVien.Visible = true;
+            this.colMaNhanVien.VisibleIndex = 0;
+            this.colMaNhanVien.Width = 94;
+            // 
+            // colMaDaoTao1
+            // 
+            this.colMaDaoTao1.FieldName = "MaDaoTao";
+            this.colMaDaoTao1.MinWidth = 25;
+            this.colMaDaoTao1.Name = "colMaDaoTao1";
+            this.colMaDaoTao1.Visible = true;
+            this.colMaDaoTao1.VisibleIndex = 1;
+            this.colMaDaoTao1.Width = 94;
+            // 
+            // colThoiGianDuKien
+            // 
+            this.colThoiGianDuKien.FieldName = "ThoiGianDuKien";
+            this.colThoiGianDuKien.MinWidth = 25;
+            this.colThoiGianDuKien.Name = "colThoiGianDuKien";
+            this.colThoiGianDuKien.Visible = true;
+            this.colThoiGianDuKien.VisibleIndex = 2;
+            this.colThoiGianDuKien.Width = 94;
+            // 
+            // colDanhGiaKhoa
+            // 
+            this.colDanhGiaKhoa.FieldName = "DanhGiaKhoa";
+            this.colDanhGiaKhoa.MinWidth = 25;
+            this.colDanhGiaKhoa.Name = "colDanhGiaKhoa";
+            this.colDanhGiaKhoa.Visible = true;
+            this.colDanhGiaKhoa.VisibleIndex = 3;
+            this.colDanhGiaKhoa.Width = 94;
             // 
             // gridControl1
             // 
+            this.gridControl1.DataSource = this.daoTaoBindingSource;
             this.gridControl1.Location = new System.Drawing.Point(36, 90);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.MenuManager = this.barManager1;
@@ -183,10 +265,93 @@
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
             // 
+            // daoTaoBindingSource
+            // 
+            this.daoTaoBindingSource.DataMember = "DaoTao";
+            this.daoTaoBindingSource.DataSource = this.bTLMonLTTQDataSet2;
+            // 
+            // bTLMonLTTQDataSet2
+            // 
+            this.bTLMonLTTQDataSet2.DataSetName = "BTLMonLTTQDataSet2";
+            this.bTLMonLTTQDataSet2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // gridView1
             // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMaDaoTao,
+            this.colTenKhoa,
+            this.colNoiDung,
+            this.colNgayBatDau,
+            this.colNgayKetThuc,
+            this.colChiPhi});
             this.gridView1.GridControl = this.gridControl1;
             this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // colMaDaoTao
+            // 
+            this.colMaDaoTao.FieldName = "MaDaoTao";
+            this.colMaDaoTao.MinWidth = 25;
+            this.colMaDaoTao.Name = "colMaDaoTao";
+            this.colMaDaoTao.Visible = true;
+            this.colMaDaoTao.VisibleIndex = 0;
+            this.colMaDaoTao.Width = 94;
+            // 
+            // colTenKhoa
+            // 
+            this.colTenKhoa.FieldName = "TenKhoa";
+            this.colTenKhoa.MinWidth = 25;
+            this.colTenKhoa.Name = "colTenKhoa";
+            this.colTenKhoa.Visible = true;
+            this.colTenKhoa.VisibleIndex = 1;
+            this.colTenKhoa.Width = 94;
+            // 
+            // colNoiDung
+            // 
+            this.colNoiDung.FieldName = "NoiDung";
+            this.colNoiDung.MinWidth = 25;
+            this.colNoiDung.Name = "colNoiDung";
+            this.colNoiDung.Visible = true;
+            this.colNoiDung.VisibleIndex = 2;
+            this.colNoiDung.Width = 94;
+            // 
+            // colNgayBatDau
+            // 
+            this.colNgayBatDau.FieldName = "NgayBatDau";
+            this.colNgayBatDau.MinWidth = 25;
+            this.colNgayBatDau.Name = "colNgayBatDau";
+            this.colNgayBatDau.Visible = true;
+            this.colNgayBatDau.VisibleIndex = 3;
+            this.colNgayBatDau.Width = 94;
+            // 
+            // colNgayKetThuc
+            // 
+            this.colNgayKetThuc.FieldName = "NgayKetThuc";
+            this.colNgayKetThuc.MinWidth = 25;
+            this.colNgayKetThuc.Name = "colNgayKetThuc";
+            this.colNgayKetThuc.Visible = true;
+            this.colNgayKetThuc.VisibleIndex = 4;
+            this.colNgayKetThuc.Width = 94;
+            // 
+            // colChiPhi
+            // 
+            this.colChiPhi.FieldName = "ChiPhi";
+            this.colChiPhi.MinWidth = 25;
+            this.colChiPhi.Name = "colChiPhi";
+            this.colChiPhi.Visible = true;
+            this.colChiPhi.VisibleIndex = 5;
+            this.colChiPhi.Width = 94;
+            // 
+            // Root
+            // 
+            this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
+            this.Root.GroupBordersVisible = false;
+            this.Root.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlGroup1});
+            this.Root.Name = "Root";
+            this.Root.Size = new System.Drawing.Size(737, 317);
+            this.Root.TextVisible = false;
             // 
             // layoutControlGroup1
             // 
@@ -208,6 +373,24 @@
             this.layoutControlGroup3});
             this.tabbedControlGroup1.Text = "Khóa đào tạo";
             // 
+            // layoutControlGroup3
+            // 
+            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem2});
+            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup3.Name = "layoutControlGroup3";
+            this.layoutControlGroup3.Size = new System.Drawing.Size(669, 195);
+            this.layoutControlGroup3.Text = "Chi tiết khóa đào tạo";
+            // 
+            // layoutControlItem2
+            // 
+            this.layoutControlItem2.Control = this.gridControl2;
+            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlItem2.Name = "layoutControlItem2";
+            this.layoutControlItem2.Size = new System.Drawing.Size(669, 195);
+            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem2.TextVisible = false;
+            // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
@@ -226,39 +409,13 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // layoutControlGroup3
+            // daoTaoTableAdapter
             // 
-            this.layoutControlGroup3.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem2});
-            this.layoutControlGroup3.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup3.Name = "layoutControlGroup3";
-            this.layoutControlGroup3.Size = new System.Drawing.Size(669, 195);
-            this.layoutControlGroup3.Text = "Chi tiết khóa đào tạo";
+            this.daoTaoTableAdapter.ClearBeforeFill = true;
             // 
-            // gridControl2
+            // chiTietKhoaDaoTaoTableAdapter
             // 
-            this.gridControl2.Location = new System.Drawing.Point(36, 90);
-            this.gridControl2.MainView = this.gridView2;
-            this.gridControl2.MenuManager = this.barManager1;
-            this.gridControl2.Name = "gridControl2";
-            this.gridControl2.Size = new System.Drawing.Size(665, 191);
-            this.gridControl2.TabIndex = 5;
-            this.gridControl2.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView2});
-            // 
-            // gridView2
-            // 
-            this.gridView2.GridControl = this.gridControl2;
-            this.gridView2.Name = "gridView2";
-            // 
-            // layoutControlItem2
-            // 
-            this.layoutControlItem2.Control = this.gridControl2;
-            this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(669, 195);
-            this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem2.TextVisible = false;
+            this.chiTietKhoaDaoTaoTableAdapter.ClearBeforeFill = true;
             // 
             // DaoTao
             // 
@@ -273,20 +430,25 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DaoTao";
             this.Text = "DaoTao";
+            this.Load += new System.EventHandler(this.DaoTao_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chiTietKhoaDaoTaoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.daoTaoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabbedControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridView2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,5 +477,21 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
+        private BTLMonLTTQDataSet2 bTLMonLTTQDataSet2;
+        private System.Windows.Forms.BindingSource daoTaoBindingSource;
+        private BTLMonLTTQDataSet2TableAdapters.DaoTaoTableAdapter daoTaoTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaDaoTao;
+        private DevExpress.XtraGrid.Columns.GridColumn colTenKhoa;
+        private DevExpress.XtraGrid.Columns.GridColumn colNoiDung;
+        private DevExpress.XtraGrid.Columns.GridColumn colNgayBatDau;
+        private DevExpress.XtraGrid.Columns.GridColumn colNgayKetThuc;
+        private DevExpress.XtraGrid.Columns.GridColumn colChiPhi;
+        private BTLMonLTTQDataSet3 bTLMonLTTQDataSet3;
+        private System.Windows.Forms.BindingSource chiTietKhoaDaoTaoBindingSource;
+        private BTLMonLTTQDataSet3TableAdapters.ChiTietKhoaDaoTaoTableAdapter chiTietKhoaDaoTaoTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaNhanVien;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaDaoTao1;
+        private DevExpress.XtraGrid.Columns.GridColumn colThoiGianDuKien;
+        private DevExpress.XtraGrid.Columns.GridColumn colDanhGiaKhoa;
     }
 }

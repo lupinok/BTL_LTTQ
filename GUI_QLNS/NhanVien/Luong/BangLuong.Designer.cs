@@ -32,25 +32,38 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             this.dataLayoutControl1 = new DevExpress.XtraDataLayout.DataLayoutControl();
-            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.phieuLuongBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bTLMonLTTQDataSet5 = new GUI_QLNS.BTLMonLTTQDataSet5();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.colMaPhieuLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colNgayTinhLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLuongCoBan = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colLuongNhanDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colTrangThaiTraLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.colMaNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.Root = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
+            this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.phieuLuongTableAdapter = new GUI_QLNS.BTLMonLTTQDataSet5TableAdapters.PhieuLuongTableAdapter();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).BeginInit();
             this.dataLayoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phieuLuongBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -64,9 +77,11 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.barButtonItem3,
+            this.barButtonItem4});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 2;
+            this.barManager1.MaxItemId = 4;
             // 
             // bar2
             // 
@@ -75,6 +90,8 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem2)});
             this.bar2.OptionsBar.MultiLine = true;
@@ -86,6 +103,12 @@
             this.barButtonItem1.Caption = "Nạp lại";
             this.barButtonItem1.Id = 0;
             this.barButtonItem1.Name = "barButtonItem1";
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Xuất Excel";
+            this.barButtonItem2.Id = 1;
+            this.barButtonItem2.Name = "barButtonItem2";
             // 
             // barDockControlTop
             // 
@@ -123,12 +146,6 @@
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(4);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 317);
             // 
-            // barButtonItem2
-            // 
-            this.barButtonItem2.Caption = "Xuất Excel";
-            this.barButtonItem2.Id = 1;
-            this.barButtonItem2.Name = "barButtonItem2";
-            // 
             // dataLayoutControl1
             // 
             this.dataLayoutControl1.Controls.Add(this.gridControl1);
@@ -140,6 +157,96 @@
             this.dataLayoutControl1.TabIndex = 4;
             this.dataLayoutControl1.Text = "dataLayoutControl1";
             // 
+            // gridControl1
+            // 
+            this.gridControl1.DataSource = this.phieuLuongBindingSource;
+            this.gridControl1.Location = new System.Drawing.Point(24, 50);
+            this.gridControl1.MainView = this.gridView1;
+            this.gridControl1.MenuManager = this.barManager1;
+            this.gridControl1.Name = "gridControl1";
+            this.gridControl1.Size = new System.Drawing.Size(689, 243);
+            this.gridControl1.TabIndex = 4;
+            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gridView1});
+            // 
+            // phieuLuongBindingSource
+            // 
+            this.phieuLuongBindingSource.DataMember = "PhieuLuong";
+            this.phieuLuongBindingSource.DataSource = this.bTLMonLTTQDataSet5;
+            // 
+            // bTLMonLTTQDataSet5
+            // 
+            this.bTLMonLTTQDataSet5.DataSetName = "BTLMonLTTQDataSet5";
+            this.bTLMonLTTQDataSet5.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // gridView1
+            // 
+            this.gridView1.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.colMaPhieuLuong,
+            this.colNgayTinhLuong,
+            this.colLuongCoBan,
+            this.colLuongNhanDuoc,
+            this.colTrangThaiTraLuong,
+            this.colMaNhanVien});
+            this.gridView1.GridControl = this.gridControl1;
+            this.gridView1.Name = "gridView1";
+            this.gridView1.OptionsFind.AlwaysVisible = true;
+            this.gridView1.OptionsView.ShowGroupPanel = false;
+            // 
+            // colMaPhieuLuong
+            // 
+            this.colMaPhieuLuong.FieldName = "MaPhieuLuong";
+            this.colMaPhieuLuong.MinWidth = 25;
+            this.colMaPhieuLuong.Name = "colMaPhieuLuong";
+            this.colMaPhieuLuong.Visible = true;
+            this.colMaPhieuLuong.VisibleIndex = 0;
+            this.colMaPhieuLuong.Width = 94;
+            // 
+            // colNgayTinhLuong
+            // 
+            this.colNgayTinhLuong.FieldName = "NgayTinhLuong";
+            this.colNgayTinhLuong.MinWidth = 25;
+            this.colNgayTinhLuong.Name = "colNgayTinhLuong";
+            this.colNgayTinhLuong.Visible = true;
+            this.colNgayTinhLuong.VisibleIndex = 1;
+            this.colNgayTinhLuong.Width = 94;
+            // 
+            // colLuongCoBan
+            // 
+            this.colLuongCoBan.FieldName = "LuongCoBan";
+            this.colLuongCoBan.MinWidth = 25;
+            this.colLuongCoBan.Name = "colLuongCoBan";
+            this.colLuongCoBan.Visible = true;
+            this.colLuongCoBan.VisibleIndex = 2;
+            this.colLuongCoBan.Width = 94;
+            // 
+            // colLuongNhanDuoc
+            // 
+            this.colLuongNhanDuoc.FieldName = "LuongNhanDuoc";
+            this.colLuongNhanDuoc.MinWidth = 25;
+            this.colLuongNhanDuoc.Name = "colLuongNhanDuoc";
+            this.colLuongNhanDuoc.Visible = true;
+            this.colLuongNhanDuoc.VisibleIndex = 3;
+            this.colLuongNhanDuoc.Width = 94;
+            // 
+            // colTrangThaiTraLuong
+            // 
+            this.colTrangThaiTraLuong.FieldName = "TrangThaiTraLuong";
+            this.colTrangThaiTraLuong.MinWidth = 25;
+            this.colTrangThaiTraLuong.Name = "colTrangThaiTraLuong";
+            this.colTrangThaiTraLuong.Visible = true;
+            this.colTrangThaiTraLuong.VisibleIndex = 4;
+            this.colTrangThaiTraLuong.Width = 94;
+            // 
+            // colMaNhanVien
+            // 
+            this.colMaNhanVien.FieldName = "MaNhanVien";
+            this.colMaNhanVien.MinWidth = 25;
+            this.colMaNhanVien.Name = "colMaNhanVien";
+            this.colMaNhanVien.Visible = true;
+            this.colMaNhanVien.VisibleIndex = 5;
+            this.colMaNhanVien.Width = 94;
+            // 
             // Root
             // 
             this.Root.EnableIndentsWithoutBorders = DevExpress.Utils.DefaultBoolean.True;
@@ -150,21 +257,14 @@
             this.Root.Size = new System.Drawing.Size(737, 317);
             this.Root.TextVisible = false;
             // 
-            // gridControl1
+            // layoutControlGroup1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(24, 50);
-            this.gridControl1.MainView = this.gridView1;
-            this.gridControl1.MenuManager = this.barManager1;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(689, 243);
-            this.gridControl1.TabIndex = 4;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gridView1});
-            // 
-            // gridView1
-            // 
-            this.gridView1.GridControl = this.gridControl1;
-            this.gridView1.Name = "gridView1";
+            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
+            this.layoutControlItem1});
+            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
+            this.layoutControlGroup1.Name = "layoutControlGroup1";
+            this.layoutControlGroup1.Size = new System.Drawing.Size(717, 297);
+            this.layoutControlGroup1.Text = "Bảng lương nhân viên";
             // 
             // layoutControlItem1
             // 
@@ -175,14 +275,22 @@
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
             // 
-            // layoutControlGroup1
+            // phieuLuongTableAdapter
             // 
-            this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
-            this.layoutControlItem1});
-            this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
-            this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(717, 297);
-            this.layoutControlGroup1.Text = "Bảng lương nhân viên";
+            this.phieuLuongTableAdapter.ClearBeforeFill = true;
+            // 
+            // barButtonItem3
+            // 
+            this.barButtonItem3.Caption = "Thêm";
+            this.barButtonItem3.Id = 2;
+            this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
+            // 
+            // barButtonItem4
+            // 
+            this.barButtonItem4.Caption = "Lưu";
+            this.barButtonItem4.Id = 3;
+            this.barButtonItem4.Name = "barButtonItem4";
             // 
             // BangLuong
             // 
@@ -197,14 +305,17 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "BangLuong";
             this.Text = "BangLuong";
+            this.Load += new System.EventHandler(this.BangLuong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLayoutControl1)).EndInit();
             this.dataLayoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phieuLuongBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Root)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,5 +337,16 @@
         private DevExpress.XtraLayout.LayoutControlGroup Root;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
+        private BTLMonLTTQDataSet5 bTLMonLTTQDataSet5;
+        private System.Windows.Forms.BindingSource phieuLuongBindingSource;
+        private BTLMonLTTQDataSet5TableAdapters.PhieuLuongTableAdapter phieuLuongTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaPhieuLuong;
+        private DevExpress.XtraGrid.Columns.GridColumn colNgayTinhLuong;
+        private DevExpress.XtraGrid.Columns.GridColumn colLuongCoBan;
+        private DevExpress.XtraGrid.Columns.GridColumn colLuongNhanDuoc;
+        private DevExpress.XtraGrid.Columns.GridColumn colTrangThaiTraLuong;
+        private DevExpress.XtraGrid.Columns.GridColumn colMaNhanVien;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
     }
 }

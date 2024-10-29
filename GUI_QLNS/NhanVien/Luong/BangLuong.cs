@@ -17,5 +17,18 @@ namespace GUI_QLNS.NhanVien.Luong
         {
             InitializeComponent();
         }
+
+        private void BangLuong_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bTLMonLTTQDataSet5.PhieuLuong' table. You can move, or remove it, as needed.
+            this.phieuLuongTableAdapter.Fill(this.bTLMonLTTQDataSet5.PhieuLuong);
+
+        }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = new ThemPhieuLuong();
+            frm.ShowDialog();
+        }
     }
 }

@@ -17,5 +17,18 @@ namespace GUI_QLNS.NhanVien.HopDong
         {
             InitializeComponent();
         }
+
+        private void HopDong_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bTLMonLTTQDataSet4.HopDongLaoDong' table. You can move, or remove it, as needed.
+            this.hopDongLaoDongTableAdapter.Fill(this.bTLMonLTTQDataSet4.HopDongLaoDong);
+
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = new ThemHD();
+            frm.ShowDialog();
+        }
     }
 }

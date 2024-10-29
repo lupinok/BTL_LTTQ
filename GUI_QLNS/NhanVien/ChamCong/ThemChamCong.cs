@@ -17,5 +17,10 @@ namespace GUI_QLNS.NhanVien.ChamCong
         {
             InitializeComponent();
         }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

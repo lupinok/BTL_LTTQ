@@ -17,5 +17,20 @@ namespace GUI_QLNS.NhanVien.DaoTao
         {
             InitializeComponent();
         }
+
+        private void DaoTao_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'bTLMonLTTQDataSet3.ChiTietKhoaDaoTao' table. You can move, or remove it, as needed.
+            this.chiTietKhoaDaoTaoTableAdapter.Fill(this.bTLMonLTTQDataSet3.ChiTietKhoaDaoTao);
+            // TODO: This line of code loads data into the 'bTLMonLTTQDataSet2.DaoTao' table. You can move, or remove it, as needed.
+            this.daoTaoTableAdapter.Fill(this.bTLMonLTTQDataSet2.DaoTao);
+
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var frm = new ThemKhoaDT();
+            frm.ShowDialog();
+        }
     }
 }
