@@ -275,6 +275,8 @@
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
           <Property Name="QueQuan" Type="nvarchar" MaxLength="255" />
           <Property Name="GiaCanh" Type="nvarchar" MaxLength="255" />
+          <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
+          <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -724,6 +726,8 @@
           <Property Name="QueQuan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="GiaCanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__SoYeuLyLi__MaNha__74AE54BC" FromRole="SoYeuLyLich" ToRole="NhanVien" />
+          <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -1269,6 +1273,8 @@
           <EntitySetMapping Name="SoYeuLyLiches">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.SoYeuLyLich">
               <MappingFragment StoreEntitySet="SoYeuLyLich">
+                <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="TrinhDoHocVan" ColumnName="TrinhDoHocVan" />
                 <ScalarProperty Name="KinhNghiem" ColumnName="KinhNghiem" />
