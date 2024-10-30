@@ -1,6 +1,4 @@
-﻿using GUI_QLNS.NhanVien.BaoHiem;
-using GUI_QLNS.NhanVien.ChamCong;
-using GUI_QLNS.NhanVien.LyLich;
+﻿using GUI_QLNS.NhanVien.ChamCong;
 using System;
 using System.Collections.Generic;
 using System.Linq;
