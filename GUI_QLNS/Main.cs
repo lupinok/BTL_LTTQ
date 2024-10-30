@@ -43,11 +43,6 @@ namespace GUI_QLNS
             openForm(typeof(frmLoaiCong));
         }
 
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnBangCong_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmBangCong));

@@ -29,18 +29,19 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBangCongChiTiet));
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnPhatSinh = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
-            this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
-            this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
+            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.chkTrangThai = new System.Windows.Forms.CheckBox();
             this.chkKhoa = new System.Windows.Forms.CheckBox();
@@ -95,6 +96,8 @@
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
+            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -119,9 +122,11 @@
             this.btnSua,
             this.btnXoa,
             this.btnLuu,
-            this.btnHuy});
+            this.btnIn,
+            this.btnXem,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 5;
+            this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -131,8 +136,10 @@
             this.bar2.DockRow = 0;
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnPhatSinh),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnHuy)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPhatSinh, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -141,31 +148,15 @@
             // 
             this.btnPhatSinh.Caption = "Phát sinh Kỳ công";
             this.btnPhatSinh.Id = 0;
+            this.btnPhatSinh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPhatSinh.ImageOptions.SvgImage")));
             this.btnPhatSinh.Name = "btnPhatSinh";
             // 
-            // btnSua
+            // btnIn
             // 
-            this.btnSua.Caption = "Sửa";
-            this.btnSua.Id = 1;
-            this.btnSua.Name = "btnSua";
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Caption = "Xóa";
-            this.btnXoa.Id = 2;
-            this.btnXoa.Name = "btnXoa";
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Caption = "Lưu";
-            this.btnLuu.Id = 3;
-            this.btnLuu.Name = "btnLuu";
-            // 
-            // btnHuy
-            // 
-            this.btnHuy.Caption = "Hủy";
-            this.btnHuy.Id = 4;
-            this.btnHuy.Name = "btnHuy";
+            this.btnIn.Caption = "In ";
+            this.btnIn.Id = 4;
+            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
+            this.btnIn.Name = "btnIn";
             // 
             // bar3
             // 
@@ -185,7 +176,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1316, 25);
+            this.barDockControlTop.Size = new System.Drawing.Size(1316, 30);
             // 
             // barDockControlBottom
             // 
@@ -199,22 +190,40 @@
             // 
             this.barDockControlLeft.CausesValidation = false;
             this.barDockControlLeft.Dock = System.Windows.Forms.DockStyle.Left;
-            this.barDockControlLeft.Location = new System.Drawing.Point(0, 25);
+            this.barDockControlLeft.Location = new System.Drawing.Point(0, 30);
             this.barDockControlLeft.Manager = this.barManager1;
-            this.barDockControlLeft.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlLeft.Size = new System.Drawing.Size(0, 603);
             // 
             // barDockControlRight
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1316, 25);
+            this.barDockControlRight.Location = new System.Drawing.Point(1316, 30);
             this.barDockControlRight.Manager = this.barManager1;
-            this.barDockControlRight.Size = new System.Drawing.Size(0, 608);
+            this.barDockControlRight.Size = new System.Drawing.Size(0, 603);
+            // 
+            // btnSua
+            // 
+            this.btnSua.Caption = "Sửa";
+            this.btnSua.Id = 1;
+            this.btnSua.Name = "btnSua";
+            // 
+            // btnXoa
+            // 
+            this.btnXoa.Caption = "Xóa";
+            this.btnXoa.Id = 2;
+            this.btnXoa.Name = "btnXoa";
+            // 
+            // btnLuu
+            // 
+            this.btnLuu.Caption = "Lưu";
+            this.btnLuu.Id = 3;
+            this.btnLuu.Name = "btnLuu";
             // 
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 25);
+            this.splitContainer1.Location = new System.Drawing.Point(0, 30);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -230,8 +239,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gcDanhSach);
-            this.splitContainer1.Size = new System.Drawing.Size(1316, 608);
-            this.splitContainer1.SplitterDistance = 116;
+            this.splitContainer1.Size = new System.Drawing.Size(1316, 603);
+            this.splitContainer1.SplitterDistance = 115;
             this.splitContainer1.TabIndex = 20;
             // 
             // chkTrangThai
@@ -316,7 +325,7 @@
             this.gcDanhSach.MainView = this.gvDanhSach;
             this.gcDanhSach.MenuManager = this.barManager1;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1316, 488);
+            this.gcDanhSach.Size = new System.Drawing.Size(1316, 484);
             this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
@@ -978,7 +987,7 @@
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControl3.Location = new System.Drawing.Point(0, 25);
+            this.barDockControl3.Location = new System.Drawing.Point(0, 30);
             this.barDockControl3.Manager = this.barManager1;
             this.barDockControl3.Size = new System.Drawing.Size(1316, 0);
             // 
@@ -994,7 +1003,7 @@
             // 
             this.barDockControl4.CausesValidation = false;
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControl4.Location = new System.Drawing.Point(0, 25);
+            this.barDockControl4.Location = new System.Drawing.Point(0, 30);
             this.barDockControl4.Manager = this.barManager1;
             this.barDockControl4.Size = new System.Drawing.Size(1316, 0);
             // 
@@ -1010,9 +1019,23 @@
             // 
             this.barDockControl6.CausesValidation = false;
             this.barDockControl6.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControl6.Location = new System.Drawing.Point(0, 25);
+            this.barDockControl6.Location = new System.Drawing.Point(0, 30);
             this.barDockControl6.Manager = this.barManager1;
             this.barDockControl6.Size = new System.Drawing.Size(1316, 0);
+            // 
+            // btnXem
+            // 
+            this.btnXem.Caption = "Xem bảng công chi tiết";
+            this.btnXem.Id = 5;
+            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnXem.Name = "btnXem";
+            // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Tải lại";
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage1")));
+            this.barButtonItem1.Name = "barButtonItem1";
             // 
             // frmBangCongChiTiet
             // 
@@ -1053,7 +1076,7 @@
         private DevExpress.XtraBars.BarButtonItem btnSua;
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnLuu;
-        private DevExpress.XtraBars.BarButtonItem btnHuy;
+        private DevExpress.XtraBars.BarButtonItem btnIn;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -1113,5 +1136,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControl4;
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private DevExpress.XtraBars.BarDockControl barDockControl6;
+        private DevExpress.XtraBars.BarButtonItem btnXem;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }
