@@ -1,4 +1,5 @@
 ﻿using GUI_QLNS.NhanVien.BaoHiem;
+using GUI_QLNS.NhanVien.ChamCong;
 using GUI_QLNS.NhanVien.LyLich;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace GUI_QLNS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LyLich());
+            Application.Run(new Main());
         }
     }
 }

@@ -11,16 +11,11 @@ using System.Windows.Forms;
 
 namespace GUI_QLNS.NhanVien.ChamCong
 {
-    public partial class ThemChamCong : DevExpress.XtraEditors.XtraForm
+    public partial class frmLoaiCong : DevExpress.XtraEditors.XtraForm
     {
-        public ThemChamCong()
+        public frmLoaiCong()
         {
             InitializeComponent();
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

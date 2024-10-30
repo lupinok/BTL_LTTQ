@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using GUI_QLNS.NhanVien.ChamCong;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,15 +18,29 @@ namespace GUI_QLNS
         {
             InitializeComponent();
         }
-
-        private void ribbonControl_Click(object sender, EventArgs e)
+        void openForm(Type typeForm)
         {
-
+            foreach (var frm in MdiChildren)
+            {
+                if (frm.GetType() == typeForm)
+                {
+                    frm.Activate();
+                    return;
+                }
+            }
+            Form f = (Form)Activator.CreateInstance(typeForm);
+            f.MdiParent = this;
+            f.Show();
         }
 
-        private void barButtonItem16_ItemClick(object sender, ItemClickEventArgs e)
+        private void btnLoaiCa_ItemClick(object sender, ItemClickEventArgs e)
         {
+            openForm(typeof(frmLoaiCa));
+        }
 
+        private void btnLoaiCong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmLoaiCong));
         }
     }
 }

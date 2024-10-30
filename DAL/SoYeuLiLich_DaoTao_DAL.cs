@@ -15,7 +15,7 @@ namespace DAL_QLNS
 		}
 
 		public SoYeuLiLich_DaoTao_DAL()
-			: base("Data Source=MSI\\SQLEXPRESS;Initial Catalog=BTLMonLTTQ;Integrated Security=True")
+			: base("Data Source=DESKTOP-1FDDR5U\\SQLEXPRESS;Initial Catalog=BTLMonLTTQ;Integrated Security=True")
 		{
 		}
 

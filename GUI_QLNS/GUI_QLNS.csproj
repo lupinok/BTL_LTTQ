@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -12,6 +13,8 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -57,6 +60,12 @@
     <Reference Include="DevExpress.XtraScheduler.v24.1.Core, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraScheduler.v24.1.Core.Desktop, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraTreeList.v24.1, Version=24.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -176,17 +185,17 @@
     <Compile Include="NhanVien\BaoHiem\ThemBaoHiem.Designer.cs">
       <DependentUpon>ThemBaoHiem.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\ChamCong\ChamCong.cs">
+    <Compile Include="NhanVien\ChamCong\LoaiCa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\ChamCong\ChamCong.Designer.cs">
-      <DependentUpon>ChamCong.cs</DependentUpon>
+    <Compile Include="NhanVien\ChamCong\LoaiCa.Designer.cs">
+      <DependentUpon>LoaiCa.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\ChamCong\ThemChamCong.cs">
+    <Compile Include="NhanVien\ChamCong\LoaiCong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\ChamCong\ThemChamCong.Designer.cs">
-      <DependentUpon>ThemChamCong.cs</DependentUpon>
+    <Compile Include="NhanVien\ChamCong\LoaiCong.Designer.cs">
+      <DependentUpon>LoaiCong.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\DaoTao\DaoTao.cs">
       <SubType>Form</SubType>
@@ -254,16 +263,16 @@
     <Compile Include="NhanVien\LyLich\ThemLyLich.Designer.cs">
       <DependentUpon>ThemLyLich.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Thanh toán\ThanhToan.cs">
+    <Compile Include="NhanVien\ThanhToan\ThanhToan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Thanh toán\ThanhToan.Designer.cs">
+    <Compile Include="NhanVien\ThanhToan\ThanhToan.Designer.cs">
       <DependentUpon>ThanhToan.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Thanh toán\ThemThanhToan.cs">
+    <Compile Include="NhanVien\ThanhToan\ThemThanhToan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Thanh toán\ThemThanhToan.Designer.cs">
+    <Compile Include="NhanVien\ThanhToan\ThemThanhToan.Designer.cs">
       <DependentUpon>ThemThanhToan.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\ThuongPhat\ThemThuongPhat.cs">
@@ -278,16 +287,16 @@
     <Compile Include="NhanVien\ThuongPhat\ThuongPhat.Designer.cs">
       <DependentUpon>ThuongPhat.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Tài khoản\TaiKhoan.cs">
+    <Compile Include="NhanVien\TaiKhoan\TaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Tài khoản\TaiKhoan.Designer.cs">
+    <Compile Include="NhanVien\TaiKhoan\TaiKhoan.Designer.cs">
       <DependentUpon>TaiKhoan.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Tài khoản\ThemTaiKhoan.cs">
+    <Compile Include="NhanVien\TaiKhoan\ThemTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Tài khoản\ThemTaiKhoan.Designer.cs">
+    <Compile Include="NhanVien\TaiKhoan\ThemTaiKhoan.Designer.cs">
       <DependentUpon>ThemTaiKhoan.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -301,11 +310,11 @@
     <EmbeddedResource Include="NhanVien\BaoHiem\ThemBaoHiem.resx">
       <DependentUpon>ThemBaoHiem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\ChamCong\ChamCong.resx">
-      <DependentUpon>ChamCong.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien\ChamCong\LoaiCa.resx">
+      <DependentUpon>LoaiCa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\ChamCong\ThemChamCong.resx">
-      <DependentUpon>ThemChamCong.cs</DependentUpon>
+    <EmbeddedResource Include="NhanVien\ChamCong\LoaiCong.resx">
+      <DependentUpon>LoaiCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\DaoTao\DaoTao.resx">
       <DependentUpon>DaoTao.cs</DependentUpon>
@@ -340,10 +349,10 @@
     <EmbeddedResource Include="NhanVien\LyLich\ThemLyLich.resx">
       <DependentUpon>ThemLyLich.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Thanh toán\ThanhToan.resx">
+    <EmbeddedResource Include="NhanVien\ThanhToan\ThanhToan.resx">
       <DependentUpon>ThanhToan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Thanh toán\ThemThanhToan.resx">
+    <EmbeddedResource Include="NhanVien\ThanhToan\ThemThanhToan.resx">
       <DependentUpon>ThemThanhToan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ThuongPhat\ThemThuongPhat.resx">
@@ -352,10 +361,10 @@
     <EmbeddedResource Include="NhanVien\ThuongPhat\ThuongPhat.resx">
       <DependentUpon>ThuongPhat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Tài khoản\TaiKhoan.resx">
+    <EmbeddedResource Include="NhanVien\TaiKhoan\TaiKhoan.resx">
       <DependentUpon>TaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Tài khoản\ThemTaiKhoan.resx">
+    <EmbeddedResource Include="NhanVien\TaiKhoan\ThemTaiKhoan.resx">
       <DependentUpon>ThemTaiKhoan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -556,6 +565,7 @@
     <None Include="BTLMonLTTQDataSet9.xss">
       <DependentUpon>BTLMonLTTQDataSet9.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\DataSources\DevExpress.XtraGrid.GridControl.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -586,5 +596,14 @@
   <ItemGroup>
     <None Include="Resources\ic_bhxh.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.5.1\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.targets')" />
 </Project>
