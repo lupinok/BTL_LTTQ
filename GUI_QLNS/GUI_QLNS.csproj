@@ -152,21 +152,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>BTLMonLTTQDataSet6.xsd</DependentUpon>
     </Compile>
-    <Compile Include="BTLMonLTTQDataSet7.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BTLMonLTTQDataSet7.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BTLMonLTTQDataSet8.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BTLMonLTTQDataSet8.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="BTLMonLTTQDataSet9.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>BTLMonLTTQDataSet9.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -549,39 +534,6 @@
     </None>
     <None Include="BTLMonLTTQDataSet6.xss">
       <DependentUpon>BTLMonLTTQDataSet6.xsd</DependentUpon>
-    </None>
-    <None Include="BTLMonLTTQDataSet7.xsc">
-      <DependentUpon>BTLMonLTTQDataSet7.xsd</DependentUpon>
-    </None>
-    <None Include="BTLMonLTTQDataSet7.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BTLMonLTTQDataSet7.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BTLMonLTTQDataSet7.xss">
-      <DependentUpon>BTLMonLTTQDataSet7.xsd</DependentUpon>
-    </None>
-    <None Include="BTLMonLTTQDataSet8.xsc">
-      <DependentUpon>BTLMonLTTQDataSet8.xsd</DependentUpon>
-    </None>
-    <None Include="BTLMonLTTQDataSet8.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BTLMonLTTQDataSet8.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BTLMonLTTQDataSet8.xss">
-      <DependentUpon>BTLMonLTTQDataSet8.xsd</DependentUpon>
-    </None>
-    <None Include="BTLMonLTTQDataSet9.xsc">
-      <DependentUpon>BTLMonLTTQDataSet9.xsd</DependentUpon>
-    </None>
-    <None Include="BTLMonLTTQDataSet9.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BTLMonLTTQDataSet9.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="BTLMonLTTQDataSet9.xss">
-      <DependentUpon>BTLMonLTTQDataSet9.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DevExpress.XtraGrid.GridControl.datasource" />
