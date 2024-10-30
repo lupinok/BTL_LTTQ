@@ -44,5 +44,41 @@ namespace GUI_QLNS.Properties {
                 return ((string)(this["BTLMonLTTQConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastServerName {
+            get {
+                return ((string)(this["LastServerName"]));
+            }
+            set {
+                this["LastServerName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastDatabaseName {
+            get {
+                return ((string)(this["LastDatabaseName"]));
+            }
+            set {
+                this["LastDatabaseName"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastUsername {
+            get {
+                return ((string)(this["LastUsername"]));
+            }
+            set {
+                this["LastUsername"] = value;
+            }
+        }
     }
 }

@@ -36,7 +36,7 @@
             this.txtPassword = new DevExpress.XtraEditors.TextEdit();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
-            this.cboDatabase = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.cboDatabases = new DevExpress.XtraEditors.ComboBoxEdit();
             this.btnLoadDatabases = new DevExpress.XtraEditors.SimpleButton();
             this.btnTest = new DevExpress.XtraEditors.SimpleButton();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
@@ -44,7 +44,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbWindowsAuth.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDatabase.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDatabases.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // labelControl1
@@ -61,6 +61,7 @@
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(340, 22);
             this.txtServer.TabIndex = 1;
+            this.txtServer.TextChanged += new System.EventHandler(this.txtServer_TextChanged);
             // 
             // cbWindowsAuth
             // 
@@ -109,14 +110,14 @@
             this.labelControl4.TabIndex = 7;
             this.labelControl4.Text = "Chọn CSDL:";
             // 
-            // cboDatabase
+            // cboDatabases
             // 
-            this.cboDatabase.Location = new System.Drawing.Point(126, 181);
-            this.cboDatabase.Name = "cboDatabase";
-            this.cboDatabase.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.cboDatabases.Location = new System.Drawing.Point(126, 181);
+            this.cboDatabases.Name = "cboDatabases";
+            this.cboDatabases.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cboDatabase.Size = new System.Drawing.Size(340, 22);
-            this.cboDatabase.TabIndex = 8;
+            this.cboDatabases.Size = new System.Drawing.Size(340, 22);
+            this.cboDatabases.TabIndex = 8;
             // 
             // btnLoadDatabases
             // 
@@ -153,7 +154,7 @@
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnLoadDatabases);
-            this.Controls.Add(this.cboDatabase);
+            this.Controls.Add(this.cboDatabases);
             this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.labelControl3);
@@ -169,7 +170,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.cbWindowsAuth.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUsername.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPassword.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cboDatabase.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboDatabases.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,7 +186,7 @@
         private DevExpress.XtraEditors.TextEdit txtPassword;
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private DevExpress.XtraEditors.LabelControl labelControl4;
-        private DevExpress.XtraEditors.ComboBoxEdit cboDatabase;
+        private DevExpress.XtraEditors.ComboBoxEdit cboDatabases;
         private DevExpress.XtraEditors.SimpleButton btnLoadDatabases;
         private DevExpress.XtraEditors.SimpleButton btnTest;
         private DevExpress.XtraEditors.SimpleButton btnSave;
