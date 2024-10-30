@@ -43,5 +43,6 @@ namespace DAL
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThanhToan> ThanhToans { get; set; }
         public virtual DbSet<LoaiCa> LoaiCas { get; set; }
+        public virtual DbSet<LoaiCong> LoaiCongs { get; set; }
     }
 }

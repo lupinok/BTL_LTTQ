@@ -95,6 +95,9 @@
     <Compile Include="LoaiCa.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="LoaiCong.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>

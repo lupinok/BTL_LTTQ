@@ -12,17 +12,16 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class ChamCong
+    public partial class LoaiCong
     {
-        public int MaChamCong { get; set; }
-        public Nullable<System.DateTime> NgayChamCong { get; set; }
-        public Nullable<System.TimeSpan> GioVao { get; set; }
-        public Nullable<System.TimeSpan> GioRa { get; set; }
-        public Nullable<int> MaNhanVien { get; set; }
-        public string KetQuaChamCong { get; set; }
-        public string MaLoaiCa { get; set; }
         public string MaLoaiCong { get; set; }
-    
-        public virtual NhanVien NhanVien { get; set; }
+        public string TenLoaiCong { get; set; }
+        public double HeSo { get; set; }
+        public string create_by { get; set; }
+        public Nullable<System.DateTime> create_date { get; set; }
+        public string update_by { get; set; }
+        public Nullable<System.DateTime> update_date { get; set; }
+        public string delete_by { get; set; }
+        public Nullable<System.DateTime> delete_date { get; set; }
     }
 }

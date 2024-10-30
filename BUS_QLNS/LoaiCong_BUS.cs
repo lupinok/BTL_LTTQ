@@ -7,32 +7,32 @@ using System.Threading.Tasks;
 
 namespace BUS_QLNS
 {
-    public class LOAICA_BUS
+    public class LOAICONG_BUS
     {
         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 
-        public LoaiCa getItem(string maloaica)
+        public LoaiCong getItem(string maloaicong)
         {
-            return db.LoaiCas.FirstOrDefault(x => x.MaLoaiCa == maloaica);
+            return db.LoaiCongs.FirstOrDefault(x => x.MaLoaiCong == maloaicong);
         }
 
-        public List<LoaiCa> getList()
+        public List<LoaiCong> getList()
         {
-            return db.LoaiCas.ToList();
+            return db.LoaiCongs.ToList();
         }
 
-        public LoaiCa Add(LoaiCa lc)
+        public LoaiCong Add(LoaiCong lc)
         {
             try
             {
-                if (db.LoaiCas.Any(x => x.MaLoaiCa == lc.MaLoaiCa))
-                    throw new Exception("Mã ca đã tồn tại.");
-                if (string.IsNullOrWhiteSpace(lc.TenLoaiCa))
-                    throw new Exception("Tên ca không được bỏ trống.");
+                if (db.LoaiCongs.Any(x => x.MaLoaiCong == lc.MaLoaiCong))
+                    throw new Exception("Mã công đã tồn tại.");
+                if (string.IsNullOrWhiteSpace(lc.TenLoaiCong))
+                    throw new Exception("Tên công không được bỏ trống.");
                 if (lc.HeSo < 1)
                     throw new Exception("Hệ số phải lớn hơn 1.");
 
-                db.LoaiCas.Add(lc);
+                db.LoaiCongs.Add(lc);
                 db.SaveChanges();
                 return lc;
             }
@@ -42,14 +42,14 @@ namespace BUS_QLNS
             }
         }
 
-        public LoaiCa Update(LoaiCa lc)
+        public LoaiCong Update(LoaiCong lc)
         {
             try
             {
-                var _lc = db.LoaiCas.FirstOrDefault(x => x.MaLoaiCa == lc.MaLoaiCa);
+                var _lc = db.LoaiCongs.FirstOrDefault(x => x.MaLoaiCong == lc.MaLoaiCong);
                 if (_lc != null)
                 {
-                    _lc.TenLoaiCa = lc.TenLoaiCa;
+                    _lc.TenLoaiCong = lc.TenLoaiCong;
                     _lc.HeSo = lc.HeSo;
                     _lc.update_by = lc.update_by;
                     db.SaveChanges();
@@ -58,24 +58,24 @@ namespace BUS_QLNS
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi khi cập nhật LoaiCa: {ex.Message}");
+                throw new Exception($"Lỗi khi cập nhật LoaiCong: {ex.Message}");
             }
         }
 
-        public void Delete(string maloaica)
+        public void Delete(string maloaicong)
         {
             try
             {
-                var _lc = db.LoaiCas.FirstOrDefault(x => x.MaLoaiCa == maloaica);
+                var _lc = db.LoaiCongs.FirstOrDefault(x => x.MaLoaiCong == maloaicong);
                 if (_lc != null)
                 {
-                    db.LoaiCas.Remove(_lc);
+                    db.LoaiCongs.Remove(_lc);
                     db.SaveChanges();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception($"Lỗi khi xóa LoaiCa: {ex.Message}");
+                throw new Exception($"Lỗi khi xóa LoaiCong: {ex.Message}");
             }
         }
     }

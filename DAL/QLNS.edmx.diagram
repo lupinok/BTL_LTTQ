@@ -38,6 +38,7 @@
         <AssociationConnector Association="BTLMonLTTQModel.FK__SoYeuLyLi__MaNha__74AE54BC" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__ThanhToan__MaNha__75A278F5" ManuallyRouted="false" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCa" Width="1.5" PointX="2" PointY="2.5" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCong" Width="1.5" PointX="8.375" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

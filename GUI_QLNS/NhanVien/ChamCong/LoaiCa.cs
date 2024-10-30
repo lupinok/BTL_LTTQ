@@ -17,7 +17,6 @@ namespace GUI_QLNS.NhanVien.ChamCong
     {
         LOAICA_BUS _loaica;
         bool _them;
-        int _id;
 
         public frmLoaiCa()
         {
@@ -72,6 +71,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         {
             _them = false;
             _showHide(false);
+            txtMaLoaiCa.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
