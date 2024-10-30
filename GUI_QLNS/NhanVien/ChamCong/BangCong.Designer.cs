@@ -37,6 +37,7 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -51,7 +52,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
             this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.ID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MAKYCONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NAM = new DevExpress.XtraGrid.Columns.GridColumn();
             this.THANG = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -63,7 +63,6 @@
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
-            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -151,6 +150,14 @@
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
             // 
+            // btnXem
+            // 
+            this.btnXem.Caption = "Xem bảng công";
+            this.btnXem.Id = 5;
+            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXem.ImageOptions.SvgImage")));
+            this.btnXem.Name = "btnXem";
+            this.btnXem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXem_ItemClick);
+            // 
             // bar3
             // 
             this.bar3.BarName = "Status bar";
@@ -198,6 +205,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 30);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -215,7 +223,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gcDanhSach);
             this.splitContainer1.Size = new System.Drawing.Size(1217, 534);
-            this.splitContainer1.SplitterDistance = 102;
+            this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 13;
             // 
             // chkTrangThai
@@ -300,7 +308,7 @@
             this.gcDanhSach.MainView = this.gvDanhSach;
             this.gcDanhSach.MenuManager = this.barManager1;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1217, 428);
+            this.gcDanhSach.Size = new System.Drawing.Size(1217, 463);
             this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
@@ -308,7 +316,6 @@
             // gvDanhSach
             // 
             this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.ID,
             this.MAKYCONG,
             this.NAM,
             this.THANG,
@@ -321,17 +328,6 @@
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
             // 
-            // ID
-            // 
-            this.ID.Caption = "ID";
-            this.ID.FieldName = "ID";
-            this.ID.MaxWidth = 80;
-            this.ID.MinWidth = 25;
-            this.ID.Name = "ID";
-            this.ID.Visible = true;
-            this.ID.VisibleIndex = 0;
-            this.ID.Width = 30;
-            // 
             // MAKYCONG
             // 
             this.MAKYCONG.Caption = "Mã kỳ công";
@@ -340,7 +336,7 @@
             this.MAKYCONG.MinWidth = 25;
             this.MAKYCONG.Name = "MAKYCONG";
             this.MAKYCONG.Visible = true;
-            this.MAKYCONG.VisibleIndex = 1;
+            this.MAKYCONG.VisibleIndex = 0;
             this.MAKYCONG.Width = 50;
             // 
             // NAM
@@ -351,7 +347,7 @@
             this.NAM.MinWidth = 25;
             this.NAM.Name = "NAM";
             this.NAM.Visible = true;
-            this.NAM.VisibleIndex = 2;
+            this.NAM.VisibleIndex = 1;
             this.NAM.Width = 30;
             // 
             // THANG
@@ -362,7 +358,7 @@
             this.THANG.MinWidth = 25;
             this.THANG.Name = "THANG";
             this.THANG.Visible = true;
-            this.THANG.VisibleIndex = 3;
+            this.THANG.VisibleIndex = 2;
             this.THANG.Width = 30;
             // 
             // KHOA
@@ -373,7 +369,7 @@
             this.KHOA.MinWidth = 25;
             this.KHOA.Name = "KHOA";
             this.KHOA.Visible = true;
-            this.KHOA.VisibleIndex = 4;
+            this.KHOA.VisibleIndex = 3;
             this.KHOA.Width = 30;
             // 
             // NGAYTINHCONG
@@ -384,7 +380,7 @@
             this.NGAYTINHCONG.MinWidth = 25;
             this.NGAYTINHCONG.Name = "NGAYTINHCONG";
             this.NGAYTINHCONG.Visible = true;
-            this.NGAYTINHCONG.VisibleIndex = 5;
+            this.NGAYTINHCONG.VisibleIndex = 4;
             this.NGAYTINHCONG.Width = 100;
             // 
             // NGAYCONGTRONGTHANG
@@ -395,7 +391,7 @@
             this.NGAYCONGTRONGTHANG.MinWidth = 25;
             this.NGAYCONGTRONGTHANG.Name = "NGAYCONGTRONGTHANG";
             this.NGAYCONGTRONGTHANG.Visible = true;
-            this.NGAYCONGTRONGTHANG.VisibleIndex = 6;
+            this.NGAYCONGTRONGTHANG.VisibleIndex = 5;
             this.NGAYCONGTRONGTHANG.Width = 100;
             // 
             // TRANGTHAI
@@ -406,7 +402,7 @@
             this.TRANGTHAI.MinWidth = 25;
             this.TRANGTHAI.Name = "TRANGTHAI";
             this.TRANGTHAI.Visible = true;
-            this.TRANGTHAI.VisibleIndex = 7;
+            this.TRANGTHAI.VisibleIndex = 6;
             this.TRANGTHAI.Width = 100;
             // 
             // barDockControl2
@@ -440,14 +436,6 @@
             this.barDockControl4.Location = new System.Drawing.Point(0, 30);
             this.barDockControl4.Manager = this.barManager1;
             this.barDockControl4.Size = new System.Drawing.Size(1217, 0);
-            // 
-            // btnXem
-            // 
-            this.btnXem.Caption = "Xem bảng công";
-            this.btnXem.Id = 5;
-            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXem.ImageOptions.SvgImage")));
-            this.btnXem.Name = "btnXem";
-            this.btnXem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXem_ItemClick);
             // 
             // frmBangCong
             // 
@@ -506,7 +494,6 @@
         private System.Windows.Forms.CheckBox chkKhoa;
         private System.Windows.Forms.ComboBox cboThang;
         private System.Windows.Forms.ComboBox cboNam;
-        private DevExpress.XtraGrid.Columns.GridColumn ID;
         private DevExpress.XtraGrid.Columns.GridColumn MAKYCONG;
         private DevExpress.XtraGrid.Columns.GridColumn NAM;
         private DevExpress.XtraGrid.Columns.GridColumn THANG;

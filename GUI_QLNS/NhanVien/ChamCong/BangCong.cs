@@ -11,7 +11,9 @@ namespace GUI_QLNS.NhanVien.ChamCong
     {
         KyCong_BUS _bangCong;
         bool _them;
-        int _id;
+        int _makycong;
+        int _thang;
+        int _nam;
         public frmBangCong()
         {
             InitializeComponent();
@@ -34,7 +36,6 @@ namespace GUI_QLNS.NhanVien.ChamCong
             btnThem.Enabled = kt;
             btnSua.Enabled = kt;
             btnXoa.Enabled = kt;
-            btnXem.Enabled = !kt;
             cboNam.Enabled = !kt;
             cboThang.Enabled = !kt;
             chkKhoa.Enabled = !kt;
@@ -78,7 +79,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    _bangCong.Delete(_id, "");
+                    _bangCong.Delete(_makycong, "");
                     loadData();
                 }
             }
@@ -126,7 +127,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             }
             else
             {
-                var kc = _bangCong.getItem(_id);
+                var kc = _bangCong.getItem(_makycong);
                 if (kc != null)
                 {
                     kc.MAKYCONG = int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text);
@@ -147,7 +148,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         {
             if (gvDanhSach.RowCount > 0)
             {
-                _id = int.Parse(gvDanhSach.GetFocusedRowCellValue("ID").ToString());
+                _makycong = int.Parse(gvDanhSach.GetFocusedRowCellValue("MAKYCONG").ToString());
                 cboNam.Text = gvDanhSach.GetFocusedRowCellValue("NAM").ToString();
                 cboThang.Text = gvDanhSach.GetFocusedRowCellValue("THANG").ToString();
                 chkKhoa.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("KHOA").ToString());
@@ -157,7 +158,11 @@ namespace GUI_QLNS.NhanVien.ChamCong
 
         private void btnXem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            frmBangCongChiTiet frm = new frmBangCongChiTiet();
+            frm._makycong = _makycong;
+            frm._nam = int.Parse(cboNam.Text);
+            frm._thang = int.Parse(cboThang.Text);
+            frm.ShowDialog();
         }
     }
 }

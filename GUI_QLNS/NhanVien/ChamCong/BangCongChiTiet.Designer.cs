@@ -33,6 +33,8 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnPhatSinh = new DevExpress.XtraBars.BarButtonItem();
+            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTaiLai = new DevExpress.XtraBars.BarButtonItem();
             this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -49,8 +51,8 @@
             this.cboNam = new System.Windows.Forms.ComboBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
-            this.gcDanhSach = new DevExpress.XtraGrid.GridControl();
-            this.gvDanhSach = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gcBangCongChiTiet = new DevExpress.XtraGrid.GridControl();
+            this.gvBangCongChiTiet = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colMaNV = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colHoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colD1 = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -96,15 +98,13 @@
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
-            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcBangCongChiTiet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBangCongChiTiet)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -124,7 +124,7 @@
             this.btnLuu,
             this.btnIn,
             this.btnXem,
-            this.barButtonItem1});
+            this.btnTaiLai});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 8;
             this.barManager1.StatusBar = this.bar3;
@@ -138,7 +138,7 @@
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnPhatSinh, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnTaiLai, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
@@ -150,6 +150,23 @@
             this.btnPhatSinh.Id = 0;
             this.btnPhatSinh.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnPhatSinh.ImageOptions.SvgImage")));
             this.btnPhatSinh.Name = "btnPhatSinh";
+            this.btnPhatSinh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnPhatSinh_ItemClick);
+            // 
+            // btnXem
+            // 
+            this.btnXem.Caption = "Xem bảng công chi tiết";
+            this.btnXem.Id = 5;
+            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXem.ImageOptions.SvgImage")));
+            this.btnXem.Name = "btnXem";
+            this.btnXem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXem_ItemClick);
+            // 
+            // btnTaiLai
+            // 
+            this.btnTaiLai.Caption = "Tải lại";
+            this.btnTaiLai.Id = 6;
+            this.btnTaiLai.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
+            this.btnTaiLai.Name = "btnTaiLai";
+            this.btnTaiLai.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTaiLai_ItemClick);
             // 
             // btnIn
             // 
@@ -223,6 +240,7 @@
             // splitContainer1
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 30);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -238,9 +256,9 @@
             // 
             // splitContainer1.Panel2
             // 
-            this.splitContainer1.Panel2.Controls.Add(this.gcDanhSach);
+            this.splitContainer1.Panel2.Controls.Add(this.gcBangCongChiTiet);
             this.splitContainer1.Size = new System.Drawing.Size(1316, 603);
-            this.splitContainer1.SplitterDistance = 115;
+            this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 20;
             // 
             // chkTrangThai
@@ -318,38 +336,38 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Năm:";
             // 
-            // gcDanhSach
+            // gcBangCongChiTiet
             // 
-            this.gcDanhSach.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcDanhSach.Location = new System.Drawing.Point(0, 0);
-            this.gcDanhSach.MainView = this.gvDanhSach;
-            this.gcDanhSach.MenuManager = this.barManager1;
-            this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1316, 484);
-            this.gcDanhSach.TabIndex = 0;
-            this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvDanhSach});
+            this.gcBangCongChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcBangCongChiTiet.Location = new System.Drawing.Point(0, 0);
+            this.gcBangCongChiTiet.MainView = this.gvBangCongChiTiet;
+            this.gcBangCongChiTiet.MenuManager = this.barManager1;
+            this.gcBangCongChiTiet.Name = "gcBangCongChiTiet";
+            this.gcBangCongChiTiet.Size = new System.Drawing.Size(1316, 529);
+            this.gcBangCongChiTiet.TabIndex = 0;
+            this.gcBangCongChiTiet.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvBangCongChiTiet});
             // 
-            // gvDanhSach
+            // gvBangCongChiTiet
             // 
-            this.gvDanhSach.Appearance.FocusedCell.BackColor = System.Drawing.Color.Khaki;
-            this.gvDanhSach.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
+            this.gvBangCongChiTiet.Appearance.FocusedCell.BackColor = System.Drawing.Color.Khaki;
+            this.gvBangCongChiTiet.Appearance.FocusedCell.Font = new System.Drawing.Font("Tahoma", 8.25F, ((System.Drawing.FontStyle)(((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic) 
                 | System.Drawing.FontStyle.Underline))));
-            this.gvDanhSach.Appearance.FocusedCell.Options.UseBackColor = true;
-            this.gvDanhSach.Appearance.FocusedCell.Options.UseFont = true;
-            this.gvDanhSach.Appearance.FocusedRow.BackColor = System.Drawing.Color.GreenYellow;
-            this.gvDanhSach.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseBackColor = true;
-            this.gvDanhSach.Appearance.FocusedRow.Options.UseFont = true;
-            this.gvDanhSach.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.gvDanhSach.Appearance.HeaderPanel.Options.UseFont = true;
-            this.gvDanhSach.Appearance.HeaderPanel.Options.UseTextOptions = true;
-            this.gvDanhSach.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
-            this.gvDanhSach.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
-            this.gvDanhSach.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
-            this.gvDanhSach.Appearance.Row.Options.UseFont = true;
-            this.gvDanhSach.ColumnPanelRowHeight = 60;
-            this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
+            this.gvBangCongChiTiet.Appearance.FocusedCell.Options.UseBackColor = true;
+            this.gvBangCongChiTiet.Appearance.FocusedCell.Options.UseFont = true;
+            this.gvBangCongChiTiet.Appearance.FocusedRow.BackColor = System.Drawing.Color.GreenYellow;
+            this.gvBangCongChiTiet.Appearance.FocusedRow.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold);
+            this.gvBangCongChiTiet.Appearance.FocusedRow.Options.UseBackColor = true;
+            this.gvBangCongChiTiet.Appearance.FocusedRow.Options.UseFont = true;
+            this.gvBangCongChiTiet.Appearance.HeaderPanel.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
+            this.gvBangCongChiTiet.Appearance.HeaderPanel.Options.UseFont = true;
+            this.gvBangCongChiTiet.Appearance.HeaderPanel.Options.UseTextOptions = true;
+            this.gvBangCongChiTiet.Appearance.HeaderPanel.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Center;
+            this.gvBangCongChiTiet.Appearance.HeaderPanel.TextOptions.WordWrap = DevExpress.Utils.WordWrap.Wrap;
+            this.gvBangCongChiTiet.Appearance.Row.Font = new System.Drawing.Font("Tahoma", 9F);
+            this.gvBangCongChiTiet.Appearance.Row.Options.UseFont = true;
+            this.gvBangCongChiTiet.ColumnPanelRowHeight = 60;
+            this.gvBangCongChiTiet.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.colMaNV,
             this.colHoTen,
             this.colD1,
@@ -389,25 +407,25 @@
             this.CONGNGAYLE,
             this.CONGCHUNHAT,
             this.TONGNGAYCONG});
-            this.gvDanhSach.DetailHeight = 431;
-            this.gvDanhSach.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
-            this.gvDanhSach.GridControl = this.gcDanhSach;
-            this.gvDanhSach.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
-            this.gvDanhSach.IndicatorWidth = 40;
-            this.gvDanhSach.Name = "gvDanhSach";
-            this.gvDanhSach.OptionsCustomization.AllowFilter = false;
-            this.gvDanhSach.OptionsCustomization.AllowGroup = false;
-            this.gvDanhSach.OptionsCustomization.AllowSort = false;
-            this.gvDanhSach.OptionsDetail.EnableMasterViewMode = false;
-            this.gvDanhSach.OptionsFind.AlwaysVisible = true;
-            this.gvDanhSach.OptionsFind.FindNullPrompt = "Nhập nội dung cần tìm";
-            this.gvDanhSach.OptionsMenu.EnableColumnMenu = false;
-            this.gvDanhSach.OptionsView.ColumnAutoWidth = false;
-            this.gvDanhSach.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
-            this.gvDanhSach.OptionsView.ShowGroupPanel = false;
-            this.gvDanhSach.OptionsView.ShowIndicator = false;
-            this.gvDanhSach.RowHeight = 28;
-            this.gvDanhSach.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gvBangCongChiTiet.DetailHeight = 431;
+            this.gvBangCongChiTiet.FocusRectStyle = DevExpress.XtraGrid.Views.Grid.DrawFocusRectStyle.RowFocus;
+            this.gvBangCongChiTiet.GridControl = this.gcBangCongChiTiet;
+            this.gvBangCongChiTiet.HorzScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gvBangCongChiTiet.IndicatorWidth = 40;
+            this.gvBangCongChiTiet.Name = "gvBangCongChiTiet";
+            this.gvBangCongChiTiet.OptionsCustomization.AllowFilter = false;
+            this.gvBangCongChiTiet.OptionsCustomization.AllowGroup = false;
+            this.gvBangCongChiTiet.OptionsCustomization.AllowSort = false;
+            this.gvBangCongChiTiet.OptionsDetail.EnableMasterViewMode = false;
+            this.gvBangCongChiTiet.OptionsFind.AlwaysVisible = true;
+            this.gvBangCongChiTiet.OptionsFind.FindNullPrompt = "Nhập nội dung cần tìm";
+            this.gvBangCongChiTiet.OptionsMenu.EnableColumnMenu = false;
+            this.gvBangCongChiTiet.OptionsView.ColumnAutoWidth = false;
+            this.gvBangCongChiTiet.OptionsView.ShowFilterPanelMode = DevExpress.XtraGrid.Views.Base.ShowFilterPanelMode.Never;
+            this.gvBangCongChiTiet.OptionsView.ShowGroupPanel = false;
+            this.gvBangCongChiTiet.OptionsView.ShowIndicator = false;
+            this.gvBangCongChiTiet.RowHeight = 28;
+            this.gvBangCongChiTiet.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             // 
             // colMaNV
             // 
@@ -1023,20 +1041,6 @@
             this.barDockControl6.Manager = this.barManager1;
             this.barDockControl6.Size = new System.Drawing.Size(1316, 0);
             // 
-            // btnXem
-            // 
-            this.btnXem.Caption = "Xem bảng công chi tiết";
-            this.btnXem.Id = 5;
-            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage")));
-            this.btnXem.Name = "btnXem";
-            // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "Tải lại";
-            this.barButtonItem1.Id = 6;
-            this.barButtonItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barButtonItem1.ImageOptions.SvgImage1")));
-            this.barButtonItem1.Name = "barButtonItem1";
-            // 
             // frmBangCongChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1055,14 +1059,16 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmBangCongChiTiet";
             this.Text = "BangCongChiTiet";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmBangCongChiTiet_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcBangCongChiTiet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvBangCongChiTiet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1089,8 +1095,8 @@
         private System.Windows.Forms.ComboBox cboNam;
         private DevExpress.XtraEditors.LabelControl labelControl2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
-        private DevExpress.XtraGrid.GridControl gcDanhSach;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvDanhSach;
+        private DevExpress.XtraGrid.GridControl gcBangCongChiTiet;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvBangCongChiTiet;
         private DevExpress.XtraGrid.Columns.GridColumn colMaNV;
         private DevExpress.XtraGrid.Columns.GridColumn colHoTen;
         private DevExpress.XtraGrid.Columns.GridColumn colD1;
@@ -1137,6 +1143,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControl5;
         private DevExpress.XtraBars.BarDockControl barDockControl6;
         private DevExpress.XtraBars.BarButtonItem btnXem;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem btnTaiLai;
     }
 }

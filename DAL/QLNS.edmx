@@ -122,9 +122,8 @@
         </EntityType>
         <EntityType Name="KYCONG">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MAKYCONG" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MAKYCONG" Type="int" Nullable="false" />
           <Property Name="THANG" Type="int" />
           <Property Name="NAM" Type="int" />
@@ -995,8 +994,8 @@
           <EntitySet Name="LoaiCas" EntityType="BTLMonLTTQModel.LoaiCa" />
           <EntitySet Name="LoaiCongs" EntityType="BTLMonLTTQModel.LoaiCong" />
           <EntitySet Name="BANGCONG_NHANVIEN_CHITIET" EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" />
-          <EntitySet Name="KYCONGs" EntityType="BTLMonLTTQModel.KYCONG" />
           <EntitySet Name="KYCONGCHITIETs" EntityType="BTLMonLTTQModel.KYCONGCHITIET" />
+          <EntitySet Name="KYCONGs" EntityType="BTLMonLTTQModel.KYCONG" />
         </EntityContainer>
         <EntityType Name="LoaiCa">
           <Key>
@@ -1047,25 +1046,6 @@
           <Property Name="UPDATED_BY" Type="Int32" />
           <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="KYCONG">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MAKYCONG" Type="Int32" Nullable="false" />
-          <Property Name="THANG" Type="Int32" />
-          <Property Name="NAM" Type="Int32" />
-          <Property Name="KHOA" Type="Boolean" />
-          <Property Name="NGAYTINHCONG" Type="DateTime" Precision="3" />
-          <Property Name="NGAYCONGTRONGTHANG" Type="Double" />
-          <Property Name="TRANGTHAI" Type="Boolean" />
-          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="create_date" Type="DateTime" Precision="3" />
-          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="delete_date" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="KYCONGCHITIET">
           <Key>
             <PropertyRef Name="MAKYCONG" />
@@ -1110,6 +1090,24 @@
           <Property Name="CONGNGAYLE" Type="Double" />
           <Property Name="CONGCHUNHAT" Type="Double" />
           <Property Name="TONGNGAYCONG" Type="Double" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="delete_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="KYCONG">
+          <Key>
+            <PropertyRef Name="MAKYCONG" />
+          </Key>
+          <Property Name="MAKYCONG" Type="Int32" Nullable="false" />
+          <Property Name="THANG" Type="Int32" />
+          <Property Name="NAM" Type="Int32" />
+          <Property Name="KHOA" Type="Boolean" />
+          <Property Name="NGAYTINHCONG" Type="DateTime" Precision="3" />
+          <Property Name="NGAYCONGTRONGTHANG" Type="Double" />
+          <Property Name="TRANGTHAI" Type="Boolean" />
           <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -1362,26 +1360,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="KYCONGs">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONG">
-              <MappingFragment StoreEntitySet="KYCONG">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-                <ScalarProperty Name="NGAYCONGTRONGTHANG" ColumnName="NGAYCONGTRONGTHANG" />
-                <ScalarProperty Name="NGAYTINHCONG" ColumnName="NGAYTINHCONG" />
-                <ScalarProperty Name="KHOA" ColumnName="KHOA" />
-                <ScalarProperty Name="NAM" ColumnName="NAM" />
-                <ScalarProperty Name="THANG" ColumnName="THANG" />
-                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="KYCONGCHITIETs">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONGCHITIET">
               <MappingFragment StoreEntitySet="KYCONGCHITIET">
@@ -1429,6 +1407,25 @@
                 <ScalarProperty Name="D2" ColumnName="D2" />
                 <ScalarProperty Name="D1" ColumnName="D1" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KYCONGs">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONG">
+              <MappingFragment StoreEntitySet="KYCONG">
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="NGAYCONGTRONGTHANG" ColumnName="NGAYCONGTRONGTHANG" />
+                <ScalarProperty Name="NGAYTINHCONG" ColumnName="NGAYTINHCONG" />
+                <ScalarProperty Name="KHOA" ColumnName="KHOA" />
+                <ScalarProperty Name="NAM" ColumnName="NAM" />
+                <ScalarProperty Name="THANG" ColumnName="THANG" />
                 <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
               </MappingFragment>
             </EntityTypeMapping>

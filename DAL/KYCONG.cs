@@ -14,7 +14,6 @@ namespace DAL
     
     public partial class KYCONG
     {
-        public int ID { get; set; }
         public int MAKYCONG { get; set; }
         public Nullable<int> THANG { get; set; }
         public Nullable<int> NAM { get; set; }

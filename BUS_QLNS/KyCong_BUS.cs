@@ -9,9 +9,9 @@ namespace BusinessLayer
     {
         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 
-        public KYCONG getItem(int id)
+        public KYCONG getItem(int makycong)
         {
-            return db.KYCONGs.FirstOrDefault(x => x.ID == id);
+            return db.KYCONGs.FirstOrDefault(x => x.MAKYCONG == makycong);
         }
 
         public List<KYCONG> getList()
@@ -37,7 +37,7 @@ namespace BusinessLayer
         {
             try
             {
-                var _kc = db.KYCONGs.FirstOrDefault(x => x.ID == kc.ID);
+                var _kc = db.KYCONGs.FirstOrDefault(x => x.MAKYCONG == kc.MAKYCONG);
                 if (_kc != null)
                 {
                     _kc.MAKYCONG = kc.MAKYCONG;
@@ -58,15 +58,21 @@ namespace BusinessLayer
                 throw new Exception("Lỗi: " + ex.Message);
             }
         }
-        public void Delete(int id, string iduser)
+        public void Delete(int makycong, string iduser)
         {
             try
             {
-                var _kc = db.KYCONGs.FirstOrDefault(x => x.ID == id);
+                var _kc = db.KYCONGs.FirstOrDefault(x => x.MAKYCONG == makycong);
                 if (_kc != null)
                 {
-                    _kc.delete_by = iduser;
-                    _kc.delete_date = DateTime.Now;
+                    // Xóa các bản ghi con trong KYCONGCHITIET trước (nếu có)
+                    var kycongchitiet = db.KYCONGCHITIETs.Where(x => x.MAKYCONG == makycong);
+                    if (kycongchitiet.Any())
+                    {
+                        db.KYCONGCHITIETs.RemoveRange(kycongchitiet);
+                    }
+
+                    // Sau đó xóa bản ghi trong KYCONG
                     db.KYCONGs.Remove(_kc);
                     db.SaveChanges();
                 }
