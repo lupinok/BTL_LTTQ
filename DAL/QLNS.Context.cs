@@ -36,12 +36,12 @@ namespace DAL
         public virtual DbSet<HopDongLaoDong> HopDongLaoDongs { get; set; }
         public virtual DbSet<KT_KL> KT_KL { get; set; }
         public virtual DbSet<LichSuHoatDong> LichSuHoatDongs { get; set; }
-        public virtual DbSet<LoaiCa> LoaiCas { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhieuLuong> PhieuLuongs { get; set; }
         public virtual DbSet<PhongBan> PhongBans { get; set; }
         public virtual DbSet<SoYeuLyLich> SoYeuLyLiches { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<ThanhToan> ThanhToans { get; set; }
+        public virtual DbSet<LoaiCa> LoaiCas { get; set; }
     }
 }

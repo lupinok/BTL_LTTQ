@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="BTLMonLTTQModel.HopDongLaoDong" Width="1.5" PointX="5.25" PointY="22.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.KT_KL" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.LichSuHoatDong" Width="1.5" PointX="10" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCa" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.PhieuLuong" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.PhongBan" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
@@ -38,6 +37,7 @@
         <AssociationConnector Association="BTLMonLTTQModel.FK__PhieuLuon__MaNha__73BA3083" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__SoYeuLyLi__MaNha__74AE54BC" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__ThanhToan__MaNha__75A278F5" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCa" Width="1.5" PointX="2" PointY="2.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BTLMonLTTQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BTLMonLTTQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BaoHiem">
           <Key>
             <PropertyRef Name="MaBaoHiem" />
@@ -125,9 +125,15 @@
           <Key>
             <PropertyRef Name="MaLoaiCa" />
           </Key>
-          <Property Name="MaLoaiCa" Type="nchar" MaxLength="10" Nullable="false" />
-          <Property Name="TenLoaiCa" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="MaLoaiCa" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenLoaiCa" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="HeSo" Type="float" Nullable="false" />
+          <Property Name="create_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="delete_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="delete_date" Type="datetime" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -457,8 +463,7 @@
             <End Role="ThanhToan" EntitySet="ThanhToan" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BTLMonLTTQModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -591,14 +596,6 @@
           <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__LichSuHoa__TenDa__70DDC3D8" FromRole="LichSuHoatDong" ToRole="TaiKhoan" />
-        </EntityType>
-        <EntityType Name="LoaiCa">
-          <Key>
-            <PropertyRef Name="MaLoaiCa" />
-          </Key>
-          <Property Name="MaLoaiCa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="TenLoaiCa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
-          <Property Name="HeSo" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="NhanVien">
           <Key>
@@ -876,7 +873,6 @@
           <EntitySet Name="HopDongLaoDongs" EntityType="Self.HopDongLaoDong" />
           <EntitySet Name="KT_KL" EntityType="Self.KT_KL" />
           <EntitySet Name="LichSuHoatDongs" EntityType="Self.LichSuHoatDong" />
-          <EntitySet Name="LoaiCas" EntityType="Self.LoaiCa" />
           <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
           <EntitySet Name="PhieuLuongs" EntityType="Self.PhieuLuong" />
           <EntitySet Name="PhongBans" EntityType="Self.PhongBan" />
@@ -943,7 +939,22 @@
             <End Role="NhanVien" EntitySet="NhanViens" />
             <End Role="ThanhToan" EntitySet="ThanhToans" />
           </AssociationSet>
+          <EntitySet Name="LoaiCas" EntityType="BTLMonLTTQModel.LoaiCa" />
         </EntityContainer>
+        <EntityType Name="LoaiCa">
+          <Key>
+            <PropertyRef Name="MaLoaiCa" />
+          </Key>
+          <Property Name="MaLoaiCa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenLoaiCa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HeSo" Type="Double" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="delete_date" Type="DateTime" Precision="3" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1074,15 +1085,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LoaiCas">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.LoaiCa">
-              <MappingFragment StoreEntitySet="LoaiCa">
-                <ScalarProperty Name="MaLoaiCa" ColumnName="MaLoaiCa" />
-                <ScalarProperty Name="TenLoaiCa" ColumnName="TenLoaiCa" />
-                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
@@ -1154,6 +1156,21 @@
                 <ScalarProperty Name="GiaTri" ColumnName="GiaTri" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiCas">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.LoaiCa">
+              <MappingFragment StoreEntitySet="LoaiCa">
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
+                <ScalarProperty Name="TenLoaiCa" ColumnName="TenLoaiCa" />
+                <ScalarProperty Name="MaLoaiCa" ColumnName="MaLoaiCa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

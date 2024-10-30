@@ -289,7 +289,7 @@
             this.repositoryItemDateTimeOffsetEdit1,
             this.repositoryItemDateEdit1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
-            this.ribbonControl.Size = new System.Drawing.Size(1264, 193);
+            this.ribbonControl.Size = new System.Drawing.Size(972, 193);
             this.ribbonControl.StatusBar = this.ribbonStatusBar1;
             // 
             // skinRibbonGalleryBarItem1
@@ -1038,11 +1038,11 @@
             this.ribbonStatusBar1.ItemLinks.Add(this.barButtonItem13, true);
             this.ribbonStatusBar1.ItemLinks.Add(this.barButtonItem14, true);
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem10, true);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 459);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 736);
             this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1264, 30);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(972, 30);
             // 
             // barStaticItem3
             // 
@@ -1205,7 +1205,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1264, 489);
+            this.ClientSize = new System.Drawing.Size(972, 766);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl);
             this.IsMdiContainer = true;
