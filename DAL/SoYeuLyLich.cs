@@ -24,6 +24,8 @@ namespace DAL
         public string GioiTinh { get; set; }
         public string QueQuan { get; set; }
         public string GiaCanh { get; set; }
+        public string HinhAnh { get; set; }
+        public string QuocTich { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
     }
