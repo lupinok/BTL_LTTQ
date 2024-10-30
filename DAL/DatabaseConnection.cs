@@ -29,6 +29,14 @@ namespace DAL
         {
             try
             {
+                // Kiểm tra xem có phải là EF connection string không
+                if (connectionString.Contains("metadata="))
+                {
+                    // Trích xuất SQL connection string từ EF connection string
+                    connectionString = ExtractSqlConnectionString(connectionString);
+                }
+
+                // Test kết nối
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -38,6 +46,26 @@ namespace DAL
             catch
             {
                 return false;
+            }
+        }
+
+        private static string ExtractSqlConnectionString(string efConnectionString)
+        {
+            try
+            {
+                // Tìm phần provider connection string trong EF connection string
+                int startIndex = efConnectionString.IndexOf("provider connection string=") + 26;
+                string sqlConnectionString = efConnectionString.Substring(startIndex);
+                
+                // Loại bỏ dấu ngoặc kép và các phần không cần thiết
+                sqlConnectionString = sqlConnectionString.Replace("\"", "");
+                sqlConnectionString = sqlConnectionString.Replace(";MultipleActiveResultSets=True;App=EntityFramework", "");
+                
+                return sqlConnectionString;
+            }
+            catch
+            {
+                return efConnectionString; // Trả về nguyên gốc nếu không parse được
             }
         }
 
