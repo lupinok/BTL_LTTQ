@@ -54,12 +54,18 @@ namespace GUI_QLNS.NhanVien.ChamCong
             gvDanhSach.OptionsBehavior.Editable = false;
         }
 
+        private void ResetValue()
+        {
+            txtMaLoaiCa.Text = string.Empty;
+            txtTenLoaiCa.Text = string.Empty;
+            speHeSo.EditValue = 1;
+        }
+
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _showHide(false);
             _them = true;
-            txtTenLoaiCa.Text = string.Empty;
-            speHeSo.EditValue = 1;
+            ResetValue();
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -75,7 +81,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 string id = gvDanhSach.GetFocusedRowCellValue("MaLoaiCa").ToString();
                 if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    _loaica.Delete(id, "");
+                    _loaica.Delete(id);
                     loadData();
                 }
             }
@@ -83,10 +89,18 @@ namespace GUI_QLNS.NhanVien.ChamCong
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            SaveData();
-            loadData();
-            _them = false;
-            _showHide(true);
+            try
+            {
+                SaveData();
+                loadData();
+                _them = false;
+                _showHide(true);
+                ResetValue();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -126,16 +140,6 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 txtMaLoaiCa.Text = gvDanhSach.GetFocusedRowCellValue("MaLoaiCa").ToString();
                 txtTenLoaiCa.Text = gvDanhSach.GetFocusedRowCellValue("TenLoaiCa").ToString();
                 speHeSo.Text = gvDanhSach.GetFocusedRowCellValue("HeSo").ToString();
-            }
-        }
-
-        private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-        {
-            if (e.Column.Name == "delete_by" && e.CellValue != null)
-            {
-                Image img = Properties.Resources.ic_bhxh;
-                e.Graphics.DrawImage(img, e.Bounds.X, e.Bounds.Y);
-                e.Handled = true;
             }
         }
     }

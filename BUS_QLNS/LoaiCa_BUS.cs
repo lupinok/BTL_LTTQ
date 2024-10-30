@@ -25,6 +25,13 @@ namespace BUS_QLNS
         {
             try
             {
+                if (db.LoaiCas.Any(x => x.MaLoaiCa == lc.MaLoaiCa))
+                    throw new Exception("Mã ca đã tồn tại.");
+                if (string.IsNullOrWhiteSpace(lc.TenLoaiCa))
+                    throw new Exception("Tên ca không được bỏ trống.");
+                if (lc.HeSo <= 1)
+                    throw new Exception("Hệ số phải lớn hơn 1.");
+
                 db.LoaiCas.Add(lc);
                 db.SaveChanges();
                 return lc;
@@ -45,7 +52,6 @@ namespace BUS_QLNS
                     _lc.TenLoaiCa = lc.TenLoaiCa;
                     _lc.HeSo = lc.HeSo;
                     _lc.update_by = lc.update_by;
-                    _lc.update_by = lc.update_by;
                     db.SaveChanges();
                 }
                 return lc;
@@ -56,15 +62,14 @@ namespace BUS_QLNS
             }
         }
 
-        public void Delete(string maloaica, string iduser)
+        public void Delete(string maloaica)
         {
             try
             {
                 var _lc = db.LoaiCas.FirstOrDefault(x => x.MaLoaiCa == maloaica);
                 if (_lc != null)
                 {
-                    _lc.delete_by = iduser;
-                    _lc.delete_date = DateTime.Now;
+                    db.LoaiCas.Remove(_lc);
                     db.SaveChanges();
                 }
             }

@@ -53,7 +53,6 @@
             this.MaLoaiCa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TenLoaiCa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HeSo = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.delete_by = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -270,14 +269,12 @@
             // gvDanhSach
             // 
             this.gvDanhSach.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
-            this.delete_by,
             this.MaLoaiCa,
             this.TenLoaiCa,
             this.HeSo});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
-            this.gvDanhSach.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvDanhSach_CustomDrawCell);
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
             // 
             // MaLoaiCa
@@ -288,7 +285,7 @@
             this.MaLoaiCa.MinWidth = 25;
             this.MaLoaiCa.Name = "MaLoaiCa";
             this.MaLoaiCa.Visible = true;
-            this.MaLoaiCa.VisibleIndex = 1;
+            this.MaLoaiCa.VisibleIndex = 0;
             this.MaLoaiCa.Width = 50;
             // 
             // TenLoaiCa
@@ -299,7 +296,7 @@
             this.TenLoaiCa.MinWidth = 25;
             this.TenLoaiCa.Name = "TenLoaiCa";
             this.TenLoaiCa.Visible = true;
-            this.TenLoaiCa.VisibleIndex = 2;
+            this.TenLoaiCa.VisibleIndex = 1;
             this.TenLoaiCa.Width = 94;
             // 
             // HeSo
@@ -310,18 +307,8 @@
             this.HeSo.MinWidth = 25;
             this.HeSo.Name = "HeSo";
             this.HeSo.Visible = true;
-            this.HeSo.VisibleIndex = 3;
+            this.HeSo.VisibleIndex = 2;
             this.HeSo.Width = 50;
-            // 
-            // delete_by
-            // 
-            this.delete_by.FieldName = "delete_by";
-            this.delete_by.MaxWidth = 30;
-            this.delete_by.MinWidth = 25;
-            this.delete_by.Name = "delete_by";
-            this.delete_by.Visible = true;
-            this.delete_by.VisibleIndex = 0;
-            this.delete_by.Width = 30;
             // 
             // frmLoaiCa
             // 
@@ -375,6 +362,5 @@
         private DevExpress.XtraEditors.LabelControl labelControl3;
         private System.Windows.Forms.TextBox txtTenLoaiCa;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraGrid.Columns.GridColumn delete_by;
     }
 }
