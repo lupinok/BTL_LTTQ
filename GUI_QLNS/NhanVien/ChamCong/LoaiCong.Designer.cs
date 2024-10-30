@@ -277,6 +277,7 @@
             this.HeSo});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
+            this.gvDanhSach.OptionsFind.AlwaysVisible = true;
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
             // 
@@ -317,15 +318,15 @@
             // 
             this.barDockControl1.CausesValidation = false;
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControl1.Location = new System.Drawing.Point(840, 0);
+            this.barDockControl1.Location = new System.Drawing.Point(840, 25);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(0, 551);
+            this.barDockControl1.Size = new System.Drawing.Size(0, 506);
             // 
             // barDockControl2
             // 
             this.barDockControl2.CausesValidation = false;
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.barDockControl2.Location = new System.Drawing.Point(0, 551);
+            this.barDockControl2.Location = new System.Drawing.Point(0, 531);
             this.barDockControl2.Manager = this.barManager1;
             this.barDockControl2.Size = new System.Drawing.Size(840, 0);
             // 
@@ -333,7 +334,7 @@
             // 
             this.barDockControl3.CausesValidation = false;
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.barDockControl3.Location = new System.Drawing.Point(0, 0);
+            this.barDockControl3.Location = new System.Drawing.Point(0, 25);
             this.barDockControl3.Manager = this.barManager1;
             this.barDockControl3.Size = new System.Drawing.Size(840, 0);
             // 
@@ -343,13 +344,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(840, 551);
             this.Controls.Add(this.splitContainer1);
+            this.Controls.Add(this.barDockControl1);
+            this.Controls.Add(this.barDockControl2);
+            this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControlLeft);
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Controls.Add(this.barDockControl1);
-            this.Controls.Add(this.barDockControl2);
-            this.Controls.Add(this.barDockControl3);
             this.Name = "frmLoaiCong";
             this.Text = "LoaiCong";
             this.Load += new System.EventHandler(this.frmLoaiCong_Load);
