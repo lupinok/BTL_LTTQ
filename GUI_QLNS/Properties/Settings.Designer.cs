@@ -44,5 +44,29 @@ namespace GUI_QLNS.Properties {
                 return ((string)(this["BTLMonLTTQConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TenDangNhap {
+            get {
+                return ((string)(this["TenDangNhap"]));
+            }
+            set {
+                this["TenDangNhap"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string VaiTro {
+            get {
+                return ((string)(this["VaiTro"]));
+            }
+            set {
+                this["VaiTro"] = value;
+            }
+        }
     }
 }

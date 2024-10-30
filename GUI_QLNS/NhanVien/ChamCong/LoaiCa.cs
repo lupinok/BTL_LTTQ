@@ -142,5 +142,10 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 speHeSo.Text = gvDanhSach.GetFocusedRowCellValue("HeSo").ToString();
             }
         }
-    }
+
+		private void frmLoaiCa_Load_1(object sender, EventArgs e)
+		{
+
+		}
+	}
 }

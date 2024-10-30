@@ -1,4 +1,5 @@
-﻿using GUI_QLNS.NhanVien.ChamCong;
+﻿using GUI_QLNS.HeThong;
+using GUI_QLNS.NhanVien.ChamCong;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace GUI_QLNS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            Application.Run(new DangNhap());
         }
     }
 }
