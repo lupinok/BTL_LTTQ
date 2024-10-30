@@ -108,7 +108,7 @@
             this.bar_lock = new DevExpress.XtraBars.BarButtonItem();
             this.barLogout = new DevExpress.XtraBars.BarButtonItem();
             this.bar_cate = new DevExpress.XtraBars.BarButtonItem();
-            this.bar_backupDatabase = new DevExpress.XtraBars.BarButtonItem();
+            this.bar_SettingDB = new DevExpress.XtraBars.BarButtonItem();
             this.barRestoredatabase = new DevExpress.XtraBars.BarButtonItem();
             this.menu_hopdong = new DevExpress.XtraBars.BarButtonItem();
             this.menu_thuyenchuyen_congtac = new DevExpress.XtraBars.BarButtonItem();
@@ -254,7 +254,7 @@
             this.bar_lock,
             this.barLogout,
             this.bar_cate,
-            this.bar_backupDatabase,
+            this.bar_SettingDB,
             this.barRestoredatabase,
             this.menu_hopdong,
             this.menu_thuyenchuyen_congtac,
@@ -777,12 +777,13 @@
             this.bar_cate.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_cate.ImageOptions.SvgImage")));
             this.bar_cate.Name = "bar_cate";
             // 
-            // bar_backupDatabase
+            // bar_SettingDB
             // 
-            this.bar_backupDatabase.Caption = "Sao lưu dữ liệu";
-            this.bar_backupDatabase.Id = 124;
-            this.bar_backupDatabase.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_backupDatabase.ImageOptions.SvgImage")));
-            this.bar_backupDatabase.Name = "bar_backupDatabase";
+            this.bar_SettingDB.Caption = "Cấu hình CSDL";
+            this.bar_SettingDB.Id = 124;
+            this.bar_SettingDB.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_backupDatabase.ImageOptions.SvgImage")));
+            this.bar_SettingDB.Name = "bar_SettingDB";
+            this.bar_SettingDB.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bar_SettingDB_ItemClick);
             // 
             // barRestoredatabase
             // 
@@ -928,7 +929,7 @@
             // ribbonPageGroup3
             // 
             this.ribbonPageGroup3.ItemLinks.Add(this.menu_cauhinh_maychu);
-            this.ribbonPageGroup3.ItemLinks.Add(this.bar_backupDatabase);
+            this.ribbonPageGroup3.ItemLinks.Add(this.bar_SettingDB);
             this.ribbonPageGroup3.ItemLinks.Add(this.barRestoredatabase);
             this.ribbonPageGroup3.Name = "ribbonPageGroup3";
             this.ribbonPageGroup3.Text = "DỮ LIỆU";
@@ -1306,7 +1307,7 @@
         private DevExpress.XtraBars.BarButtonItem bar_lock;
         private DevExpress.XtraBars.BarButtonItem barLogout;
         private DevExpress.XtraBars.BarButtonItem bar_cate;
-        private DevExpress.XtraBars.BarButtonItem bar_backupDatabase;
+        private DevExpress.XtraBars.BarButtonItem bar_SettingDB;
         private DevExpress.XtraBars.BarButtonItem barRestoredatabase;
         private DevExpress.XtraBars.BarButtonItem menu_hopdong;
         private DevExpress.XtraBars.BarButtonItem menu_thuyenchuyen_congtac;

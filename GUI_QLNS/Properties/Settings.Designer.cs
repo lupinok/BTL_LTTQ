@@ -80,5 +80,17 @@ namespace GUI_QLNS.Properties {
                 this["LastUsername"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool UseWindowsAuth {
+            get {
+                return ((bool)(this["UseWindowsAuth"]));
+            }
+            set {
+                this["UseWindowsAuth"] = value;
+            }
+        }
     }
 }

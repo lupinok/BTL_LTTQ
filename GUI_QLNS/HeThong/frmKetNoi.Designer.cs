@@ -49,7 +49,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(32, 12);
+            this.labelControl1.Location = new System.Drawing.Point(54, 25);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(67, 16);
             this.labelControl1.TabIndex = 0;
@@ -57,7 +57,7 @@
             // 
             // txtServer
             // 
-            this.txtServer.Location = new System.Drawing.Point(126, 9);
+            this.txtServer.Location = new System.Drawing.Point(148, 22);
             this.txtServer.Name = "txtServer";
             this.txtServer.Size = new System.Drawing.Size(340, 22);
             this.txtServer.TabIndex = 1;
@@ -65,7 +65,7 @@
             // 
             // cbWindowsAuth
             // 
-            this.cbWindowsAuth.Location = new System.Drawing.Point(32, 47);
+            this.cbWindowsAuth.Location = new System.Drawing.Point(54, 60);
             this.cbWindowsAuth.Name = "cbWindowsAuth";
             this.cbWindowsAuth.Properties.Caption = "Sử dụng Windows Authentication";
             this.cbWindowsAuth.Size = new System.Drawing.Size(366, 24);
@@ -74,14 +74,14 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(126, 89);
+            this.txtUsername.Location = new System.Drawing.Point(148, 102);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(340, 22);
             this.txtUsername.TabIndex = 4;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(32, 92);
+            this.labelControl2.Location = new System.Drawing.Point(54, 105);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(35, 16);
             this.labelControl2.TabIndex = 3;
@@ -89,14 +89,14 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(126, 133);
+            this.txtPassword.Location = new System.Drawing.Point(148, 146);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(340, 22);
             this.txtPassword.TabIndex = 6;
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(32, 136);
+            this.labelControl3.Location = new System.Drawing.Point(54, 149);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(60, 16);
             this.labelControl3.TabIndex = 5;
@@ -104,7 +104,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(32, 184);
+            this.labelControl4.Location = new System.Drawing.Point(54, 197);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(68, 16);
             this.labelControl4.TabIndex = 7;
@@ -112,7 +112,7 @@
             // 
             // cboDatabases
             // 
-            this.cboDatabases.Location = new System.Drawing.Point(126, 181);
+            this.cboDatabases.Location = new System.Drawing.Point(148, 194);
             this.cboDatabases.Name = "cboDatabases";
             this.cboDatabases.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -121,7 +121,7 @@
             // 
             // btnLoadDatabases
             // 
-            this.btnLoadDatabases.Location = new System.Drawing.Point(32, 239);
+            this.btnLoadDatabases.Location = new System.Drawing.Point(54, 252);
             this.btnLoadDatabases.Name = "btnLoadDatabases";
             this.btnLoadDatabases.Size = new System.Drawing.Size(94, 29);
             this.btnLoadDatabases.TabIndex = 9;
@@ -130,7 +130,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(198, 239);
+            this.btnTest.Location = new System.Drawing.Point(220, 252);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(121, 29);
             this.btnTest.TabIndex = 10;
@@ -139,7 +139,7 @@
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(372, 239);
+            this.btnSave.Location = new System.Drawing.Point(394, 252);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(94, 29);
             this.btnSave.TabIndex = 12;
@@ -150,7 +150,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(525, 303);
+            this.ClientSize = new System.Drawing.Size(563, 313);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnTest);
             this.Controls.Add(this.btnLoadDatabases);

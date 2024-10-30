@@ -14,6 +14,7 @@ namespace GUI_QLNS.HeThong
         public frmKetNoi()
         {
             InitializeComponent();
+            this.txtPassword.Properties.UseSystemPasswordChar = true;
             LoadSavedSettings();
         }
 
@@ -24,26 +25,26 @@ namespace GUI_QLNS.HeThong
         {
             try
             {
-                // Tải tên server
+                // Tải các cài đặt đã lưu
                 if (!string.IsNullOrEmpty(Properties.Settings.Default.LastServerName))
                 {
                     txtServer.Text = Properties.Settings.Default.LastServerName;
                 }
 
-                // Tải tên database
                 if (!string.IsNullOrEmpty(Properties.Settings.Default.LastDatabaseName))
                 {
                     cboDatabases.Text = Properties.Settings.Default.LastDatabaseName;
                 }
 
-                // Tải username
                 if (!string.IsNullOrEmpty(Properties.Settings.Default.LastUsername))
                 {
                     txtUsername.Text = Properties.Settings.Default.LastUsername;
                 }
 
-                // Nếu có tên server, tự động load danh sách database
-                if (!string.IsNullOrEmpty(txtServer.Text))
+                cbWindowsAuth.Checked = Properties.Settings.Default.UseWindowsAuth;
+
+                // Nếu có server và đang dùng Windows Auth thì load luôn
+                if (!string.IsNullOrEmpty(txtServer.Text) && cbWindowsAuth.Checked)
                 {
                     LoadDatabases();
                 }
@@ -79,6 +80,21 @@ namespace GUI_QLNS.HeThong
         /// </summary>
         private void LoadDatabases()
         {
+            if (string.IsNullOrEmpty(txtServer.Text))
+            {
+                XtraMessageBox.Show("Please enter server name first.", 
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Chỉ kiểm tra username/password khi KHÔNG dùng Windows Auth
+            if (!cbWindowsAuth.Checked && (string.IsNullOrEmpty(txtUsername.Text) || string.IsNullOrEmpty(txtPassword.Text)))
+            {
+                XtraMessageBox.Show("Please enter username and password.", 
+                    "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             string connectionString = GetConnectionString();
             try
             {
@@ -148,7 +164,14 @@ namespace GUI_QLNS.HeThong
                     UpdateConnectionString("BTLMonLTTQEntities", efConnectionString, Path.Combine(solutionDir, "GUI_QLNS", "App.config"));
 
                     // Lưu cài đặt trước khi đóng form
-                    SaveCurrentSettings();
+                    Properties.Settings.Default.LastServerName = txtServer.Text.Trim();
+                    Properties.Settings.Default.LastDatabaseName = cboDatabases.Text.Trim();
+                    Properties.Settings.Default.UseWindowsAuth = cbWindowsAuth.Checked;
+                    if (!cbWindowsAuth.Checked)
+                    {
+                        Properties.Settings.Default.LastUsername = txtUsername.Text.Trim();
+                    }
+                    Properties.Settings.Default.Save();
 
                     XtraMessageBox.Show("Connection string saved successfully.", 
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

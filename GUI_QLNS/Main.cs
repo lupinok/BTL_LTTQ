@@ -1,4 +1,5 @@
 ﻿using DevExpress.XtraBars;
+using GUI_QLNS.HeThong;
 using GUI_QLNS.NhanVien.ChamCong;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,11 @@ namespace GUI_QLNS
         private void btnBangCong_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmBangCong));
+        }
+
+        private void bar_SettingDB_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmKetNoi));
         }
     }
 }
