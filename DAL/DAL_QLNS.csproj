@@ -74,6 +74,7 @@
     <Compile Include="DaoTao.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseConnection.cs" />
     <Compile Include="DuAn.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>

@@ -12,8 +12,6 @@ namespace GUI_QLNS.NhanVien.ChamCong
         KyCong_BUS _bangCong;
         bool _them;
         int _makycong;
-        int _thang;
-        int _nam;
         public frmBangCong()
         {
             InitializeComponent();
