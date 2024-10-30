@@ -185,6 +185,18 @@
     <Compile Include="NhanVien\BaoHiem\ThemBaoHiem.Designer.cs">
       <DependentUpon>ThemBaoHiem.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\ChamCong\BangCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\BangCong.Designer.cs">
+      <DependentUpon>BangCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\BangCongChiTiet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\BangCongChiTiet.Designer.cs">
+      <DependentUpon>BangCongChiTiet.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\ChamCong\LoaiCa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -309,6 +321,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\BaoHiem\ThemBaoHiem.resx">
       <DependentUpon>ThemBaoHiem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ChamCong\BangCong.resx">
+      <DependentUpon>BangCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ChamCong\BangCongChiTiet.resx">
+      <DependentUpon>BangCongChiTiet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChamCong\LoaiCa.resx">
       <DependentUpon>LoaiCa.cs</DependentUpon>

@@ -26,7 +26,6 @@ namespace DAL
         }
     
         public virtual DbSet<BaoHiem> BaoHiems { get; set; }
-        public virtual DbSet<ChamCong> ChamCongs { get; set; }
         public virtual DbSet<ChiTietDuAn> ChiTietDuAns { get; set; }
         public virtual DbSet<ChiTietKhoaDaoTao> ChiTietKhoaDaoTaos { get; set; }
         public virtual DbSet<ChiTietKT_KL> ChiTietKT_KL { get; set; }
@@ -44,5 +43,8 @@ namespace DAL
         public virtual DbSet<ThanhToan> ThanhToans { get; set; }
         public virtual DbSet<LoaiCa> LoaiCas { get; set; }
         public virtual DbSet<LoaiCong> LoaiCongs { get; set; }
+        public virtual DbSet<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
+        public virtual DbSet<KYCONG> KYCONGs { get; set; }
+        public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
     }
 }

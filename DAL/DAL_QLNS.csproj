@@ -53,10 +53,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaoHiem.cs">
+    <Compile Include="BANGCONG_NHANVIEN_CHITIET.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
-    <Compile Include="ChamCong.cs">
+    <Compile Include="BaoHiem.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="ChamCong_DAL.cs" />
@@ -87,6 +87,12 @@
     <Compile Include="HopDong_BaoHiem_DAL.cs" />
     <Compile Include="KhenThuong_KyLuat_DAL.cs" />
     <Compile Include="KT_KL.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KYCONG.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KYCONGCHITIET.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="LichSuHoatDong.cs">

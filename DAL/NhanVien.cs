@@ -18,7 +18,6 @@ namespace DAL
         public NhanVien()
         {
             this.BaoHiems = new HashSet<BaoHiem>();
-            this.ChamCongs = new HashSet<ChamCong>();
             this.ChiTietDuAns = new HashSet<ChiTietDuAn>();
             this.ChiTietKhoaDaoTaos = new HashSet<ChiTietKhoaDaoTao>();
             this.ChiTietKT_KL = new HashSet<ChiTietKT_KL>();
@@ -38,8 +37,6 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BaoHiem> BaoHiems { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChamCong> ChamCongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDuAn> ChiTietDuAns { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
