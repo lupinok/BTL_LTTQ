@@ -17,7 +17,7 @@ namespace GUI_QLNS
             // Kiểm tra kết nối trước
             if (TryConnectWithSavedSettings())
             {
-                Application.Run(new Main());
+                Application.Run(new DangNhap());
             }
             else
             {
@@ -25,7 +25,7 @@ namespace GUI_QLNS
                 frmKetNoi f = new frmKetNoi();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new Main());
+                    Application.Run(new DangNhap());
                 }
             }
         }

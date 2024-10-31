@@ -21,10 +21,6 @@ namespace GUI_QLNS.HeThong
 			_taikhoanBUS = new TAIKHOAN_BUS();
 			// Thêm sự kiện click cho nút đăng nhập
 			this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
-
-			// Thêm sự kiện KeyDown cho textbox mật khẩu
-			this.txtMatKhau.PasswordChar = '*';
-			this.txtMatKhau.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMatKhau_KeyDown);
 		}
 
 		private void DangNhapHeThong()
