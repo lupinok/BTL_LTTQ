@@ -42,7 +42,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
 
         private void btnPhatSinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _kcct.phatSinhKyCongChiTiet(int.Parse(cboThang.Text),int.Parse(cboNam.Text));
+			_kcct.phatSinhKyCongChiTiet(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
 			loadBangCong();
         }
 

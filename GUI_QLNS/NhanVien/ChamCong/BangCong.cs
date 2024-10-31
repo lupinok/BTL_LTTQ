@@ -15,6 +15,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         public frmBangCong()
         {
             InitializeComponent();
+            btnXem.Enabled = false;
         }
 
         private void frmBangCong_Load(object sender, EventArgs e)
@@ -32,8 +33,8 @@ namespace GUI_QLNS.NhanVien.ChamCong
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
             btnThem.Enabled = kt;
-            btnSua.Enabled = kt;
-            btnXoa.Enabled = kt;
+            btnSua.Enabled = !kt;
+            btnXoa.Enabled = !kt;
             cboNam.Enabled = !kt;
             cboThang.Enabled = !kt;
             chkKhoa.Enabled = !kt;
@@ -144,6 +145,8 @@ namespace GUI_QLNS.NhanVien.ChamCong
 
         private void gvDanhSach_Click(object sender, EventArgs e)
         {
+            _showHide(false);
+            btnXem.Enabled = true;
             if (gvDanhSach.RowCount > 0)
             {
                 _makycong = int.Parse(gvDanhSach.GetFocusedRowCellValue("MAKYCONG").ToString());

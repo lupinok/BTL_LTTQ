@@ -1049,6 +1049,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.StatusBar = this.ribbonStatusBar1;
             this.Text = "Main";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateTimeOffsetEdit1)).EndInit();
@@ -1177,10 +1178,6 @@
         private DevExpress.XtraBars.BarButtonItem btnBangCong;
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
-		private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
-		private DevExpress.XtraBars.Docking.DockPanel dmHistory;
-		private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-		private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.BarButtonItem btnDangXuat;
     }
 }

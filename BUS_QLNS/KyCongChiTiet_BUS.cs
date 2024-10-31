@@ -51,7 +51,13 @@ namespace BUS_QLNS
                         kc.D28,
                         kc.D29,
                         kc.D30,
-                        kc.D31
+                        kc.D31,
+                        kc.NGAYCONG,
+                        kc.TONGNGAYCONG,
+                        kc.NGAYPHEP,
+                        kc.NGHIKHONGPHEP,
+                        kc.CONGCHUNHAT,
+                        kc.CONGNGAYLE
                     }).ToList<dynamic>();
         }
 
@@ -140,7 +146,9 @@ namespace BUS_QLNS
                     D28 = listDay[27],
                     D29 = listDay[28],
                     D30 = listDay[29],
-                    D31 = listDay[30]
+                    D31 = listDay[30],
+                    NGAYCONG = SupportFun.demSoNgayLamViecTrongThang(thang,nam),
+                    TONGNGAYCONG = SupportFun.demSoNgayLamViecTrongThang(thang, nam)
                 };
 
                 try
