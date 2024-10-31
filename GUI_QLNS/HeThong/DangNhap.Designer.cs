@@ -45,9 +45,9 @@
             this.groupBox1.Controls.Add(this.txtTenDangNhap);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(244, 101);
+            this.groupBox1.Location = new System.Drawing.Point(59, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(440, 185);
+            this.groupBox1.Size = new System.Drawing.Size(440, 201);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đăng nhập";
@@ -56,7 +56,7 @@
             // 
             this.btnDangNhap.Location = new System.Drawing.Point(160, 142);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(117, 23);
+            this.btnDangNhap.Size = new System.Drawing.Size(117, 33);
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 495);
+            this.ClientSize = new System.Drawing.Size(574, 321);
             this.Controls.Add(this.groupBox1);
             this.Name = "DangNhap";
             this.Text = "Đăng nhập hệ thống";
