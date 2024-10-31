@@ -53,5 +53,14 @@ namespace GUI_QLNS
         {
             openForm(typeof(frmKetNoi));
         }
+
+        private void btnDangXuat_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Thông báo", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                Application.Restart();
+            }
+        }
     }
 }
