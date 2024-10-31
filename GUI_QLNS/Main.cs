@@ -1,5 +1,6 @@
 ﻿using DevExpress.XtraBars;
 using GUI_QLNS.HeThong;
+using GUI_QLNS.NhanVien;
 using GUI_QLNS.NhanVien.ChamCong;
 using System;
 using System.Collections.Generic;
@@ -62,5 +63,10 @@ namespace GUI_QLNS
                 Application.Restart();
             }
         }
-    }
+
+		private void menu_nhanvien_ItemClick(object sender, ItemClickEventArgs e)
+		{
+            openForm(typeof(frmNhanVien));
+		}
+	}
 }

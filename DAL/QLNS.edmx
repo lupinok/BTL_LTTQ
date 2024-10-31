@@ -236,7 +236,6 @@
           <Property Name="NgaySinh" Type="date" />
           <Property Name="SoDienThoai" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="NgayBatDauLamViec" Type="date" />
           <Property Name="MaPhongBan" Type="int" />
           <Property Name="MaChucVu" Type="int" />
         </EntityType>
@@ -674,7 +673,6 @@
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
           <Property Name="SoDienThoai" Type="Int32" />
           <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="NgayBatDauLamViec" Type="DateTime" Precision="0" />
           <Property Name="MaPhongBan" Type="Int32" />
           <Property Name="MaChucVu" Type="Int32" />
           <NavigationProperty Name="BaoHiems" Relationship="Self.FK__BaoHiem__MaNhanV__68487DD7" FromRole="NhanVien" ToRole="BaoHiem" />
@@ -1240,7 +1238,6 @@
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="NgayBatDauLamViec" ColumnName="NgayBatDauLamViec" />
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
               </MappingFragment>
