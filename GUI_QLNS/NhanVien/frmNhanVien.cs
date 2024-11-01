@@ -27,6 +27,7 @@ namespace GUI_QLNS.NhanVien
 		private void NhanVien_Load(object sender, EventArgs e)
 		{
 			LoadData();
+			LoadPhongBan();
 			ShowHideControls(false);
 		}
 
@@ -34,6 +35,60 @@ namespace GUI_QLNS.NhanVien
 		{
 			gcDanhSach.DataSource = _nhanvienBUS.getList();
 			gvDanhSach.OptionsBehavior.Editable = false;
+		}
+
+		void LoadPhongBan()
+		{
+			// Load danh sách phòng ban vào cbMaPhongBan
+			cbMaPhongBan.Properties.Items.Clear();
+			var listPhongBan = _nhanvienBUS.getListPhongBan();
+			foreach (var pb in listPhongBan)
+			{
+				cbMaPhongBan.Properties.Items.Add(pb.MaPhongBan);
+			}
+		}
+
+		void LoadChucVu(int maPhongBan)
+		{
+			// Load danh sách chức vụ tương ứng với phòng ban
+			cbMaChucVu.Properties.Items.Clear();
+			var listChucVu = _nhanvienBUS.getListChucVuByPhongBan(maPhongBan);
+			foreach (var cv in listChucVu)
+			{
+				cbMaChucVu.Properties.Items.Add(cv.MaChucVu);
+			}
+		}
+
+		private void cbMaPhongBan_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			try
+			{
+				if (cbMaPhongBan.SelectedItem != null && !string.IsNullOrEmpty(cbMaPhongBan.SelectedItem.ToString()))
+				{
+					int maPhongBan;
+					if (int.TryParse(cbMaPhongBan.SelectedItem.ToString(), out maPhongBan))
+					{
+						LoadChucVu(maPhongBan);
+						cbMaChucVu.Enabled = true;
+					}
+					else
+					{
+						cbMaChucVu.Properties.Items.Clear();
+						cbMaChucVu.Enabled = false;
+					}
+				}
+				else
+				{
+					cbMaChucVu.Properties.Items.Clear();
+					cbMaChucVu.Enabled = false;
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Lỗi khi chọn phòng ban: " + ex.Message);
+				cbMaChucVu.Properties.Items.Clear();
+				cbMaChucVu.Enabled = false;
+			}
 		}
 
 		void ShowHideControls(bool isEdit)
@@ -49,8 +104,8 @@ namespace GUI_QLNS.NhanVien
 			txtNgaySinh.Enabled = isEdit;
 			txtSoDienThoai.Enabled = isEdit;
 			txtEmail.Enabled = isEdit;
-			txtMaPhongBan.Enabled = isEdit;
-			txtMaChucVu.Enabled = isEdit;
+			cbMaPhongBan.Enabled = isEdit;
+			cbMaChucVu.Enabled = false; // Mặc định disable cho đến khi chọn phòng ban
 		}
 
 		void ClearFields()
@@ -60,8 +115,8 @@ namespace GUI_QLNS.NhanVien
 			txtNgaySinh.Text = string.Empty;
 			txtSoDienThoai.Text = string.Empty;
 			txtEmail.Text = string.Empty;
-			txtMaPhongBan.Text = string.Empty;
-			txtMaChucVu.Text = string.Empty;
+			cbMaPhongBan.Text = string.Empty;
+			cbMaChucVu.Text = string.Empty;
 		}
 
 		private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -115,8 +170,8 @@ namespace GUI_QLNS.NhanVien
 				string.IsNullOrEmpty(txtNgaySinh.Text) ||
 				string.IsNullOrEmpty(txtSoDienThoai.Text) ||
 				string.IsNullOrEmpty(txtEmail.Text) ||
-				string.IsNullOrEmpty(txtMaPhongBan.Text) ||
-				string.IsNullOrEmpty(txtMaChucVu.Text))
+				string.IsNullOrEmpty(cbMaPhongBan.Text) ||
+				string.IsNullOrEmpty(cbMaChucVu.Text))
 			{
 				MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
@@ -131,8 +186,8 @@ namespace GUI_QLNS.NhanVien
 					NgaySinh = DateTime.ParseExact(txtNgaySinh.Text.Trim(), "dd/MM/yyyy", null),
 					SoDienThoai = int.Parse(txtSoDienThoai.Text.Trim()),
 					Email = txtEmail.Text.Trim(),
-					MaPhongBan = int.Parse(txtMaPhongBan.Text.Trim()),
-					MaChucVu = int.Parse(txtMaChucVu.Text.Trim()),
+					MaPhongBan = int.Parse(cbMaPhongBan.Text.Trim()),
+					MaChucVu = int.Parse(cbMaChucVu.Text.Trim()),
 				};
 
 				if (_isNewRecord)
@@ -167,8 +222,8 @@ namespace GUI_QLNS.NhanVien
 				txtNgaySinh.Text = ngaySinh != null ? Convert.ToDateTime(ngaySinh).ToString("dd/MM/yyyy") : "";
 				txtSoDienThoai.Text = gvDanhSach.GetFocusedRowCellValue("SoDienThoai").ToString();
 				txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
-				txtMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
-				txtMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
+				cbMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
+				cbMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
 			}
 		}
 
@@ -189,8 +244,8 @@ namespace GUI_QLNS.NhanVien
 					txtNgaySinh.Text = ngaySinh != null ? Convert.ToDateTime(ngaySinh).ToString("dd/MM/yyyy") : "";
 					txtSoDienThoai.Text = gvDanhSach.GetFocusedRowCellValue("SoDienThoai").ToString();
 					txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
-					txtMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
-					txtMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
+					cbMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
+					cbMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
 				}
 				catch (Exception ex)
 				{

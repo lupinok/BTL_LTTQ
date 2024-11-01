@@ -92,5 +92,15 @@ namespace BUS_QLNS
 				throw new Exception($"Lỗi khi xóa nhân viên: {ex.Message}");
 			}
 		}
+		public List<PhongBan> getListPhongBan()
+		{
+			return db.PhongBans.ToList();
+		}
+
+		public List<ChucVu> getListChucVuByPhongBan(int maPhongBan)
+		{
+			string prefix = maPhongBan.ToString() + "0";
+			return db.ChucVus.Where(x => x.MaChucVu.ToString().StartsWith(prefix)).ToList();
+		}
 	}
 }

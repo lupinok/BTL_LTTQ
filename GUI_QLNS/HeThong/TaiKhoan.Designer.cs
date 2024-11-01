@@ -1,6 +1,6 @@
 ﻿namespace GUI_QLNS.HeThong
 {
-	partial class TaiKhoan
+	partial class frmTaiKhoan
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -29,7 +29,7 @@
 		private void InitializeComponent()
 		{
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaiKhoan));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTaiKhoan));
 			this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
 			this.bar2 = new DevExpress.XtraBars.Bar();
 			this.btnThem = new DevExpress.XtraBars.BarButtonItem();
@@ -44,11 +44,8 @@
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.panelControl3 = new DevExpress.XtraEditors.PanelControl();
-			this.txtVaiTro = new System.Windows.Forms.TextBox();
+			this.cbVaiTro = new DevExpress.XtraEditors.ComboBoxEdit();
 			this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-			this.panelControl4 = new DevExpress.XtraEditors.PanelControl();
-			this.txtTrangThai = new System.Windows.Forms.TextBox();
-			this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
 			this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
 			this.txtMatKhau = new System.Windows.Forms.TextBox();
 			this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
@@ -72,8 +69,7 @@
 			this.splitContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.panelControl3)).BeginInit();
 			this.panelControl3.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.panelControl4)).BeginInit();
-			this.panelControl4.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cbVaiTro.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
 			this.panelControl2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -124,6 +120,7 @@
 			this.btnThem.Id = 0;
 			this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
 			this.btnThem.Name = "btnThem";
+			this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
 			// 
 			// btnSua
 			// 
@@ -131,6 +128,7 @@
 			this.btnSua.Id = 1;
 			this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
 			this.btnSua.Name = "btnSua";
+			this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
 			// 
 			// btnXoa
 			// 
@@ -138,6 +136,7 @@
 			this.btnXoa.Id = 2;
 			this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
 			this.btnXoa.Name = "btnXoa";
+			this.btnXoa.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnXoa_ItemClick);
 			// 
 			// btnLuu
 			// 
@@ -145,6 +144,7 @@
 			this.btnLuu.Id = 3;
 			this.btnLuu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLuu.ImageOptions.SvgImage")));
 			this.btnLuu.Name = "btnLuu";
+			this.btnLuu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLuu_ItemClick);
 			// 
 			// btnHuy
 			// 
@@ -152,6 +152,7 @@
 			this.btnHuy.Id = 4;
 			this.btnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHuy.ImageOptions.SvgImage")));
 			this.btnHuy.Name = "btnHuy";
+			this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
 			// 
 			// bar3
 			// 
@@ -208,7 +209,6 @@
 			// splitContainer1.Panel1
 			// 
 			this.splitContainer1.Panel1.Controls.Add(this.panelControl3);
-			this.splitContainer1.Panel1.Controls.Add(this.panelControl4);
 			this.splitContainer1.Panel1.Controls.Add(this.panelControl2);
 			this.splitContainer1.Panel1.Controls.Add(this.panelControl1);
 			// 
@@ -221,21 +221,25 @@
 			// 
 			// panelControl3
 			// 
-			this.panelControl3.Controls.Add(this.txtVaiTro);
+			this.panelControl3.Controls.Add(this.cbVaiTro);
 			this.panelControl3.Controls.Add(this.labelControl3);
 			this.panelControl3.Location = new System.Drawing.Point(507, 19);
 			this.panelControl3.Name = "panelControl3";
 			this.panelControl3.Size = new System.Drawing.Size(175, 28);
 			this.panelControl3.TabIndex = 2;
 			// 
-			// txtVaiTro
+			// cbVaiTro
 			// 
-			this.txtVaiTro.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtVaiTro.Location = new System.Drawing.Point(49, 2);
-			this.txtVaiTro.Multiline = true;
-			this.txtVaiTro.Name = "txtVaiTro";
-			this.txtVaiTro.Size = new System.Drawing.Size(124, 24);
-			this.txtVaiTro.TabIndex = 1;
+			this.cbVaiTro.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.cbVaiTro.Location = new System.Drawing.Point(49, 2);
+			this.cbVaiTro.MenuManager = this.barManager1;
+			this.cbVaiTro.Name = "cbVaiTro";
+			this.cbVaiTro.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 8F);
+			this.cbVaiTro.Properties.Appearance.Options.UseFont = true;
+			this.cbVaiTro.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cbVaiTro.Size = new System.Drawing.Size(124, 22);
+			this.cbVaiTro.TabIndex = 1;
 			// 
 			// labelControl3
 			// 
@@ -247,35 +251,6 @@
 			this.labelControl3.Size = new System.Drawing.Size(47, 18);
 			this.labelControl3.TabIndex = 0;
 			this.labelControl3.Text = "Vai trò:";
-			// 
-			// panelControl4
-			// 
-			this.panelControl4.Controls.Add(this.txtTrangThai);
-			this.panelControl4.Controls.Add(this.labelControl4);
-			this.panelControl4.Location = new System.Drawing.Point(710, 19);
-			this.panelControl4.Name = "panelControl4";
-			this.panelControl4.Size = new System.Drawing.Size(271, 28);
-			this.panelControl4.TabIndex = 2;
-			// 
-			// txtTrangThai
-			// 
-			this.txtTrangThai.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.txtTrangThai.Location = new System.Drawing.Point(138, 2);
-			this.txtTrangThai.Multiline = true;
-			this.txtTrangThai.Name = "txtTrangThai";
-			this.txtTrangThai.Size = new System.Drawing.Size(131, 24);
-			this.txtTrangThai.TabIndex = 1;
-			// 
-			// labelControl4
-			// 
-			this.labelControl4.Appearance.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.labelControl4.Appearance.Options.UseFont = true;
-			this.labelControl4.Dock = System.Windows.Forms.DockStyle.Left;
-			this.labelControl4.Location = new System.Drawing.Point(2, 2);
-			this.labelControl4.Name = "labelControl4";
-			this.labelControl4.Size = new System.Drawing.Size(136, 18);
-			this.labelControl4.TabIndex = 0;
-			this.labelControl4.Text = "Trạng thái tài khoản:";
 			// 
 			// panelControl2
 			// 
@@ -289,6 +264,7 @@
 			// txtMatKhau
 			// 
 			this.txtMatKhau.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtMatKhau.Font = new System.Drawing.Font("Tahoma", 8F);
 			this.txtMatKhau.Location = new System.Drawing.Point(68, 2);
 			this.txtMatKhau.Multiline = true;
 			this.txtMatKhau.Name = "txtMatKhau";
@@ -318,6 +294,7 @@
 			// txtTenDangNhap
 			// 
 			this.txtTenDangNhap.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtTenDangNhap.Font = new System.Drawing.Font("Tahoma", 8F);
 			this.txtTenDangNhap.Location = new System.Drawing.Point(108, 2);
 			this.txtTenDangNhap.Multiline = true;
 			this.txtTenDangNhap.Name = "txtTenDangNhap";
@@ -359,6 +336,7 @@
 			this.gvDanhSach.Name = "gvDanhSach";
 			this.gvDanhSach.OptionsFind.AlwaysVisible = true;
 			this.gvDanhSach.OptionsView.ShowGroupPanel = false;
+			this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
 			// 
 			// TenDangNhap
 			// 
@@ -434,7 +412,7 @@
 			this.barDockControl1.Manager = this.barManager1;
 			this.barDockControl1.Size = new System.Drawing.Size(1013, 0);
 			// 
-			// TaiKhoan
+			// frmTaiKhoan
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -447,8 +425,9 @@
 			this.Controls.Add(this.barDockControlRight);
 			this.Controls.Add(this.barDockControlBottom);
 			this.Controls.Add(this.barDockControlTop);
-			this.Name = "TaiKhoan";
+			this.Name = "frmTaiKhoan";
 			this.Text = "TaiKhoan";
+			this.Load += new System.EventHandler(this.TaiKhoan_Load);
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
 			this.splitContainer1.Panel1.ResumeLayout(false);
 			this.splitContainer1.Panel2.ResumeLayout(false);
@@ -457,9 +436,7 @@
 			((System.ComponentModel.ISupportInitialize)(this.panelControl3)).EndInit();
 			this.panelControl3.ResumeLayout(false);
 			this.panelControl3.PerformLayout();
-			((System.ComponentModel.ISupportInitialize)(this.panelControl4)).EndInit();
-			this.panelControl4.ResumeLayout(false);
-			this.panelControl4.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cbVaiTro.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
 			this.panelControl2.ResumeLayout(false);
 			this.panelControl2.PerformLayout();
@@ -502,13 +479,10 @@
 		private System.Windows.Forms.TextBox txtTenDangNhap;
 		private DevExpress.XtraEditors.LabelControl labelControl1;
 		private DevExpress.XtraEditors.PanelControl panelControl3;
-		private System.Windows.Forms.TextBox txtVaiTro;
 		private DevExpress.XtraEditors.LabelControl labelControl3;
-		private DevExpress.XtraEditors.PanelControl panelControl4;
-		private System.Windows.Forms.TextBox txtTrangThai;
-		private DevExpress.XtraEditors.LabelControl labelControl4;
 		private DevExpress.XtraEditors.PanelControl panelControl2;
 		private System.Windows.Forms.TextBox txtMatKhau;
 		private DevExpress.XtraEditors.LabelControl labelControl2;
+		private DevExpress.XtraEditors.ComboBoxEdit cbVaiTro;
 	}
 }

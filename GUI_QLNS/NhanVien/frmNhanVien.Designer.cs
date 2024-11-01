@@ -45,8 +45,6 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-			this.txtMaChucVu = new System.Windows.Forms.TextBox();
-			this.txtMaPhongBan = new System.Windows.Forms.TextBox();
 			this.txtEmail = new System.Windows.Forms.TextBox();
 			this.txtSoDienThoai = new System.Windows.Forms.TextBox();
 			this.txtNgaySinh = new System.Windows.Forms.TextBox();
@@ -72,6 +70,8 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+			this.cbMaPhongBan = new DevExpress.XtraEditors.ComboBoxEdit();
+			this.cbMaChucVu = new DevExpress.XtraEditors.ComboBoxEdit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
@@ -79,6 +79,8 @@ namespace GUI_QLNS.NhanVien
 			this.splitContainer1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// barManager1
@@ -211,8 +213,8 @@ namespace GUI_QLNS.NhanVien
 			// 
 			// splitContainer1.Panel1
 			// 
-			this.splitContainer1.Panel1.Controls.Add(this.txtMaChucVu);
-			this.splitContainer1.Panel1.Controls.Add(this.txtMaPhongBan);
+			this.splitContainer1.Panel1.Controls.Add(this.cbMaChucVu);
+			this.splitContainer1.Panel1.Controls.Add(this.cbMaPhongBan);
 			this.splitContainer1.Panel1.Controls.Add(this.txtEmail);
 			this.splitContainer1.Panel1.Controls.Add(this.txtSoDienThoai);
 			this.splitContainer1.Panel1.Controls.Add(this.txtNgaySinh);
@@ -232,20 +234,6 @@ namespace GUI_QLNS.NhanVien
 			this.splitContainer1.Size = new System.Drawing.Size(962, 444);
 			this.splitContainer1.SplitterDistance = 67;
 			this.splitContainer1.TabIndex = 22;
-			// 
-			// txtMaChucVu
-			// 
-			this.txtMaChucVu.Location = new System.Drawing.Point(566, 34);
-			this.txtMaChucVu.Name = "txtMaChucVu";
-			this.txtMaChucVu.Size = new System.Drawing.Size(100, 23);
-			this.txtMaChucVu.TabIndex = 13;
-			// 
-			// txtMaPhongBan
-			// 
-			this.txtMaPhongBan.Location = new System.Drawing.Point(347, 34);
-			this.txtMaPhongBan.Name = "txtMaPhongBan";
-			this.txtMaPhongBan.Size = new System.Drawing.Size(100, 23);
-			this.txtMaPhongBan.TabIndex = 12;
 			// 
 			// txtEmail
 			// 
@@ -470,6 +458,29 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl2.Manager = this.barManager1;
 			this.barDockControl2.Size = new System.Drawing.Size(962, 0);
 			// 
+			// cbMaPhongBan
+			// 
+			this.cbMaPhongBan.Location = new System.Drawing.Point(347, 35);
+			this.cbMaPhongBan.MenuManager = this.barManager1;
+			this.cbMaPhongBan.Name = "cbMaPhongBan";
+			this.cbMaPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cbMaPhongBan.Size = new System.Drawing.Size(100, 22);
+			this.cbMaPhongBan.TabIndex = 14;
+			this.cbMaPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+			this.cbMaPhongBan.SelectedIndexChanged += new System.EventHandler(this.cbMaPhongBan_SelectedIndexChanged);
+			// 
+			// cbMaChucVu
+			// 
+			this.cbMaChucVu.Location = new System.Drawing.Point(566, 35);
+			this.cbMaChucVu.MenuManager = this.barManager1;
+			this.cbMaChucVu.Name = "cbMaChucVu";
+			this.cbMaChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cbMaChucVu.Size = new System.Drawing.Size(100, 22);
+			this.cbMaChucVu.TabIndex = 15;
+			this.cbMaChucVu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+			// 
 			// frmNhanVien
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -495,6 +506,8 @@ namespace GUI_QLNS.NhanVien
 			this.splitContainer1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -535,12 +548,12 @@ namespace GUI_QLNS.NhanVien
 		private DevExpress.XtraEditors.LabelControl labelControl3;
 		private DevExpress.XtraEditors.LabelControl labelControl2;
 		private DevExpress.XtraEditors.LabelControl labelControl1;
-		private System.Windows.Forms.TextBox txtMaChucVu;
-		private System.Windows.Forms.TextBox txtMaPhongBan;
 		private System.Windows.Forms.TextBox txtEmail;
 		private System.Windows.Forms.TextBox txtSoDienThoai;
 		private System.Windows.Forms.TextBox txtNgaySinh;
 		private System.Windows.Forms.TextBox txtHoTen;
 		private System.Windows.Forms.TextBox txtMaNhanVien;
+		private DevExpress.XtraEditors.ComboBoxEdit cbMaChucVu;
+		private DevExpress.XtraEditors.ComboBoxEdit cbMaPhongBan;
 	}
 }
