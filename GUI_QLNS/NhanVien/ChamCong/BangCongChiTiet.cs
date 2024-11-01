@@ -1,9 +1,11 @@
-﻿using BUS_QLNS;
+﻿using DAL;
+using BUS_QLNS;
 using BusinessLayer;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraGrid.Views.Grid.ViewInfo;
 using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
@@ -19,8 +21,10 @@ namespace GUI_QLNS.NhanVien.ChamCong
 {
     public partial class frmBangCongChiTiet : DevExpress.XtraEditors.XtraForm
     {
+		NHANVIEN_BUS _nhanvien;
         KyCongChiTiet_BUS _kcct;
 		KyCong_BUS _kycong;
+		BangCongNhanVienChiTiet_BUS _bcnvct;
         public int _makycong;
         public int _thang;
         public int _nam;
@@ -31,8 +35,10 @@ namespace GUI_QLNS.NhanVien.ChamCong
         
         private void frmBangCongChiTiet_Load(object sender, EventArgs e)
         {
+			_nhanvien = new NHANVIEN_BUS();
 			_kycong = new KyCong_BUS();
             _kcct = new KyCongChiTiet_BUS();
+			_bcnvct = new BangCongNhanVienChiTiet_BUS();
             gcBangCongChiTiet.DataSource = _kcct.getList(_makycong);
 			CustomView(_thang,_nam);
 			cboThang.Text = _thang.ToString();
@@ -45,22 +51,46 @@ namespace GUI_QLNS.NhanVien.ChamCong
 		}
 
         private void btnPhatSinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-		{
-			SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
-			if (_kycong.KiemTraPhatSinhKyCong(_makycong))
-			{
-				MessageBox.Show("Kỳ công đã được phát sinh.", "Thông báo");
-				SplashScreenManager.CloseForm();
-				return;
-			}
+        {
+            SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
+            if (_kycong.KiemTraPhatSinhKyCong(int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text)))
+            {
+                MessageBox.Show("Kỳ công đã được phát sinh.", "Thông báo");
+                SplashScreenManager.CloseForm();
+                return;
+            }
 
+            List<DAL.NhanVien> lstNhanVien = _nhanvien.getList();
 			_kcct.phatSinhKyCongChiTiet(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
-			var kc = _kycong.getItem(_makycong);
-			kc.TRANGTHAI = true;
-			_kycong.Update(kc);
-			SplashScreenManager.CloseForm();
-			loadBangCong();
-		}
+            foreach (var item in lstNhanVien)
+            {
+                for (int i = 1; i <= GetDayNumber(int.Parse(cboThang.Text), int.Parse(cboNam.Text)); i++)
+                {
+                    BANGCONG_NHANVIEN_CHITIET bcct = new BANGCONG_NHANVIEN_CHITIET();
+                    bcct.MaNhanVien = item.MaNhanVien;
+                    bcct.GIOVAO = "08:00";
+                    bcct.GIORA = "17:00";
+                    bcct.NGAY = DateTime.Parse(cboNam.Text + "-" + cboThang.Text + "-" + i.ToString());
+                    bcct.THU = SP_Functions.layThuTrongTuan(int.Parse(cboNam.Text), int.Parse(cboThang.Text), i);
+                    bcct.CONGNGAYLE = 0;
+                    bcct.CONGCHUNHAT = 0;
+                    bcct.NGAYPHEP = 0;
+					if (bcct.THU == "Chủ nhật") bcct.KYHIEU = "CN";
+					else if (bcct.THU == "Thứ bảy") bcct.KYHIEU = "T7";
+					else bcct.KYHIEU = "X";
+                    bcct.MAKYCONG = _makycong;
+                    bcct.CREATED_DATE = DateTime.Now;
+                    bcct.CREATED_BY = 1;
+                    _bcnvct.Add(bcct);
+                }
+            }
+
+            var kc = _kycong.getItem(int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text));
+            kc.TRANGTHAI = true;
+            _kycong.Update(kc);
+            SplashScreenManager.CloseForm();
+            loadBangCong();
+        }
 
         private void btnXem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -226,6 +256,27 @@ namespace GUI_QLNS.NhanVien.ChamCong
         private void btnTaiLai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
 			loadBangCong();
+        }
+        private void GvBangCongChiTiet_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right) // Kiểm tra click chuột phải
+            {
+                GridHitInfo hitInfo = gvBangCongChiTiet.CalcHitInfo(e.Location);
+                if (hitInfo.InRowCell) // Kiểm tra click vào cell
+                {
+                    menu.Show(gcBangCongChiTiet, e.Location);
+                }
+            }
+        }
+
+        private void mnCapNhatNgayCong_Click(object sender, EventArgs e)
+        {
+			CapNhatNgayCong frm = new CapNhatNgayCong();
+			frm._makycong = _makycong;
+            int manv = int.Parse(gvBangCongChiTiet.GetFocusedRowCellValue("MANV").ToString());
+            string hoten = gvBangCongChiTiet.GetFocusedRowCellValue("HOTEN").ToString();
+            string ngay = gvBangCongChiTiet.FocusedColumn.FieldName.ToString();
+            frm.ShowDialog();
         }
     }
 }

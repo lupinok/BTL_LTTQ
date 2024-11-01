@@ -43,8 +43,8 @@ namespace DAL
         public virtual DbSet<ThanhToan> ThanhToans { get; set; }
         public virtual DbSet<LoaiCa> LoaiCas { get; set; }
         public virtual DbSet<LoaiCong> LoaiCongs { get; set; }
-        public virtual DbSet<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
         public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
         public virtual DbSet<KYCONG> KYCONGs { get; set; }
+        public virtual DbSet<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
     }
 }

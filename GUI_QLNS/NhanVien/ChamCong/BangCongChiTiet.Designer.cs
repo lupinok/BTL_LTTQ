@@ -51,10 +51,13 @@
             this.cboNam = new System.Windows.Forms.ComboBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
+            this.label1 = new System.Windows.Forms.Label();
             this.gcBangCongChiTiet = new DevExpress.XtraGrid.GridControl();
             this.gvBangCongChiTiet = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridView();
+            this.thongtinnv = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colMaNV = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colHoTen = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
+            this.ctngaycong = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
             this.colD1 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colD2 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
             this.colD3 = new DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn();
@@ -98,8 +101,8 @@
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl5 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
-            this.thongtinnv = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
-            this.ctngaycong = new DevExpress.XtraGrid.Views.BandedGrid.GridBand();
+            this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.mnCapNhatNgayCong = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -107,6 +110,7 @@
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcBangCongChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBangCongChiTiet)).BeginInit();
+            this.menu.SuspendLayout();
             this.SuspendLayout();
             // 
             // barManager1
@@ -258,6 +262,7 @@
             // 
             // splitContainer1.Panel2
             // 
+            this.splitContainer1.Panel2.Controls.Add(this.label1);
             this.splitContainer1.Panel2.Controls.Add(this.gcBangCongChiTiet);
             this.splitContainer1.Size = new System.Drawing.Size(1316, 603);
             this.splitContainer1.SplitterDistance = 70;
@@ -266,7 +271,7 @@
             // chkTrangThai
             // 
             this.chkTrangThai.AutoSize = true;
-            this.chkTrangThai.Location = new System.Drawing.Point(639, 32);
+            this.chkTrangThai.Location = new System.Drawing.Point(577, 32);
             this.chkTrangThai.Name = "chkTrangThai";
             this.chkTrangThai.Size = new System.Drawing.Size(92, 20);
             this.chkTrangThai.TabIndex = 6;
@@ -338,6 +343,17 @@
             this.labelControl1.TabIndex = 0;
             this.labelControl1.Text = "Năm:";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(595, 18);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(533, 16);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Chú thích: P: có phép   ;   V: Vắng  ;  VR: việc riêng  ;  TS: thai sản  ;  CT: c" +
+    "ông tác";
+            // 
             // gcBangCongChiTiet
             // 
             this.gcBangCongChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -349,6 +365,7 @@
             this.gcBangCongChiTiet.TabIndex = 0;
             this.gcBangCongChiTiet.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvBangCongChiTiet});
+            this.gcBangCongChiTiet.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GvBangCongChiTiet_MouseUp);
             // 
             // gvBangCongChiTiet
             // 
@@ -432,6 +449,17 @@
             this.gvBangCongChiTiet.RowHeight = 28;
             this.gvBangCongChiTiet.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
             // 
+            // thongtinnv
+            // 
+            this.thongtinnv.Caption = "THÔNG TIN NHÂN VIÊN";
+            this.thongtinnv.Columns.Add(this.colMaNV);
+            this.thongtinnv.Columns.Add(this.colHoTen);
+            this.thongtinnv.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
+            this.thongtinnv.Name = "thongtinnv";
+            this.thongtinnv.RowCount = 2;
+            this.thongtinnv.VisibleIndex = 0;
+            this.thongtinnv.Width = 274;
+            // 
             // colMaNV
             // 
             this.colMaNV.Caption = "MANV";
@@ -452,6 +480,50 @@
             this.colHoTen.OptionsColumn.FixedWidth = true;
             this.colHoTen.Visible = true;
             this.colHoTen.Width = 200;
+            // 
+            // ctngaycong
+            // 
+            this.ctngaycong.Caption = "CHI TIẾT NGÀY CÔNG";
+            this.ctngaycong.Columns.Add(this.colD1);
+            this.ctngaycong.Columns.Add(this.colD2);
+            this.ctngaycong.Columns.Add(this.colD3);
+            this.ctngaycong.Columns.Add(this.colD4);
+            this.ctngaycong.Columns.Add(this.colD5);
+            this.ctngaycong.Columns.Add(this.colD6);
+            this.ctngaycong.Columns.Add(this.colD7);
+            this.ctngaycong.Columns.Add(this.colD8);
+            this.ctngaycong.Columns.Add(this.colD9);
+            this.ctngaycong.Columns.Add(this.colD10);
+            this.ctngaycong.Columns.Add(this.colD11);
+            this.ctngaycong.Columns.Add(this.colD12);
+            this.ctngaycong.Columns.Add(this.colD13);
+            this.ctngaycong.Columns.Add(this.colD14);
+            this.ctngaycong.Columns.Add(this.colD15);
+            this.ctngaycong.Columns.Add(this.colD16);
+            this.ctngaycong.Columns.Add(this.colD17);
+            this.ctngaycong.Columns.Add(this.colD18);
+            this.ctngaycong.Columns.Add(this.colD19);
+            this.ctngaycong.Columns.Add(this.colD20);
+            this.ctngaycong.Columns.Add(this.colD21);
+            this.ctngaycong.Columns.Add(this.colD22);
+            this.ctngaycong.Columns.Add(this.colD23);
+            this.ctngaycong.Columns.Add(this.colD24);
+            this.ctngaycong.Columns.Add(this.colD25);
+            this.ctngaycong.Columns.Add(this.colD26);
+            this.ctngaycong.Columns.Add(this.colD27);
+            this.ctngaycong.Columns.Add(this.colD28);
+            this.ctngaycong.Columns.Add(this.colD29);
+            this.ctngaycong.Columns.Add(this.colD30);
+            this.ctngaycong.Columns.Add(this.colD31);
+            this.ctngaycong.Columns.Add(this.NGAYCONG);
+            this.ctngaycong.Columns.Add(this.NGHIKHONGPHEP);
+            this.ctngaycong.Columns.Add(this.NGAYPHEP);
+            this.ctngaycong.Columns.Add(this.CONGNGAYLE);
+            this.ctngaycong.Columns.Add(this.CONGCHUNHAT);
+            this.ctngaycong.Columns.Add(this.TONGNGAYCONG);
+            this.ctngaycong.Name = "ctngaycong";
+            this.ctngaycong.VisibleIndex = 1;
+            this.ctngaycong.Width = 2810;
             // 
             // colD1
             // 
@@ -1001,60 +1073,20 @@
             this.barDockControl6.Manager = this.barManager1;
             this.barDockControl6.Size = new System.Drawing.Size(1316, 0);
             // 
-            // thongtinnv
+            // menu
             // 
-            this.thongtinnv.Caption = "THÔNG TIN NHÂN VIÊN";
-            this.thongtinnv.Columns.Add(this.colMaNV);
-            this.thongtinnv.Columns.Add(this.colHoTen);
-            this.thongtinnv.Fixed = DevExpress.XtraGrid.Columns.FixedStyle.Left;
-            this.thongtinnv.Name = "thongtinnv";
-            this.thongtinnv.RowCount = 2;
-            this.thongtinnv.VisibleIndex = 0;
-            this.thongtinnv.Width = 274;
+            this.menu.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnCapNhatNgayCong});
+            this.menu.Name = "mneu";
+            this.menu.Size = new System.Drawing.Size(211, 28);
             // 
-            // ctngaycong
+            // mnCapNhatNgayCong
             // 
-            this.ctngaycong.Caption = "CHI TIẾT NGÀY CÔNG";
-            this.ctngaycong.Columns.Add(this.colD1);
-            this.ctngaycong.Columns.Add(this.colD2);
-            this.ctngaycong.Columns.Add(this.colD3);
-            this.ctngaycong.Columns.Add(this.colD4);
-            this.ctngaycong.Columns.Add(this.colD5);
-            this.ctngaycong.Columns.Add(this.colD6);
-            this.ctngaycong.Columns.Add(this.colD7);
-            this.ctngaycong.Columns.Add(this.colD8);
-            this.ctngaycong.Columns.Add(this.colD9);
-            this.ctngaycong.Columns.Add(this.colD10);
-            this.ctngaycong.Columns.Add(this.colD11);
-            this.ctngaycong.Columns.Add(this.colD12);
-            this.ctngaycong.Columns.Add(this.colD13);
-            this.ctngaycong.Columns.Add(this.colD14);
-            this.ctngaycong.Columns.Add(this.colD15);
-            this.ctngaycong.Columns.Add(this.colD16);
-            this.ctngaycong.Columns.Add(this.colD17);
-            this.ctngaycong.Columns.Add(this.colD18);
-            this.ctngaycong.Columns.Add(this.colD19);
-            this.ctngaycong.Columns.Add(this.colD20);
-            this.ctngaycong.Columns.Add(this.colD21);
-            this.ctngaycong.Columns.Add(this.colD22);
-            this.ctngaycong.Columns.Add(this.colD23);
-            this.ctngaycong.Columns.Add(this.colD24);
-            this.ctngaycong.Columns.Add(this.colD25);
-            this.ctngaycong.Columns.Add(this.colD26);
-            this.ctngaycong.Columns.Add(this.colD27);
-            this.ctngaycong.Columns.Add(this.colD28);
-            this.ctngaycong.Columns.Add(this.colD29);
-            this.ctngaycong.Columns.Add(this.colD30);
-            this.ctngaycong.Columns.Add(this.colD31);
-            this.ctngaycong.Columns.Add(this.NGAYCONG);
-            this.ctngaycong.Columns.Add(this.NGHIKHONGPHEP);
-            this.ctngaycong.Columns.Add(this.NGAYPHEP);
-            this.ctngaycong.Columns.Add(this.CONGNGAYLE);
-            this.ctngaycong.Columns.Add(this.CONGCHUNHAT);
-            this.ctngaycong.Columns.Add(this.TONGNGAYCONG);
-            this.ctngaycong.Name = "ctngaycong";
-            this.ctngaycong.VisibleIndex = 1;
-            this.ctngaycong.Width = 2810;
+            this.mnCapNhatNgayCong.Name = "mnCapNhatNgayCong";
+            this.mnCapNhatNgayCong.Size = new System.Drawing.Size(210, 24);
+            this.mnCapNhatNgayCong.Text = "Cập nhật ngày công";
+            this.mnCapNhatNgayCong.Click += new System.EventHandler(this.mnCapNhatNgayCong_Click);
             // 
             // frmBangCongChiTiet
             // 
@@ -1080,10 +1112,12 @@
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
+            this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcBangCongChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBangCongChiTiet)).EndInit();
+            this.menu.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1161,5 +1195,8 @@
         private DevExpress.XtraGrid.Views.BandedGrid.BandedGridColumn TONGNGAYCONG;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand thongtinnv;
         private DevExpress.XtraGrid.Views.BandedGrid.GridBand ctngaycong;
+        private System.Windows.Forms.ContextMenuStrip menu;
+        private System.Windows.Forms.ToolStripMenuItem mnCapNhatNgayCong;
+        private System.Windows.Forms.Label label1;
     }
 }

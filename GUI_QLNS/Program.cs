@@ -20,7 +20,7 @@ namespace GUI_QLNS
             // Kiểm tra kết nối trước
             if (TryConnectWithSavedSettings())
             {
-                Application.Run(new DangNhap());
+                Application.Run(new Main());
             }
             else
             {
@@ -42,7 +42,22 @@ namespace GUI_QLNS
                 {
                     string connectionString = BuildConnectionString();
                     SqlHelper helper = new SqlHelper(connectionString);
-                    return helper.IsConnection;
+
+                    if (helper.IsConnection)
+                    {
+                        // Check if the specific database exists
+                        using (SqlConnection connection = new SqlConnection(connectionString))
+                        {
+                            connection.Open();
+                            string checkDbQuery = "SELECT database_id FROM sys.databases WHERE Name = @databaseName";
+                            using (SqlCommand command = new SqlCommand(checkDbQuery, connection))
+                            {
+                                command.Parameters.AddWithValue("@databaseName", Properties.Settings.Default.LastDatabaseName);
+                                object result = command.ExecuteScalar();
+                                return result != null;
+                            }
+                        }
+                    }
                 }
             }
             catch (Exception ex)

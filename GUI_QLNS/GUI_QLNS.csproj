@@ -126,6 +126,12 @@
     <Compile Include="NhanVien\ChamCong\BangCongChiTiet.Designer.cs">
       <DependentUpon>BangCongChiTiet.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\ChamCong\CapNhatNgayCong.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ChamCong\CapNhatNgayCong.Designer.cs">
+      <DependentUpon>CapNhatNgayCong.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\ChamCong\LoaiCa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -174,6 +180,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChamCong\BangCongChiTiet.resx">
       <DependentUpon>BangCongChiTiet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ChamCong\CapNhatNgayCong.resx">
+      <DependentUpon>CapNhatNgayCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChamCong\LoaiCa.resx">
       <DependentUpon>LoaiCa.cs</DependentUpon>

@@ -165,5 +165,11 @@ namespace GUI_QLNS.NhanVien.ChamCong
             frm._thang = int.Parse(cboThang.Text);
             frm.ShowDialog();
         }
+
+        private void btnTaiLai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.OnLoad(e);  // Gọi lại sự kiện Load của form
+            loadData();
+        }
     }
 }
