@@ -365,7 +365,6 @@
             this.gcBangCongChiTiet.TabIndex = 0;
             this.gcBangCongChiTiet.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvBangCongChiTiet});
-            this.gcBangCongChiTiet.MouseUp += new System.Windows.Forms.MouseEventHandler(this.GvBangCongChiTiet_MouseUp);
             // 
             // gvBangCongChiTiet
             // 
@@ -448,6 +447,8 @@
             this.gvBangCongChiTiet.OptionsView.ShowIndicator = false;
             this.gvBangCongChiTiet.RowHeight = 28;
             this.gvBangCongChiTiet.VertScrollVisibility = DevExpress.XtraGrid.Views.Base.ScrollVisibility.Always;
+            this.gvBangCongChiTiet.MouseDown += new System.Windows.Forms.MouseEventHandler(this.gvBangCongChiTiet_MouseDown);
+            this.gvBangCongChiTiet.MouseUp += new System.Windows.Forms.MouseEventHandler(this.gvBangCongChiTiet_MouseUp);
             // 
             // thongtinnv
             // 

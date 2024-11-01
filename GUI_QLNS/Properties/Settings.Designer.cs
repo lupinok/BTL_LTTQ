@@ -26,17 +26,6 @@ namespace GUI_QLNS.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\SQLEXPRESS;Initial Catalog=XeMay;Integrated Security=True;Encrypt" +
-            "=False;TrustServerCertificate=True")]
-        public string XeMayConnectionString {
-            get {
-                return ((string)(this["XeMayConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=MSI\\SQLEXPRESS;Initial Catalog=BTLMonLTTQ;Integrated Security=True;En" +
             "crypt=False")]
         public string BTLMonLTTQConnectionString {

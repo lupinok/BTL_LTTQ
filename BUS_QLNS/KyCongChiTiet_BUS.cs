@@ -10,7 +10,10 @@ namespace BUS_QLNS
     public class KyCongChiTiet_BUS
     {
         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
-
+        public KYCONGCHITIET getItem(int makycong, int manv)
+        {
+            return db.KYCONGCHITIETs.FirstOrDefault(x => x.MAKYCONG == makycong && x.MaNhanVien == manv);
+        }
         public List<dynamic> getList(int makycong)
         {
             return (from kc in db.KYCONGCHITIETs
@@ -162,7 +165,48 @@ namespace BUS_QLNS
                 }
             }
         }
-
+        public KYCONGCHITIET Update(KYCONGCHITIET kcct)
+        {
+            var kycongchitiet = db.KYCONGCHITIETs.FirstOrDefault(x => x.MAKYCONG == kcct.MAKYCONG && x.MaNhanVien == kcct.MaNhanVien);
+            kycongchitiet.D1 = kcct.D1;
+            kycongchitiet.D2 = kcct.D2;
+            kycongchitiet.D3 = kcct.D3;
+            kycongchitiet.D4 = kcct.D4;
+            kycongchitiet.D5 = kcct.D5;
+            kycongchitiet.D6 = kcct.D6;
+            kycongchitiet.D7 = kcct.D7;
+            kycongchitiet.D8 = kcct.D8;
+            kycongchitiet.D9 = kcct.D9;
+            kycongchitiet.D10 = kcct.D10;
+            kycongchitiet.D11 = kcct.D11;
+            kycongchitiet.D12 = kcct.D12;
+            kycongchitiet.D13 = kcct.D13;
+            kycongchitiet.D14 = kcct.D14;
+            kycongchitiet.D15 = kcct.D15;
+            kycongchitiet.D16 = kcct.D16;
+            kycongchitiet.D17 = kcct.D17;
+            kycongchitiet.D18 = kcct.D18;
+            kycongchitiet.D19 = kcct.D19;
+            kycongchitiet.D20 = kcct.D20;
+            kycongchitiet.D21 = kcct.D21;
+            kycongchitiet.D22 = kcct.D22;
+            kycongchitiet.D23 = kcct.D23;
+            kycongchitiet.D24 = kcct.D24;
+            kycongchitiet.D25 = kcct.D25;
+            kycongchitiet.D26 = kcct.D26;
+            kycongchitiet.D27 = kcct.D27;
+            kycongchitiet.D28 = kcct.D28;
+            kycongchitiet.D29 = kcct.D29;
+            kycongchitiet.D30 = kcct.D30;
+            kycongchitiet.D31 = kcct.D31;
+            kycongchitiet.NGAYPHEP = kcct.NGAYPHEP;
+            kycongchitiet.CONGNGAYLE = kcct.CONGNGAYLE;
+            kycongchitiet.CONGCHUNHAT = kcct.CONGCHUNHAT;
+            kycongchitiet.NGHIKHONGPHEP = kcct.NGHIKHONGPHEP;
+            kycongchitiet.TONGNGAYCONG = kcct.TONGNGAYCONG;
+            db.SaveChanges();
+            return kycongchitiet;
+        }
         private int GetDayNumber(int thang, int nam)
         {
             int dayNumber = 0;
