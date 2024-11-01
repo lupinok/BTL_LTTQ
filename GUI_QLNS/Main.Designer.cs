@@ -133,6 +133,7 @@
             this.ribbonPageGroup6 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup5 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.repositoryItemButtonEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemButtonEdit();
             this.repositoryItemDateTimeOffsetEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateTimeOffsetEdit();
             this.repositoryItemDateEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemDateEdit();
@@ -146,6 +147,7 @@
             this.menu_hosohocsinh = new DevExpress.XtraBars.BarButtonItem();
             this.documentManager1 = new DevExpress.XtraBars.Docking2010.DocumentManager(this.components);
             this.tabbedView1 = new DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView(this.components);
+            this.barDockingMenuItem1 = new DevExpress.XtraBars.BarDockingMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateTimeOffsetEdit1)).BeginInit();
@@ -157,7 +159,7 @@
             // 
             // ribbonControl
             // 
-            this.ribbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(0, 0, 12, 0);
+            this.ribbonControl.EmptyAreaImageOptions.ImagePadding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.ribbonControl.ExpandCollapseItem.Id = 0;
             this.ribbonControl.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.ribbonControl.ExpandCollapseItem,
@@ -253,13 +255,12 @@
             this.btnLoaiCong,
             this.btnTangCa,
             this.btnBangCong,
-            this.btnDangXuat});
+            this.btnDangXuat,
+            this.barDockingMenuItem1});
             this.ribbonControl.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl.Margin = new System.Windows.Forms.Padding(4);
-            this.ribbonControl.MaxItemId = 156;
+            this.ribbonControl.MaxItemId = 160;
             this.ribbonControl.MdiMergeStyle = DevExpress.XtraBars.Ribbon.RibbonMdiMergeStyle.Always;
             this.ribbonControl.Name = "ribbonControl";
-            this.ribbonControl.OptionsMenuMinWidth = 385;
             this.ribbonControl.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.ribbonPage2,
             this.ribbonPage3,
@@ -270,7 +271,7 @@
             this.repositoryItemDateTimeOffsetEdit1,
             this.repositoryItemDateEdit1});
             this.ribbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2019;
-            this.ribbonControl.Size = new System.Drawing.Size(972, 193);
+            this.ribbonControl.Size = new System.Drawing.Size(833, 158);
             this.ribbonControl.StatusBar = this.ribbonStatusBar1;
             // 
             // skinRibbonGalleryBarItem1
@@ -279,7 +280,7 @@
             // 
             // 
             // 
-            this.skinRibbonGalleryBarItem1.Gallery.ImageSize = new System.Drawing.Size(149, 158);
+            this.skinRibbonGalleryBarItem1.Gallery.ImageSize = new System.Drawing.Size(128, 128);
             this.skinRibbonGalleryBarItem1.Id = 3;
             this.skinRibbonGalleryBarItem1.Name = "skinRibbonGalleryBarItem1";
             // 
@@ -939,7 +940,8 @@
             // ribbonPage1
             // 
             this.ribbonPage1.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1});
+            this.ribbonPageGroup1,
+            this.ribbonPageGroup5});
             this.ribbonPage1.Name = "ribbonPage1";
             this.ribbonPage1.Text = "CHẤM CÔNG";
             // 
@@ -949,8 +951,14 @@
             this.ribbonPageGroup1.ItemLinks.Add(this.btnLoaiCong, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnTangCa, true);
             this.ribbonPageGroup1.ItemLinks.Add(this.btnBangCong, true);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barDockingMenuItem1);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Quản lý chấm công";
+            // 
+            // ribbonPageGroup5
+            // 
+            this.ribbonPageGroup5.Name = "ribbonPageGroup5";
+            this.ribbonPageGroup5.Text = "ribbonPageGroup5";
             // 
             // repositoryItemButtonEdit1
             // 
@@ -980,11 +988,10 @@
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem3, true);
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem4);
             this.ribbonStatusBar1.ItemLinks.Add(this.barStaticItem10, true);
-            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 736);
-            this.ribbonStatusBar1.Margin = new System.Windows.Forms.Padding(4);
+            this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 598);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(972, 30);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(833, 24);
             // 
             // barStaticItem3
             // 
@@ -1036,14 +1043,22 @@
             this.documentManager1.ViewCollection.AddRange(new DevExpress.XtraBars.Docking2010.Views.BaseView[] {
             this.tabbedView1});
             // 
+            // barDockingMenuItem1
+            // 
+            this.barDockingMenuItem1.Caption = "Phụ cấp";
+            this.barDockingMenuItem1.Id = 159;
+            this.barDockingMenuItem1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("barDockingMenuItem1.ImageOptions.SvgImage")));
+            this.barDockingMenuItem1.Name = "barDockingMenuItem1";
+            // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(972, 766);
+            this.ClientSize = new System.Drawing.Size(833, 622);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl);
             this.IsMdiContainer = true;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Main";
             this.Ribbon = this.ribbonControl;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -1182,5 +1197,7 @@
 		private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
 		private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.BarButtonItem btnDangXuat;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup5;
+        private DevExpress.XtraBars.BarDockingMenuItem barDockingMenuItem1;
     }
 }
