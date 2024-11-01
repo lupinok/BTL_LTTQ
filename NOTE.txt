@@ -1,1 +1,2 @@
-Xóa Ngày bắt đầu làm việc trong bảng nhân viên
+- Xóa Ngày bắt đầu làm việc trong bảng nhân viên
+- form main có thêm phương thức _load (lỡ tay doubleclick vào chắc ko sao đou :L)
