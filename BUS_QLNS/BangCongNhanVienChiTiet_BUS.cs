@@ -10,7 +10,10 @@ namespace BUS_QLNS
     public class BangCongNhanVienChiTiet_BUS
     {
         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
-
+        public BANGCONG_NHANVIEN_CHITIET getItem(int makycong, int manv, int ngay)
+        {
+            return db.BANGCONG_NHANVIEN_CHITIET.FirstOrDefault(x => x.MAKYCONG == makycong && x.MaNhanVien == manv && x.NGAY.Value.Day == ngay);
+        }
         public BANGCONG_NHANVIEN_CHITIET Add(BANGCONG_NHANVIEN_CHITIET bcct)
         {
             try
@@ -34,6 +37,7 @@ namespace BUS_QLNS
                 bcnv.GIORA = bcct.GIORA;
                 bcnv.NGAYPHEP = bcct.NGAYPHEP;
                 bcnv.GHICHU = bcct.GHICHU;
+                bcnv.NGAYCONG = bcct.NGAYCONG;
                 bcnv.CONGCHUNHAT = bcct.CONGCHUNHAT;
                 bcnv.CONGNGAYLE = bcct.CONGNGAYLE;
                 bcnv.UPDATED_BY = bcct.UPDATED_BY;
@@ -45,6 +49,15 @@ namespace BUS_QLNS
             {
                 throw new Exception("Lỗi: " + ex.Message);
             }
+        }
+        public double tongNgayPhep(int makycong, int manv)
+        {
+            return db.BANGCONG_NHANVIEN_CHITIET.Where(x => x.MAKYCONG == makycong && x.MaNhanVien == manv && x.NGAYPHEP != null).ToList().Sum(p => p.NGAYPHEP.Value);
+        }
+
+        public double tongNgayCong(int makycong, int manv)
+        {
+            return db.BANGCONG_NHANVIEN_CHITIET.Where(x => x.MAKYCONG == makycong && x.MaNhanVien == manv && x.NGAYCONG != null).ToList().Sum(p => p.NGAYCONG.Value);
         }
     }
 }

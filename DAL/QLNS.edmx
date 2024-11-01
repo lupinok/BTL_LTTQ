@@ -18,6 +18,7 @@
           <Property Name="GIORA" Type="nvarchar" MaxLength="50" />
           <Property Name="NGAYPHEP" Type="float" />
           <Property Name="CONGNGAYLE" Type="float" />
+          <Property Name="NGAYCONG" Type="float" />
           <Property Name="CONGCHUNHAT" Type="float" />
           <Property Name="KYHIEU" Type="nvarchar" MaxLength="50" />
           <Property Name="GHICHU" Type="nvarchar" MaxLength="500" />
@@ -1105,6 +1106,7 @@
           <Property Name="GIORA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NGAYPHEP" Type="Double" />
           <Property Name="CONGNGAYLE" Type="Double" />
+          <Property Name="NGAYCONG" Type="Double" />
           <Property Name="CONGCHUNHAT" Type="Double" />
           <Property Name="KYHIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
@@ -1415,6 +1417,7 @@
                 <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
                 <ScalarProperty Name="KYHIEU" ColumnName="KYHIEU" />
                 <ScalarProperty Name="CONGCHUNHAT" ColumnName="CONGCHUNHAT" />
+                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
                 <ScalarProperty Name="CONGNGAYLE" ColumnName="CONGNGAYLE" />
                 <ScalarProperty Name="NGAYPHEP" ColumnName="NGAYPHEP" />
                 <ScalarProperty Name="GIORA" ColumnName="GIORA" />

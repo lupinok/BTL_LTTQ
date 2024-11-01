@@ -77,9 +77,16 @@ namespace GUI_QLNS.NhanVien.ChamCong
                     bcct.CONGNGAYLE = 0;
                     bcct.CONGCHUNHAT = 0;
                     bcct.NGAYPHEP = 0;
-					if (bcct.THU == "Chủ nhật") bcct.KYHIEU = "CN";
-					else if (bcct.THU == "Thứ bảy") bcct.KYHIEU = "T7";
-					else bcct.KYHIEU = "X";
+					if (bcct.THU == "Chủ nhật")
+					{
+                        bcct.KYHIEU = "CN";
+						bcct.NGAYCONG = 0;
+                    } 
+                    else
+                    {
+                        bcct.KYHIEU = "X";
+                        bcct.NGAYCONG = 1;
+                    }
                     bcct.MAKYCONG = _makycong;
                     bcct.CREATED_DATE = DateTime.Now;
                     bcct.CREATED_BY = 1;
@@ -192,16 +199,22 @@ namespace GUI_QLNS.NhanVien.ChamCong
 					case "Saturday":
 						column = gvBangCongChiTiet.Columns[fieldName];
 						column.Caption = "T.Bảy " + Environment.NewLine + i;
-						//column.OptionsColumn.AllowEdit = true;
-						column.AppearanceHeader.ForeColor = Color.Red;
-						column.AppearanceHeader.BackColor = Color.Violet;
-						column.AppearanceHeader.BackColor2 = Color.Violet;
-						column.AppearanceCell.ForeColor = Color.Black;
-						column.AppearanceCell.BackColor = Color.Khaki;
-						column.OptionsColumn.AllowFocus = true;
-						//column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
-						//column.Width = 30;
-						break;
+                        //column.OptionsColumn.AllowEdit = true;
+                        column.AppearanceHeader.ForeColor = Color.Blue;
+                        column.AppearanceHeader.BackColor = Color.Transparent;
+                        column.AppearanceHeader.BackColor2 = Color.Transparent;
+                        column.AppearanceCell.ForeColor = Color.Black;
+                        column.AppearanceCell.BackColor = Color.Transparent;
+                        column.OptionsColumn.AllowFocus = true;
+                        //column.AppearanceHeader.ForeColor = Color.Red;
+                        //column.AppearanceHeader.BackColor = Color.Violet;
+                        //column.AppearanceHeader.BackColor2 = Color.Violet;
+                        //column.AppearanceCell.ForeColor = Color.Black;
+                        //column.AppearanceCell.BackColor = Color.Khaki;
+                        //column.OptionsColumn.AllowFocus = true;
+                        //column.AppearanceHeader.Font = new Font("Tahoma", 8, FontStyle.Regular);
+                        //column.Width = 30;
+                        break;
 					case "Sunday":
 						column = gvBangCongChiTiet.Columns[fieldName];
 						column.Caption = "CN " + Environment.NewLine + i;
@@ -315,6 +328,39 @@ namespace GUI_QLNS.NhanVien.ChamCong
             frm.Location = new Point(x, y);
 
             frm.ShowDialog();
+        }
+        private void gvBangCongChiTiet_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+        {
+            if (e.CellValue == null)
+            {
+            }
+            else
+            {
+                if (e.CellValue.ToString() == "CT")
+                {
+                    e.Appearance.BackColor = Color.DeepSkyBlue;
+                    e.Appearance.ForeColor = Color.White;
+                }
+                if (e.CellValue.ToString() == "VR")
+                {
+                    e.Appearance.BackColor = Color.DarkGreen;
+                    e.Appearance.ForeColor = Color.White;
+                }
+                if (e.CellValue.ToString() == "P")
+                {
+                    e.Appearance.BackColor = Color.LightBlue;
+                }
+                if (e.CellValue.ToString() == "V")
+                {
+                    e.Appearance.BackColor = Color.IndianRed;
+                    e.Appearance.ForeColor = Color.White;
+                }
+                if (e.CellValue.ToString() == "TS")
+                {
+                    e.Appearance.BackColor = Color.LightPink;
+                    e.Appearance.ForeColor = Color.White;
+                }
+            }
         }
     }
 }

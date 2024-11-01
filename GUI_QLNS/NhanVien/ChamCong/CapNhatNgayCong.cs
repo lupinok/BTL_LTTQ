@@ -1,4 +1,5 @@
 ﻿using BUS_QLNS;
+using DAL;
 using DevExpress.Utils.DirectXPaint;
 using DevExpress.XtraEditors;
 using DevExpress.XtraSplashScreen;
@@ -25,6 +26,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         public int _makycong;
         public string _ngay;
         KyCongChiTiet_BUS _kcct;
+        BangCongNhanVienChiTiet_BUS _bcct_nv;
         public int _cNgay;
         frmBangCongChiTiet frmBCCC = (frmBangCongChiTiet)Application.OpenForms["frmBangCongChiTiet"];
         private void btnCapNhat_Click(object sender, EventArgs e)
@@ -35,10 +37,10 @@ namespace GUI_QLNS.NhanVien.ChamCong
             string fieldName = "D" + _cNgay.ToString();
             var kcct = _kcct.getItem(_makycong, _manv);
 
-            double? tongngaycong = kcct.TONGNGAYCONG;
-            double? tongngayphep = kcct.NGAYPHEP;
-            double? tongnghinghikhongphep = kcct.NGHIKHONGPHEP;
-            double? tongngayle = kcct.CONGNGAYLE;//202201001=202201
+            //double? tongngaycong = kcct.TONGNGAYCONG;
+            //double? tongngayphep = kcct.NGAYPHEP;
+            //double? tongnghinghikhongphep = kcct.NGHIKHONGPHEP;
+            //double? tongngayle = kcct.CONGNGAYLE;//202201001=202201
             if (cldNgayCong.SelectionRange.Start.Year * 100 + cldNgayCong.SelectionRange.Start.Month != _makycong)
             {
                 MessageBox.Show("Thực hiện chấm công không đúng kỳ công. Vui lòng kiểm tra lại!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -47,13 +49,64 @@ namespace GUI_QLNS.NhanVien.ChamCong
             }
             //Cập nhật KYCONGCHITIET=> cập nhật BANGCONG_NV_CT
             SP_Functions.execQuery("UPDATE KYCONGCHITIET SET " + fieldName + "='" + _valueChamCong + "' WHERE MAKYCONG=" + _makycong + " AND MaNhanVien=" + _manv);
-
+            BANGCONG_NHANVIEN_CHITIET bcctnv = _bcct_nv.getItem(_makycong, _manv, cldNgayCong.SelectionStart.Day);
+            bcctnv.KYHIEU = _valueChamCong;
+            switch (_valueChamCong)
+            {
+                case "P":
+                    if (_valueNgayNghi == "NN")
+                    {
+                        bcctnv.NGAYPHEP = 1;
+                        bcctnv.NGAYCONG = 0;
+                    }
+                    else
+                    {
+                        bcctnv.NGAYPHEP = 0.5;
+                        bcctnv.NGAYCONG = 0.5;
+                    }
+                    break;
+                case "V":
+                    bcctnv.NGAYCONG = 0;
+                    bcctnv.NGAYPHEP = 0;
+                    break;
+                case "CT":
+                    bcctnv.NGAYCONG = 1;
+                    bcctnv.NGAYPHEP = 0;
+                    break;
+                case "VR":
+                    if (_valueNgayNghi == "NN")
+                    {
+                        bcctnv.NGAYCONG = 0;
+                        bcctnv.NGAYPHEP = 0;
+                    }
+                    else
+                    {
+                        bcctnv.NGAYCONG = 0.5;
+                        bcctnv.NGAYPHEP = 0.5;
+                    }
+                    break;
+                case "TS":
+                    bcctnv.NGAYCONG = 0;
+                    bcctnv.NGAYPHEP = 1;
+                    break;
+                default:
+                    break;
+            }
+            //Update tb_BANGCONG_NV_CT
+            _bcct_nv.Update(bcctnv);
+            // Tính lại tổng các ngày: ngày phép, ngày công, ngày vắng,...
+            double tongngaycong = _bcct_nv.tongNgayCong(_makycong, _manv);
+            double tongngayphep = _bcct_nv.tongNgayPhep(_makycong, _manv);
+            kcct.NGAYPHEP = tongngayphep;
+            kcct.TONGNGAYCONG = tongngaycong;
+            _kcct.Update(kcct);
             SplashScreenManager.CloseForm();
             frmBCCC.loadBangCong();
         }
 
         private void CapNhatNgayCong_Load(object sender, EventArgs e)
         {
+            _bcct_nv = new BangCongNhanVienChiTiet_BUS();
             _kcct = new KyCongChiTiet_BUS();
             lbID.Text = _manv.ToString();
             lbHoTen.Text = _hoten;

@@ -100,9 +100,9 @@ namespace BUS_QLNS
                         case "Sunday":
                             listDay.Add("CN");
                             break;
-                        case "Saturday":
-                            listDay.Add("T7");
-                            break;
+                        //case "Saturday":
+                        //    listDay.Add("T7");
+                        //    break;
                         default:
                             listDay.Add("X");
                             break;
