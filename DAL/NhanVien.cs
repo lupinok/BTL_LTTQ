@@ -31,7 +31,6 @@ namespace DAL
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public Nullable<int> SoDienThoai { get; set; }
         public string Email { get; set; }
-        public Nullable<System.DateTime> NgayBatDauLamViec { get; set; }
         public Nullable<int> MaPhongBan { get; set; }
         public Nullable<int> MaChucVu { get; set; }
     

@@ -54,7 +54,6 @@ namespace BUS_QLNS
 				{
 					_tk.MatKhau = tk.MatKhau;
 					_tk.VaiTro = tk.VaiTro;
-					_tk.TrangThaiTaiKhoan = tk.TrangThaiTaiKhoan;
 					db.SaveChanges();
 				}
 				return tk;

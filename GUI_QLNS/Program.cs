@@ -1,8 +1,11 @@
-﻿using GUI_QLNS.HeThong;
+﻿using GUI_QLNS;
+using GUI_QLNS.HeThong;
 using System;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using System.Data.SqlClient;
+using DAL;
+using GUI_QLNS.NhanVien;
 
 namespace GUI_QLNS
 {
