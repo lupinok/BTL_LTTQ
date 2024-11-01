@@ -206,7 +206,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BUS_QLNS\BUS_QLNS.csproj">
-      <Project>{55ED0560-F979-427D-8136-27F64FA4057F}</Project>
+      <Project>{55ed0560-f979-427d-8136-27f64fa4057f}</Project>
       <Name>BUS_QLNS</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL_QLNS.csproj">
