@@ -1,8 +1,10 @@
 ﻿using BUS_QLNS;
+using BusinessLayer;
 using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Mask;
 using DevExpress.XtraEditors.Repository;
 using DevExpress.XtraGrid.Columns;
+using DevExpress.XtraSplashScreen;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +20,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
     public partial class frmBangCongChiTiet : DevExpress.XtraEditors.XtraForm
     {
         KyCongChiTiet_BUS _kcct;
+		KyCong_BUS _kycong;
         public int _makycong;
         public int _thang;
         public int _nam;
@@ -28,6 +31,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         
         private void frmBangCongChiTiet_Load(object sender, EventArgs e)
         {
+			_kycong = new KyCong_BUS();
             _kcct = new KyCongChiTiet_BUS();
             gcBangCongChiTiet.DataSource = _kcct.getList(_makycong);
 			CustomView(_thang,_nam);
@@ -41,10 +45,22 @@ namespace GUI_QLNS.NhanVien.ChamCong
 		}
 
         private void btnPhatSinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
+		{
+			SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
+			if (_kycong.KiemTraPhatSinhKyCong(_makycong))
+			{
+				MessageBox.Show("Kỳ công đã được phát sinh.", "Thông báo");
+				SplashScreenManager.CloseForm();
+				return;
+			}
+
 			_kcct.phatSinhKyCongChiTiet(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
+			var kc = _kycong.getItem(_makycong);
+			kc.TRANGTHAI = true;
+			_kycong.Update(kc);
+			SplashScreenManager.CloseForm();
 			loadBangCong();
-        }
+		}
 
         private void btnXem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
