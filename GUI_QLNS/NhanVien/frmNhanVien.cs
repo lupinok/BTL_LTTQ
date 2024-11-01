@@ -69,12 +69,19 @@ namespace GUI_QLNS.NhanVien
 			_isNewRecord = true;
 			ShowHideControls(true);
 			ClearFields();
+
 		}
 
 		private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 			_isNewRecord = false;
 			ShowHideControls(true);
+			
+			int manv = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
+			SYLL frm = new SYLL(manv, true);
+			frm.ShowDialog();
+
+			LoadData();
 		}
 
 		private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -189,6 +196,16 @@ namespace GUI_QLNS.NhanVien
 				{
 					MessageBox.Show("Lỗi load dữ liệu: " + ex.Message);
 				}
+			}
+		}
+
+		private void gvDanhSach_DoubleClick(object sender, EventArgs e)
+		{
+			if (gvDanhSach.FocusedRowHandle >= 0)
+			{
+				int manhanvien = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
+				SYLL f = new SYLL(manhanvien);
+				f.ShowDialog();
 			}
 		}
 	}

@@ -76,6 +76,13 @@ namespace BUS_QLNS
 				var _nv = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == manhanvien);
 				if (_nv != null)
 				{
+					var syll = db.SoYeuLyLiches.FirstOrDefault(x => x.MaNhanVien == manhanvien);
+					if (syll != null)
+					{
+						db.SoYeuLyLiches.Remove(syll);
+						db.SaveChanges();
+					}
+
 					db.NhanViens.Remove(_nv);
 					db.SaveChanges();
 				}

@@ -57,6 +57,7 @@
     <Compile Include="LoaiCong_BUS.cs" />
     <Compile Include="NHANVIEN_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SYLL_BUS.cs" />
     <Compile Include="TAIKHOAN_BUS.cs" />
   </ItemGroup>
   <ItemGroup>

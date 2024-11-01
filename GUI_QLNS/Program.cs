@@ -20,7 +20,7 @@ namespace GUI_QLNS
             // Kiểm tra kết nối trước
             if (TryConnectWithSavedSettings())
             {
-                Application.Run(new DangNhap());
+                Application.Run(new frmNhanVien());
             }
             else
             {

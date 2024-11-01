@@ -366,6 +366,7 @@ namespace GUI_QLNS.NhanVien
 			this.gvDanhSach.OptionsFind.AlwaysVisible = true;
 			this.gvDanhSach.OptionsView.ShowGroupPanel = false;
 			this.gvDanhSach.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvDanhSach_FocusedRowChanged);
+			this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
 			// 
 			// MaNhanVien
 			// 
