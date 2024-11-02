@@ -122,5 +122,81 @@ namespace GUI_QLNS.NhanVien.ChamCong
         {
             _cNgay = cldNgayCong.SelectionRange.Start.Day;
         }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
+
+            // Lấy thông tin chấm công của ngày hiện tại
+            BANGCONG_NHANVIEN_CHITIET bcctnv = _bcct_nv.getItem(_makycong, _manv, cldNgayCong.SelectionStart.Day);
+
+            // Kiểm tra nếu ký hiệu đã là "X"
+            if (bcctnv.KYHIEU == "X")
+            {
+                MessageBox.Show("Ngày này đã được đánh dấu là đi làm đủ (X).", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SplashScreenManager.CloseForm();
+                return;
+            }
+
+            // Reset ký hiệu chấm công về "X" (đi làm đủ)
+            bcctnv.KYHIEU = "X";
+
+            // Sử dụng logic tương tự như trong btnCapNhat để xác định NGAYCONG và NGAYPHEP
+            switch (bcctnv.KYHIEU)
+            {
+                case "P":
+                    if (bcctnv.NGAYPHEP == 1)
+                    {
+                        bcctnv.NGAYCONG = 0;
+                    }
+                    else
+                    {
+                        bcctnv.NGAYCONG = 0.5;
+                    }
+                    break;
+                case "V":
+                    bcctnv.NGAYCONG = 0;
+                    bcctnv.NGAYPHEP = 0;
+                    break;
+                case "CT":
+                    bcctnv.NGAYCONG = 1;
+                    bcctnv.NGAYPHEP = 0;
+                    break;
+                case "VR":
+                    if (bcctnv.NGAYPHEP == 1)
+                    {
+                        bcctnv.NGAYCONG = 0;
+                    }
+                    else
+                    {
+                        bcctnv.NGAYCONG = 0.5;
+                    }
+                    break;
+                case "TS":
+                    bcctnv.NGAYCONG = 0;
+                    bcctnv.NGAYPHEP = 1;
+                    break;
+                default:
+                    bcctnv.NGAYCONG = 1;
+                    bcctnv.NGAYPHEP = 0;
+                    break;
+            }
+
+            // Cập nhật lại thông tin chấm công
+            _bcct_nv.Update(bcctnv);
+
+            // Tính lại tổng các ngày: ngày phép, ngày công
+            double tongngaycong = _bcct_nv.tongNgayCong(_makycong, _manv);
+            double tongngayphep = _bcct_nv.tongNgayPhep(_makycong, _manv);
+
+            // Cập nhật lại thông tin tổng ngày công và ngày phép
+            var kcct = _kcct.getItem(_makycong, _manv);
+            kcct.NGAYPHEP = tongngayphep;
+            kcct.TONGNGAYCONG = tongngaycong;
+            _kcct.Update(kcct);
+
+            SplashScreenManager.CloseForm();
+            frmBCCC.loadBangCong();
+        }
     }
 }

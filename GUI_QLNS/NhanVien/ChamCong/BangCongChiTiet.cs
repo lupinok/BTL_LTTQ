@@ -334,6 +334,11 @@ namespace GUI_QLNS.NhanVien.ChamCong
             if (e.CellValue == null)
             {
             }
+            else if (e.CellValue.ToString() == "X")
+            {
+                e.Appearance.BackColor = Color.White;
+                e.Appearance.ForeColor = Color.Black;
+            }
             else
             {
                 if (e.CellValue.ToString() == "CT")
