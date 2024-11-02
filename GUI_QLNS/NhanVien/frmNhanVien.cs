@@ -16,12 +16,16 @@ namespace GUI_QLNS.NhanVien
 	public partial class frmNhanVien : DevExpress.XtraEditors.XtraForm
 	{
 		private NHANVIEN_BUS _nhanvienBUS;
+		private LICHSU_BUS _lichsuBUS;
+		private string _currentUser;
 		private bool _isNewRecord = false;
 
 		public frmNhanVien()
 		{
 			InitializeComponent();
 			_nhanvienBUS = new NHANVIEN_BUS();
+			_lichsuBUS = new LICHSU_BUS();
+			_currentUser = Program.CurrentUser;
 		}
 
 		private void NhanVien_Load(object sender, EventArgs e)
@@ -135,7 +139,6 @@ namespace GUI_QLNS.NhanVien
 			int manv = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
 			SYLL frm = new SYLL(manv, true);
 			frm.ShowDialog();
-
 			LoadData();
 		}
 
@@ -153,12 +156,16 @@ namespace GUI_QLNS.NhanVien
 				{
 					_nhanvienBUS.Delete(int.Parse(txtMaNhanVien.Text));
 					LoadData();
-					ClearFields();
 					MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-				}
+					_lichsuBUS.ThemLichSu("Xóa nhân viên", _currentUser,
+						$"Xóa nhân viên {txtHoTen.Text}");
+                    ClearFields();
+                }
 				catch (Exception ex)
 				{
 					MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+					_lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+						$"Lỗi khi xóa nhân viên: {ex.Message}");
 				}
 			}
 		}
@@ -197,12 +204,17 @@ namespace GUI_QLNS.NhanVien
 
 				LoadData();
 				ShowHideControls(false);
-				ClearFields();
 				MessageBox.Show("Lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+				string action = _isNewRecord ? "Thêm" : "Cập nhật";
+				_lichsuBUS.ThemLichSu($"{action} nhân viên", _currentUser,
+					$"{action} thành công nhân viên {txtHoTen.Text}");
+                ClearFields();
+            }
 			catch (Exception ex)
 			{
-				MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				_lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+					$"Lỗi khi thao tác với nhân viên: {ex.Message}");
+				throw;
 			}
 		}
 

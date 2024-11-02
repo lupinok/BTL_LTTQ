@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="KyCongChiTiet_BUS.cs" />
     <Compile Include="KyCong_BUS.cs" />
+    <Compile Include="LICHSU_BUS.cs" />
     <Compile Include="LoaiCa_BUS.cs" />
     <Compile Include="LoaiCong_BUS.cs" />
     <Compile Include="NHANVIEN_BUS.cs" />

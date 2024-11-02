@@ -15,12 +15,16 @@ namespace GUI_QLNS.HeThong
 	public partial class frmTaiKhoan : DevExpress.XtraEditors.XtraForm
 	{
 		private TAIKHOAN_BUS _taikhoanBUS;
+		private LICHSU_BUS _lichsuBUS;
 		private bool _isNewRecord = false;
+		private string _currentUser;
 
 		public frmTaiKhoan()
 		{
 			InitializeComponent();
 			_taikhoanBUS = new TAIKHOAN_BUS();
+			_lichsuBUS = new LICHSU_BUS();
+			_currentUser = Program.CurrentUser;
 		}
 
 		private void TaiKhoan_Load(object sender, EventArgs e)
@@ -92,6 +96,8 @@ namespace GUI_QLNS.HeThong
 					_taikhoanBUS.Delete(tendangnhap);
 					LoadData();
 					MessageBox.Show("Xóa tài khoản thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+					_lichsuBUS.ThemLichSu("Xóa tài khoản", _currentUser,
+						$"Xóa tài khoản {txtTenDangNhap.Text}");
 				}
 				catch (Exception ex)
 				{
@@ -126,12 +132,19 @@ namespace GUI_QLNS.HeThong
 
 				LoadData();
 				ShowHideControls(false);
-				ClearFields();
 				MessageBox.Show("Lưu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-			}
+
+				string action = _isNewRecord ? "Thêm" : "Cập nhật";
+				_lichsuBUS.ThemLichSu($"{action} tài khoản", _currentUser,
+					$"{action} thành công tài khoản {txtTenDangNhap.Text}");
+                ClearFields();
+            }
 			catch (Exception ex)
 			{
 				MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+				_lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+					$"Lỗi khi thao tác với tài khoản: {ex.Message}");
+				throw;
 			}
 		}
 

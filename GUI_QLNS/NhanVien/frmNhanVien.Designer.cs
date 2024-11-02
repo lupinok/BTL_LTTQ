@@ -45,6 +45,8 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.cbMaChucVu = new DevExpress.XtraEditors.ComboBoxEdit();
+			this.cbMaPhongBan = new DevExpress.XtraEditors.ComboBoxEdit();
 			this.txtEmail = new System.Windows.Forms.TextBox();
 			this.txtSoDienThoai = new System.Windows.Forms.TextBox();
 			this.txtNgaySinh = new System.Windows.Forms.TextBox();
@@ -70,17 +72,15 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
 			this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
-			this.cbMaPhongBan = new DevExpress.XtraEditors.ComboBoxEdit();
-			this.cbMaChucVu = new DevExpress.XtraEditors.ComboBoxEdit();
 			((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
 			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// barManager1
@@ -177,7 +177,7 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
 			this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
 			this.barDockControlTop.Manager = this.barManager1;
-			this.barDockControlTop.Size = new System.Drawing.Size(962, 30);
+			this.barDockControlTop.Size = new System.Drawing.Size(1207, 30);
 			// 
 			// barDockControlBottom
 			// 
@@ -185,7 +185,7 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.barDockControlBottom.Location = new System.Drawing.Point(0, 474);
 			this.barDockControlBottom.Manager = this.barManager1;
-			this.barDockControlBottom.Size = new System.Drawing.Size(962, 20);
+			this.barDockControlBottom.Size = new System.Drawing.Size(1207, 20);
 			// 
 			// barDockControlLeft
 			// 
@@ -199,7 +199,7 @@ namespace GUI_QLNS.NhanVien
 			// 
 			this.barDockControlRight.CausesValidation = false;
 			this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-			this.barDockControlRight.Location = new System.Drawing.Point(962, 30);
+			this.barDockControlRight.Location = new System.Drawing.Point(1207, 30);
 			this.barDockControlRight.Manager = this.barManager1;
 			this.barDockControlRight.Size = new System.Drawing.Size(0, 444);
 			// 
@@ -231,9 +231,32 @@ namespace GUI_QLNS.NhanVien
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.gcDanhSach);
-			this.splitContainer1.Size = new System.Drawing.Size(962, 444);
+			this.splitContainer1.Size = new System.Drawing.Size(1207, 444);
 			this.splitContainer1.SplitterDistance = 67;
 			this.splitContainer1.TabIndex = 22;
+			// 
+			// cbMaChucVu
+			// 
+			this.cbMaChucVu.Location = new System.Drawing.Point(566, 35);
+			this.cbMaChucVu.MenuManager = this.barManager1;
+			this.cbMaChucVu.Name = "cbMaChucVu";
+			this.cbMaChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cbMaChucVu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+			this.cbMaChucVu.Size = new System.Drawing.Size(100, 22);
+			this.cbMaChucVu.TabIndex = 15;
+			// 
+			// cbMaPhongBan
+			// 
+			this.cbMaPhongBan.Location = new System.Drawing.Point(347, 35);
+			this.cbMaPhongBan.MenuManager = this.barManager1;
+			this.cbMaPhongBan.Name = "cbMaPhongBan";
+			this.cbMaPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+			this.cbMaPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+			this.cbMaPhongBan.Size = new System.Drawing.Size(100, 22);
+			this.cbMaPhongBan.TabIndex = 14;
+			this.cbMaPhongBan.SelectedIndexChanged += new System.EventHandler(this.cbMaPhongBan_SelectedIndexChanged);
 			// 
 			// txtEmail
 			// 
@@ -333,7 +356,7 @@ namespace GUI_QLNS.NhanVien
 			this.gcDanhSach.MainView = this.gvDanhSach;
 			this.gcDanhSach.MenuManager = this.barManager1;
 			this.gcDanhSach.Name = "gcDanhSach";
-			this.gcDanhSach.Size = new System.Drawing.Size(962, 373);
+			this.gcDanhSach.Size = new System.Drawing.Size(1207, 373);
 			this.gcDanhSach.TabIndex = 0;
 			this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
@@ -364,7 +387,7 @@ namespace GUI_QLNS.NhanVien
 			this.MaNhanVien.Name = "MaNhanVien";
 			this.MaNhanVien.Visible = true;
 			this.MaNhanVien.VisibleIndex = 0;
-			this.MaNhanVien.Width = 94;
+			this.MaNhanVien.Width = 37;
 			// 
 			// HoTen
 			// 
@@ -374,7 +397,7 @@ namespace GUI_QLNS.NhanVien
 			this.HoTen.Name = "HoTen";
 			this.HoTen.Visible = true;
 			this.HoTen.VisibleIndex = 1;
-			this.HoTen.Width = 94;
+			this.HoTen.Width = 168;
 			// 
 			// NgaySinh
 			// 
@@ -384,7 +407,7 @@ namespace GUI_QLNS.NhanVien
 			this.NgaySinh.Name = "NgaySinh";
 			this.NgaySinh.Visible = true;
 			this.NgaySinh.VisibleIndex = 2;
-			this.NgaySinh.Width = 94;
+			this.NgaySinh.Width = 117;
 			// 
 			// SoDienThoai
 			// 
@@ -394,7 +417,7 @@ namespace GUI_QLNS.NhanVien
 			this.SoDienThoai.Name = "SoDienThoai";
 			this.SoDienThoai.Visible = true;
 			this.SoDienThoai.VisibleIndex = 3;
-			this.SoDienThoai.Width = 94;
+			this.SoDienThoai.Width = 140;
 			// 
 			// Email
 			// 
@@ -404,27 +427,27 @@ namespace GUI_QLNS.NhanVien
 			this.Email.Name = "Email";
 			this.Email.Visible = true;
 			this.Email.VisibleIndex = 4;
-			this.Email.Width = 94;
+			this.Email.Width = 230;
 			// 
 			// MaPhongBan
 			// 
-			this.MaPhongBan.Caption = "Mã phòng ban";
-			this.MaPhongBan.FieldName = "MaPhongBan";
+			this.MaPhongBan.Caption = "Phòng ban";
+			this.MaPhongBan.FieldName = "PhongBan.TenPhongBan";
 			this.MaPhongBan.MinWidth = 25;
 			this.MaPhongBan.Name = "MaPhongBan";
 			this.MaPhongBan.Visible = true;
 			this.MaPhongBan.VisibleIndex = 5;
-			this.MaPhongBan.Width = 94;
+			this.MaPhongBan.Width = 232;
 			// 
 			// MaChucVu
 			// 
-			this.MaChucVu.Caption = "Mã chức vụ";
-			this.MaChucVu.FieldName = "MaChucVu";
+			this.MaChucVu.Caption = "Chức vụ";
+			this.MaChucVu.FieldName = "ChucVu.TenChucVu";
 			this.MaChucVu.MinWidth = 25;
 			this.MaChucVu.Name = "MaChucVu";
 			this.MaChucVu.Visible = true;
 			this.MaChucVu.VisibleIndex = 6;
-			this.MaChucVu.Width = 94;
+			this.MaChucVu.Width = 253;
 			// 
 			// barDockControl3
 			// 
@@ -432,7 +455,7 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
 			this.barDockControl3.Location = new System.Drawing.Point(0, 30);
 			this.barDockControl3.Manager = this.barManager1;
-			this.barDockControl3.Size = new System.Drawing.Size(962, 0);
+			this.barDockControl3.Size = new System.Drawing.Size(1207, 0);
 			// 
 			// barDockControl4
 			// 
@@ -440,7 +463,7 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
 			this.barDockControl4.Location = new System.Drawing.Point(0, 30);
 			this.barDockControl4.Manager = this.barManager1;
-			this.barDockControl4.Size = new System.Drawing.Size(962, 0);
+			this.barDockControl4.Size = new System.Drawing.Size(1207, 0);
 			// 
 			// barDockControl1
 			// 
@@ -448,7 +471,7 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
 			this.barDockControl1.Location = new System.Drawing.Point(0, 30);
 			this.barDockControl1.Manager = this.barManager1;
-			this.barDockControl1.Size = new System.Drawing.Size(962, 0);
+			this.barDockControl1.Size = new System.Drawing.Size(1207, 0);
 			// 
 			// barDockControl2
 			// 
@@ -456,36 +479,13 @@ namespace GUI_QLNS.NhanVien
 			this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
 			this.barDockControl2.Location = new System.Drawing.Point(0, 30);
 			this.barDockControl2.Manager = this.barManager1;
-			this.barDockControl2.Size = new System.Drawing.Size(962, 0);
-			// 
-			// cbMaPhongBan
-			// 
-			this.cbMaPhongBan.Location = new System.Drawing.Point(347, 35);
-			this.cbMaPhongBan.MenuManager = this.barManager1;
-			this.cbMaPhongBan.Name = "cbMaPhongBan";
-			this.cbMaPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.cbMaPhongBan.Size = new System.Drawing.Size(100, 22);
-			this.cbMaPhongBan.TabIndex = 14;
-			this.cbMaPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-			this.cbMaPhongBan.SelectedIndexChanged += new System.EventHandler(this.cbMaPhongBan_SelectedIndexChanged);
-			// 
-			// cbMaChucVu
-			// 
-			this.cbMaChucVu.Location = new System.Drawing.Point(566, 35);
-			this.cbMaChucVu.MenuManager = this.barManager1;
-			this.cbMaChucVu.Name = "cbMaChucVu";
-			this.cbMaChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-			this.cbMaChucVu.Size = new System.Drawing.Size(100, 22);
-			this.cbMaChucVu.TabIndex = 15;
-			this.cbMaChucVu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
+			this.barDockControl2.Size = new System.Drawing.Size(1207, 0);
 			// 
 			// frmNhanVien
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(962, 494);
+			this.ClientSize = new System.Drawing.Size(1207, 494);
 			this.Controls.Add(this.splitContainer1);
 			this.Controls.Add(this.barDockControl3);
 			this.Controls.Add(this.barDockControl4);
@@ -504,10 +504,10 @@ namespace GUI_QLNS.NhanVien
 			this.splitContainer1.Panel2.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
 			this.splitContainer1.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
 			((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
