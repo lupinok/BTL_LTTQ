@@ -40,6 +40,8 @@
         <EntityTypeShape EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONGCHITIET" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONG" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.BoPhan" Width="1.5" PointX="3" PointY="7.375" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

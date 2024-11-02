@@ -2,7 +2,10 @@
 using DevExpress.XtraBars;
 using GUI_QLNS.HeThong;
 using GUI_QLNS.NhanVien;
+using GUI_QLNS.NhanVien.BoPhan;
 using GUI_QLNS.NhanVien.ChamCong;
+using GUI_QLNS.NhanVien.ChucVu;
+using GUI_QLNS.NhanVien.PhongBan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -142,6 +145,21 @@ namespace GUI_QLNS
                         "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void btnChucVu_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof (frmChucVu));
+        }
+
+        private void btbPhongBan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmPhongBan));
+        }
+
+        private void btbBoPhan_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmBoPhan));
         }
     }
 }

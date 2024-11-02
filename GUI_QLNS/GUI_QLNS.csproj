@@ -108,6 +108,12 @@
     <Compile Include="Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\BoPhan\frmBoPhan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\BoPhan\frmBoPhan.Designer.cs">
+      <DependentUpon>frmBoPhan.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\ChamCong\BangCong.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,11 +138,23 @@
     <Compile Include="NhanVien\ChamCong\LoaiCong.Designer.cs">
       <DependentUpon>LoaiCong.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\ChucVu\frmChucVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\ChucVu\frmChucVu.Designer.cs">
+      <DependentUpon>frmChucVu.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NhanVien\frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\PhongBan\frmPhongBan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\PhongBan\frmPhongBan.Designer.cs">
+      <DependentUpon>frmPhongBan.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\SYLL.cs">
       <SubType>Form</SubType>
@@ -160,6 +178,9 @@
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\BoPhan\frmBoPhan.resx">
+      <DependentUpon>frmBoPhan.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChamCong\BangCong.resx">
       <DependentUpon>BangCong.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,8 +193,14 @@
     <EmbeddedResource Include="NhanVien\ChamCong\LoaiCong.resx">
       <DependentUpon>LoaiCong.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\ChucVu\frmChucVu.resx">
+      <DependentUpon>frmChucVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\PhongBan\frmPhongBan.resx">
+      <DependentUpon>frmPhongBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\SYLL.resx">
       <DependentUpon>SYLL.cs</DependentUpon>

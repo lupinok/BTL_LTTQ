@@ -59,6 +59,9 @@
     <Compile Include="BaoHiem.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="BoPhan.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="ChiTietDuAn.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>

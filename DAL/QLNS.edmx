@@ -37,6 +37,14 @@
           <Property Name="MaNhanVien" Type="int" />
           <Property Name="TenBaoHiem" Type="nvarchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="BoPhan">
+          <Key>
+            <PropertyRef Name="MaBoPhan" />
+          </Key>
+          <Property Name="MaBoPhan" Type="int" Nullable="false" />
+          <Property Name="TenBoPhan" Type="nchar" MaxLength="100" />
+          <Property Name="MaPhongBan" Type="int" />
+        </EntityType>
         <EntityType Name="ChiTietDuAn">
           <Key>
             <PropertyRef Name="MaNhanVien" />
@@ -236,6 +244,7 @@
           <Property Name="NgaySinh" Type="date" />
           <Property Name="SoDienThoai" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="NgayBatDauLamViec" Type="date" />
           <Property Name="MaPhongBan" Type="int" />
           <Property Name="MaChucVu" Type="int" />
         </EntityType>
@@ -464,9 +473,22 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_BOPHAN_PHONGBAN">
+          <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
+          <End Role="BoPhan" Type="Self.BoPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="BoPhan">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BTLMonLTTQModelStoreContainer">
           <EntitySet Name="BANGCONG_NHANVIEN_CHITIET" EntityType="Self.BANGCONG_NHANVIEN_CHITIET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoHiem" EntityType="Self.BaoHiem" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BoPhan" EntityType="Self.BoPhan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietDuAn" EntityType="Self.ChiTietDuAn" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietKhoaDaoTao" EntityType="Self.ChiTietKhoaDaoTao" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietKT_KL" EntityType="Self.ChiTietKT_KL" Schema="dbo" store:Type="Tables" />
@@ -541,6 +563,10 @@
           <AssociationSet Name="FK__ThanhToan__MaNha__7C4F7684" Association="Self.FK__ThanhToan__MaNha__7C4F7684">
             <End Role="NhanVien" EntitySet="NhanVien" />
             <End Role="ThanhToan" EntitySet="ThanhToan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BOPHAN_PHONGBAN" Association="Self.FK_BOPHAN_PHONGBAN">
+            <End Role="PhongBan" EntitySet="PhongBan" />
+            <End Role="BoPhan" EntitySet="BoPhan" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -685,6 +711,7 @@
           <NavigationProperty Name="PhieuLuongs" Relationship="Self.FK__PhieuLuon__MaNha__73BA3083" FromRole="NhanVien" ToRole="PhieuLuong" />
           <NavigationProperty Name="SoYeuLyLich" Relationship="Self.FK__SoYeuLyLi__MaNha__74AE54BC" FromRole="NhanVien" ToRole="SoYeuLyLich" />
           <NavigationProperty Name="ThanhToans" Relationship="Self.FK__ThanhToan__MaNha__75A278F5" FromRole="NhanVien" ToRole="ThanhToan" />
+          <Property Name="NgayBatDauLamViec" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="PhieuLuong">
           <Key>
@@ -707,6 +734,7 @@
           <Property Name="SoLuongNhanVien" Type="Int32" />
           <Property Name="TruongPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaPhon__72C60C4A" FromRole="PhongBan" ToRole="NhanVien" />
+          <NavigationProperty Name="BoPhans" Relationship="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" FromRole="PhongBan" ToRole="BoPhan" />
         </EntityType>
         <EntityType Name="SoYeuLyLich">
           <Key>
@@ -994,6 +1022,11 @@
           <EntitySet Name="BANGCONG_NHANVIEN_CHITIET" EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" />
           <EntitySet Name="KYCONGCHITIETs" EntityType="BTLMonLTTQModel.KYCONGCHITIET" />
           <EntitySet Name="KYCONGs" EntityType="BTLMonLTTQModel.KYCONG" />
+          <EntitySet Name="BoPhans" EntityType="BTLMonLTTQModel.BoPhan" />
+          <AssociationSet Name="FK_BOPHAN_PHONGBAN" Association="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN">
+            <End Role="PhongBan" EntitySet="PhongBans" />
+            <End Role="BoPhan" EntitySet="BoPhans" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="LoaiCa">
           <Key>
@@ -1113,6 +1146,27 @@
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
         </EntityType>
+        <EntityType Name="BoPhan">
+          <Key>
+            <PropertyRef Name="MaBoPhan" />
+          </Key>
+          <Property Name="MaBoPhan" Type="Int32" Nullable="false" />
+          <Property Name="TenBoPhan" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="MaPhongBan" Type="Int32" />
+          <NavigationProperty Name="PhongBan" Relationship="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" FromRole="BoPhan" ToRole="PhongBan" />
+        </EntityType>
+        <Association Name="FK_BOPHAN_PHONGBAN">
+          <End Type="BTLMonLTTQModel.PhongBan" Role="PhongBan" Multiplicity="0..1" />
+          <End Type="BTLMonLTTQModel.BoPhan" Role="BoPhan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="BoPhan">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1233,6 +1287,7 @@
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="NgayBatDauLamViec" ColumnName="NgayBatDauLamViec" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -1424,6 +1479,15 @@
                 <ScalarProperty Name="NAM" ColumnName="NAM" />
                 <ScalarProperty Name="THANG" ColumnName="THANG" />
                 <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoPhans">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.BoPhan">
+              <MappingFragment StoreEntitySet="BoPhan">
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="TenBoPhan" ColumnName="TenBoPhan" />
+                <ScalarProperty Name="MaBoPhan" ColumnName="MaBoPhan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
