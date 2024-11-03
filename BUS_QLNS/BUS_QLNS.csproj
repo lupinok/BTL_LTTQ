@@ -52,7 +52,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BoPhan_BUS.cs" />
+    <Compile Include="ChiTietDaoTao_BUS.cs" />
+    <Compile Include="ChiTietDuAn_BUS.cs" />
     <Compile Include="ChucVu_BUS.cs" />
+    <Compile Include="DaoTao_BUS.cs" />
+    <Compile Include="DuAn_BUS.cs" />
     <Compile Include="DCNHANVIEN_BUS.cs" />
     <Compile Include="BangCongNhanVienChiTiet_BUS.cs" />
     <Compile Include="HDLDDTO.cs" />
@@ -83,6 +87,9 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DTO\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

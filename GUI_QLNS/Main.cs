@@ -5,6 +5,9 @@ using GUI_QLNS.NhanVien;
 using GUI_QLNS.NhanVien.BoPhan;
 using GUI_QLNS.NhanVien.ChamCong;
 using GUI_QLNS.NhanVien.ChucVu;
+using GUI_QLNS.NhanVien.Đào_tạo;
+using GUI_QLNS.NhanVien.Dự_án;
+using GUI_QLNS.NhanVien.NhanVienThoiViec;
 using GUI_QLNS.NhanVien.DCNhanVien;
 using GUI_QLNS.NhanVien.PhongBan;
 using System;
@@ -164,6 +167,26 @@ namespace GUI_QLNS
         private void btbBoPhan_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmBoPhan));
+        }
+
+        private void menu_thuyenchuyen_congtac_ItemClick(object sender, ItemClickEventArgs e)
+        {
+           
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmDuAn));
+        }
+
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmDaoTao));
+        }
+
+        private void menu_nghiviec_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmNVThoiViec));
         }
 
         private void menu_changePassword_ItemClick(object sender, ItemClickEventArgs e)

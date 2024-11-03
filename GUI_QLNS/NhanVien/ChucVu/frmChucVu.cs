@@ -51,6 +51,7 @@ namespace GUI_QLNS.NhanVien.ChucVu
             _chucVu = new ChucVu_BUS();
             _showHide(true);
             loadData();
+            splitContainer1.Panel1Collapsed = true;
         }
         void _showHide(bool kt)
         {
@@ -137,6 +138,7 @@ namespace GUI_QLNS.NhanVien.ChucVu
             _showHide(false);
             _them = true;
             ResetValue();
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -185,12 +187,14 @@ namespace GUI_QLNS.NhanVien.ChucVu
                 _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
                     $"Lỗi khi thao tác với chức vụ: {ex.Message}");
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _them = false;
             _showHide(true);
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void gcDanhSach_Click(object sender, EventArgs e)
@@ -224,6 +228,7 @@ namespace GUI_QLNS.NhanVien.ChucVu
                                   MessageBoxIcon.Error);
                 }
             }
+            splitContainer1.Panel1Collapsed = false;
         }
     }
 }

@@ -25,6 +25,8 @@ namespace DAL
             this.PhuCaps = new HashSet<PhuCap>();
             this.TangCas = new HashSet<TangCa>();
             this.ThanhToans = new HashSet<ThanhToan>();
+            this.NhanVienDieuChuyens = new HashSet<NhanVienDieuChuyen>();
+            this.NhanVienThoiViecs = new HashSet<NhanVienThoiViec>();
             this.UngLuongs = new HashSet<UngLuong>();
             this.NhanVienThoiViecs = new HashSet<NhanVienThoiViec>();
         }
@@ -36,6 +38,8 @@ namespace DAL
         public string Email { get; set; }
         public Nullable<int> MaPhongBan { get; set; }
         public Nullable<int> MaChucVu { get; set; }
+        public Nullable<System.DateTime> NgayBatDauLamViec { get; set; }
+        public Nullable<bool> DaThoiViec { get; set; }
         public Nullable<bool> DaThoiViec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -57,6 +61,10 @@ namespace DAL
         public virtual ICollection<TangCa> TangCas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhanVienDieuChuyen> NhanVienDieuChuyens { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhanVienThoiViec> NhanVienThoiViecs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UngLuong> UngLuongs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
