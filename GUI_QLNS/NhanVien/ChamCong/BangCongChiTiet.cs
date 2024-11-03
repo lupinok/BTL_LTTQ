@@ -32,6 +32,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         private GridHitInfo downHitInfo = null;
         public bool IsKhoa { get; private set; }
         private frmBangCong _parentForm;
+        private int? _selectedDepartmentId = null;
 
         public frmBangCongChiTiet(frmBangCong parentForm)
         {
@@ -74,7 +75,10 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 gvBangCongChiTiet.BeginUpdate();
 
                 _kcct = new KyCongChiTiet_BUS();
-                gcBangCongChiTiet.DataSource = _kcct.getList(int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text));
+                gcBangCongChiTiet.DataSource = _kcct.getList(
+                    int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text),
+                    _selectedDepartmentId
+                );
                 CustomView(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
             }
             finally
@@ -506,6 +510,20 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 SplashScreenManager.CloseForm();
                 MessageBox.Show("Lỗi: " + ex.Message, "Lỗi xuất Excel", 
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void lupPhongBan_EditValueChanged(object sender, EventArgs e)
+        {
+            if (lupPhongBan.EditValue != null)
+            {
+                _selectedDepartmentId = Convert.ToInt32(lupPhongBan.EditValue);
+                loadBangCong(); // Tải lại bảng công với bộ lọc mới
+            }
+            else
+            {
+                _selectedDepartmentId = null;
+                loadBangCong(); // Tải lại toàn bộ dữ liệu khi không chọn phòng ban
             }
         }
     }

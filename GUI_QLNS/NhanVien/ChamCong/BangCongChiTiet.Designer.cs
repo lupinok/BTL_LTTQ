@@ -295,6 +295,7 @@
             this.lupPhongBan.Properties.ValueMember = "MaPhongBan";
             this.lupPhongBan.Size = new System.Drawing.Size(244, 22);
             this.lupPhongBan.TabIndex = 7;
+            this.lupPhongBan.EditValueChanged += new System.EventHandler(this.lupPhongBan_EditValueChanged);
             // 
             // labelControl3
             // 
