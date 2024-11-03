@@ -18,6 +18,7 @@ namespace GUI_QLNS.NhanVien.Luong
     {
         UngLuong_BUS ungluongBus;
         NHANVIEN_BUS nhanvienBus;
+        HDLD_BUS HopDongLaoDong;
         bool _them;
         string maul;
         public frmUngLuong()
@@ -147,10 +148,15 @@ namespace GUI_QLNS.NhanVien.Luong
             int maNV = Convert.ToInt32(scNhanVien.EditValue);    
             string hoTen = scNhanVien.Text;
             decimal soTien = decimal.Parse(txtSoTien.Text.Replace(",", ""));
+            if (!ungluongBus.KiemTraTienUng(maNV, soTien / 2))
+            {
+                throw new Exception("Số tiền ứng không được vượt quá 50% lương cơ bản!");
+            }
             int thang = Convert.ToInt32(cbThang.Text); // Lấy text thay vì SelectedValue
             int nam = Convert.ToInt32(cbNam.Text);
             if (_them)
             {
+                
                 if (ungluongBus.KiemTraTrung(maNV, thang, nam))
                 {
                     throw new Exception($"Nhân viên {hoTen} đã ứng lương trong tháng {thang}/{nam}!");
@@ -196,8 +202,9 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void gvUngLuong_Click(object sender, EventArgs e)
         {
+            _them = true;
             _showHide(false);
-            btnXem.Enabled = true;
+            
             if (gvUngLuong.RowCount > 0)
             {
                 maul = gvUngLuong.GetFocusedRowCellValue("MaUngLuong").ToString();

@@ -16,6 +16,7 @@ namespace GUI_QLNS.NhanVien.Luong
     public partial class frmTinhLuong : DevExpress.XtraEditors.XtraForm
     {
         PhieuLuong_BUS phieuLuongBus;
+        BangCongNhanVienChiTiet_BUS bangcongBus;
         bool _them;
         int _maPhieu;
         public frmTinhLuong()
@@ -26,19 +27,27 @@ namespace GUI_QLNS.NhanVien.Luong
         private void frmTinhLuong_Load(object sender, EventArgs e)
         {
             phieuLuongBus = new PhieuLuong_BUS();
+            bangcongBus = new BangCongNhanVienChiTiet_BUS();
             _them = false;
             cbThang.SelectedIndex = DateTime.Now.Month - 1;
             cbBaoHiem.Text = DateTime.Now.Year.ToString();
         }
+        private int LayMaKyCong(int thang, int nam)
+        {
+            var kyCong = bangcongBus.LayKyCongTheoThangNam(thang, nam);
+            if (kyCong == null)
+                throw new Exception($"Không tìm thấy kỳ công của tháng {thang}/{nam}");
 
+            return (int)kyCong.MAKYCONG;
+        }
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
                 int thang = int.Parse(cbThang.Text);
                 int nam = int.Parse(cbBaoHiem.Text);
-
-                TinhLuongThang(thang, nam);
+                int maKyCong = LayMaKyCong(thang, nam);
+                TinhLuongTheoKyCong(maKyCong);
             }
             catch (Exception ex)
             {
@@ -56,19 +65,28 @@ namespace GUI_QLNS.NhanVien.Luong
                     return;
                 }
 
+                // Lấy mã kỳ công từ tháng năm
+                var kyCong = bangcongBus.LayKyCongTheoThangNam(thang, nam);
+                if (kyCong == null)
+                {
+                    MessageBox.Show($"Không tìm thấy kỳ công của tháng {thang}/{nam}");
+                    return;
+                }
+
+
                 // Kiểm tra xem đã tính lương chưa
-                if (!phieuLuongBus.KiemTraDaTinhLuong(thang, nam))
+                var dsLuong = phieuLuongBus.LayPhieuLuongTheoKyCong((int)kyCong.MAKYCONG);
+                if (dsLuong == null || !dsLuong.Any())
                 {
                     if (MessageBox.Show("Chưa tính lương cho tháng này. Bạn có muốn tính lương không?",
                         "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        TinhLuongThang(thang, nam);
+                        TinhLuongTheoKyCong((int)kyCong.MAKYCONG);
                     }
                     return;
                 }
 
                 // Nếu đã tính lương rồi thì hiển thị
-                var dsLuong = phieuLuongBus.LayPhieuLuongTheoThang(thang, nam);
                 gcHDLD.DataSource = dsLuong;
                 FormatGrid();
             }
@@ -77,27 +95,23 @@ namespace GUI_QLNS.NhanVien.Luong
                 MessageBox.Show("Lỗi hiển thị bảng lương: " + ex.Message);
             }
         }
-        private void TinhLuongThang(int thang, int nam)
+        private void TinhLuongTheoKyCong(int maKyCong)
         {
             try
             {
                 // Kiểm tra xem đã tính lương chưa
-                if (phieuLuongBus.KiemTraDaTinhLuong(thang, nam))
+                var dsLuong = phieuLuongBus.LayPhieuLuongTheoKyCong(maKyCong);
+                if (dsLuong != null && dsLuong.Any())
                 {
                     if (MessageBox.Show("Đã tính lương tháng này. Bạn có muốn tính lại không?",
                         "Xác nhận", MessageBoxButtons.YesNo) != DialogResult.Yes)
                     {
                         return;
                     }
-                    phieuLuongBus.XoaPhieuLuongTheoThang(thang, nam);
                 }
 
                 // Tính lương mới
-                var dsLuong = phieuLuongBus.TinhLuong(thang, nam);
-                foreach (var luong in dsLuong)
-                {
-                    phieuLuongBus.ThemPhieuLuong(luong);
-                }
+                dsLuong = phieuLuongBus.TinhLuong(maKyCong);
 
                 // Hiển thị kết quả
                 gcHDLD.DataSource = dsLuong;

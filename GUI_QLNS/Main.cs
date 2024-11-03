@@ -41,10 +41,7 @@ namespace GUI_QLNS
             openForm(typeof(frmLoaiCa));
         }
 
-        private void btnLoaiCong_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            openForm(typeof(frmLoaiCong));
-        }
+       
 
         private void btnBangCong_ItemClick(object sender, ItemClickEventArgs e)
         {

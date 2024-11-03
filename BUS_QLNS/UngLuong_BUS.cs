@@ -16,8 +16,28 @@ namespace BUS_QLNS
             return db.UngLuongs.FirstOrDefault(x => x.MaUngLuong == mpc);
         }
 
+        public bool KiemTraTienUng(int maNhanVien, decimal soTienUng)
+        {
+            try
+            {
+                // Lấy mã chức vụ của nhân viên
+                var nhanVien = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == maNhanVien);
+                if (nhanVien == null)
+                    throw new Exception("Không tìm thấy nhân viên");
 
+                // Lấy lương chức vụ
+                var chucVu = db.ChucVus.FirstOrDefault(x => x.MaChucVu == nhanVien.MaChucVu);
+                if (chucVu == null)
+                    throw new Exception("Không tìm thấy chức vụ của nhân viên");
 
+                // Kiểm tra số tiền ứng có vượt quá lương chức vụ không
+                return soTienUng <= chucVu.LuongChucVu;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi kiểm tra tiền ứng: " + ex.Message);
+            }
+        }
         public List<UngLuong> getList()
         {
             return db.UngLuongs.ToList();

@@ -22,9 +22,9 @@ namespace DAL
             this.ChiTietKT_KL = new HashSet<ChiTietKT_KL>();
             this.HopDongLaoDongs = new HashSet<HopDongLaoDong>();
             this.PhieuLuongs = new HashSet<PhieuLuong>();
-            this.ThanhToans = new HashSet<ThanhToan>();
-            this.TangCas = new HashSet<TangCa>();
             this.PhuCaps = new HashSet<PhuCap>();
+            this.TangCas = new HashSet<TangCa>();
+            this.ThanhToans = new HashSet<ThanhToan>();
             this.UngLuongs = new HashSet<UngLuong>();
         }
     
@@ -33,9 +33,9 @@ namespace DAL
         public Nullable<System.DateTime> NgaySinh { get; set; }
         public Nullable<int> SoDienThoai { get; set; }
         public string Email { get; set; }
+        public Nullable<System.DateTime> NgayBatDauLamViec { get; set; }
         public Nullable<int> MaPhongBan { get; set; }
         public Nullable<int> MaChucVu { get; set; }
-        public Nullable<System.DateTime> NgayBatDauLamViec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDuAn> ChiTietDuAns { get; set; }
@@ -49,13 +49,13 @@ namespace DAL
         public virtual PhongBan PhongBan { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuLuong> PhieuLuongs { get; set; }
-        public virtual SoYeuLyLich SoYeuLyLich { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ThanhToan> ThanhToans { get; set; }
+        public virtual ICollection<PhuCap> PhuCaps { get; set; }
+        public virtual SoYeuLyLich SoYeuLyLich { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TangCa> TangCas { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PhuCap> PhuCaps { get; set; }
+        public virtual ICollection<ThanhToan> ThanhToans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UngLuong> UngLuongs { get; set; }
     }

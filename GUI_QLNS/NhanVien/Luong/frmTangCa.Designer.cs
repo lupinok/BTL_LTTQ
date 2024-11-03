@@ -37,7 +37,6 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -63,9 +62,9 @@
             this.HeSo = new DevExpress.XtraGrid.Columns.GridColumn();
             this.SoTien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.GhiChu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.create_date = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaLoaiCa = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.create_date = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -90,8 +89,7 @@
             this.btnSua,
             this.btnXoa,
             this.btnLuu,
-            this.btnHuy,
-            this.btnXem});
+            this.btnHuy});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 6;
             this.barManager1.StatusBar = this.bar3;
@@ -107,8 +105,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -152,13 +149,6 @@
             this.btnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHuy.ImageOptions.SvgImage")));
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
-            // 
-            // btnXem
-            // 
-            this.btnXem.Caption = "Xem bảng công";
-            this.btnXem.Id = 5;
-            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXem.ImageOptions.SvgImage")));
-            this.btnXem.Name = "btnXem";
             // 
             // bar3
             // 
@@ -420,6 +410,14 @@
             this.GhiChu.VisibleIndex = 5;
             this.GhiChu.Width = 170;
             // 
+            // create_date
+            // 
+            this.create_date.Caption = "Ngày tạo";
+            this.create_date.FieldName = "create_date";
+            this.create_date.Name = "create_date";
+            this.create_date.Visible = true;
+            this.create_date.VisibleIndex = 6;
+            // 
             // MaNhanVien
             // 
             this.MaNhanVien.Caption = "gridColumn1";
@@ -431,14 +429,6 @@
             this.MaLoaiCa.Caption = "gridColumn1";
             this.MaLoaiCa.FieldName = "MaLoaiCa";
             this.MaLoaiCa.Name = "MaLoaiCa";
-            // 
-            // create_date
-            // 
-            this.create_date.Caption = "Ngày tạo";
-            this.create_date.FieldName = "create_date";
-            this.create_date.Name = "create_date";
-            this.create_date.Visible = true;
-            this.create_date.VisibleIndex = 6;
             // 
             // frmTangCa
             // 
@@ -476,7 +466,6 @@
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnLuu;
         private DevExpress.XtraBars.BarButtonItem btnHuy;
-        private DevExpress.XtraBars.BarButtonItem btnXem;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;

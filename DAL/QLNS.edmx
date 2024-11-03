@@ -18,7 +18,6 @@
           <Property Name="GIORA" Type="nvarchar" MaxLength="50" />
           <Property Name="NGAYPHEP" Type="float" />
           <Property Name="CONGNGAYLE" Type="float" />
-          <Property Name="NGAYCONG" Type="float" />
           <Property Name="CONGCHUNHAT" Type="float" />
           <Property Name="KYHIEU" Type="nvarchar" MaxLength="50" />
           <Property Name="GHICHU" Type="nvarchar" MaxLength="500" />
@@ -260,8 +259,10 @@
           <Property Name="UngLuong" Type="decimal" Precision="18" Scale="2" />
           <Property Name="NgayCong" Type="float" />
           <Property Name="KTKL" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TienBaoHiem" Type="decimal" Precision="18" Scale="2" />
           <Property Name="LuongNhanDuoc" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TrangThaiTraLuong" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaKyCong" Type="int" />
           <Property Name="MaNhanVien" Type="int" />
           <Property Name="create_by" Type="nvarchar" MaxLength="100" />
           <Property Name="create_date" Type="datetime" />
@@ -674,6 +675,28 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BTLMonLTTQModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="BANGCONG_NHANVIEN_CHITIET">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MAKYCONG" Type="Int32" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="NGAY" Type="DateTime" Precision="3" />
+          <Property Name="THU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIOVAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GIORA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYPHEP" Type="Double" />
+          <Property Name="CONGNGAYLE" Type="Double" />
+          <Property Name="CONGCHUNHAT" Type="Double" />
+          <Property Name="KYHIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NGAYCONG" Type="Double" />
+          <Property Name="CREATED_BY" Type="Int32" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Int32" />
+          <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+        </EntityType>
         <EntityType Name="ChiTietDuAn">
           <Key>
             <PropertyRef Name="MaNhanVien" />
@@ -684,8 +707,8 @@
           <Property Name="ThoiHanDuAn" Type="DateTime" Precision="0" />
           <Property Name="DanhGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="VaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DuAn" Relationship="Self.FK__ChiTietDu__MaDuA__6A30C649" FromRole="ChiTietDuAn" ToRole="DuAn" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChiTietDu__MaNha__6B24EA82" FromRole="ChiTietDuAn" ToRole="NhanVien" />
+          <NavigationProperty Name="DuAn" Relationship="Self.FK__ChiTietDu__MaDuA__70DDC3D8" FromRole="ChiTietDuAn" ToRole="DuAn" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChiTietDu__MaNha__71D1E811" FromRole="ChiTietDuAn" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="ChiTietKhoaDaoTao">
           <Key>
@@ -696,8 +719,8 @@
           <Property Name="MaDaoTao" Type="Int32" Nullable="false" />
           <Property Name="ThoiGianDuKien" Type="Int32" />
           <Property Name="DanhGiaKhoa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="DaoTao" Relationship="Self.FK__ChiTietKh__MaDao__6C190EBB" FromRole="ChiTietKhoaDaoTao" ToRole="DaoTao" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChiTietKh__MaNha__6D0D32F4" FromRole="ChiTietKhoaDaoTao" ToRole="NhanVien" />
+          <NavigationProperty Name="DaoTao" Relationship="Self.FK__ChiTietKh__MaDao__72C60C4A" FromRole="ChiTietKhoaDaoTao" ToRole="DaoTao" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChiTietKh__MaNha__73BA3083" FromRole="ChiTietKhoaDaoTao" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="ChiTietKT_KL">
           <Key>
@@ -708,8 +731,6 @@
           <Property Name="MaSuKien" Type="Int32" Nullable="false" />
           <Property Name="ChiTiet" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="TienThuongPhat" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChiTietKT__MaNha__6E01572D" FromRole="ChiTietKT_KL" ToRole="NhanVien" />
-          <NavigationProperty Name="KT_KL" Relationship="Self.FK__ChiTietKT__MaSuK__6EF57B66" FromRole="ChiTietKT_KL" ToRole="KT_KL" />
           <Property Name="NgayBatDau" Type="DateTime" Precision="3" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="3" />
           <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
@@ -718,6 +739,8 @@
           <Property Name="update_date" Type="DateTime" Precision="3" />
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ChiTietKT__MaNha__160F4887" FromRole="ChiTietKT_KL" ToRole="NhanVien" />
+          <NavigationProperty Name="KT_KL" Relationship="Self.FK__ChiTietKT__MaSuK__17036CC0" FromRole="ChiTietKT_KL" ToRole="KT_KL" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -726,7 +749,7 @@
           <Property Name="MaChucVu" Type="Int32" Nullable="false" />
           <Property Name="TenChucVu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="LuongChucVu" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaChuc__71D1E811" FromRole="ChucVu" ToRole="NhanVien" />
+          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaChuc__787EE5A0" FromRole="ChucVu" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="DaoTao">
           <Key>
@@ -738,7 +761,7 @@
           <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
           <Property Name="ChiPhi" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="ChiTietKhoaDaoTaos" Relationship="Self.FK__ChiTietKh__MaDao__6C190EBB" FromRole="DaoTao" ToRole="ChiTietKhoaDaoTao" />
+          <NavigationProperty Name="ChiTietKhoaDaoTaos" Relationship="Self.FK__ChiTietKh__MaDao__72C60C4A" FromRole="DaoTao" ToRole="ChiTietKhoaDaoTao" />
         </EntityType>
         <EntityType Name="DuAn">
           <Key>
@@ -751,7 +774,7 @@
           <Property Name="NganSach" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietDuAns" Relationship="Self.FK__ChiTietDu__MaDuA__6A30C649" FromRole="DuAn" ToRole="ChiTietDuAn" />
+          <NavigationProperty Name="ChiTietDuAns" Relationship="Self.FK__ChiTietDu__MaDuA__70DDC3D8" FromRole="DuAn" ToRole="ChiTietDuAn" />
         </EntityType>
         <EntityType Name="HopDongLaoDong">
           <Key>
@@ -762,17 +785,17 @@
           <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
           <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
           <Property Name="LuongHopDong" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="MaNhanVien" Type="Int32" />
-          <Property Name="NoiDungHopDong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HopDongLa__MaNha__6FE99F9F" FromRole="HopDongLaoDong" ToRole="NhanVien" />
           <Property Name="TenBaoHiem" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MucDong" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="NoiDungHopDong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__HopDongLa__MaNha__3C34F16F" FromRole="HopDongLaoDong" ToRole="NhanVien" />
         </EntityType>
         <EntityType Name="KT_KL">
           <Key>
@@ -782,417 +805,25 @@
           <Property Name="LoaiSuKien" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayDienRa" Type="DateTime" Precision="0" />
           <Property Name="LyDo" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="ChiTietKT_KL" Relationship="Self.FK__ChiTietKT__MaSuK__6EF57B66" FromRole="KT_KL" ToRole="ChiTietKT_KL" />
+          <NavigationProperty Name="ChiTietKT_KL" Relationship="Self.FK__ChiTietKT__MaSuK__17036CC0" FromRole="KT_KL" ToRole="ChiTietKT_KL" />
         </EntityType>
-        <EntityType Name="LichSuHoatDong">
+        <EntityType Name="KYCONG">
           <Key>
-            <PropertyRef Name="MaHoatDong" />
+            <PropertyRef Name="MAKYCONG" />
           </Key>
-          <Property Name="MaHoatDong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoaiHoatDong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
-          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__LichSuHoa__TenDa__70DDC3D8" FromRole="LichSuHoatDong" ToRole="TaiKhoan" />
-        </EntityType>
-        <EntityType Name="NhanVien">
-          <Key>
-            <PropertyRef Name="MaNhanVien" />
-          </Key>
-          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
-          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
-          <Property Name="SoDienThoai" Type="Int32" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="MaPhongBan" Type="Int32" />
-          <Property Name="MaChucVu" Type="Int32" />
-          <NavigationProperty Name="ChiTietDuAns" Relationship="Self.FK__ChiTietDu__MaNha__6B24EA82" FromRole="NhanVien" ToRole="ChiTietDuAn" />
-          <NavigationProperty Name="ChiTietKhoaDaoTaos" Relationship="Self.FK__ChiTietKh__MaNha__6D0D32F4" FromRole="NhanVien" ToRole="ChiTietKhoaDaoTao" />
-          <NavigationProperty Name="ChiTietKT_KL" Relationship="Self.FK__ChiTietKT__MaNha__6E01572D" FromRole="NhanVien" ToRole="ChiTietKT_KL" />
-          <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__MaChuc__71D1E811" FromRole="NhanVien" ToRole="ChucVu" />
-          <NavigationProperty Name="HopDongLaoDongs" Relationship="Self.FK__HopDongLa__MaNha__6FE99F9F" FromRole="NhanVien" ToRole="HopDongLaoDong" />
-          <NavigationProperty Name="PhongBan" Relationship="Self.FK__NhanVien__MaPhon__72C60C4A" FromRole="NhanVien" ToRole="PhongBan" />
-          <NavigationProperty Name="PhieuLuongs" Relationship="Self.FK__PhieuLuon__MaNha__73BA3083" FromRole="NhanVien" ToRole="PhieuLuong" />
-          <NavigationProperty Name="SoYeuLyLich" Relationship="Self.FK__SoYeuLyLi__MaNha__74AE54BC" FromRole="NhanVien" ToRole="SoYeuLyLich" />
-          <NavigationProperty Name="ThanhToans" Relationship="Self.FK__ThanhToan__MaNha__75A278F5" FromRole="NhanVien" ToRole="ThanhToan" />
-          <Property Name="NgayBatDauLamViec" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="TangCas" Relationship="BTLMonLTTQModel.FK__TangCa__MaNhanVi__1DB06A4F" FromRole="NhanVien" ToRole="TangCa" />
-          <NavigationProperty Name="PhuCaps" Relationship="BTLMonLTTQModel.FK__PhuCap__MaNhanVi__2CF2ADDF" FromRole="NhanVien" ToRole="PhuCap" />
-          <NavigationProperty Name="UngLuongs" Relationship="BTLMonLTTQModel.FK__UngLuong__MaNhan__2DE6D218" FromRole="NhanVien" ToRole="UngLuong" />
-        </EntityType>
-        <EntityType Name="PhieuLuong">
-          <Key>
-            <PropertyRef Name="MaPhieuLuong" />
-          </Key>
-          <Property Name="MaPhieuLuong" Type="Int32" Nullable="false" />
-          <Property Name="NgayTinhLuong" Type="DateTime" Precision="0" />
-          <Property Name="LuongCoBan" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="LuongNhanDuoc" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="TrangThaiTraLuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="MaNhanVien" Type="Int32" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuLuon__MaNha__73BA3083" FromRole="PhieuLuong" ToRole="NhanVien" />
-          <Property Name="TangCa" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="PhuCap" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="UngLuong" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="NgayCong" Type="Double" />
-          <Property Name="KTKL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MAKYCONG" Type="Int32" Nullable="false" />
+          <Property Name="THANG" Type="Int32" />
+          <Property Name="NAM" Type="Int32" />
+          <Property Name="KHOA" Type="Boolean" />
+          <Property Name="NGAYTINHCONG" Type="DateTime" Precision="3" />
+          <Property Name="NGAYCONGTRONGTHANG" Type="Double" />
+          <Property Name="TRANGTHAI" Type="Boolean" />
           <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
-          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="PhongBan">
-          <Key>
-            <PropertyRef Name="MaPhongBan" />
-          </Key>
-          <Property Name="MaPhongBan" Type="Int32" Nullable="false" />
-          <Property Name="TenPhongBan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="SoLuongNhanVien" Type="Int32" />
-          <Property Name="TruongPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaPhon__72C60C4A" FromRole="PhongBan" ToRole="NhanVien" />
-        </EntityType>
-        <EntityType Name="SoYeuLyLich">
-          <Key>
-            <PropertyRef Name="MaNhanVien" />
-          </Key>
-          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
-          <Property Name="TrinhDoHocVan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="KinhNghiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="KyNang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ChungChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="NgoaiNgu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
-          <Property Name="QueQuan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="GiaCanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__SoYeuLyLi__MaNha__74AE54BC" FromRole="SoYeuLyLich" ToRole="NhanVien" />
-          <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="TaiKhoan">
-          <Key>
-            <PropertyRef Name="TenDangNhap" />
-          </Key>
-          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="VaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="TrangThaiTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NgayTao" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="LichSuHoatDongs" Relationship="Self.FK__LichSuHoa__TenDa__70DDC3D8" FromRole="TaiKhoan" ToRole="LichSuHoatDong" />
-        </EntityType>
-        <EntityType Name="ThanhToan">
-          <Key>
-            <PropertyRef Name="MaGiaoDich" />
-          </Key>
-          <Property Name="MaGiaoDich" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NgayGiaoDich" Type="DateTime" Precision="0" />
-          <Property Name="GiaTri" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaNhanVien" Type="Int32" />
-          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ThanhToan__MaNha__75A278F5" FromRole="ThanhToan" ToRole="NhanVien" />
-        </EntityType>
-        <Association Name="FK__ChiTietDu__MaDuA__6A30C649">
-          <End Role="DuAn" Type="Self.DuAn" Multiplicity="1" />
-          <End Role="ChiTietDuAn" Type="Self.ChiTietDuAn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DuAn">
-              <PropertyRef Name="MaDuAn" />
-            </Principal>
-            <Dependent Role="ChiTietDuAn">
-              <PropertyRef Name="MaDuAn" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietDu__MaNha__6B24EA82">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="ChiTietDuAn" Type="Self.ChiTietDuAn" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="ChiTietDuAn">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietKh__MaDao__6C190EBB">
-          <End Role="DaoTao" Type="Self.DaoTao" Multiplicity="1" />
-          <End Role="ChiTietKhoaDaoTao" Type="Self.ChiTietKhoaDaoTao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="DaoTao">
-              <PropertyRef Name="MaDaoTao" />
-            </Principal>
-            <Dependent Role="ChiTietKhoaDaoTao">
-              <PropertyRef Name="MaDaoTao" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietKh__MaNha__6D0D32F4">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="ChiTietKhoaDaoTao" Type="Self.ChiTietKhoaDaoTao" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="ChiTietKhoaDaoTao">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietKT__MaNha__6E01572D">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="ChiTietKT_KL" Type="Self.ChiTietKT_KL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="ChiTietKT_KL">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ChiTietKT__MaSuK__6EF57B66">
-          <End Role="KT_KL" Type="Self.KT_KL" Multiplicity="1" />
-          <End Role="ChiTietKT_KL" Type="Self.ChiTietKT_KL" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="KT_KL">
-              <PropertyRef Name="MaSuKien" />
-            </Principal>
-            <Dependent Role="ChiTietKT_KL">
-              <PropertyRef Name="MaSuKien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__NhanVien__MaChuc__71D1E811">
-          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="ChucVu">
-              <PropertyRef Name="MaChucVu" />
-            </Principal>
-            <Dependent Role="NhanVien">
-              <PropertyRef Name="MaChucVu" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HopDongLa__MaNha__6FE99F9F">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
-          <End Role="HopDongLaoDong" Type="Self.HopDongLaoDong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="HopDongLaoDong">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__LichSuHoa__TenDa__70DDC3D8">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
-          <End Role="LichSuHoatDong" Type="Self.LichSuHoatDong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TaiKhoan">
-              <PropertyRef Name="TenDangNhap" />
-            </Principal>
-            <Dependent Role="LichSuHoatDong">
-              <PropertyRef Name="TenDangNhap" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__NhanVien__MaPhon__72C60C4A">
-          <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="PhongBan">
-              <PropertyRef Name="MaPhongBan" />
-            </Principal>
-            <Dependent Role="NhanVien">
-              <PropertyRef Name="MaPhongBan" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__PhieuLuon__MaNha__73BA3083">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
-          <End Role="PhieuLuong" Type="Self.PhieuLuong" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="PhieuLuong">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__SoYeuLyLi__MaNha__74AE54BC">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
-          <End Role="SoYeuLyLich" Type="Self.SoYeuLyLich" Multiplicity="0..1" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="SoYeuLyLich">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__ThanhToan__MaNha__75A278F5">
-          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
-          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="ThanhToan">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="BTLMonLTTQEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ChiTietDuAns" EntityType="Self.ChiTietDuAn" />
-          <EntitySet Name="ChiTietKhoaDaoTaos" EntityType="Self.ChiTietKhoaDaoTao" />
-          <EntitySet Name="ChiTietKT_KL" EntityType="Self.ChiTietKT_KL" />
-          <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
-          <EntitySet Name="DaoTaos" EntityType="Self.DaoTao" />
-          <EntitySet Name="DuAns" EntityType="Self.DuAn" />
-          <EntitySet Name="HopDongLaoDongs" EntityType="Self.HopDongLaoDong" />
-          <EntitySet Name="KT_KL" EntityType="Self.KT_KL" />
-          <EntitySet Name="LichSuHoatDongs" EntityType="Self.LichSuHoatDong" />
-          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
-          <EntitySet Name="PhieuLuongs" EntityType="Self.PhieuLuong" />
-          <EntitySet Name="PhongBans" EntityType="Self.PhongBan" />
-          <EntitySet Name="SoYeuLyLiches" EntityType="Self.SoYeuLyLich" />
-          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
-          <EntitySet Name="ThanhToans" EntityType="Self.ThanhToan" />
-          <AssociationSet Name="FK__ChiTietDu__MaDuA__6A30C649" Association="Self.FK__ChiTietDu__MaDuA__6A30C649">
-            <End Role="DuAn" EntitySet="DuAns" />
-            <End Role="ChiTietDuAn" EntitySet="ChiTietDuAns" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietDu__MaNha__6B24EA82" Association="Self.FK__ChiTietDu__MaNha__6B24EA82">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="ChiTietDuAn" EntitySet="ChiTietDuAns" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietKh__MaDao__6C190EBB" Association="Self.FK__ChiTietKh__MaDao__6C190EBB">
-            <End Role="DaoTao" EntitySet="DaoTaos" />
-            <End Role="ChiTietKhoaDaoTao" EntitySet="ChiTietKhoaDaoTaos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietKh__MaNha__6D0D32F4" Association="Self.FK__ChiTietKh__MaNha__6D0D32F4">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="ChiTietKhoaDaoTao" EntitySet="ChiTietKhoaDaoTaos" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietKT__MaNha__6E01572D" Association="Self.FK__ChiTietKT__MaNha__6E01572D">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="ChiTietKT_KL" EntitySet="ChiTietKT_KL" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ChiTietKT__MaSuK__6EF57B66" Association="Self.FK__ChiTietKT__MaSuK__6EF57B66">
-            <End Role="KT_KL" EntitySet="KT_KL" />
-            <End Role="ChiTietKT_KL" EntitySet="ChiTietKT_KL" />
-          </AssociationSet>
-          <AssociationSet Name="FK__NhanVien__MaChuc__71D1E811" Association="Self.FK__NhanVien__MaChuc__71D1E811">
-            <End Role="ChucVu" EntitySet="ChucVus" />
-            <End Role="NhanVien" EntitySet="NhanViens" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HopDongLa__MaNha__6FE99F9F" Association="Self.FK__HopDongLa__MaNha__6FE99F9F">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="HopDongLaoDong" EntitySet="HopDongLaoDongs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__LichSuHoa__TenDa__70DDC3D8" Association="Self.FK__LichSuHoa__TenDa__70DDC3D8">
-            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
-            <End Role="LichSuHoatDong" EntitySet="LichSuHoatDongs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__NhanVien__MaPhon__72C60C4A" Association="Self.FK__NhanVien__MaPhon__72C60C4A">
-            <End Role="PhongBan" EntitySet="PhongBans" />
-            <End Role="NhanVien" EntitySet="NhanViens" />
-          </AssociationSet>
-          <AssociationSet Name="FK__PhieuLuon__MaNha__73BA3083" Association="Self.FK__PhieuLuon__MaNha__73BA3083">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="PhieuLuong" EntitySet="PhieuLuongs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__SoYeuLyLi__MaNha__74AE54BC" Association="Self.FK__SoYeuLyLi__MaNha__74AE54BC">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="SoYeuLyLich" EntitySet="SoYeuLyLiches" />
-          </AssociationSet>
-          <AssociationSet Name="FK__ThanhToan__MaNha__75A278F5" Association="Self.FK__ThanhToan__MaNha__75A278F5">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="ThanhToan" EntitySet="ThanhToans" />
-          </AssociationSet>
-          <EntitySet Name="LoaiCas" EntityType="BTLMonLTTQModel.LoaiCa" />
-          <EntitySet Name="LoaiCongs" EntityType="BTLMonLTTQModel.LoaiCong" />
-          <EntitySet Name="KYCONGCHITIETs" EntityType="BTLMonLTTQModel.KYCONGCHITIET" />
-          <EntitySet Name="KYCONGs" EntityType="BTLMonLTTQModel.KYCONG" />
-          <EntitySet Name="BANGCONG_NHANVIEN_CHITIET" EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" />
-          <EntitySet Name="TangCas" EntityType="BTLMonLTTQModel.TangCa" />
-          <AssociationSet Name="FK__TangCa__MaLoaiCa__1EA48E88" Association="BTLMonLTTQModel.FK__TangCa__MaLoaiCa__1EA48E88">
-            <End Role="LoaiCa" EntitySet="LoaiCas" />
-            <End Role="TangCa" EntitySet="TangCas" />
-          </AssociationSet>
-          <AssociationSet Name="FK__TangCa__MaNhanVi__1DB06A4F" Association="BTLMonLTTQModel.FK__TangCa__MaNhanVi__1DB06A4F">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="TangCa" EntitySet="TangCas" />
-          </AssociationSet>
-          <EntitySet Name="PhuCaps" EntityType="BTLMonLTTQModel.PhuCap" />
-          <EntitySet Name="UngLuongs" EntityType="BTLMonLTTQModel.UngLuong" />
-          <AssociationSet Name="FK__PhuCap__MaNhanVi__2CF2ADDF" Association="BTLMonLTTQModel.FK__PhuCap__MaNhanVi__2CF2ADDF">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="PhuCap" EntitySet="PhuCaps" />
-          </AssociationSet>
-          <AssociationSet Name="FK__UngLuong__MaNhan__2DE6D218" Association="BTLMonLTTQModel.FK__UngLuong__MaNhan__2DE6D218">
-            <End Role="NhanVien" EntitySet="NhanViens" />
-            <End Role="UngLuong" EntitySet="UngLuongs" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="LoaiCa">
-          <Key>
-            <PropertyRef Name="MaLoaiCa" />
-          </Key>
-          <Property Name="MaLoaiCa" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="TenLoaiCa" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="HeSo" Type="Double" Nullable="false" />
-          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="create_date" Type="DateTime" Precision="3" />
-          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="delete_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TangCas" Relationship="BTLMonLTTQModel.FK__TangCa__MaLoaiCa__1EA48E88" FromRole="LoaiCa" ToRole="TangCa" />
-        </EntityType>
-        <EntityType Name="LoaiCong">
-          <Key>
-            <PropertyRef Name="MaLoaiCong" />
-          </Key>
-          <Property Name="MaLoaiCong" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="TenLoaiCong" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="HeSo" Type="Double" Nullable="false" />
-          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="create_date" Type="DateTime" Precision="3" />
-          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="delete_date" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="BANGCONG_NHANVIEN_CHITIET">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="MAKYCONG" Type="Int32" />
-          <Property Name="MaNhanVien" Type="Int32" />
-          <Property Name="NGAY" Type="DateTime" Precision="3" />
-          <Property Name="THU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GIOVAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GIORA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NGAYPHEP" Type="Double" />
-          <Property Name="CONGNGAYLE" Type="Double" />
-          <Property Name="CONGCHUNHAT" Type="Double" />
-          <Property Name="KYHIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CREATED_BY" Type="Int32" />
-          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
-          <Property Name="UPDATED_BY" Type="Int32" />
-          <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
-          <Property Name="NGAYCONG" Type="Double" />
         </EntityType>
         <EntityType Name="KYCONGCHITIET">
           <Key>
@@ -1245,75 +876,113 @@
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
         </EntityType>
-        <EntityType Name="KYCONG">
+        <EntityType Name="LichSuHoatDong">
           <Key>
-            <PropertyRef Name="MAKYCONG" />
+            <PropertyRef Name="MaHoatDong" />
           </Key>
-          <Property Name="MAKYCONG" Type="Int32" Nullable="false" />
-          <Property Name="THANG" Type="Int32" />
-          <Property Name="NAM" Type="Int32" />
-          <Property Name="KHOA" Type="Boolean" />
-          <Property Name="NGAYTINHCONG" Type="DateTime" Precision="3" />
-          <Property Name="NGAYCONGTRONGTHANG" Type="Double" />
-          <Property Name="TRANGTHAI" Type="Boolean" />
-          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="create_date" Type="DateTime" Precision="3" />
-          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="update_date" Type="DateTime" Precision="3" />
-          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="delete_date" Type="DateTime" Precision="3" />
+          <Property Name="MaHoatDong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiHoatDong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TaiKhoan" Relationship="Self.FK__LichSuHoa__TenDa__778AC167" FromRole="LichSuHoatDong" ToRole="TaiKhoan" />
         </EntityType>
-        <EntityType Name="TangCa">
+        <EntityType Name="LoaiCa">
           <Key>
-            <PropertyRef Name="MaNhanVien" />
             <PropertyRef Name="MaLoaiCa" />
           </Key>
-          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
-          <Property Name="MaLoaiCa" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="HeSo" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="SoGio" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="SoTien" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="LoaiCa" Relationship="BTLMonLTTQModel.FK__TangCa__MaLoaiCa__1EA48E88" FromRole="TangCa" ToRole="LoaiCa" />
-          <NavigationProperty Name="NhanVien" Relationship="BTLMonLTTQModel.FK__TangCa__MaNhanVi__1DB06A4F" FromRole="TangCa" ToRole="NhanVien" />
+          <Property Name="MaLoaiCa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TenLoaiCa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HeSo" Type="Double" Nullable="false" />
           <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
-          <Property Name="TenLoaiCa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TangCas" Relationship="Self.FK__TangCa__MaLoaiCa__2645B050" FromRole="LoaiCa" ToRole="TangCa" />
         </EntityType>
-        <Association Name="FK__TangCa__MaLoaiCa__1EA48E88">
-          <End Type="BTLMonLTTQModel.LoaiCa" Role="LoaiCa" Multiplicity="1" />
-          <End Type="BTLMonLTTQModel.TangCa" Role="TangCa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LoaiCa">
-              <PropertyRef Name="MaLoaiCa" />
-            </Principal>
-            <Dependent Role="TangCa">
-              <PropertyRef Name="MaLoaiCa" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__TangCa__MaNhanVi__1DB06A4F">
-          <End Type="BTLMonLTTQModel.NhanVien" Role="NhanVien" Multiplicity="1" />
-          <End Type="BTLMonLTTQModel.TangCa" Role="TangCa" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NhanVien">
-              <PropertyRef Name="MaNhanVien" />
-            </Principal>
-            <Dependent Role="TangCa">
-              <PropertyRef Name="MaNhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
+        <EntityType Name="LoaiCong">
+          <Key>
+            <PropertyRef Name="MaLoaiCong" />
+          </Key>
+          <Property Name="MaLoaiCong" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="TenLoaiCong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HeSo" Type="Double" Nullable="false" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="delete_date" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="NhanVien">
+          <Key>
+            <PropertyRef Name="MaNhanVien" />
+          </Key>
+          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="SoDienThoai" Type="Int32" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NgayBatDauLamViec" Type="DateTime" Precision="0" />
+          <Property Name="MaPhongBan" Type="Int32" />
+          <Property Name="MaChucVu" Type="Int32" />
+          <NavigationProperty Name="ChiTietDuAns" Relationship="Self.FK__ChiTietDu__MaNha__71D1E811" FromRole="NhanVien" ToRole="ChiTietDuAn" />
+          <NavigationProperty Name="ChiTietKhoaDaoTaos" Relationship="Self.FK__ChiTietKh__MaNha__73BA3083" FromRole="NhanVien" ToRole="ChiTietKhoaDaoTao" />
+          <NavigationProperty Name="ChiTietKT_KL" Relationship="Self.FK__ChiTietKT__MaNha__160F4887" FromRole="NhanVien" ToRole="ChiTietKT_KL" />
+          <NavigationProperty Name="ChucVu" Relationship="Self.FK__NhanVien__MaChuc__787EE5A0" FromRole="NhanVien" ToRole="ChucVu" />
+          <NavigationProperty Name="HopDongLaoDongs" Relationship="Self.FK__HopDongLa__MaNha__3C34F16F" FromRole="NhanVien" ToRole="HopDongLaoDong" />
+          <NavigationProperty Name="PhongBan" Relationship="Self.FK__NhanVien__MaPhon__797309D9" FromRole="NhanVien" ToRole="PhongBan" />
+          <NavigationProperty Name="PhieuLuongs" Relationship="Self.FK__PhieuLuon__MaNha__7A672E12" FromRole="NhanVien" ToRole="PhieuLuong" />
+          <NavigationProperty Name="PhuCaps" Relationship="Self.FK__PhuCap__MaNhanVi__32AB8735" FromRole="NhanVien" ToRole="PhuCap" />
+          <NavigationProperty Name="SoYeuLyLich" Relationship="Self.FK__SoYeuLyLi__MaNha__7B5B524B" FromRole="NhanVien" ToRole="SoYeuLyLich" />
+          <NavigationProperty Name="TangCas" Relationship="Self.FK__TangCa__MaNhanVi__25518C17" FromRole="NhanVien" ToRole="TangCa" />
+          <NavigationProperty Name="ThanhToans" Relationship="Self.FK__ThanhToan__MaNha__7C4F7684" FromRole="NhanVien" ToRole="ThanhToan" />
+          <NavigationProperty Name="UngLuongs" Relationship="Self.FK__UngLuong__MaNhan__339FAB6E" FromRole="NhanVien" ToRole="UngLuong" />
+        </EntityType>
+        <EntityType Name="PhieuLuong">
+          <Key>
+            <PropertyRef Name="MaPhieuLuong" />
+          </Key>
+          <Property Name="MaPhieuLuong" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTinhLuong" Type="DateTime" Precision="0" />
+          <Property Name="LuongCoBan" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TangCa" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PhuCap" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UngLuong" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NgayCong" Type="Double" />
+          <Property Name="KTKL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="LuongNhanDuoc" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="TrangThaiTraLuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuLuon__MaNha__7A672E12" FromRole="PhieuLuong" ToRole="NhanVien" />
+          <Property Name="TienBaoHiem" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="MaKyCong" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PhongBan">
+          <Key>
+            <PropertyRef Name="MaPhongBan" />
+          </Key>
+          <Property Name="MaPhongBan" Type="Int32" Nullable="false" />
+          <Property Name="TenPhongBan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SoLuongNhanVien" Type="Int32" />
+          <Property Name="TruongPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaPhon__797309D9" FromRole="PhongBan" ToRole="NhanVien" />
+        </EntityType>
         <EntityType Name="PhuCap">
           <Key>
             <PropertyRef Name="MaPhuCap" />
           </Key>
-          <Property Name="MaPhuCap" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhuCap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LoaiPhuCap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="SoTien" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Thang" Type="Int32" />
@@ -1326,53 +995,236 @@
           <Property Name="update_date" Type="DateTime" Precision="3" />
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="NhanVien" Relationship="BTLMonLTTQModel.FK__PhuCap__MaNhanVi__2CF2ADDF" FromRole="PhuCap" ToRole="NhanVien" />
-          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhuCap__MaNhanVi__32AB8735" FromRole="PhuCap" ToRole="NhanVien" />
         </EntityType>
-        <EntityType Name="UngLuong">
+        <EntityType Name="SoYeuLyLich">
           <Key>
-            <PropertyRef Name="MaUngLuong" />
+            <PropertyRef Name="MaNhanVien" />
           </Key>
-          <Property Name="MaUngLuong" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
+          <Property Name="TrinhDoHocVan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KinhNghiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="KyNang" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ChungChi" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="NgoaiNgu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="0" />
+          <Property Name="GioiTinh" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="QueQuan" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="GiaCanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HinhAnh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="QuocTich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__SoYeuLyLi__MaNha__7B5B524B" FromRole="SoYeuLyLich" ToRole="NhanVien" />
+        </EntityType>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="TenDangNhap" />
+          </Key>
+          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MatKhau" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="VaiTro" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThaiTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NgayTao" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="LichSuHoatDongs" Relationship="Self.FK__LichSuHoa__TenDa__778AC167" FromRole="TaiKhoan" ToRole="LichSuHoatDong" />
+        </EntityType>
+        <EntityType Name="TangCa">
+          <Key>
+            <PropertyRef Name="MaNhanVien" />
+            <PropertyRef Name="MaLoaiCa" />
+          </Key>
+          <Property Name="MaNhanVien" Type="Int32" Nullable="false" />
+          <Property Name="MaLoaiCa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="TenLoaiCa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="HeSo" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SoGio" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="SoTien" Type="Decimal" Precision="18" Scale="2" />
-          <Property Name="Thang" Type="Int32" />
-          <Property Name="Nam" Type="Int32" />
           <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="MaNhanVien" Type="Int32" />
-          <NavigationProperty Name="NhanVien" Relationship="BTLMonLTTQModel.FK__UngLuong__MaNhan__2DE6D218" FromRole="UngLuong" ToRole="NhanVien" />
           <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="create_date" Type="DateTime" Precision="3" />
           <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="update_date" Type="DateTime" Precision="3" />
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
-          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="LoaiCa" Relationship="Self.FK__TangCa__MaLoaiCa__2645B050" FromRole="TangCa" ToRole="LoaiCa" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__TangCa__MaNhanVi__25518C17" FromRole="TangCa" ToRole="NhanVien" />
         </EntityType>
-        <EntityType Name="BANGCONG_NHANVIEN_CHITIET">
+        <EntityType Name="ThanhToan">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="MaGiaoDich" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="MAKYCONG" Type="Int32" />
+          <Property Name="MaGiaoDich" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NgayGiaoDich" Type="DateTime" Precision="0" />
+          <Property Name="GiaTri" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NoiDung" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MaNhanVien" Type="Int32" />
-          <Property Name="NGAY" Type="DateTime" Precision="3" />
-          <Property Name="THU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GIOVAO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GIORA" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="NGAYPHEP" Type="Double" />
-          <Property Name="CONGNGAYLE" Type="Double" />
-          <Property Name="NGAYCONG" Type="Double" />
-          <Property Name="CONGCHUNHAT" Type="Double" />
-          <Property Name="KYHIEU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="GHICHU" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CREATED_BY" Type="Int32" />
-          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
-          <Property Name="UPDATED_BY" Type="Int32" />
-          <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__ThanhToan__MaNha__7C4F7684" FromRole="ThanhToan" ToRole="NhanVien" />
         </EntityType>
-        <Association Name="FK__PhuCap__MaNhanVi__2CF2ADDF">
-          <End Type="BTLMonLTTQModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
-          <End Type="BTLMonLTTQModel.PhuCap" Role="PhuCap" Multiplicity="*" />
+        <EntityType Name="UngLuong">
+          <Key>
+            <PropertyRef Name="MaUngLuong" />
+          </Key>
+          <Property Name="MaUngLuong" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="SoTien" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Thang" Type="Int32" />
+          <Property Name="Nam" Type="Int32" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="delete_date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NhanVien" Relationship="Self.FK__UngLuong__MaNhan__339FAB6E" FromRole="UngLuong" ToRole="NhanVien" />
+        </EntityType>
+        <Association Name="FK__ChiTietDu__MaDuA__70DDC3D8">
+          <End Role="DuAn" Type="Self.DuAn" Multiplicity="1" />
+          <End Role="ChiTietDuAn" Type="Self.ChiTietDuAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DuAn">
+              <PropertyRef Name="MaDuAn" />
+            </Principal>
+            <Dependent Role="ChiTietDuAn">
+              <PropertyRef Name="MaDuAn" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietDu__MaNha__71D1E811">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="ChiTietDuAn" Type="Self.ChiTietDuAn" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="ChiTietDuAn">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietKh__MaDao__72C60C4A">
+          <End Role="DaoTao" Type="Self.DaoTao" Multiplicity="1" />
+          <End Role="ChiTietKhoaDaoTao" Type="Self.ChiTietKhoaDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DaoTao">
+              <PropertyRef Name="MaDaoTao" />
+            </Principal>
+            <Dependent Role="ChiTietKhoaDaoTao">
+              <PropertyRef Name="MaDaoTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietKh__MaNha__73BA3083">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="ChiTietKhoaDaoTao" Type="Self.ChiTietKhoaDaoTao" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="ChiTietKhoaDaoTao">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietKT__MaNha__160F4887">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="ChiTietKT_KL" Type="Self.ChiTietKT_KL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="ChiTietKT_KL">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ChiTietKT__MaSuK__17036CC0">
+          <End Role="KT_KL" Type="Self.KT_KL" Multiplicity="1" />
+          <End Role="ChiTietKT_KL" Type="Self.ChiTietKT_KL" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KT_KL">
+              <PropertyRef Name="MaSuKien" />
+            </Principal>
+            <Dependent Role="ChiTietKT_KL">
+              <PropertyRef Name="MaSuKien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaChuc__787EE5A0">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HopDongLa__MaNha__3C34F16F">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="HopDongLaoDong" Type="Self.HopDongLaoDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="HopDongLaoDong">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__LichSuHoa__TenDa__778AC167">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="LichSuHoatDong" Type="Self.LichSuHoatDong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="LichSuHoatDong">
+              <PropertyRef Name="TenDangNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TangCa__MaLoaiCa__2645B050">
+          <End Role="LoaiCa" Type="Self.LoaiCa" Multiplicity="1" />
+          <End Role="TangCa" Type="Self.TangCa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiCa">
+              <PropertyRef Name="MaLoaiCa" />
+            </Principal>
+            <Dependent Role="TangCa">
+              <PropertyRef Name="MaLoaiCa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NhanVien__MaPhon__797309D9">
+          <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhieuLuon__MaNha__7A672E12">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="PhieuLuong" Type="Self.PhieuLuong" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="PhieuLuong">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhuCap__MaNhanVi__32AB8735">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="PhuCap" Type="Self.PhuCap" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NhanVien">
               <PropertyRef Name="MaNhanVien" />
@@ -1382,9 +1234,45 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__UngLuong__MaNhan__2DE6D218">
-          <End Type="BTLMonLTTQModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
-          <End Type="BTLMonLTTQModel.UngLuong" Role="UngLuong" Multiplicity="*" />
+        <Association Name="FK__SoYeuLyLi__MaNha__7B5B524B">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="SoYeuLyLich" Type="Self.SoYeuLyLich" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="SoYeuLyLich">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TangCa__MaNhanVi__25518C17">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="1" />
+          <End Role="TangCa" Type="Self.TangCa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="TangCa">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ThanhToan__MaNha__7C4F7684">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="ThanhToan" Type="Self.ThanhToan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="ThanhToan">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__UngLuong__MaNhan__339FAB6E">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="UngLuong" Type="Self.UngLuong" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NhanVien">
               <PropertyRef Name="MaNhanVien" />
@@ -1394,12 +1282,128 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="BTLMonLTTQEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BANGCONG_NHANVIEN_CHITIET" EntityType="Self.BANGCONG_NHANVIEN_CHITIET" />
+          <EntitySet Name="ChiTietDuAns" EntityType="Self.ChiTietDuAn" />
+          <EntitySet Name="ChiTietKhoaDaoTaos" EntityType="Self.ChiTietKhoaDaoTao" />
+          <EntitySet Name="ChiTietKT_KL" EntityType="Self.ChiTietKT_KL" />
+          <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
+          <EntitySet Name="DaoTaos" EntityType="Self.DaoTao" />
+          <EntitySet Name="DuAns" EntityType="Self.DuAn" />
+          <EntitySet Name="HopDongLaoDongs" EntityType="Self.HopDongLaoDong" />
+          <EntitySet Name="KT_KL" EntityType="Self.KT_KL" />
+          <EntitySet Name="KYCONGs" EntityType="Self.KYCONG" />
+          <EntitySet Name="KYCONGCHITIETs" EntityType="Self.KYCONGCHITIET" />
+          <EntitySet Name="LichSuHoatDongs" EntityType="Self.LichSuHoatDong" />
+          <EntitySet Name="LoaiCas" EntityType="Self.LoaiCa" />
+          <EntitySet Name="LoaiCongs" EntityType="Self.LoaiCong" />
+          <EntitySet Name="NhanViens" EntityType="Self.NhanVien" />
+          <EntitySet Name="PhieuLuongs" EntityType="Self.PhieuLuong" />
+          <EntitySet Name="PhongBans" EntityType="Self.PhongBan" />
+          <EntitySet Name="PhuCaps" EntityType="Self.PhuCap" />
+          <EntitySet Name="SoYeuLyLiches" EntityType="Self.SoYeuLyLich" />
+          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
+          <EntitySet Name="TangCas" EntityType="Self.TangCa" />
+          <EntitySet Name="ThanhToans" EntityType="Self.ThanhToan" />
+          <EntitySet Name="UngLuongs" EntityType="Self.UngLuong" />
+          <AssociationSet Name="FK__ChiTietDu__MaDuA__70DDC3D8" Association="Self.FK__ChiTietDu__MaDuA__70DDC3D8">
+            <End Role="DuAn" EntitySet="DuAns" />
+            <End Role="ChiTietDuAn" EntitySet="ChiTietDuAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietDu__MaNha__71D1E811" Association="Self.FK__ChiTietDu__MaNha__71D1E811">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="ChiTietDuAn" EntitySet="ChiTietDuAns" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietKh__MaDao__72C60C4A" Association="Self.FK__ChiTietKh__MaDao__72C60C4A">
+            <End Role="DaoTao" EntitySet="DaoTaos" />
+            <End Role="ChiTietKhoaDaoTao" EntitySet="ChiTietKhoaDaoTaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietKh__MaNha__73BA3083" Association="Self.FK__ChiTietKh__MaNha__73BA3083">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="ChiTietKhoaDaoTao" EntitySet="ChiTietKhoaDaoTaos" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietKT__MaNha__160F4887" Association="Self.FK__ChiTietKT__MaNha__160F4887">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="ChiTietKT_KL" EntitySet="ChiTietKT_KL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ChiTietKT__MaSuK__17036CC0" Association="Self.FK__ChiTietKT__MaSuK__17036CC0">
+            <End Role="KT_KL" EntitySet="KT_KL" />
+            <End Role="ChiTietKT_KL" EntitySet="ChiTietKT_KL" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaChuc__787EE5A0" Association="Self.FK__NhanVien__MaChuc__787EE5A0">
+            <End Role="ChucVu" EntitySet="ChucVus" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HopDongLa__MaNha__3C34F16F" Association="Self.FK__HopDongLa__MaNha__3C34F16F">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="HopDongLaoDong" EntitySet="HopDongLaoDongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__LichSuHoa__TenDa__778AC167" Association="Self.FK__LichSuHoa__TenDa__778AC167">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="LichSuHoatDong" EntitySet="LichSuHoatDongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TangCa__MaLoaiCa__2645B050" Association="Self.FK__TangCa__MaLoaiCa__2645B050">
+            <End Role="LoaiCa" EntitySet="LoaiCas" />
+            <End Role="TangCa" EntitySet="TangCas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NhanVien__MaPhon__797309D9" Association="Self.FK__NhanVien__MaPhon__797309D9">
+            <End Role="PhongBan" EntitySet="PhongBans" />
+            <End Role="NhanVien" EntitySet="NhanViens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhieuLuon__MaNha__7A672E12" Association="Self.FK__PhieuLuon__MaNha__7A672E12">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="PhieuLuong" EntitySet="PhieuLuongs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhuCap__MaNhanVi__32AB8735" Association="Self.FK__PhuCap__MaNhanVi__32AB8735">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="PhuCap" EntitySet="PhuCaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SoYeuLyLi__MaNha__7B5B524B" Association="Self.FK__SoYeuLyLi__MaNha__7B5B524B">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="SoYeuLyLich" EntitySet="SoYeuLyLiches" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TangCa__MaNhanVi__25518C17" Association="Self.FK__TangCa__MaNhanVi__25518C17">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="TangCa" EntitySet="TangCas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ThanhToan__MaNha__7C4F7684" Association="Self.FK__ThanhToan__MaNha__7C4F7684">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="ThanhToan" EntitySet="ThanhToans" />
+          </AssociationSet>
+          <AssociationSet Name="FK__UngLuong__MaNhan__339FAB6E" Association="Self.FK__UngLuong__MaNhan__339FAB6E">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="UngLuong" EntitySet="UngLuongs" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BTLMonLTTQModelStoreContainer" CdmEntityContainer="BTLMonLTTQEntities">
+          <EntitySetMapping Name="BANGCONG_NHANVIEN_CHITIET">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET">
+              <MappingFragment StoreEntitySet="BANGCONG_NHANVIEN_CHITIET">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+                <ScalarProperty Name="THU" ColumnName="THU" />
+                <ScalarProperty Name="GIOVAO" ColumnName="GIOVAO" />
+                <ScalarProperty Name="GIORA" ColumnName="GIORA" />
+                <ScalarProperty Name="NGAYPHEP" ColumnName="NGAYPHEP" />
+                <ScalarProperty Name="CONGNGAYLE" ColumnName="CONGNGAYLE" />
+                <ScalarProperty Name="CONGCHUNHAT" ColumnName="CONGCHUNHAT" />
+                <ScalarProperty Name="KYHIEU" ColumnName="KYHIEU" />
+                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
+                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ChiTietDuAns">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.ChiTietDuAn">
               <MappingFragment StoreEntitySet="ChiTietDuAn">
@@ -1424,18 +1428,18 @@
           <EntitySetMapping Name="ChiTietKT_KL">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.ChiTietKT_KL">
               <MappingFragment StoreEntitySet="ChiTietKT_KL">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
-                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="MaSuKien" ColumnName="MaSuKien" />
                 <ScalarProperty Name="ChiTiet" ColumnName="ChiTiet" />
                 <ScalarProperty Name="TienThuongPhat" ColumnName="TienThuongPhat" />
+                <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+                <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1476,21 +1480,21 @@
           <EntitySetMapping Name="HopDongLaoDongs">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.HopDongLaoDong">
               <MappingFragment StoreEntitySet="HopDongLaoDong">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="MucDong" ColumnName="MucDong" />
-                <ScalarProperty Name="TenBaoHiem" ColumnName="TenBaoHiem" />
                 <ScalarProperty Name="MaHopDong" ColumnName="MaHopDong" />
                 <ScalarProperty Name="LoaiHopDong" ColumnName="LoaiHopDong" />
                 <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
                 <ScalarProperty Name="NgayKetThuc" ColumnName="NgayKetThuc" />
                 <ScalarProperty Name="LuongHopDong" ColumnName="LuongHopDong" />
+                <ScalarProperty Name="TenBaoHiem" ColumnName="TenBaoHiem" />
+                <ScalarProperty Name="MucDong" ColumnName="MucDong" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="NoiDungHopDong" ColumnName="NoiDungHopDong" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1501,6 +1505,76 @@
                 <ScalarProperty Name="LoaiSuKien" ColumnName="LoaiSuKien" />
                 <ScalarProperty Name="NgayDienRa" ColumnName="NgayDienRa" />
                 <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KYCONGs">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONG">
+              <MappingFragment StoreEntitySet="KYCONG">
+                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
+                <ScalarProperty Name="THANG" ColumnName="THANG" />
+                <ScalarProperty Name="NAM" ColumnName="NAM" />
+                <ScalarProperty Name="KHOA" ColumnName="KHOA" />
+                <ScalarProperty Name="NGAYTINHCONG" ColumnName="NGAYTINHCONG" />
+                <ScalarProperty Name="NGAYCONGTRONGTHANG" ColumnName="NGAYCONGTRONGTHANG" />
+                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KYCONGCHITIETs">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONGCHITIET">
+              <MappingFragment StoreEntitySet="KYCONGCHITIET">
+                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="D1" ColumnName="D1" />
+                <ScalarProperty Name="D2" ColumnName="D2" />
+                <ScalarProperty Name="D3" ColumnName="D3" />
+                <ScalarProperty Name="D4" ColumnName="D4" />
+                <ScalarProperty Name="D5" ColumnName="D5" />
+                <ScalarProperty Name="D6" ColumnName="D6" />
+                <ScalarProperty Name="D7" ColumnName="D7" />
+                <ScalarProperty Name="D8" ColumnName="D8" />
+                <ScalarProperty Name="D9" ColumnName="D9" />
+                <ScalarProperty Name="D10" ColumnName="D10" />
+                <ScalarProperty Name="D11" ColumnName="D11" />
+                <ScalarProperty Name="D12" ColumnName="D12" />
+                <ScalarProperty Name="D13" ColumnName="D13" />
+                <ScalarProperty Name="D14" ColumnName="D14" />
+                <ScalarProperty Name="D15" ColumnName="D15" />
+                <ScalarProperty Name="D16" ColumnName="D16" />
+                <ScalarProperty Name="D17" ColumnName="D17" />
+                <ScalarProperty Name="D18" ColumnName="D18" />
+                <ScalarProperty Name="D19" ColumnName="D19" />
+                <ScalarProperty Name="D20" ColumnName="D20" />
+                <ScalarProperty Name="D21" ColumnName="D21" />
+                <ScalarProperty Name="D22" ColumnName="D22" />
+                <ScalarProperty Name="D23" ColumnName="D23" />
+                <ScalarProperty Name="D24" ColumnName="D24" />
+                <ScalarProperty Name="D25" ColumnName="D25" />
+                <ScalarProperty Name="D26" ColumnName="D26" />
+                <ScalarProperty Name="D27" ColumnName="D27" />
+                <ScalarProperty Name="D28" ColumnName="D28" />
+                <ScalarProperty Name="D29" ColumnName="D29" />
+                <ScalarProperty Name="D30" ColumnName="D30" />
+                <ScalarProperty Name="D31" ColumnName="D31" />
+                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
+                <ScalarProperty Name="NGAYPHEP" ColumnName="NGAYPHEP" />
+                <ScalarProperty Name="NGHIKHONGPHEP" ColumnName="NGHIKHONGPHEP" />
+                <ScalarProperty Name="CONGNGAYLE" ColumnName="CONGNGAYLE" />
+                <ScalarProperty Name="CONGCHUNHAT" ColumnName="CONGCHUNHAT" />
+                <ScalarProperty Name="TONGNGAYCONG" ColumnName="TONGNGAYCONG" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1515,15 +1589,45 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LoaiCas">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.LoaiCa">
+              <MappingFragment StoreEntitySet="LoaiCa">
+                <ScalarProperty Name="MaLoaiCa" ColumnName="MaLoaiCa" />
+                <ScalarProperty Name="TenLoaiCa" ColumnName="TenLoaiCa" />
+                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiCongs">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.LoaiCong">
+              <MappingFragment StoreEntitySet="LoaiCong">
+                <ScalarProperty Name="MaLoaiCong" ColumnName="MaLoaiCong" />
+                <ScalarProperty Name="TenLoaiCong" ColumnName="TenLoaiCong" />
+                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
-                <ScalarProperty Name="NgayBatDauLamViec" ColumnName="NgayBatDauLamViec" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="SoDienThoai" ColumnName="SoDienThoai" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NgayBatDauLamViec" ColumnName="NgayBatDauLamViec" />
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
               </MappingFragment>
@@ -1532,24 +1636,26 @@
           <EntitySetMapping Name="PhieuLuongs">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.PhieuLuong">
               <MappingFragment StoreEntitySet="PhieuLuong">
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="KTKL" ColumnName="KTKL" />
-                <ScalarProperty Name="NgayCong" ColumnName="NgayCong" />
-                <ScalarProperty Name="UngLuong" ColumnName="UngLuong" />
-                <ScalarProperty Name="PhuCap" ColumnName="PhuCap" />
-                <ScalarProperty Name="TangCa" ColumnName="TangCa" />
+                <ScalarProperty Name="MaKyCong" ColumnName="MaKyCong" />
+                <ScalarProperty Name="TienBaoHiem" ColumnName="TienBaoHiem" />
                 <ScalarProperty Name="MaPhieuLuong" ColumnName="MaPhieuLuong" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgayTinhLuong" ColumnName="NgayTinhLuong" />
                 <ScalarProperty Name="LuongCoBan" ColumnName="LuongCoBan" />
+                <ScalarProperty Name="TangCa" ColumnName="TangCa" />
+                <ScalarProperty Name="PhuCap" ColumnName="PhuCap" />
+                <ScalarProperty Name="UngLuong" ColumnName="UngLuong" />
+                <ScalarProperty Name="NgayCong" ColumnName="NgayCong" />
+                <ScalarProperty Name="KTKL" ColumnName="KTKL" />
                 <ScalarProperty Name="LuongNhanDuoc" ColumnName="LuongNhanDuoc" />
                 <ScalarProperty Name="TrangThaiTraLuong" ColumnName="TrangThaiTraLuong" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1563,11 +1669,29 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="PhuCaps">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.PhuCap">
+              <MappingFragment StoreEntitySet="PhuCap">
+                <ScalarProperty Name="MaPhuCap" ColumnName="MaPhuCap" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="LoaiPhuCap" ColumnName="LoaiPhuCap" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="SoYeuLyLiches">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.SoYeuLyLich">
               <MappingFragment StoreEntitySet="SoYeuLyLich">
-                <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
-                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="TrinhDoHocVan" ColumnName="TrinhDoHocVan" />
                 <ScalarProperty Name="KinhNghiem" ColumnName="KinhNghiem" />
@@ -1578,6 +1702,8 @@
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="QueQuan" ColumnName="QueQuan" />
                 <ScalarProperty Name="GiaCanh" ColumnName="GiaCanh" />
+                <ScalarProperty Name="HinhAnh" ColumnName="HinhAnh" />
+                <ScalarProperty Name="QuocTich" ColumnName="QuocTich" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1592,6 +1718,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TangCas">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.TangCa">
+              <MappingFragment StoreEntitySet="TangCa">
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="MaLoaiCa" ColumnName="MaLoaiCa" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="TenLoaiCa" ColumnName="TenLoaiCa" />
+                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
+                <ScalarProperty Name="SoGio" ColumnName="SoGio" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ThanhToans">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.ThanhToan">
               <MappingFragment StoreEntitySet="ThanhToan">
@@ -1603,208 +1749,22 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LoaiCas">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.LoaiCa">
-              <MappingFragment StoreEntitySet="LoaiCa">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
-                <ScalarProperty Name="TenLoaiCa" ColumnName="TenLoaiCa" />
-                <ScalarProperty Name="MaLoaiCa" ColumnName="MaLoaiCa" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="LoaiCongs">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.LoaiCong">
-              <MappingFragment StoreEntitySet="LoaiCong">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
-                <ScalarProperty Name="TenLoaiCong" ColumnName="TenLoaiCong" />
-                <ScalarProperty Name="MaLoaiCong" ColumnName="MaLoaiCong" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BANGCONG_NHANVIEN_CHITIET">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET">
-              <MappingFragment StoreEntitySet="BANGCONG_NHANVIEN_CHITIET">
-                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
-                <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-                <ScalarProperty Name="KYHIEU" ColumnName="KYHIEU" />
-                <ScalarProperty Name="CONGCHUNHAT" ColumnName="CONGCHUNHAT" />
-                <ScalarProperty Name="CONGNGAYLE" ColumnName="CONGNGAYLE" />
-                <ScalarProperty Name="NGAYPHEP" ColumnName="NGAYPHEP" />
-                <ScalarProperty Name="GIORA" ColumnName="GIORA" />
-                <ScalarProperty Name="GIOVAO" ColumnName="GIOVAO" />
-                <ScalarProperty Name="THU" ColumnName="THU" />
-                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KYCONGCHITIETs">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONGCHITIET">
-              <MappingFragment StoreEntitySet="KYCONGCHITIET">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="TONGNGAYCONG" ColumnName="TONGNGAYCONG" />
-                <ScalarProperty Name="CONGCHUNHAT" ColumnName="CONGCHUNHAT" />
-                <ScalarProperty Name="CONGNGAYLE" ColumnName="CONGNGAYLE" />
-                <ScalarProperty Name="NGHIKHONGPHEP" ColumnName="NGHIKHONGPHEP" />
-                <ScalarProperty Name="NGAYPHEP" ColumnName="NGAYPHEP" />
-                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
-                <ScalarProperty Name="D31" ColumnName="D31" />
-                <ScalarProperty Name="D30" ColumnName="D30" />
-                <ScalarProperty Name="D29" ColumnName="D29" />
-                <ScalarProperty Name="D28" ColumnName="D28" />
-                <ScalarProperty Name="D27" ColumnName="D27" />
-                <ScalarProperty Name="D26" ColumnName="D26" />
-                <ScalarProperty Name="D25" ColumnName="D25" />
-                <ScalarProperty Name="D24" ColumnName="D24" />
-                <ScalarProperty Name="D23" ColumnName="D23" />
-                <ScalarProperty Name="D22" ColumnName="D22" />
-                <ScalarProperty Name="D21" ColumnName="D21" />
-                <ScalarProperty Name="D20" ColumnName="D20" />
-                <ScalarProperty Name="D19" ColumnName="D19" />
-                <ScalarProperty Name="D18" ColumnName="D18" />
-                <ScalarProperty Name="D17" ColumnName="D17" />
-                <ScalarProperty Name="D16" ColumnName="D16" />
-                <ScalarProperty Name="D15" ColumnName="D15" />
-                <ScalarProperty Name="D14" ColumnName="D14" />
-                <ScalarProperty Name="D13" ColumnName="D13" />
-                <ScalarProperty Name="D12" ColumnName="D12" />
-                <ScalarProperty Name="D11" ColumnName="D11" />
-                <ScalarProperty Name="D10" ColumnName="D10" />
-                <ScalarProperty Name="D9" ColumnName="D9" />
-                <ScalarProperty Name="D8" ColumnName="D8" />
-                <ScalarProperty Name="D7" ColumnName="D7" />
-                <ScalarProperty Name="D6" ColumnName="D6" />
-                <ScalarProperty Name="D5" ColumnName="D5" />
-                <ScalarProperty Name="D4" ColumnName="D4" />
-                <ScalarProperty Name="D3" ColumnName="D3" />
-                <ScalarProperty Name="D2" ColumnName="D2" />
-                <ScalarProperty Name="D1" ColumnName="D1" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="KYCONGs">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.KYCONG">
-              <MappingFragment StoreEntitySet="KYCONG">
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="TRANGTHAI" ColumnName="TRANGTHAI" />
-                <ScalarProperty Name="NGAYCONGTRONGTHANG" ColumnName="NGAYCONGTRONGTHANG" />
-                <ScalarProperty Name="NGAYTINHCONG" ColumnName="NGAYTINHCONG" />
-                <ScalarProperty Name="KHOA" ColumnName="KHOA" />
-                <ScalarProperty Name="NAM" ColumnName="NAM" />
-                <ScalarProperty Name="THANG" ColumnName="THANG" />
-                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="BANGCONG_NHANVIEN_CHITIET">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET">
-              <MappingFragment StoreEntitySet="BANGCONG_NHANVIEN_CHITIET">
-                <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
-                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
-                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
-                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
-                <ScalarProperty Name="GHICHU" ColumnName="GHICHU" />
-                <ScalarProperty Name="KYHIEU" ColumnName="KYHIEU" />
-                <ScalarProperty Name="CONGCHUNHAT" ColumnName="CONGCHUNHAT" />
-                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
-                <ScalarProperty Name="CONGNGAYLE" ColumnName="CONGNGAYLE" />
-                <ScalarProperty Name="NGAYPHEP" ColumnName="NGAYPHEP" />
-                <ScalarProperty Name="GIORA" ColumnName="GIORA" />
-                <ScalarProperty Name="GIOVAO" ColumnName="GIOVAO" />
-                <ScalarProperty Name="THU" ColumnName="THU" />
-                <ScalarProperty Name="NGAY" ColumnName="NGAY" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-                <ScalarProperty Name="MAKYCONG" ColumnName="MAKYCONG" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TangCas">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.TangCa">
-              <MappingFragment StoreEntitySet="TangCa">
-                <ScalarProperty Name="TenLoaiCa" ColumnName="TenLoaiCa" />
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
-                <ScalarProperty Name="SoGio" ColumnName="SoGio" />
-                <ScalarProperty Name="HeSo" ColumnName="HeSo" />
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="MaLoaiCa" ColumnName="MaLoaiCa" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="PhuCaps">
-            <EntityTypeMapping TypeName="BTLMonLTTQModel.PhuCap">
-              <MappingFragment StoreEntitySet="PhuCap">
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="Nam" ColumnName="Nam" />
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
-                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
-                <ScalarProperty Name="LoaiPhuCap" ColumnName="LoaiPhuCap" />
-                <ScalarProperty Name="MaPhuCap" ColumnName="MaPhuCap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UngLuongs">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.UngLuong">
               <MappingFragment StoreEntitySet="UngLuong">
-                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
-                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
-                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
-                <ScalarProperty Name="update_date" ColumnName="update_date" />
-                <ScalarProperty Name="update_by" ColumnName="update_by" />
-                <ScalarProperty Name="create_date" ColumnName="create_date" />
-                <ScalarProperty Name="create_by" ColumnName="create_by" />
-                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
-                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
-                <ScalarProperty Name="Nam" ColumnName="Nam" />
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
-                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
                 <ScalarProperty Name="MaUngLuong" ColumnName="MaUngLuong" />
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="SoTien" ColumnName="SoTien" />
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

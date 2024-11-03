@@ -25,6 +25,7 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
         public virtual DbSet<ChiTietDuAn> ChiTietDuAns { get; set; }
         public virtual DbSet<ChiTietKhoaDaoTao> ChiTietKhoaDaoTaos { get; set; }
         public virtual DbSet<ChiTietKT_KL> ChiTietKT_KL { get; set; }
@@ -33,20 +34,19 @@ namespace DAL
         public virtual DbSet<DuAn> DuAns { get; set; }
         public virtual DbSet<HopDongLaoDong> HopDongLaoDongs { get; set; }
         public virtual DbSet<KT_KL> KT_KL { get; set; }
+        public virtual DbSet<KYCONG> KYCONGs { get; set; }
+        public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
         public virtual DbSet<LichSuHoatDong> LichSuHoatDongs { get; set; }
+        public virtual DbSet<LoaiCa> LoaiCas { get; set; }
+        public virtual DbSet<LoaiCong> LoaiCongs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<PhieuLuong> PhieuLuongs { get; set; }
         public virtual DbSet<PhongBan> PhongBans { get; set; }
+        public virtual DbSet<PhuCap> PhuCaps { get; set; }
         public virtual DbSet<SoYeuLyLich> SoYeuLyLiches { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
-        public virtual DbSet<ThanhToan> ThanhToans { get; set; }
-        public virtual DbSet<LoaiCa> LoaiCas { get; set; }
-        public virtual DbSet<LoaiCong> LoaiCongs { get; set; }
-        public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
-        public virtual DbSet<KYCONG> KYCONGs { get; set; }
-        public virtual DbSet<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
         public virtual DbSet<TangCa> TangCas { get; set; }
-        public virtual DbSet<PhuCap> PhuCaps { get; set; }
+        public virtual DbSet<ThanhToan> ThanhToans { get; set; }
         public virtual DbSet<UngLuong> UngLuongs { get; set; }
     }
 }

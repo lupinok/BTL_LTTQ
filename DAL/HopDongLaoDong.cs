@@ -19,10 +19,10 @@ namespace DAL
         public Nullable<System.DateTime> NgayBatDau { get; set; }
         public Nullable<System.DateTime> NgayKetThuc { get; set; }
         public Nullable<decimal> LuongHopDong { get; set; }
-        public Nullable<int> MaNhanVien { get; set; }
-        public string NoiDungHopDong { get; set; }
         public string TenBaoHiem { get; set; }
         public Nullable<decimal> MucDong { get; set; }
+        public Nullable<int> MaNhanVien { get; set; }
+        public string NoiDungHopDong { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }

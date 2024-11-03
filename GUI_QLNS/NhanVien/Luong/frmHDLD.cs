@@ -36,7 +36,11 @@ namespace GUI_QLNS.NhanVien.Luong
             txtLuong.Enabled = !kt;
             scNhanVien.Enabled = !kt;
             txtSHD.Enabled = !kt;
-
+            cbLoaiHD.Enabled = !kt;
+            cbBaoHiem.Enabled = !kt;
+            txtMD.Enabled = !kt;
+            dateNBD.Enabled = !kt;
+            dateNKT.Enabled = !kt;
         }
         void loadData()
         {
@@ -219,8 +223,12 @@ namespace GUI_QLNS.NhanVien.Luong
         {
             try
             {
+
+                _them = true;
+                _showHide(false);
                 if (gvHDLD.RowCount > 0)
                 {
+                   
                     // Lấy mã hợp đồng từ dòng được chọn
                     mahd = int.Parse(gvHDLD.GetFocusedRowCellValue("MaHopDong").ToString());
 
@@ -250,9 +258,7 @@ namespace GUI_QLNS.NhanVien.Luong
                     cbBaoHiem.Text = gvHDLD.GetFocusedRowCellValue("TenBaoHiem")?.ToString();
                     txtMD.Text = gvHDLD.GetFocusedRowCellValue("MucDong")?.ToString();
 
-                    // Enable/disable các nút chức năng
-                    btnSua.Enabled = true;
-                    btnXoa.Enabled = true;
+                    btnHuy.Enabled = true;
                 }
                 else
                 {

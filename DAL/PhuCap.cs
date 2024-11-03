@@ -15,6 +15,7 @@ namespace DAL
     public partial class PhuCap
     {
         public string MaPhuCap { get; set; }
+        public string HoTen { get; set; }
         public string LoaiPhuCap { get; set; }
         public Nullable<decimal> SoTien { get; set; }
         public Nullable<int> Thang { get; set; }
@@ -27,7 +28,6 @@ namespace DAL
         public Nullable<System.DateTime> update_date { get; set; }
         public string delete_by { get; set; }
         public Nullable<System.DateTime> delete_date { get; set; }
-        public string HoTen { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
     }

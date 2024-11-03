@@ -33,11 +33,8 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
-            this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
+            this.btnIn = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.btnXem = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
@@ -53,6 +50,7 @@
             this.gcHDLD = new DevExpress.XtraGrid.GridControl();
             this.gvHDLD = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.MaPhieuLuong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.MaKyCong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.HoTen = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayTinhLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LuongCoBan = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -60,6 +58,7 @@
             this.PhuCap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UngLuong = new DevExpress.XtraGrid.Columns.GridColumn();
             this.NgayCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.TienBaoHiem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.KTKL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LuongNhanDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -82,11 +81,8 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnThem,
-            this.btnSua,
-            this.btnXoa,
-            this.btnLuu,
+            this.btnIn,
             this.btnHuy,
-            this.btnXem,
             this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 7;
@@ -100,11 +96,8 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnIn, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -117,26 +110,12 @@
             this.btnThem.Name = "btnThem";
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
             // 
-            // btnSua
+            // btnIn
             // 
-            this.btnSua.Caption = "Sửa";
-            this.btnSua.Id = 1;
-            this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
-            this.btnSua.Name = "btnSua";
-            // 
-            // btnXoa
-            // 
-            this.btnXoa.Caption = "Xóa";
-            this.btnXoa.Id = 2;
-            this.btnXoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXoa.ImageOptions.SvgImage")));
-            this.btnXoa.Name = "btnXoa";
-            // 
-            // btnLuu
-            // 
-            this.btnLuu.Caption = "Lưu";
-            this.btnLuu.Id = 3;
-            this.btnLuu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnLuu.ImageOptions.SvgImage")));
-            this.btnLuu.Name = "btnLuu";
+            this.btnIn.Caption = "In";
+            this.btnIn.Id = 1;
+            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
+            this.btnIn.Name = "btnIn";
             // 
             // btnHuy
             // 
@@ -144,13 +123,6 @@
             this.btnHuy.Id = 4;
             this.btnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHuy.ImageOptions.SvgImage")));
             this.btnHuy.Name = "btnHuy";
-            // 
-            // btnXem
-            // 
-            this.btnXem.Caption = "Xem bảng công";
-            this.btnXem.Id = 5;
-            this.btnXem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnXem.ImageOptions.SvgImage")));
-            this.btnXem.Name = "btnXem";
             // 
             // bar3
             // 
@@ -306,6 +278,7 @@
             // 
             this.gvHDLD.Columns.AddRange(new DevExpress.XtraGrid.Columns.GridColumn[] {
             this.MaPhieuLuong,
+            this.MaKyCong,
             this.HoTen,
             this.NgayTinhLuong,
             this.LuongCoBan,
@@ -313,6 +286,7 @@
             this.PhuCap,
             this.UngLuong,
             this.NgayCong,
+            this.TienBaoHiem,
             this.KTKL,
             this.LuongNhanDuoc,
             this.MaNhanVien});
@@ -324,9 +298,15 @@
             this.MaPhieuLuong.Caption = "Kỳ công";
             this.MaPhieuLuong.FieldName = "MaPhieuLuong";
             this.MaPhieuLuong.Name = "MaPhieuLuong";
-            this.MaPhieuLuong.Visible = true;
-            this.MaPhieuLuong.VisibleIndex = 0;
             this.MaPhieuLuong.Width = 66;
+            // 
+            // MaKyCong
+            // 
+            this.MaKyCong.Caption = "Kỳ công";
+            this.MaKyCong.FieldName = "MaKyCong";
+            this.MaKyCong.Name = "MaKyCong";
+            this.MaKyCong.Visible = true;
+            this.MaKyCong.VisibleIndex = 0;
             // 
             // HoTen
             // 
@@ -388,14 +368,21 @@
             this.NgayCong.VisibleIndex = 6;
             this.NgayCong.Width = 104;
             // 
+            // TienBaoHiem
+            // 
+            this.TienBaoHiem.Caption = "Tiền bảo hiểm";
+            this.TienBaoHiem.FieldName = "TienBaoHiem";
+            this.TienBaoHiem.Name = "TienBaoHiem";
+            this.TienBaoHiem.Visible = true;
+            this.TienBaoHiem.VisibleIndex = 7;
+            // 
             // KTKL
             // 
-            this.KTKL.Caption = "Khen thưởng/Kỉ luật";
+            this.KTKL.Caption = "Khen thưởng/Kỷ luật";
             this.KTKL.FieldName = "KTKL";
             this.KTKL.Name = "KTKL";
             this.KTKL.Visible = true;
-            this.KTKL.VisibleIndex = 7;
-            this.KTKL.Width = 132;
+            this.KTKL.VisibleIndex = 8;
             // 
             // LuongNhanDuoc
             // 
@@ -403,7 +390,7 @@
             this.LuongNhanDuoc.FieldName = "LuongNhanDuoc";
             this.LuongNhanDuoc.Name = "LuongNhanDuoc";
             this.LuongNhanDuoc.Visible = true;
-            this.LuongNhanDuoc.VisibleIndex = 8;
+            this.LuongNhanDuoc.VisibleIndex = 9;
             this.LuongNhanDuoc.Width = 129;
             // 
             // MaNhanVien
@@ -442,11 +429,8 @@
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem btnThem;
-        private DevExpress.XtraBars.BarButtonItem btnSua;
-        private DevExpress.XtraBars.BarButtonItem btnXoa;
-        private DevExpress.XtraBars.BarButtonItem btnLuu;
+        private DevExpress.XtraBars.BarButtonItem btnIn;
         private DevExpress.XtraBars.BarButtonItem btnHuy;
-        private DevExpress.XtraBars.BarButtonItem btnXem;
         private DevExpress.XtraBars.Bar bar3;
         private DevExpress.XtraBars.BarDockControl barDockControlTop;
         private DevExpress.XtraBars.BarDockControl barDockControlBottom;
@@ -466,11 +450,13 @@
         private DevExpress.XtraGrid.Columns.GridColumn PhuCap;
         private DevExpress.XtraGrid.Columns.GridColumn UngLuong;
         private DevExpress.XtraGrid.Columns.GridColumn NgayCong;
-        private DevExpress.XtraGrid.Columns.GridColumn KTKL;
         private DevExpress.XtraGrid.Columns.GridColumn LuongNhanDuoc;
         private DevExpress.XtraGrid.Columns.GridColumn MaNhanVien;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private System.Windows.Forms.Button btnBangLuong;
         private DevExpress.XtraGrid.Columns.GridColumn HoTen;
+        private DevExpress.XtraGrid.Columns.GridColumn MaKyCong;
+        private DevExpress.XtraGrid.Columns.GridColumn TienBaoHiem;
+        private DevExpress.XtraGrid.Columns.GridColumn KTKL;
     }
 }

@@ -40,6 +40,8 @@ namespace GUI_QLNS.NhanVien.Luong
             scNhanVien.Enabled = !kt;
             cbLyDo.Enabled = !kt;
             cbSuKien.Enabled = !kt;
+            cboNBD.Enabled = !kt;
+            cboNKT.Enabled = !kt;
         }
         private void PhuCap_Load(object sender, EventArgs e)
         {
@@ -217,8 +219,9 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void gvPhuCap_Click(object sender, EventArgs e)
         {
+            _them = true;
             _showHide(false);
-            btnXem.Enabled = true;
+          
             if (gvPhuCap.RowCount > 0)
             {
                 manv = int.Parse(gvPhuCap.GetFocusedRowCellValue("MaNhanVien").ToString());
@@ -268,9 +271,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 }
 
                 // Disable các control không được phép sửa khi xem chi tiết
-                scNhanVien.Enabled = false;
-                cbSuKien.Enabled = false;
-                cbLyDo.Enabled = false;
+                
             }
         }
     }

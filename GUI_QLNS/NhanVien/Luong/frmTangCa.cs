@@ -38,7 +38,7 @@ namespace GUI_QLNS.NhanVien.Luong
             txtGhiChu.Enabled = !kt;
             cbSoGio.Enabled = !kt;
             scNhanVien.Enabled = !kt;
-            
+            cboTgian.Enabled = !kt;
         }
         void loadData()
         {
@@ -220,9 +220,9 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void gvTangCa_Click(object sender, EventArgs e)
         {
-            
+            _them = true;
             _showHide(false);
-            btnXem.Enabled = true;
+           
             if (gvTangCa.RowCount > 0)
             {
                 manv = int.Parse(gvTangCa.GetFocusedRowCellValue("MaNhanVien").ToString());
@@ -234,7 +234,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 cbLoaiCa.SelectedValue = malc;
                 txtGhiChu.Text = gvTangCa.GetFocusedRowCellValue("GhiChu").ToString();
                 cbSoGio.Text = gvTangCa.GetFocusedRowCellValue("SoGio").ToString();
-
+                cboTgian.Text = gvTangCa.GetFocusedRowCellValue("create_date").ToString();
             }
         }
 

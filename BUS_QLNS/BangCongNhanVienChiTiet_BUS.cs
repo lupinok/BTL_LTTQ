@@ -14,6 +14,13 @@ namespace BUS_QLNS
         {
             return db.BANGCONG_NHANVIEN_CHITIET.FirstOrDefault(x => x.MAKYCONG == makycong && x.MaNhanVien == manv && x.NGAY.Value.Day == ngay);
         }
+        public BANGCONG_NHANVIEN_CHITIET LayKyCongTheoThangNam(int thang, int nam)
+        {
+            return db.BANGCONG_NHANVIEN_CHITIET
+                .FirstOrDefault(x => x.NGAY.Value.Month == thang && x.NGAY.Value.Year == nam)
+                ;
+        }
+
         public BANGCONG_NHANVIEN_CHITIET Add(BANGCONG_NHANVIEN_CHITIET bcct)
         {
             try

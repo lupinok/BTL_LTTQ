@@ -33,6 +33,20 @@ namespace BUS_QLNS
                 throw new Exception("Lỗi lấy phiếu lương: " + ex.Message);
             }
         }
+        private (int thang, int nam) LayThongTinKyCong(int maKyCong)
+        {
+            var kyCong = db.BANGCONG_NHANVIEN_CHITIET
+                .Where(x => x.MAKYCONG == maKyCong)
+                .FirstOrDefault();
+
+            if (kyCong == null)
+                throw new Exception("Không tìm thấy kỳ công");
+
+            return (
+                thang: kyCong.NGAY.Value.Month,
+                nam: kyCong.NGAY.Value.Year
+            );
+        }
         public void XoaPhieuLuongTheoThang(int thang, int nam)
         {
             try
@@ -70,10 +84,10 @@ namespace BUS_QLNS
             try
             {
                 var exists = db.PhieuLuongs.FirstOrDefault(x =>
-                    
+
                     SqlFunctions.DatePart("month", x.create_date) == SqlFunctions.DatePart("month", pl.create_date) &&
                     SqlFunctions.DatePart("month", x.create_date) == SqlFunctions.DatePart("month", pl.create_date));
-                    
+
                 if (exists != null)
                 {
                     if (exists != null)
@@ -83,8 +97,8 @@ namespace BUS_QLNS
                         db.SaveChanges();
                     }
                 }
-                
-                 db.PhieuLuongs.Add(pl);
+
+                db.PhieuLuongs.Add(pl);
                 db.SaveChanges();
                 return pl;
             }
@@ -129,10 +143,11 @@ namespace BUS_QLNS
                 throw new Exception("Lỗi tạo mã phiếu lương: " + ex.Message);
             }
         }
-        public List<PhieuLuong> TinhLuong(int thang, int nam)
+        public List<PhieuLuong> TinhLuong(int maKyCong)
         {
             try
             {
+                var (thang, nam) = LayThongTinKyCong(maKyCong);
                 var result = new List<PhieuLuong>();
                 var ngayTao = new DateTime(nam, thang, 1);
                 var dsNhanVien = db.NhanViens.ToList();
@@ -156,7 +171,7 @@ namespace BUS_QLNS
                         var maPhieuLuong = phieuLuongDau.MaPhieuLuong;
 
                         // Cập nhật thông tin cho phiếu lương đầu tiên
-                        TinhLuongChoNhanVien(phieuLuongDau, dsNhanVien.First(), thang, nam);
+                        TinhLuongChoNhanVien(phieuLuongDau, dsNhanVien.First(), maKyCong);
                         db.SaveChanges();
 
                         // Tính lương cho các nhân viên còn lại
@@ -167,10 +182,11 @@ namespace BUS_QLNS
                                 MaNhanVien = nv.MaNhanVien,
                                 HoTen = nv.HoTen,
                                 NgayTinhLuong = DateTime.Now,
+                                MaKyCong = maKyCong,
                                 create_date = ngayTao
                             };
 
-                            TinhLuongChoNhanVien(luong, nv, thang, nam);
+                            TinhLuongChoNhanVien(luong, nv, maKyCong);
                             db.PhieuLuongs.Add(luong);
                         }
 
@@ -178,7 +194,7 @@ namespace BUS_QLNS
                         transaction.Commit();
 
                         // Lấy lại danh sách phiếu lương để trả về
-                        result = LayPhieuLuongTheoThang(thang, nam);
+                        result = LayPhieuLuongTheoKyCong(maKyCong);
                     }
                     catch
                     {
@@ -194,9 +210,10 @@ namespace BUS_QLNS
                 throw new Exception("Lỗi tính lương: " + ex.Message);
             }
         }
-        private void TinhLuongChoNhanVien(PhieuLuong luong, NhanVien nv, int thang, int nam)
+        private void TinhLuongChoNhanVien(PhieuLuong luong, NhanVien nv, int maKyCong)
         {
             // Lấy lương cơ bản từ chức vụ
+            var (thang, nam) = LayThongTinKyCong(maKyCong);
             var chucVu = db.ChucVus.FirstOrDefault(x => x.MaChucVu == nv.MaChucVu);
             luong.LuongCoBan = chucVu.LuongChucVu;
 
@@ -217,9 +234,17 @@ namespace BUS_QLNS
                 .Where(x => x.MaNhanVien == nv.MaNhanVien
                      && x.Thang == thang && x.Nam == nam)
                 .Sum(x => x.SoTien) ?? 0;
+            luong.TienBaoHiem = db.HopDongLaoDongs
+                .Where(x => x.MaNhanVien == nv.MaNhanVien)
+                .Sum(x => x.MucDong) ?? 0;
 
             // Tính ngày công
-            luong.NgayCong = 30;
+            var ngaycong = db.BANGCONG_NHANVIEN_CHITIET
+                .FirstOrDefault(x => x.MaNhanVien == nv.MaNhanVien
+                && SqlFunctions.DatePart("month", x.NGAY) == thang
+                && SqlFunctions.DatePart("year", x.NGAY) == nam);
+
+               luong.NgayCong = ngaycong.NGAYCONG;
 
             // Tính khen thưởng/kỷ luật
             luong.KTKL = db.ChiTietKT_KL
@@ -228,79 +253,24 @@ namespace BUS_QLNS
                     && SqlFunctions.DatePart("year", x.NgayKetThuc) == nam)
                 .Sum(x => x.TienThuongPhat) ?? 0;
 
-
+            decimal ngayCongDecimal = Convert.ToDecimal(luong.NgayCong ?? 0);
             // Tính lương thực nhận
-            luong.LuongNhanDuoc = luong.LuongCoBan + luong.TangCa + luong.PhuCap
-                + luong.KTKL - luong.UngLuong;
+            luong.LuongNhanDuoc = (luong.LuongCoBan * ngayCongDecimal) / 30 + luong.TangCa + luong.PhuCap
+                + luong.KTKL - luong.UngLuong - luong.TienBaoHiem/12;
         }
-        //public List<PhieuLuong> TinhLuong(int thang, int nam)
-        //{
-        //    try
-        //    {
-        //        var result = new List<PhieuLuong>();
-        //        var ngayTao = new DateTime(nam, thang, 1);
-        //        var dsNhanVien = db.NhanViens.ToList();
-        //        var maPhieuLuong = LayMaPhieuLuong(thang, nam);
-        //        foreach (var nv in dsNhanVien)
-        //        {
-        //            var luong = new PhieuLuong();
-
-        //            // Thông tin cơ bản
-        //            luong.MaPhieuLuong = maPhieuLuong;
-        //            luong.MaNhanVien = nv.MaNhanVien;
-        //            luong.HoTen = nv.HoTen;
-        //            luong.NgayTinhLuong = DateTime.Now;
-        //            luong.create_date = ngayTao;
-
-
-        //            // Lấy lương cơ bản từ chức vụ
-        //            var chucVu = db.ChucVus.FirstOrDefault(x => x.MaChucVu == nv.MaChucVu);
-        //            luong.LuongCoBan = chucVu.LuongChucVu;
-
-        //            // Tính tăng ca trong tháng
-        //            luong.TangCa = db.TangCas
-        //                .Where(x => x.MaNhanVien == nv.MaNhanVien
-        //                    && SqlFunctions.DatePart("month", x.create_date) == thang
-        //                    && SqlFunctions.DatePart("year", x.create_date) == nam)
-        //                .Sum(x => x.SoTien) ?? 0;
-
-        //            // Tính phụ cấp
-        //            luong.PhuCap = db.PhuCaps
-        //                .Where(x => x.MaNhanVien == nv.MaNhanVien 
-        //                && x.Thang == thang && x.Nam == nam)
-        //                .Sum(x => x.SoTien) ?? 0;
-
-        //            // Tính ứng lương
-        //            luong.UngLuong = db.UngLuongs
-        //                .Where(x => x.MaNhanVien == nv.MaNhanVien
-        //                     && x.Thang == thang && x.Nam == nam)
-        //                .Sum(x => x.SoTien) ?? 0;
-
-        //            // Tính ngày công
-        //            luong.NgayCong = 30;
-
-        //            // Tính khen thưởng/kỷ luật
-        //            luong.KTKL = db.ChiTietKT_KL
-        //                .Where(x => x.MaNhanVien == nv.MaNhanVien
-        //                    && SqlFunctions.DatePart("month", x.NgayBatDau) == thang
-        //                    && SqlFunctions.DatePart("year", x.NgayKetThuc) ==nam)
-        //                .Sum(x => x.TienThuongPhat) ?? 0;
-
-
-        //            // Tính lương thực nhận
-        //            luong.LuongNhanDuoc = luong.LuongCoBan + luong.TangCa + luong.PhuCap
-        //                + luong.KTKL - luong.UngLuong;
-
-        //            result.Add(luong);
-        //        }
-
-        //        return result;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw new Exception("Lỗi tính lương: " + ex.Message);
-        //    }
-        //}
+        public List<PhieuLuong> LayPhieuLuongTheoKyCong(int maKyCong)
+        {
+            try
+            {
+                return db.PhieuLuongs
+                    .Where(x => x.MaKyCong == maKyCong)
+                    .ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy phiếu lương: " + ex.Message);
+            }
+        }
 
 
     }

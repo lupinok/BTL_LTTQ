@@ -15,6 +15,12 @@ namespace GUI_QLNS.NhanVien.Luong
 {
     public partial class frmPhuCap : DevExpress.XtraEditors.XtraForm
     {
+        private Dictionary<string, decimal> mucPhuCap = new Dictionary<string, decimal>()
+        {
+        { "Phụ cấp ăn trưa", 500000 },
+        { "Phụ cấp xăng xe", 300000 },
+        { "Phụ cấp chức vụ", 1000000 }
+        };
         PhuCap_BUS phucapBus;
         NHANVIEN_BUS nhanvienBus;
         bool _them;
@@ -73,18 +79,17 @@ namespace GUI_QLNS.NhanVien.Luong
         void loadLoaiPC()
         {
             // Tạo danh sách loại phụ cấp
-            var listPC = new List<dynamic>()
+            // Tạo danh sách loại phụ cấp từ Dictionary
+            var listPC = mucPhuCap.Select(x => new
             {
-                new { MaPhuCap= "PC1", LoaiPhuCap = "Phụ cấp ăn trưa" },
-                new { MaPhuCap = "PC2", LoaiPhuCap = "Phụ cấp xăng xe" },
-                new { MaPhuCap = "PC3", LoaiPhuCap = "Phụ cấp chức vụ" },
-                // Thêm các loại phụ cấp khác
-            };
+                MaPhuCap = "PC" + (Array.IndexOf(mucPhuCap.Keys.ToArray(), x.Key) + 1).ToString(),
+                LoaiPhuCap = x.Key
+            }).ToList();
 
             cbLoaiPC.DataSource = listPC;
             cbLoaiPC.DisplayMember = "LoaiPhuCap";
             cbLoaiPC.ValueMember = "MaPhuCap";
-            cbLoaiPC.SelectedIndex = -1; // Reset selection
+            cbLoaiPC.SelectedIndex = -1;
         }
         private void frmPhuCap_Load(object sender, EventArgs e)
         {
@@ -95,7 +100,19 @@ namespace GUI_QLNS.NhanVien.Luong
             loadData();
             loadNhanVien();
             loadLoaiPC();
-            
+            cbLoaiPC.SelectedIndexChanged += CbLoaiPC_SelectedIndexChanged;
+
+        }
+        private void CbLoaiPC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbLoaiPC.SelectedIndex != -1)
+            {
+                string loaiPhuCap = cbLoaiPC.Text;
+                if (mucPhuCap.ContainsKey(loaiPhuCap))
+                {
+                    cbSoTien.Text = mucPhuCap[loaiPhuCap].ToString("N0");
+                }
+            }
         }
         private void ResetValue()
         {
@@ -169,8 +186,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 }
                 if (scNhanVien.EditValue == null)
                     throw new Exception("Vui lòng chọn nhân viên");
-                if (cbSoTien.SelectedIndex == -1)
-                    throw new Exception("Vui lòng chọn số tiền");
+                
                 if (cbLoaiPC.SelectedIndex == -1)
                     throw new Exception("Vui lòng chọn loại phụ cấp");
 
@@ -194,8 +210,7 @@ namespace GUI_QLNS.NhanVien.Luong
             else
                if (scNhanVien.EditValue == null)
                 throw new Exception("Vui lòng chọn nhân viên");
-            if (cbSoTien.SelectedIndex == -1)
-                throw new Exception("Vui lòng chọn số tiền");
+            
             if (cbLoaiPC.SelectedIndex == -1)
                 throw new Exception("Vui lòng chọn loại phụ cấp");
 
@@ -222,8 +237,9 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void gvPhuCap_Click(object sender, EventArgs e)
         {
+            _them = true;
             _showHide(false);
-            btnXem.Enabled = true;
+           
             if (gvPhuCap.RowCount > 0)
             {
                 mapc = gvPhuCap.GetFocusedRowCellValue("MaPhuCap").ToString();
@@ -242,12 +258,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 cbNam.Text = nam.ToString();
                 cbSoTien.Text = soTien.ToString("N0");
 
-                // Enable các nút chức năng phù hợp
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                btnThem.Enabled = false;
-                btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
+               
             }
         }
     }

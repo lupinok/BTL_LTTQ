@@ -138,12 +138,6 @@
     <Compile Include="NhanVien\ChamCong\LoaiCa.Designer.cs">
       <DependentUpon>LoaiCa.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\ChamCong\LoaiCong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhanVien\ChamCong\LoaiCong.Designer.cs">
-      <DependentUpon>LoaiCong.cs</DependentUpon>
-    </Compile>
     <Compile Include="NhanVien\frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -222,9 +216,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChamCong\LoaiCa.resx">
       <DependentUpon>LoaiCa.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\ChamCong\LoaiCong.resx">
-      <DependentUpon>LoaiCong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>

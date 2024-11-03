@@ -17,6 +17,7 @@ namespace DAL
         public int MaNhanVien { get; set; }
         public string MaLoaiCa { get; set; }
         public string HoTen { get; set; }
+        public string TenLoaiCa { get; set; }
         public Nullable<decimal> HeSo { get; set; }
         public Nullable<decimal> SoGio { get; set; }
         public Nullable<decimal> SoTien { get; set; }
@@ -27,7 +28,6 @@ namespace DAL
         public Nullable<System.DateTime> update_date { get; set; }
         public string delete_by { get; set; }
         public Nullable<System.DateTime> delete_date { get; set; }
-        public string TenLoaiCa { get; set; }
     
         public virtual LoaiCa LoaiCa { get; set; }
         public virtual NhanVien NhanVien { get; set; }
