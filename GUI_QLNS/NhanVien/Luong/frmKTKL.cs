@@ -66,7 +66,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 cbLyDo.DisplayMember = "LyDo";
                 cbLyDo.ValueMember = "MaSuKien";
 
-                if (loaiSK == "Khen thu?ng")
+                if (loaiSK == "Khen thưởng")
                 {
                     txtTienPhat.Text = "0";
                     txtTienThuong.Text = "";
@@ -182,7 +182,7 @@ namespace GUI_QLNS.NhanVien.Luong
                     MaNhanVien = int.Parse(scNhanVien.EditValue.ToString()),
                     MaSuKien = int.Parse(cbLyDo.SelectedValue.ToString()),
                     ChiTiet = cbLyDo.Text,
-                    TienThuongPhat = cbSuKien.Text == "Khen thu?ng"
+                    TienThuongPhat = cbSuKien.Text == "Khen thưởng"
                         ? decimal.Parse(txtTienThuong.Text.Replace(",", ""))  // Chuyển sang decimal
                         : decimal.Parse(txtTienPhat.Text.Replace(",", "")),
                     NgayBatDau = cboNBD.Value,     // Lấy giá trị từ DateTimePicker
@@ -205,7 +205,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 MaNhanVien = manv, // Sử dụng mã nhân viên hiện tại
                 MaSuKien = mask,   // Sử dụng mã sự kiện hiện tại
                 ChiTiet = cbLyDo.Text,
-                TienThuongPhat = cbSuKien.Text == "Khen thu?ng"
+                TienThuongPhat = cbSuKien.Text == "Khen thưởng"
                     ? decimal.Parse(txtTienThuong.Text.Replace(",", ""))  // Chuyển sang decimal
                     : decimal.Parse(txtTienPhat.Text.Replace(",", "")),
                 NgayBatDau = cboNBD.Value,     // Lấy giá trị từ DateTimePicker
@@ -249,12 +249,12 @@ namespace GUI_QLNS.NhanVien.Luong
                     if (chiTiet != null)
                     {
                         // Set số tiền thưởng/phạt
-                        if (suKien.LoaiSuKien == "Khen thu?ng")
+                        if (suKien.LoaiSuKien == "Khen thưởng")
                         {
                             txtTienThuong.Text = chiTiet.TienThuongPhat.ToString();
                             txtTienPhat.Text = "0";
                             txtTienPhat.Enabled = false;
-                            txtTienThuong.Enabled = false;
+                            txtTienThuong.Enabled = true;
                             cboNBD.Value = chiTiet.NgayBatDau ?? DateTime.Now;
                             cboNKT.Value = chiTiet.NgayKetThuc ?? DateTime.Now;
                         }
@@ -263,7 +263,7 @@ namespace GUI_QLNS.NhanVien.Luong
                             txtTienPhat.Text = chiTiet.TienThuongPhat.ToString();
                             txtTienThuong.Text = "0";
                             txtTienThuong.Enabled = false;
-                            txtTienPhat.Enabled = false;
+                            txtTienPhat.Enabled = true;
                             cboNBD.Value = chiTiet.NgayBatDau ?? DateTime.Now;
                             cboNKT.Value = chiTiet.NgayKetThuc ?? DateTime.Now;
                         }
