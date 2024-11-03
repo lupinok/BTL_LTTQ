@@ -65,6 +65,7 @@ namespace BUS_QLNS
 					_nv.Email = nv.Email;
 					_nv.MaPhongBan = nv.MaPhongBan;
 					_nv.MaChucVu = nv.MaChucVu;
+					_nv.DaThoiViec = nv.DaThoiViec;
 					db.SaveChanges();
 				}
 				return nv;

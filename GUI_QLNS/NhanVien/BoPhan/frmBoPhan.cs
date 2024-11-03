@@ -128,6 +128,7 @@ namespace GUI_QLNS.NhanVien.BoPhan
             _showHide(true);
             loadData();
             LoadBoPhan();
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -135,6 +136,7 @@ namespace GUI_QLNS.NhanVien.BoPhan
             _showHide(false);
             _them = true;
             ResetValue();
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -169,12 +171,14 @@ namespace GUI_QLNS.NhanVien.BoPhan
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _them = false;
             _showHide(true);
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void gcDanhSach_Click(object sender, EventArgs e)
@@ -202,6 +206,7 @@ namespace GUI_QLNS.NhanVien.BoPhan
                                   MessageBoxIcon.Error);
                 }
             }
+            splitContainer1.Panel1Collapsed = false;
         }
     }
 }

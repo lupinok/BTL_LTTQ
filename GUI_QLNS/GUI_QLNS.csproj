@@ -71,6 +71,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -144,11 +145,29 @@
     <Compile Include="NhanVien\ChucVu\frmChucVu.Designer.cs">
       <DependentUpon>frmChucVu.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\Dự án\ChiTietDuAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\Dự án\ChiTietDuAn.Designer.cs">
+      <DependentUpon>ChiTietDuAn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\Dự án\frmDuAn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\Dự án\frmDuAn.Designer.cs">
+      <DependentUpon>frmDuAn.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="NhanVien\frmNhanVien.Designer.cs">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\NhanVienThoiViec\frmNVThoiViec.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\NhanVienThoiViec\frmNVThoiViec.Designer.cs">
+      <DependentUpon>frmNVThoiViec.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\PhongBan\frmPhongBan.cs">
       <SubType>Form</SubType>
@@ -161,6 +180,18 @@
     </Compile>
     <Compile Include="NhanVien\SYLL.Designer.cs">
       <DependentUpon>SYLL.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\Đào tạo\ChiTietDaoTao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\Đào tạo\ChiTietDaoTao.Designer.cs">
+      <DependentUpon>ChiTietDaoTao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien\Đào tạo\frmDaoTao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\Đào tạo\frmDaoTao.Designer.cs">
+      <DependentUpon>frmDaoTao.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -196,14 +227,29 @@
     <EmbeddedResource Include="NhanVien\ChucVu\frmChucVu.resx">
       <DependentUpon>frmChucVu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\Dự án\ChiTietDuAn.resx">
+      <DependentUpon>ChiTietDuAn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\Dự án\frmDuAn.resx">
+      <DependentUpon>frmDuAn.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\frmNhanVien.resx">
       <DependentUpon>frmNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\NhanVienThoiViec\frmNVThoiViec.resx">
+      <DependentUpon>frmNVThoiViec.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\PhongBan\frmPhongBan.resx">
       <DependentUpon>frmPhongBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\SYLL.resx">
       <DependentUpon>SYLL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\Đào tạo\ChiTietDaoTao.resx">
+      <DependentUpon>ChiTietDaoTao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\Đào tạo\frmDaoTao.resx">
+      <DependentUpon>frmDaoTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -248,8 +294,9 @@
     <None Include="Resources\ic_bhxh.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\del_Icon_x16.png" />
+    <Content Include="Resources\delete1.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

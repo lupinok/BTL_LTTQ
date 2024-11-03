@@ -126,6 +126,7 @@ namespace GUI_QLNS.NhanVien.PhongBan
             _showHide(true);
             loadData();
             LoadTruongPhong();
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -133,6 +134,7 @@ namespace GUI_QLNS.NhanVien.PhongBan
             _showHide(false);
             _them = true;
             ResetValue();
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -167,12 +169,14 @@ namespace GUI_QLNS.NhanVien.PhongBan
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _them = false;
             _showHide(true);
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void gcDanhSach_Click(object sender, EventArgs e)
@@ -199,6 +203,12 @@ namespace GUI_QLNS.NhanVien.PhongBan
                                   MessageBoxIcon.Error);
                 }
             }
+            splitContainer1.Panel1Collapsed = false;
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

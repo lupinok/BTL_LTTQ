@@ -247,6 +247,42 @@
           <Property Name="NgayBatDauLamViec" Type="date" />
           <Property Name="MaPhongBan" Type="int" />
           <Property Name="MaChucVu" Type="int" />
+          <Property Name="DaThoiViec" Type="bit" />
+        </EntityType>
+        <EntityType Name="NhanVienDieuChuyen">
+          <Key>
+            <PropertyRef Name="SoQuyetDinh" />
+          </Key>
+          <Property Name="SoQuyetDinh" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="Ngay" Type="datetime" />
+          <Property Name="MaNhanVien" Type="int" />
+          <Property Name="MaPB" Type="int" />
+          <Property Name="MaPB2" Type="int" />
+          <Property Name="LyDo" Type="nchar" MaxLength="100" />
+          <Property Name="GhiChu" Type="nchar" MaxLength="100" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+          <Property Name="CREATED_BY" Type="int" />
+          <Property Name="UPDATED_DATE" Type="datetime" />
+          <Property Name="UPDATED_BY" Type="int" />
+          <Property Name="DELETED_DATE" Type="datetime" />
+          <Property Name="DELETED_BY" Type="int" />
+        </EntityType>
+        <EntityType Name="NhanVienThoiViec">
+          <Key>
+            <PropertyRef Name="SoQD" />
+          </Key>
+          <Property Name="SoQD" Type="nchar" MaxLength="100" Nullable="false" />
+          <Property Name="NgayQuyetDinh" Type="datetime" />
+          <Property Name="NgayThoiViec" Type="datetime" />
+          <Property Name="MaNhanVien" Type="int" />
+          <Property Name="LyDo" Type="nchar" MaxLength="100" />
+          <Property Name="GhiChu" Type="nchar" MaxLength="100" />
+          <Property Name="CREATED_BY" Type="int" />
+          <Property Name="CREATED_DATE" Type="datetime" />
+          <Property Name="UPDATED_BY" Type="int" />
+          <Property Name="UPDATED_DATE" Type="datetime" />
+          <Property Name="DELETED_BY" Type="int" />
+          <Property Name="DELETED_DATE" Type="datetime" />
         </EntityType>
         <EntityType Name="PhieuLuong">
           <Key>
@@ -485,6 +521,42 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_NhanVien_ChucVu">
+          <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="0..1" />
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ChucVu">
+              <PropertyRef Name="MaChucVu" />
+            </Principal>
+            <Dependent Role="NhanVien">
+              <PropertyRef Name="MaChucVu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhanVienDieuChuyen_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="NhanVienDieuChuyen" Type="Self.NhanVienDieuChuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="NhanVienDieuChuyen">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_NhanVienThoiViec_NhanVien">
+          <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
+          <End Role="NhanVienThoiViec" Type="Self.NhanVienThoiViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="NhanVienThoiViec">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="BTLMonLTTQModelStoreContainer">
           <EntitySet Name="BANGCONG_NHANVIEN_CHITIET" EntityType="Self.BANGCONG_NHANVIEN_CHITIET" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoHiem" EntityType="Self.BaoHiem" Schema="dbo" store:Type="Tables" />
@@ -503,6 +575,8 @@
           <EntitySet Name="LoaiCa" EntityType="Self.LoaiCa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiCong" EntityType="Self.LoaiCong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVienDieuChuyen" EntityType="Self.NhanVienDieuChuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVienThoiViec" EntityType="Self.NhanVienThoiViec" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuLuong" EntityType="Self.PhieuLuong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhongBan" EntityType="Self.PhongBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoYeuLyLich" EntityType="Self.SoYeuLyLich" Schema="dbo" store:Type="Tables" />
@@ -567,6 +641,18 @@
           <AssociationSet Name="FK_BOPHAN_PHONGBAN" Association="Self.FK_BOPHAN_PHONGBAN">
             <End Role="PhongBan" EntitySet="PhongBan" />
             <End Role="BoPhan" EntitySet="BoPhan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhanVien_ChucVu" Association="Self.FK_NhanVien_ChucVu">
+            <End Role="ChucVu" EntitySet="ChucVu" />
+            <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhanVienDieuChuyen_NhanVien" Association="Self.FK_NhanVienDieuChuyen_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="NhanVienDieuChuyen" EntitySet="NhanVienDieuChuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_NhanVienThoiViec_NhanVien" Association="Self.FK_NhanVienThoiViec_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanVien" />
+            <End Role="NhanVienThoiViec" EntitySet="NhanVienThoiViec" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -712,6 +798,9 @@
           <NavigationProperty Name="SoYeuLyLich" Relationship="Self.FK__SoYeuLyLi__MaNha__74AE54BC" FromRole="NhanVien" ToRole="SoYeuLyLich" />
           <NavigationProperty Name="ThanhToans" Relationship="Self.FK__ThanhToan__MaNha__75A278F5" FromRole="NhanVien" ToRole="ThanhToan" />
           <Property Name="NgayBatDauLamViec" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="NhanVienDieuChuyens" Relationship="BTLMonLTTQModel.FK_NhanVienDieuChuyen_NhanVien" FromRole="NhanVien" ToRole="NhanVienDieuChuyen" />
+          <Property Name="DaThoiViec" Type="Boolean" />
+          <NavigationProperty Name="NhanVienThoiViecs" Relationship="BTLMonLTTQModel.FK_NhanVienThoiViec_NhanVien" FromRole="NhanVien" ToRole="NhanVienThoiViec" />
         </EntityType>
         <EntityType Name="PhieuLuong">
           <Key>
@@ -1027,6 +1116,16 @@
             <End Role="PhongBan" EntitySet="PhongBans" />
             <End Role="BoPhan" EntitySet="BoPhans" />
           </AssociationSet>
+          <EntitySet Name="NhanVienDieuChuyens" EntityType="BTLMonLTTQModel.NhanVienDieuChuyen" />
+          <AssociationSet Name="FK_NhanVienDieuChuyen_NhanVien" Association="BTLMonLTTQModel.FK_NhanVienDieuChuyen_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="NhanVienDieuChuyen" EntitySet="NhanVienDieuChuyens" />
+          </AssociationSet>
+          <EntitySet Name="NhanVienThoiViecs" EntityType="BTLMonLTTQModel.NhanVienThoiViec" />
+          <AssociationSet Name="FK_NhanVienThoiViec_NhanVien" Association="BTLMonLTTQModel.FK_NhanVienThoiViec_NhanVien">
+            <End Role="NhanVien" EntitySet="NhanViens" />
+            <End Role="NhanVienThoiViec" EntitySet="NhanVienThoiViecs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="LoaiCa">
           <Key>
@@ -1167,6 +1266,67 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="NhanVienDieuChuyen">
+          <Key>
+            <PropertyRef Name="SoQuyetDinh" />
+          </Key>
+          <Property Name="SoQuyetDinh" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="MaPB" Type="Int32" />
+          <Property Name="MaPB2" Type="Int32" />
+          <Property Name="LyDo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="CREATED_BY" Type="Int32" />
+          <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Int32" />
+          <Property Name="DELETED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Int32" />
+          <NavigationProperty Name="NhanVien" Relationship="BTLMonLTTQModel.FK_NhanVienDieuChuyen_NhanVien" FromRole="NhanVienDieuChuyen" ToRole="NhanVien" />
+        </EntityType>
+        <Association Name="FK_NhanVienDieuChuyen_NhanVien">
+          <End Type="BTLMonLTTQModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="BTLMonLTTQModel.NhanVienDieuChuyen" Role="NhanVienDieuChuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="NhanVienDieuChuyen">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NhanVienThoiViec">
+          <Key>
+            <PropertyRef Name="SoQD" />
+          </Key>
+          <Property Name="SoQD" Type="String" Nullable="false" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="NgayQuyetDinh" Type="DateTime" Precision="3" />
+          <Property Name="NgayThoiViec" Type="DateTime" Precision="3" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="LyDo" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="CREATED_BY" Type="Int32" />
+          <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="UPDATED_BY" Type="Int32" />
+          <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DELETED_BY" Type="Int32" />
+          <Property Name="DELETED_DATE" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="NhanVien" Relationship="BTLMonLTTQModel.FK_NhanVienThoiViec_NhanVien" FromRole="NhanVienThoiViec" ToRole="NhanVien" />
+        </EntityType>
+        <Association Name="FK_NhanVienThoiViec_NhanVien">
+          <End Type="BTLMonLTTQModel.NhanVien" Role="NhanVien" Multiplicity="0..1" />
+          <End Type="BTLMonLTTQModel.NhanVienThoiViec" Role="NhanVienThoiViec" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhanVien">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="NhanVienThoiViec">
+              <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1287,6 +1447,7 @@
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
+                <ScalarProperty Name="DaThoiViec" ColumnName="DaThoiViec" />
                 <ScalarProperty Name="NgayBatDauLamViec" ColumnName="NgayBatDauLamViec" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
@@ -1488,6 +1649,43 @@
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="TenBoPhan" ColumnName="TenBoPhan" />
                 <ScalarProperty Name="MaBoPhan" ColumnName="MaBoPhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanVienDieuChuyens">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVienDieuChuyen">
+              <MappingFragment StoreEntitySet="NhanVienDieuChuyen">
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="DELETED_DATE" ColumnName="DELETED_DATE" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+                <ScalarProperty Name="MaPB2" ColumnName="MaPB2" />
+                <ScalarProperty Name="MaPB" ColumnName="MaPB" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SoQuyetDinh" ColumnName="SoQuyetDinh" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanVienThoiViecs">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVienThoiViec">
+              <MappingFragment StoreEntitySet="NhanVienThoiViec">
+                <ScalarProperty Name="DELETED_DATE" ColumnName="DELETED_DATE" />
+                <ScalarProperty Name="DELETED_BY" ColumnName="DELETED_BY" />
+                <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
+                <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="CREATED_BY" ColumnName="CREATED_BY" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+                <ScalarProperty Name="LyDo" ColumnName="LyDo" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="NgayThoiViec" ColumnName="NgayThoiViec" />
+                <ScalarProperty Name="NgayQuyetDinh" ColumnName="NgayQuyetDinh" />
+                <ScalarProperty Name="SoQD" ColumnName="SoQD" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

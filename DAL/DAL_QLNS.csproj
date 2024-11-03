@@ -104,6 +104,12 @@
     <Compile Include="NhanVien.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="NhanVienDieuChuyen.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVienThoiViec.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="PhieuLuong.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>

@@ -47,5 +47,7 @@ namespace DAL
         public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
         public virtual DbSet<KYCONG> KYCONGs { get; set; }
         public virtual DbSet<BoPhan> BoPhans { get; set; }
+        public virtual DbSet<NhanVienDieuChuyen> NhanVienDieuChuyens { get; set; }
+        public virtual DbSet<NhanVienThoiViec> NhanVienThoiViecs { get; set; }
     }
 }
