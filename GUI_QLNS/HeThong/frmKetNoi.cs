@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Xml.Linq;
 using System.IO;
 using System.Linq;
+using System.Configuration;
 
 namespace GUI_QLNS.HeThong
 {
@@ -155,23 +156,15 @@ namespace GUI_QLNS.HeThong
                 SqlHelper helper = new SqlHelper(connectionString);
                 if (helper.IsConnection)
                 {
+                    // Cập nhật connection string cho Entity Framework
                     string efConnectionString = $@"metadata=res://*/QLNS.csdl|res://*/QLNS.ssdl|res://*/QLNS.msl;provider=System.Data.SqlClient;provider connection string=""{connectionString}""";
                     
-                    string solutionDir = Path.GetFullPath(Path.Combine(Application.StartupPath, @"..\..\.."));
-                    
-                    UpdateConnectionString("BTLMonLTTQEntities", efConnectionString, Path.Combine(solutionDir, "DAL", "App.config"));
-                    UpdateConnectionString("BTLMonLTTQEntities", efConnectionString, Path.Combine(solutionDir, "BUS_QLNS", "App.config"));
-                    UpdateConnectionString("BTLMonLTTQEntities", efConnectionString, Path.Combine(solutionDir, "GUI_QLNS", "App.config"));
+                    // Cập nhật connection string cho SQL Client
+                    UpdateConnectionString("BTLMonLTTQEntities", efConnectionString, "System.Data.EntityClient");
+                    UpdateConnectionString("GUI_QLNS.Properties.Settings.BTLMonLTTQConnectionString", connectionString, "System.Data.SqlClient");
 
-                    // Lưu cài đặt trước khi đóng form
-                    Properties.Settings.Default.LastServerName = txtServer.Text.Trim();
-                    Properties.Settings.Default.LastDatabaseName = cboDatabases.Text.Trim();
-                    Properties.Settings.Default.UseWindowsAuth = cbWindowsAuth.Checked;
-                    if (!cbWindowsAuth.Checked)
-                    {
-                        Properties.Settings.Default.LastUsername = txtUsername.Text.Trim();
-                    }
-                    Properties.Settings.Default.Save();
+                    // Lưu cài đặt
+                    SaveCurrentSettings();
 
                     XtraMessageBox.Show("Connection string saved successfully.", 
                         "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -185,42 +178,22 @@ namespace GUI_QLNS.HeThong
             }
         }
 
-        private void UpdateConnectionString(string name, string connectionString, string configPath)
+        private void UpdateConnectionString(string name, string connectionString, string provider)
         {
-            string fullPath = Path.GetFullPath(configPath);
-            XDocument doc = XDocument.Load(fullPath);
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            var connectionStringsSection = config.ConnectionStrings;
             
-            var connectionStrings = doc.Descendants("connectionStrings").FirstOrDefault();
-            if (connectionStrings != null)
-            {
-                var existingConnection = connectionStrings.Elements("add")
-                    .FirstOrDefault(x => x.Attribute("name")?.Value == name);
-
-                if (existingConnection != null)
-                {
-                    existingConnection.Attribute("connectionString").Value = connectionString;
-                    if (name == "BTLMonLTTQEntities")
-                    {
-                        existingConnection.Attribute("providerName").Value = "System.Data.EntityClient";
-                    }
-                }
-                else
-                {
-                    connectionStrings.Add(new XElement("add",
-                        new XAttribute("name", name),
-                        new XAttribute("connectionString", connectionString),
-                        name == "BTLMonLTTQEntities" ? new XAttribute("providerName", "System.Data.EntityClient") : null
-                    ));
-                }
-            }
-
-            doc.Save(fullPath);
+            connectionStringsSection.ConnectionStrings[name].ConnectionString = connectionString;
+            connectionStringsSection.ConnectionStrings[name].ProviderName = provider;
+            
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("connectionStrings");
         }
 
-        private string GetConnectionString()
+        public string GetConnectionString()
         {
             string authentication = cbWindowsAuth.Checked ? "Integrated Security=True" : $"User ID={txtUsername.Text};Password={txtPassword.Text}";
-            return $"Data Source={txtServer.Text};Initial Catalog={cboDatabases.Text};{authentication}";
+            return $"Data Source={txtServer.Text};Initial Catalog={cboDatabases.Text};{authentication};Encrypt=False";
         }
 
         // Thêm sự kiện khi text của Server thay đổi

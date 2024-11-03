@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BangCongNhanVienChiTiet_BUS.cs" />
     <Compile Include="HDLDDTO.cs" />
     <Compile Include="HDLD_BUS.cs" />
     <Compile Include="KyCongChiTiet_BUS.cs" />
