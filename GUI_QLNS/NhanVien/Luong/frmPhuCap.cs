@@ -200,7 +200,8 @@ namespace GUI_QLNS.NhanVien.Luong
                 throw new Exception("Vui lòng chọn loại phụ cấp");
 
             var bc = phucapBus.getItem(mapc);
-            if (bc != null)
+            if (bc!=null)
+            
             {
                 bc.MaNhanVien = maNV;
                 bc.HoTen = hoTen;
@@ -213,8 +214,9 @@ namespace GUI_QLNS.NhanVien.Luong
                 bc.create_date = DateTime.Now;
                 bc.update_by = null;
                 bc.update_date = null;
+                phucapBus.Update(bc);
             };
-            phucapBus.Update(bc);
+           
 
         }
 

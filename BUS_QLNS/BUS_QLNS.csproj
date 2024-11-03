@@ -59,6 +59,7 @@
     <Compile Include="LoaiCong_BUS.cs" />
     <Compile Include="NHANVIEN_BUS.cs" />
     <Compile Include="KTKL_BUS.cs" />
+    <Compile Include="PhieuLuong_BUS.cs" />
     <Compile Include="PhuCap_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SYLL_BUS.cs" />

@@ -250,12 +250,24 @@
           <Key>
             <PropertyRef Name="MaPhieuLuong" />
           </Key>
-          <Property Name="MaPhieuLuong" Type="int" Nullable="false" />
+          <Property Name="MaPhieuLuong" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
           <Property Name="NgayTinhLuong" Type="date" />
           <Property Name="LuongCoBan" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="TangCa" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="PhuCap" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="UngLuong" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="NgayCong" Type="float" />
+          <Property Name="KTKL" Type="decimal" Precision="18" Scale="2" />
           <Property Name="LuongNhanDuoc" Type="decimal" Precision="18" Scale="2" />
           <Property Name="TrangThaiTraLuong" Type="nvarchar" MaxLength="50" />
           <Property Name="MaNhanVien" Type="int" />
+          <Property Name="create_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="create_date" Type="datetime" />
+          <Property Name="update_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="update_date" Type="datetime" />
+          <Property Name="delete_by" Type="nvarchar" MaxLength="100" />
+          <Property Name="delete_date" Type="datetime" />
         </EntityType>
         <EntityType Name="PhongBan">
           <Key>
@@ -818,6 +830,18 @@
           <Property Name="TrangThaiTraLuong" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="MaNhanVien" Type="Int32" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuLuon__MaNha__73BA3083" FromRole="PhieuLuong" ToRole="NhanVien" />
+          <Property Name="TangCa" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="PhuCap" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="UngLuong" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NgayCong" Type="Double" />
+          <Property Name="KTKL" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="create_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="create_date" Type="DateTime" Precision="3" />
+          <Property Name="update_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="update_date" Type="DateTime" Precision="3" />
+          <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="delete_date" Type="DateTime" Precision="3" />
+          <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="PhongBan">
           <Key>
@@ -1485,6 +1509,18 @@
           <EntitySetMapping Name="PhieuLuongs">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.PhieuLuong">
               <MappingFragment StoreEntitySet="PhieuLuong">
+                <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+                <ScalarProperty Name="delete_date" ColumnName="delete_date" />
+                <ScalarProperty Name="delete_by" ColumnName="delete_by" />
+                <ScalarProperty Name="update_date" ColumnName="update_date" />
+                <ScalarProperty Name="update_by" ColumnName="update_by" />
+                <ScalarProperty Name="create_date" ColumnName="create_date" />
+                <ScalarProperty Name="create_by" ColumnName="create_by" />
+                <ScalarProperty Name="KTKL" ColumnName="KTKL" />
+                <ScalarProperty Name="NgayCong" ColumnName="NgayCong" />
+                <ScalarProperty Name="UngLuong" ColumnName="UngLuong" />
+                <ScalarProperty Name="PhuCap" ColumnName="PhuCap" />
+                <ScalarProperty Name="TangCa" ColumnName="TangCa" />
                 <ScalarProperty Name="MaPhieuLuong" ColumnName="MaPhieuLuong" />
                 <ScalarProperty Name="NgayTinhLuong" ColumnName="NgayTinhLuong" />
                 <ScalarProperty Name="LuongCoBan" ColumnName="LuongCoBan" />

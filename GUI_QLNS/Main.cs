@@ -80,5 +80,33 @@ namespace GUI_QLNS
             openForm(typeof(frmTangCa));
 
         }
+
+        private void btnUngLuong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmUngLuong));
+        }
+
+        private void menu_hopdong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            openForm(typeof(frmHDLD));
+        }
+
+        private void barDockingMenuItem1_ListItemClick(object sender, ListItemClickEventArgs e)
+        {
+
+            openForm(typeof(frmPhuCap));
+        }
+
+        private void menu_luongnhanvien_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            openForm(typeof(frmTinhLuong));
+        }
+
+        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmPhuCap));
+        }
     }
 }

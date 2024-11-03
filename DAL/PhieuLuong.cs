@@ -20,6 +20,18 @@ namespace DAL
         public Nullable<decimal> LuongNhanDuoc { get; set; }
         public string TrangThaiTraLuong { get; set; }
         public Nullable<int> MaNhanVien { get; set; }
+        public Nullable<decimal> TangCa { get; set; }
+        public Nullable<decimal> PhuCap { get; set; }
+        public Nullable<decimal> UngLuong { get; set; }
+        public Nullable<double> NgayCong { get; set; }
+        public Nullable<decimal> KTKL { get; set; }
+        public string create_by { get; set; }
+        public Nullable<System.DateTime> create_date { get; set; }
+        public string update_by { get; set; }
+        public Nullable<System.DateTime> update_date { get; set; }
+        public string delete_by { get; set; }
+        public Nullable<System.DateTime> delete_date { get; set; }
+        public string HoTen { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
     }
