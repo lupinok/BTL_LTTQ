@@ -35,6 +35,14 @@
           <Property Name="TenBoPhan" Type="nchar" MaxLength="100" />
           <Property Name="MaPhongBan" Type="int" />
         </EntityType>
+        <EntityType Name="BoPhan">
+          <Key>
+            <PropertyRef Name="MaBoPhan" />
+          </Key>
+          <Property Name="MaBoPhan" Type="int" Nullable="false" />
+          <Property Name="TenBoPhan" Type="nchar" MaxLength="100" />
+          <Property Name="MaPhongBan" Type="int" />
+        </EntityType>
         <EntityType Name="ChiTietDuAn">
           <Key>
             <PropertyRef Name="MaNhanVien" />
@@ -363,6 +371,16 @@
           <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
           <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
             <PropertyRef Name="TenDangNhap" />
@@ -541,6 +559,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PhanQuyen__MaPho__40058253">
+          <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhanQuyen__TenDa__3F115E1A">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="TenDangNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PhanQuyen__MaPho__06CD04F7">
           <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
           <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
@@ -697,6 +739,7 @@
           <EntitySet Name="PhongBan" EntityType="Self.PhongBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhuCap" EntityType="Self.PhuCap" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoYeuLyLich" EntityType="Self.SoYeuLyLich" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TangCa" EntityType="Self.TangCa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThanhToan" EntityType="Self.ThanhToan" Schema="dbo" store:Type="Tables" />
@@ -2054,6 +2097,48 @@
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BoPhans">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.BoPhan">
+              <MappingFragment StoreEntitySet="BoPhan">
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="TenBoPhan" ColumnName="TenBoPhan" />
+                <ScalarProperty Name="MaBoPhan" ColumnName="MaBoPhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhanQuyens">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.PhanQuyen">
+              <MappingFragment StoreEntitySet="PhanQuyen">
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanVien_DieuChuyen">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien_DieuChuyen">
+              <MappingFragment StoreEntitySet="NhanVien_DieuChuyen">
+                <ScalarProperty Name="GhiChuDC" ColumnName="GhiChuDC" />
+                <ScalarProperty Name="LyDoDC" ColumnName="LyDoDC" />
+                <ScalarProperty Name="MaPhongBan2" ColumnName="MaPhongBan2" />
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SoDC" ColumnName="SoDC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

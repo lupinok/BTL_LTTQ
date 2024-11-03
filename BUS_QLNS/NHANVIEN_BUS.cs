@@ -16,7 +16,13 @@ namespace BUS_QLNS
 
 		public List<NhanVien> getList()
 		{
-			return db.NhanViens.ToList();
+			var nhanviens = db.NhanViens.ToList();
+			foreach (var nv in nhanviens)
+			{
+				nv.PhongBan = db.PhongBans.FirstOrDefault(x => x.MaPhongBan == nv.MaPhongBan);
+				nv.ChucVu = db.ChucVus.FirstOrDefault(x => x.MaChucVu == nv.MaChucVu);
+			}
+			return nhanviens;
 		}
         public string getTenNV(int mnv)
         {
@@ -107,6 +113,11 @@ namespace BUS_QLNS
 		{
 			string prefix = maPhongBan.ToString() + "0";
 			return db.ChucVus.Where(x => x.MaChucVu.ToString().StartsWith(prefix)).ToList();
+		}
+
+		public List<NhanVien> getListByPhongBan(int maPhongBan)
+		{
+			return db.NhanViens.Where(x => x.MaPhongBan == maPhongBan).ToList();
 		}
 	}
 }

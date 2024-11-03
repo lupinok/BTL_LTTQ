@@ -1,3 +1,6 @@
 - Xóa Ngày bắt đầu làm việc trong bảng nhân viên
 - thêm sự kiện click của nút ql nhân viên trong form main
 - form main có thêm phương thức _load (lỡ tay doubleclick vào chắc ko sao đou :L)
+- thêm bảng:
+PhanQuyen
+NhanVien_DieuChuyen

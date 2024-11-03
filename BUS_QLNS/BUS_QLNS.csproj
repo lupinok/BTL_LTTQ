@@ -51,13 +51,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BoPhan_BUS.cs" />
+    <Compile Include="ChucVu_BUS.cs" />
+    <Compile Include="DCNHANVIEN_BUS.cs" />
     <Compile Include="BangCongNhanVienChiTiet_BUS.cs" />
     <Compile Include="HDLDDTO.cs" />
     <Compile Include="HDLD_BUS.cs" />
     <Compile Include="KyCongChiTiet_BUS.cs" />
     <Compile Include="KyCong_BUS.cs" />
+    <Compile Include="LICHSU_BUS.cs" />
     <Compile Include="LoaiCa_BUS.cs" />
     <Compile Include="NHANVIEN_BUS.cs" />
+    <Compile Include="PHANQUYEN_BUS.cs" />
+    <Compile Include="PhongBan_BUS.cs" />
     <Compile Include="KTKL_BUS.cs" />
     <Compile Include="PhieuLuong_BUS.cs" />
     <Compile Include="PhuCap_BUS.cs" />
