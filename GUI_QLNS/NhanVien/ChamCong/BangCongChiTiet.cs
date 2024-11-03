@@ -29,9 +29,13 @@ namespace GUI_QLNS.NhanVien.ChamCong
         public int _thang;
         public int _nam;
         private GridHitInfo downHitInfo = null;
-        public frmBangCongChiTiet()
+        public bool IsKhoa { get; private set; }
+        private frmBangCong _parentForm;
+
+        public frmBangCongChiTiet(frmBangCong parentForm)
         {
             InitializeComponent();
+            _parentForm = parentForm;
         }
         
         private void frmBangCongChiTiet_Load(object sender, EventArgs e)
@@ -40,17 +44,37 @@ namespace GUI_QLNS.NhanVien.ChamCong
 			_kycong = new KyCong_BUS();
             _kcct = new KyCongChiTiet_BUS();
 			_bcnvct = new BangCongNhanVienChiTiet_BUS();
+            
+            // Lấy trạng thái khóa từ KYCONG
+            var kyCong = _kycong.getItem(_makycong);
+            IsKhoa = (bool)kyCong.KHOA;
+            chkKhoa.Checked = IsKhoa;
+            
             gcBangCongChiTiet.DataSource = _kcct.getList(_makycong);
 			CustomView(_thang,_nam);
 			cboThang.Text = _thang.ToString();
 			cboNam.Text = _nam.ToString();
+            
+            // Cập nhật UI dựa trên trạng thái khóa
+            UpdateUIForLockedState();
         }
         public void loadBangCong()
         {
-			_kcct = new KyCongChiTiet_BUS();
-			gcBangCongChiTiet.DataSource = _kcct.getList(int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text));
-			CustomView(int.Parse(cboThang.Text),int.Parse(cboNam.Text));
-		}
+            try
+            {
+                // Tạm dừng việc vẽ lại grid
+                gvBangCongChiTiet.BeginUpdate();
+
+                _kcct = new KyCongChiTiet_BUS();
+                gcBangCongChiTiet.DataSource = _kcct.getList(int.Parse(cboNam.Text) * 100 + int.Parse(cboThang.Text));
+                CustomView(int.Parse(cboThang.Text), int.Parse(cboNam.Text));
+            }
+            finally
+            {
+                // Cho phép vẽ lại grid sau khi hoàn tất cập nhật
+                gvBangCongChiTiet.EndUpdate();
+            }
+        }
 
         private void btnPhatSinh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -237,6 +261,13 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 i++;
             }
             
+            // Thêm hiệu ứng visual nếu form bị khóa
+            if (IsKhoa)
+            {
+                gvBangCongChiTiet.Appearance.Row.BackColor = Color.LightGray;
+                gvBangCongChiTiet.OptionsBehavior.ReadOnly = true;
+                // Có thể thêm một label hoặc indicator để hiển thị trạng thái khóa
+            }
         }
         private int GetDayNumber(int thang, int nam)
 		{
@@ -299,6 +330,13 @@ namespace GUI_QLNS.NhanVien.ChamCong
         }
         private void mnCapNhatNgayCong_Click(object sender, EventArgs e)
         {
+            // Kiểm tra trạng thái khóa trước khi cho phép cập nhật
+            if (IsKhoa)
+            {
+                MessageBox.Show("Kỳ công đã bị khóa. Không thể cập nhật!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             CapNhatNgayCong frm = new CapNhatNgayCong();
             frm._makycong = _makycong;
             frm._manv = int.Parse(gvBangCongChiTiet.GetFocusedRowCellValue("MANV").ToString());
@@ -333,38 +371,133 @@ namespace GUI_QLNS.NhanVien.ChamCong
         {
             if (e.CellValue == null)
             {
+                return;
             }
-            else if (e.CellValue.ToString() == "X")
+            
+            switch (e.CellValue.ToString())
             {
-                e.Appearance.BackColor = Color.White;
-                e.Appearance.ForeColor = Color.Black;
+                case "X":
+                    e.Appearance.BackColor = Color.White;
+                    e.Appearance.ForeColor = Color.Black;
+                    break;
+                case "CT":
+                    e.Appearance.BackColor = Color.DeepSkyBlue;
+                    e.Appearance.ForeColor = Color.White;
+                    break;
+                case "VR":
+                    e.Appearance.BackColor = Color.DarkGreen;
+                    e.Appearance.ForeColor = Color.White;
+                    break;
+                case "P":
+                    e.Appearance.BackColor = Color.LightBlue;
+                    break;
+                case "V":
+                    e.Appearance.BackColor = Color.IndianRed;
+                    e.Appearance.ForeColor = Color.White;
+                    break;
+                case "TS":
+                    e.Appearance.BackColor = Color.LightPink;
+                    e.Appearance.ForeColor = Color.White;
+                    break;
+            }
+        }
+
+        public void RefreshBangCongChiTiet()
+        {
+            gvBangCongChiTiet.RefreshData();
+        }
+
+        // Thêm phương thức để cập nhật trạng thái khóa
+        public void UpdateKhoaStatus()
+        {
+            var kyCong = _kycong.getItem(_makycong);
+            IsKhoa = (bool)kyCong.KHOA;
+            chkKhoa.Checked = IsKhoa;
+            
+            // Cập nhật UI
+            UpdateUIForLockedState();
+        }
+
+        private void chkKhoa_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var kyCong = _kycong.getItem(_makycong);
+                if (kyCong != null)
+                {
+                    kyCong.KHOA = chkKhoa.Checked;
+                    _kycong.Update(kyCong);
+                    
+                    // Cập nhật trạng thái khóa
+                    IsKhoa = chkKhoa.Checked;
+                    
+                    // Cập nhật UI
+                    UpdateUIForLockedState();
+                    
+                    // Cập nhật form cha nếu có
+                    if (_parentForm != null)
+                    {
+                        _parentForm.UpdateKhoaStatus(_makycong, chkKhoa.Checked);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi cập nhật trạng thái khóa: " + ex.Message);
+            }
+        }
+
+        private void UpdateUIForLockedState()
+        {
+            if (IsKhoa)
+            {
+                gvBangCongChiTiet.Appearance.Row.BackColor = Color.LightGray;
+                gvBangCongChiTiet.OptionsBehavior.ReadOnly = true;
             }
             else
             {
-                if (e.CellValue.ToString() == "CT")
+                gvBangCongChiTiet.Appearance.Row.BackColor = Color.Empty;
+                gvBangCongChiTiet.OptionsBehavior.ReadOnly = false;
+            }
+            gvBangCongChiTiet.RefreshData();
+        }
+
+        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                SaveFileDialog saveDialog = new SaveFileDialog();
+                saveDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                saveDialog.FilterIndex = 1;
+                saveDialog.FileName = $"BangCong_{_thang}_{_nam}";
+
+                if (saveDialog.ShowDialog() == DialogResult.OK)
                 {
-                    e.Appearance.BackColor = Color.DeepSkyBlue;
-                    e.Appearance.ForeColor = Color.White;
+                    SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
+
+                    // Thêm 2 dòng trống vào đầu grid
+                    gvBangCongChiTiet.ViewCaption = $"BẢNG CHẤM CÔNG THÁNG {_thang} NĂM {_nam}";
+                    
+                    // Xuất file Excel
+                    gvBangCongChiTiet.ExportToXlsx(saveDialog.FileName);
+                    
+                    // Xóa caption sau khi xuất
+                    gvBangCongChiTiet.ViewCaption = "";
+                    
+                    SplashScreenManager.CloseForm();
+
+                    if (MessageBox.Show("Xuất file Excel thành công! \nBạn có muốn mở file không?", 
+                        "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start(saveDialog.FileName);
+                    }
                 }
-                if (e.CellValue.ToString() == "VR")
-                {
-                    e.Appearance.BackColor = Color.DarkGreen;
-                    e.Appearance.ForeColor = Color.White;
-                }
-                if (e.CellValue.ToString() == "P")
-                {
-                    e.Appearance.BackColor = Color.LightBlue;
-                }
-                if (e.CellValue.ToString() == "V")
-                {
-                    e.Appearance.BackColor = Color.IndianRed;
-                    e.Appearance.ForeColor = Color.White;
-                }
-                if (e.CellValue.ToString() == "TS")
-                {
-                    e.Appearance.BackColor = Color.LightPink;
-                    e.Appearance.ForeColor = Color.White;
-                }
+            }
+            catch (Exception ex)
+            {
+                SplashScreenManager.CloseForm();
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi xuất Excel", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

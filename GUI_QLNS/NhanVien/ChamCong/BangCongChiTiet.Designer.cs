@@ -45,7 +45,6 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.chkTrangThai = new System.Windows.Forms.CheckBox();
             this.chkKhoa = new System.Windows.Forms.CheckBox();
             this.cboThang = new System.Windows.Forms.ComboBox();
             this.cboNam = new System.Windows.Forms.ComboBox();
@@ -180,6 +179,7 @@
             this.btnIn.Id = 4;
             this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
             this.btnIn.Name = "btnIn";
+            this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
             // bar3
             // 
@@ -253,7 +253,6 @@
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.chkTrangThai);
             this.splitContainer1.Panel1.Controls.Add(this.chkKhoa);
             this.splitContainer1.Panel1.Controls.Add(this.cboThang);
             this.splitContainer1.Panel1.Controls.Add(this.cboNam);
@@ -268,16 +267,6 @@
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 20;
             // 
-            // chkTrangThai
-            // 
-            this.chkTrangThai.AutoSize = true;
-            this.chkTrangThai.Location = new System.Drawing.Point(577, 32);
-            this.chkTrangThai.Name = "chkTrangThai";
-            this.chkTrangThai.Size = new System.Drawing.Size(92, 20);
-            this.chkTrangThai.TabIndex = 6;
-            this.chkTrangThai.Text = "Trạng Thái";
-            this.chkTrangThai.UseVisualStyleBackColor = true;
-            // 
             // chkKhoa
             // 
             this.chkKhoa.AutoSize = true;
@@ -287,6 +276,7 @@
             this.chkKhoa.TabIndex = 5;
             this.chkKhoa.Text = "Khóa";
             this.chkKhoa.UseVisualStyleBackColor = true;
+            this.chkKhoa.CheckedChanged += new System.EventHandler(this.chkKhoa_CheckedChanged);
             // 
             // cboThang
             // 
@@ -1140,7 +1130,6 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private System.Windows.Forms.SplitContainer splitContainer1;
-        private System.Windows.Forms.CheckBox chkTrangThai;
         private System.Windows.Forms.CheckBox chkKhoa;
         private System.Windows.Forms.ComboBox cboThang;
         private System.Windows.Forms.ComboBox cboNam;

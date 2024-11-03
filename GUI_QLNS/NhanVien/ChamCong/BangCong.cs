@@ -3,6 +3,7 @@ using BusinessLayer;
 using DAL;
 using DevExpress.XtraEditors;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace GUI_QLNS.NhanVien.ChamCong
@@ -12,6 +13,8 @@ namespace GUI_QLNS.NhanVien.ChamCong
         KyCong_BUS _bangCong;
         bool _them;
         int _makycong;
+        private Dictionary<int, frmBangCongChiTiet> _openDetailForms = new Dictionary<int, frmBangCongChiTiet>();
+
         public frmBangCong()
         {
             InitializeComponent();
@@ -26,6 +29,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             cboThang.Text = DateTime.Now.Month.ToString();
             _showHide(true);
             loadData();
+            btnXem.Enabled = false;
         }
 
         void _showHide(bool kt)
@@ -39,6 +43,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             cboThang.Enabled = !kt;
             chkKhoa.Enabled = !kt;
             chkTrangThai.Enabled = !kt;
+            btnXem.Enabled = false;
         }
 
         void loadData()
@@ -139,37 +144,82 @@ namespace GUI_QLNS.NhanVien.ChamCong
                     kc.create_by = "";
                     kc.create_date = DateTime.Now;
                     _bangCong.Update(kc);
+
+                    if (_openDetailForms.ContainsKey(_makycong))
+                    {
+                        _openDetailForms[_makycong].UpdateKhoaStatus();
+                    }
                 }
             }
         }
 
         private void gvDanhSach_Click(object sender, EventArgs e)
         {
-            _showHide(false);
-            btnXem.Enabled = true;
-            if (gvDanhSach.RowCount > 0)
+            if (gvDanhSach.RowCount > 0 && gvDanhSach.GetFocusedRowCellValue("MAKYCONG") != null)
             {
+                _showHide(false);
+                btnXem.Enabled = true;
                 _makycong = int.Parse(gvDanhSach.GetFocusedRowCellValue("MAKYCONG").ToString());
                 cboNam.Text = gvDanhSach.GetFocusedRowCellValue("NAM").ToString();
                 cboThang.Text = gvDanhSach.GetFocusedRowCellValue("THANG").ToString();
                 chkKhoa.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("KHOA").ToString());
                 chkTrangThai.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("TRANGTHAI").ToString());
             }
+            else
+            {
+                btnXem.Enabled = false;
+            }
         }
 
         private void btnXem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            frmBangCongChiTiet frm = new frmBangCongChiTiet();
+            frmBangCongChiTiet frm = new frmBangCongChiTiet(this);
             frm._makycong = _makycong;
             frm._nam = int.Parse(cboNam.Text);
             frm._thang = int.Parse(cboThang.Text);
-            frm.ShowDialog();
+            
+            // Theo dõi form chi tiết
+            if (_openDetailForms.ContainsKey(_makycong))
+            {
+                _openDetailForms[_makycong].Close();
+            }
+            _openDetailForms[_makycong] = frm;
+
+            // Đăng ký sự kiện form đóng để xóa khỏi dictionary
+            frm.FormClosed += (s, args) => {
+                _openDetailForms.Remove(_makycong);
+            };
+            
+            frm.Show();
         }
 
         private void btnTaiLai_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             this.OnLoad(e);  // Gọi lại sự kiện Load của form
             loadData();
+        }
+
+        private void chkKhoa_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_openDetailForms.ContainsKey(_makycong))
+            {
+                _openDetailForms[_makycong].UpdateKhoaStatus();
+            }
+        }
+
+        public void UpdateKhoaStatus(int makycong, bool isKhoa)
+        {
+            if (_makycong == makycong)
+            {
+                chkKhoa.Checked = isKhoa;
+                // Cập nhật database
+                var kyCong = _bangCong.getItem(makycong);
+                if (kyCong != null)
+                {
+                    kyCong.KHOA = isKhoa;
+                    _bangCong.Update(kyCong);
+                }
+            }
         }
     }
 }
