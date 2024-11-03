@@ -51,15 +51,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HDLDDTO.cs" />
+    <Compile Include="HDLD_BUS.cs" />
     <Compile Include="KyCongChiTiet_BUS.cs" />
     <Compile Include="KyCong_BUS.cs" />
     <Compile Include="LoaiCa_BUS.cs" />
     <Compile Include="LoaiCong_BUS.cs" />
     <Compile Include="NHANVIEN_BUS.cs" />
+    <Compile Include="KTKL_BUS.cs" />
+    <Compile Include="PhuCap_BUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SYLL_BUS.cs" />
     <Compile Include="SupportFun.cs" />
     <Compile Include="TAIKHOAN_BUS.cs" />
+    <Compile Include="TangCa_BUS.cs" />
+    <Compile Include="UngLuong_BUS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL_QLNS.csproj">

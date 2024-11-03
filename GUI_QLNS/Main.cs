@@ -2,6 +2,7 @@
 using GUI_QLNS.HeThong;
 using GUI_QLNS.NhanVien;
 using GUI_QLNS.NhanVien.ChamCong;
+using GUI_QLNS.NhanVien.Luong;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -69,9 +70,15 @@ namespace GUI_QLNS
             openForm(typeof(frmNhanVien));
 		}
 
-		private void Main_Load(object sender, EventArgs e)
-		{
+        private void menu_khenthuong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmKTKL));
+        }
 
-		}
-	}
+        private void btnTangCa_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmTangCa));
+
+        }
+    }
 }

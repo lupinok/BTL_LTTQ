@@ -4,8 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="87f34d6ec6ea40d6accb9a3fb49e480d" Name="Diagram1" ZoomLevel="94">
-        <EntityTypeShape EntityType="BTLMonLTTQModel.BaoHiem" Width="1.5" PointX="5.25" PointY="6.75" IsExpanded="true" />
+      <Diagram DiagramId="87f34d6ec6ea40d6accb9a3fb49e480d" Name="Diagram1" ZoomLevel="66">
         <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietDuAn" Width="1.5" PointX="5.25" PointY="15" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietKhoaDaoTao" Width="1.5" PointX="5.25" PointY="18" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietKT_KL" Width="1.5" PointX="8.25" PointY="15" IsExpanded="true" />
@@ -16,12 +15,11 @@
         <EntityTypeShape EntityType="BTLMonLTTQModel.KT_KL" Width="1.5" PointX="6" PointY="3.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.LichSuHoatDong" Width="1.5" PointX="10" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.PhieuLuong" Width="1.5" PointX="5.25" PointY="25.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhieuLuong" Width="1.5" PointX="7.625" PointY="25.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.PhongBan" Width="1.5" PointX="0.75" PointY="12.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.SoYeuLyLich" Width="1.5" PointX="5.25" PointY="28.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.TaiKhoan" Width="1.5" PointX="7.75" PointY="6.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.ThanhToan" Width="1.5" PointX="5.25" PointY="32.375" IsExpanded="true" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__BaoHiem__MaNhanV__68487DD7" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietDu__MaDuA__6A30C649" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietDu__MaNha__6B24EA82" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKh__MaDao__6C190EBB" ManuallyRouted="false" />
@@ -40,7 +38,14 @@
         <EntityTypeShape EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" Width="1.5" PointX="10.375" PointY="0.75" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONGCHITIET" Width="1.5" PointX="10.375" PointY="10.75" />
         <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONG" Width="1.5" PointX="12.375" PointY="0.75" />
-      </Diagram>
+        <EntityTypeShape EntityType="BTLMonLTTQModel.TangCa" Width="1.5" PointX="13.25" PointY="8.375" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaLoaiCa__1EA48E88" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaNhanVi__1DB06A4F" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhuCap" Width="1.5" PointX="5.25" PointY="9.875" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.UngLuong" Width="1.5" PointX="5.25" PointY="35.375" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhuCap__MaNhanVi__2CF2ADDF" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__UngLuong__MaNhan__2DE6D218" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

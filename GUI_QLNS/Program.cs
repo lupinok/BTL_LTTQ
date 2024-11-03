@@ -6,6 +6,7 @@ using DevExpress.XtraEditors;
 using System.Data.SqlClient;
 using DAL;
 using GUI_QLNS.NhanVien;
+using GUI_QLNS.NhanVien.Luong;
 
 namespace GUI_QLNS
 {
@@ -20,7 +21,7 @@ namespace GUI_QLNS
             // Kiểm tra kết nối trước
             if (TryConnectWithSavedSettings())
             {
-                Application.Run(new DangNhap());
+                Application.Run(new frmHDLD());
             }
             else
             {

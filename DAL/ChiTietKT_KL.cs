@@ -18,6 +18,14 @@ namespace DAL
         public int MaSuKien { get; set; }
         public string ChiTiet { get; set; }
         public Nullable<decimal> TienThuongPhat { get; set; }
+        public Nullable<System.DateTime> NgayBatDau { get; set; }
+        public Nullable<System.DateTime> NgayKetThuc { get; set; }
+        public string create_by { get; set; }
+        public Nullable<System.DateTime> create_date { get; set; }
+        public string update_by { get; set; }
+        public Nullable<System.DateTime> update_date { get; set; }
+        public string delete_by { get; set; }
+        public Nullable<System.DateTime> delete_date { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
         public virtual KT_KL KT_KL { get; set; }

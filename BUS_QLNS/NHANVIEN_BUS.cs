@@ -18,8 +18,14 @@ namespace BUS_QLNS
 		{
 			return db.NhanViens.ToList();
 		}
+        public string getTenNV(int mnv)
+        {
 
-		public NhanVien Add(NhanVien nv)
+            var ten = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == mnv);
+            return ten.HoTen;
+
+        }
+        public NhanVien Add(NhanVien nv)
 		{
 			try
 			{

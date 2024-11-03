@@ -12,25 +12,22 @@ namespace DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class LoaiCa
+    public partial class UngLuong
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LoaiCa()
-        {
-            this.TangCas = new HashSet<TangCa>();
-        }
-    
-        public string MaLoaiCa { get; set; }
-        public string TenLoaiCa { get; set; }
-        public double HeSo { get; set; }
+        public string MaUngLuong { get; set; }
+        public Nullable<decimal> SoTien { get; set; }
+        public Nullable<int> Thang { get; set; }
+        public Nullable<int> Nam { get; set; }
+        public string GhiChu { get; set; }
+        public Nullable<int> MaNhanVien { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
         public string update_by { get; set; }
         public Nullable<System.DateTime> update_date { get; set; }
         public string delete_by { get; set; }
         public Nullable<System.DateTime> delete_date { get; set; }
+        public string HoTen { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<TangCa> TangCas { get; set; }
+        public virtual NhanVien NhanVien { get; set; }
     }
 }

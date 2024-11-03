@@ -9,7 +9,7 @@ namespace BUS_QLNS
 {
     public class LOAICA_BUS
     {
-        BTLMonLTTQEntities db = new BTLMonLTTQEntities();
+         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 
         public LoaiCa getItem(string maloaica)
         {
@@ -20,7 +20,27 @@ namespace BUS_QLNS
         {
             return db.LoaiCas.ToList();
         }
+        public  string getTenLoaiCa(string maLoaiCa)
+        {
+            
+                var loaiCa = db.LoaiCas.FirstOrDefault(x => x.MaLoaiCa == maLoaiCa);
+                return loaiCa.TenLoaiCa ;
+         
+        }
 
+        // Hàm lấy hệ số theo mã loại ca
+        public  double getHeSo(string maLoaiCa)
+        {
+            try
+            {
+                var loaiCa = db.LoaiCas.FirstOrDefault(x => x.MaLoaiCa == maLoaiCa);
+                return loaiCa != null ? loaiCa.HeSo : 0;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi: " + ex.Message);
+            }
+        }
         public LoaiCa Add(LoaiCa lc)
         {
             try

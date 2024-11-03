@@ -25,7 +25,6 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<BaoHiem> BaoHiems { get; set; }
         public virtual DbSet<ChiTietDuAn> ChiTietDuAns { get; set; }
         public virtual DbSet<ChiTietKhoaDaoTao> ChiTietKhoaDaoTaos { get; set; }
         public virtual DbSet<ChiTietKT_KL> ChiTietKT_KL { get; set; }
@@ -46,5 +45,8 @@ namespace DAL
         public virtual DbSet<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
         public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
         public virtual DbSet<KYCONG> KYCONGs { get; set; }
+        public virtual DbSet<TangCa> TangCas { get; set; }
+        public virtual DbSet<PhuCap> PhuCaps { get; set; }
+        public virtual DbSet<UngLuong> UngLuongs { get; set; }
     }
 }

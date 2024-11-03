@@ -56,9 +56,6 @@
     <Compile Include="BANGCONG_NHANVIEN_CHITIET.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
-    <Compile Include="BaoHiem.cs">
-      <DependentUpon>QLNS.tt</DependentUpon>
-    </Compile>
     <Compile Include="ChiTietDuAn.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
@@ -107,6 +104,9 @@
     <Compile Include="PhongBan.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="PhuCap.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="QLNS.Context.cs">
       <AutoGen>True</AutoGen>
@@ -129,7 +129,13 @@
     <Compile Include="TaiKhoan.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="TangCa.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="ThanhToan.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UngLuong.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
   </ItemGroup>
