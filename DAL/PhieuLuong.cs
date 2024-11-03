@@ -23,8 +23,10 @@ namespace DAL
         public Nullable<decimal> UngLuong { get; set; }
         public Nullable<double> NgayCong { get; set; }
         public Nullable<decimal> KTKL { get; set; }
+        public Nullable<decimal> TienBaoHiem { get; set; }
         public Nullable<decimal> LuongNhanDuoc { get; set; }
         public string TrangThaiTraLuong { get; set; }
+        public Nullable<int> MaKyCong { get; set; }
         public Nullable<int> MaNhanVien { get; set; }
         public string create_by { get; set; }
         public Nullable<System.DateTime> create_date { get; set; }
@@ -32,8 +34,6 @@ namespace DAL
         public Nullable<System.DateTime> update_date { get; set; }
         public string delete_by { get; set; }
         public Nullable<System.DateTime> delete_date { get; set; }
-        public Nullable<decimal> TienBaoHiem { get; set; }
-        public Nullable<int> MaKyCong { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
     }

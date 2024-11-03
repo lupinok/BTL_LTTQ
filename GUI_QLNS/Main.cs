@@ -7,7 +7,6 @@ using GUI_QLNS.NhanVien.ChamCong;
 using GUI_QLNS.NhanVien.ChucVu;
 using GUI_QLNS.NhanVien.DCNhanVien;
 using GUI_QLNS.NhanVien.PhongBan;
-using GUI_QLNS.NhanVien.Luong;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,24 +22,12 @@ namespace GUI_QLNS
     public partial class Main : DevExpress.XtraBars.Ribbon.RibbonForm
     {
         private LICHSU_BUS _lichsuBUS;
-        private Timer _timer;
-        
+
         public Main()
         {
             InitializeComponent();
             _lichsuBUS = new LICHSU_BUS();
-            
-            // Cấu hình Timer để cập nhật lịch sử định kỳ
-            _timer = new Timer();
-            _timer.Interval = 1000; // 1 giây
-            _timer.Tick += Timer_Tick;
-            _timer.Start();
-            
-            LoadLichSu();
-        }
 
-        private void Timer_Tick(object sender, EventArgs e)
-        {
             LoadLichSu();
         }
 
@@ -50,7 +37,7 @@ namespace GUI_QLNS
             {
                 // Lưu vị trí cuộn hiện tại
                 int currentIndex = lstHistory.TopIndex;
-                
+
                 lstHistory.Items.Clear();
                 var lichSu = _lichsuBUS.GetList();
                 foreach (var ls in lichSu)
@@ -80,7 +67,6 @@ namespace GUI_QLNS
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            _timer.Stop();
             base.OnFormClosing(e);
         }
 
@@ -104,8 +90,6 @@ namespace GUI_QLNS
             openForm(typeof(frmLoaiCa));
         }
 
-       
-
         private void btnBangCong_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmBangCong));
@@ -118,51 +102,21 @@ namespace GUI_QLNS
 
         private void btnDangXuat_ItemClick(object sender, ItemClickEventArgs e)
         {
-            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Thông báo", 
+            if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Thông báo",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 Application.Restart();
             }
         }
 
-		private void menu_nhanvien_ItemClick(object sender, ItemClickEventArgs e)
-		{
+        private void menu_nhanvien_ItemClick(object sender, ItemClickEventArgs e)
+        {
             openForm(typeof(frmNhanVien));
-		}
-
-        private void menu_khenthuong_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            openForm(typeof(frmKTKL));
         }
 
-        private void btnTangCa_ItemClick(object sender, ItemClickEventArgs e)
+        private void Main_Load(object sender, EventArgs e)
         {
-            openForm(typeof(frmTangCa));
-
-        }
-
-        private void btnUngLuong_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            openForm(typeof(frmUngLuong));
-        }
-
-		private void Main_Load(object sender, EventArgs e)
-		{
             string vaiTro = Properties.Settings.Default.VaiTro;
-        private void menu_hopdong_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-            openForm(typeof(frmHDLD));
-        }
-
-        private void barDockingMenuItem1_ListItemClick(object sender, ListItemClickEventArgs e)
-        {
-
-            openForm(typeof(frmPhuCap));
-        }
-
-        private void menu_luongnhanvien_ItemClick(object sender, ItemClickEventArgs e)
-        {
 
             if (vaiTro == "Chỉnh sửa" || vaiTro == "Xem")
             {
@@ -172,10 +126,10 @@ namespace GUI_QLNS
             }
         }
 
-		private void menu_users_ItemClick(object sender, ItemClickEventArgs e)
-		{
+        private void menu_users_ItemClick(object sender, ItemClickEventArgs e)
+        {
             openForm(typeof(frmTaiKhoan));
-		}
+        }
 
         private void btnXoaLichSu_Click(object sender, EventArgs e)
         {
@@ -199,7 +153,7 @@ namespace GUI_QLNS
 
         private void btnChucVu_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openForm(typeof (frmChucVu));
+            openForm(typeof(frmChucVu));
         }
 
         private void btbPhongBan_ItemClick(object sender, ItemClickEventArgs e)
@@ -227,13 +181,10 @@ namespace GUI_QLNS
         {
             openForm(typeof(DCNhanVien));
         }
-    }
-            openForm(typeof(frmTinhLuong));
-        }
 
-        private void barButtonItem9_ItemClick(object sender, ItemClickEventArgs e)
+        private void simpleButton1_Click(object sender, EventArgs e)
         {
-            openForm(typeof(frmPhuCap));
+            LoadLichSu();
         }
     }
 }

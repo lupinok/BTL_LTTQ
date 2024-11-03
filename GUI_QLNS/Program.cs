@@ -10,10 +10,9 @@ using GUI_QLNS.NhanVien.Luong;
 
 namespace GUI_QLNS
 {
-    public static class Program
+    internal static class Program
     {
         public static string CurrentUser { get; set; }
-
         [STAThread]
         static void Main()
         {
@@ -23,7 +22,7 @@ namespace GUI_QLNS
             // Kiểm tra kết nối trước
             if (TryConnectWithSavedSettings())
             {
-                Application.Run(new DangNhap());
+                Application.Run(new Main());
             }
             else
             {
@@ -31,7 +30,7 @@ namespace GUI_QLNS
                 frmKetNoi f = new frmKetNoi();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new frmKetNoi());
+                    Application.Run(new DangNhap());
                 }
             }
         }
@@ -74,7 +73,7 @@ namespace GUI_QLNS
         {
             string server = Properties.Settings.Default.LastServerName;
             string database = Properties.Settings.Default.LastDatabaseName;
-            
+
             if (string.IsNullOrEmpty(database))
             {
                 database = "master";
