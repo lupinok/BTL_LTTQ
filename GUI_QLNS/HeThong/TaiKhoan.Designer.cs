@@ -337,6 +337,7 @@
             this.gvDanhSach.OptionsFind.AlwaysVisible = true;
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
             this.gvDanhSach.Click += new System.EventHandler(this.gvDanhSach_Click);
+            this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             // 
             // TenDangNhap
             // 

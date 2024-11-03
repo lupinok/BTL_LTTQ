@@ -80,5 +80,28 @@ namespace BUS_QLNS
 				throw new Exception($"Lỗi khi xóa tài khoản: {ex.Message}");
 			}
 		}
+
+		public bool UpdatePassword(string username, string oldPassword, string newPassword)
+		{
+			try
+			{
+				var taiKhoan = db.TaiKhoans.FirstOrDefault(x => x.TenDangNhap == username);
+				
+				if (taiKhoan == null)
+					throw new Exception("Không tìm thấy tài khoản");
+					
+				if (taiKhoan.MatKhau != oldPassword)
+					throw new Exception("Mật khẩu cũ không đúng");
+					
+				taiKhoan.MatKhau = newPassword;
+				db.SaveChanges();
+				
+				return true;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Lỗi cập nhật mật khẩu: " + ex.Message);
+			}
+		}
 	}
 }

@@ -18,9 +18,31 @@ namespace GUI_QLNS.NhanVien.ChucVu
         ChucVu_BUS _chucVu;
         bool _them;
         int _machucvu;
+        private bool _hasEditPermission;
+        private LICHSU_BUS _lichsuBUS;
+        private string _currentUser;
+
         public frmChucVu()
         {
             InitializeComponent();
+
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa" && vaiTro != "Xem";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
+
+            _chucVu = new ChucVu_BUS();
+            _lichsuBUS = new LICHSU_BUS();
+            _currentUser = Program.CurrentUser;
         }
 
         private void frmChucVu_Load(object sender, EventArgs e)
@@ -34,7 +56,11 @@ namespace GUI_QLNS.NhanVien.ChucVu
         {
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = !kt;
             btnXoa.Enabled = !kt;
             txtLuongCV.Enabled = !kt;
@@ -125,8 +151,17 @@ namespace GUI_QLNS.NhanVien.ChucVu
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    _chucVu.Delete(_machucvu);
-                    loadData();
+                    try {
+                        _chucVu.Delete(_machucvu);
+                        loadData();
+                        _lichsuBUS.ThemLichSu("Xóa chức vụ", _currentUser,
+                            $"Xóa chức vụ {txtTenChucVu.Text}");
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+                            $"Lỗi khi xóa chức vụ: {ex.Message}");
+                    }
                 }
             }
         }
@@ -139,11 +174,16 @@ namespace GUI_QLNS.NhanVien.ChucVu
                 loadData();
                 _them = false;
                 _showHide(true);
+                string action = _them ? "Thêm" : "Cập nhật";
+                _lichsuBUS.ThemLichSu($"{action} chức vụ", _currentUser,
+                    $"{action} chức vụ {txtTenChucVu.Text}");
                 ResetValue();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+                    $"Lỗi khi thao tác với chức vụ: {ex.Message}");
             }
         }
 
@@ -166,9 +206,15 @@ namespace GUI_QLNS.NhanVien.ChucVu
                     txtTenChucVu.Text = gvDanhSach.GetFocusedRowCellValue("TenChucVu").ToString();
                     txtLuongCV.Text = gvDanhSach.GetFocusedRowCellValue("LuongChucVu")?.ToString() ?? "0";
 
-                    // Enable nút Sửa và Xóa
-                    btnSua.Enabled = true;
                     btnXoa.Enabled = true;
+                    btnSua.Enabled = true;
+                    // Chỉ enable các nút khi có quyền chỉnh sửa
+                    if (!_hasEditPermission)
+                    {
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        btnThem.Enabled = false;
+                    }
                 }
                 catch (Exception ex)
                 {

@@ -5,6 +5,7 @@ using GUI_QLNS.NhanVien;
 using GUI_QLNS.NhanVien.BoPhan;
 using GUI_QLNS.NhanVien.ChamCong;
 using GUI_QLNS.NhanVien.ChucVu;
+using GUI_QLNS.NhanVien.DCNhanVien;
 using GUI_QLNS.NhanVien.PhongBan;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,9 @@ namespace GUI_QLNS
         {
             try
             {
+                // Lưu vị trí cuộn hiện tại
+                int currentIndex = lstHistory.TopIndex;
+                
                 lstHistory.Items.Clear();
                 var lichSu = _lichsuBUS.GetList();
                 foreach (var ls in lichSu)
@@ -54,6 +58,17 @@ namespace GUI_QLNS
                                 $"{ls.LoaiHoatDong}\n" +
                                 $"{ls.GhiChu}";
                     lstHistory.Items.Add(item);
+                }
+
+                // Khôi phục vị trí cuộn
+                if (currentIndex >= 0 && currentIndex < lstHistory.Items.Count)
+                {
+                    lstHistory.TopIndex = currentIndex;
+                }
+                else if (lstHistory.Items.Count > 0)
+                {
+                    // Nếu vị trí cũ không hợp lệ, cuộn xuống cuối
+                    lstHistory.TopIndex = lstHistory.Items.Count - 1;
                 }
             }
             catch (Exception ex)
@@ -119,8 +134,15 @@ namespace GUI_QLNS
 
 		private void Main_Load(object sender, EventArgs e)
 		{
+            string vaiTro = Properties.Settings.Default.VaiTro;
 
-		}
+            if (vaiTro == "Chỉnh sửa" || vaiTro == "Xem")
+            {
+                // Ẩn các menu quản lý người dùng
+                menu_users.Enabled = false;
+                menu_phanquyen.Enabled = false;
+            }
+        }
 
 		private void menu_users_ItemClick(object sender, ItemClickEventArgs e)
 		{
@@ -160,6 +182,22 @@ namespace GUI_QLNS
         private void btbBoPhan_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmBoPhan));
+        }
+
+        private void menu_changePassword_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(Password));
+        }
+
+        private void menu_phanquyen_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmTaiKhoan f = new frmTaiKhoan(true); // Truyền tham số true để biết là mở từ phân quyền
+            f.ShowDialog();
+        }
+
+        private void menu_thuyenchuyen_congtac_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(DCNhanVien));
         }
     }
 }

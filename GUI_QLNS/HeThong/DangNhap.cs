@@ -1,4 +1,5 @@
 ﻿using BUS_QLNS;
+using DevExpress.CodeParser;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -92,5 +93,11 @@ namespace GUI_QLNS.HeThong
 				DangNhapHeThong();
 			}
 		}
-	}
+
+        private void ckPassword_CheckedChanged(object sender, EventArgs e)
+        {
+            // Hiển thị/ẩn mật khẩu
+            txtMatKhau.UseSystemPasswordChar = !ckPassword.Checked;
+        }
+    }
 }

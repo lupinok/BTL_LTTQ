@@ -18,15 +18,82 @@ namespace GUI_QLNS.NhanVien.PhongBan
         PhongBan_BUS _phongBan;
         bool _them;
         int _maphongban;
+        private bool _hasEditPermission;
+        private LICHSU_BUS _lichsuBUS;
+        private string _currentUser;
+        private string _selectedUser;
+        private PHANQUYEN_BUS _phanQuyenBUS;
+        private bool _isPhanQuyen = false;
         public frmPhongBan()
         {
             InitializeComponent();
+
+            // Khởi tạo các đối tượng BUS
+            _phongBan = new PhongBan_BUS();
+            _lichsuBUS = new LICHSU_BUS();
+            _phanQuyenBUS = new PHANQUYEN_BUS();
+            _currentUser = Program.CurrentUser;
+
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa" && vaiTro != "Xem";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
+        }
+        public frmPhongBan(string tenDangNhap = null)
+        {
+            InitializeComponent();
+            _selectedUser = tenDangNhap;
+            _phanQuyenBUS = new PHANQUYEN_BUS();
+            _phongBan = new PhongBan_BUS();
+            _lichsuBUS = new LICHSU_BUS();
+            _currentUser = Program.CurrentUser;
+
+            if (_selectedUser != null)
+            {
+                _isPhanQuyen = true;
+                gvDanhSach.OptionsSelection.MultiSelect = true;
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnHuy.Enabled = false;
+
+                // Chỉ hiện nút Lưu để lưu phân quyền
+                btnLuu.Enabled = true;
+                btnLuu.Caption = "Lưu phân quyền";
+
+                // Load các phòng ban đã được phân quyền
+                loadData();
+                var dsPhongBan = _phanQuyenBUS.GetPhongBanByTaiKhoan(_selectedUser);
+                foreach (var maPhongBan in dsPhongBan)
+                {
+                    gvDanhSach.SelectRow(gvDanhSach.LocateByValue("MaPhongBan", maPhongBan));
+                }
+            }
         }
         void _showHide(bool kt)
         {
-            btnLuu.Enabled = !kt;
+            // Chỉ thay đổi trạng thái nút Lưu khi không phải là phân quyền
+            if (!_isPhanQuyen)
+            {
+                btnLuu.Enabled = !kt;
+            }
+            
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = !kt;
             btnXoa.Enabled = !kt;
             txtMaPhongBan.Enabled = !kt;
@@ -123,7 +190,13 @@ namespace GUI_QLNS.NhanVien.PhongBan
         {
             _them = false;
             _phongBan = new PhongBan_BUS();
-            _showHide(true);
+            
+            // Chỉ gọi _showHide khi không phải là phân quyền
+            if (!_isPhanQuyen)
+            {
+                _showHide(true);
+            }
+            
             loadData();
             LoadTruongPhong();
         }
@@ -147,25 +220,64 @@ namespace GUI_QLNS.NhanVien.PhongBan
             {
                 if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    _phongBan.Delete(_maphongban);
-                    loadData();
+                    try {
+                        _phongBan.Delete(_maphongban);
+                        loadData();
+                        _lichsuBUS.ThemLichSu("Xóa phòng ban", _currentUser,
+                            $"Xóa phòng ban {txtTenPhongBan.Text}");
+                    }
+                    catch (Exception ex) {
+                        MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+                            $"Lỗi khi xóa phòng ban: {ex.Message}");
+                    }
                 }
             }
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            try
+            if (_isPhanQuyen)
             {
-                SaveData();
-                loadData();
-                _them = false;
-                _showHide(true);
-                ResetValue();
+                try
+                {
+                    var selectedRows = gvDanhSach.GetSelectedRows();
+                    var dsPhongBan = selectedRows.Select(i =>
+                        int.Parse(gvDanhSach.GetRowCellValue(i, "MaPhongBan").ToString())).ToList();
+                    _phanQuyenBUS.PhanQuyen(_selectedUser, dsPhongBan);
+
+                    MessageBox.Show("Phân quyền thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    _lichsuBUS.ThemLichSu("Phân quyền", _currentUser,
+                        $"Phân quyền phòng ban cho tài khoản {_selectedUser}");
+
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi phân quyền: " + ex.Message);
+                }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                try
+                {
+                    SaveData();
+                    loadData();
+                    _them = false;
+                    _showHide(true);
+                    string action = _them ? "Thêm" : "Cập nhật";
+                    _lichsuBUS.ThemLichSu($"{action} phòng ban", _currentUser,
+                        $"{action}  phòng ban {txtTenPhongBan.Text}");
+                    ResetValue();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+                        $"Lỗi khi thao tác với phòng ban: {ex.Message}");
+                }
             }
         }
 
@@ -187,9 +299,15 @@ namespace GUI_QLNS.NhanVien.PhongBan
                     txtMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
                     txtTenPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("TenPhongBan").ToString();
                     cboTruongPhong.Text = gvDanhSach.GetFocusedRowCellValue("TruongPhong").ToString();
-                    // Enable nút Sửa và Xóa
                     btnSua.Enabled = true;
                     btnXoa.Enabled = true;
+                    // Chỉ enable các nút khi có quyền chỉnh sửa
+                    if (!_hasEditPermission)
+                    {
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        btnThem.Enabled = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -197,6 +315,54 @@ namespace GUI_QLNS.NhanVien.PhongBan
                                   "Lỗi",
                                   MessageBoxButtons.OK,
                                   MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void gvDanhSach_DoubleClick(object sender, EventArgs e)
+        {
+            if (gvDanhSach.FocusedRowHandle >= 0)
+            {
+                int maPhongBan = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString());
+                // Kiểm tra quyền truy cập phòng ban
+                var dsPhongBan = _phanQuyenBUS.GetPhongBanByTaiKhoan(Program.CurrentUser);
+                if (Properties.Settings.Default.VaiTro == "Quản trị viên" ||
+                    dsPhongBan.Contains(maPhongBan))
+                {
+                    frmNhanVien f = new frmNhanVien(maPhongBan);
+                    f.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Bạn không có quyền truy cập phòng ban này!");
+                }
+            }
+
+        }
+
+        private void gvDanhSach_RowStyle(object sender, DevExpress.XtraGrid.Views.Grid.RowStyleEventArgs e)
+        {
+            if (e.RowHandle >= 0)
+            {
+                int maPhongBan = int.Parse(gvDanhSach.GetRowCellValue(e.RowHandle, "MaPhongBan").ToString());
+                var dsPhongBan = _phanQuyenBUS.GetPhongBanByTaiKhoan(Program.CurrentUser);
+
+                // Nếu không phải admin và không có quyền truy cập phòng ban này
+                if (Properties.Settings.Default.VaiTro != "Quản trị viên" &&
+                    !dsPhongBan.Contains(maPhongBan))
+                {
+                    e.Appearance.ForeColor = Color.Gray;
+                    e.Appearance.BackColor = Color.LightGray;
+                }
+            }
+            if (e.RowHandle >= 0 && _isPhanQuyen)
+            {
+                int maPhongBan = int.Parse(gvDanhSach.GetRowCellValue(e.RowHandle, "MaPhongBan").ToString());
+                var dsPhongBan = _phanQuyenBUS.GetPhongBanByTaiKhoan(_selectedUser);
+
+                if (dsPhongBan.Contains(maPhongBan))
+                {
+                    e.Appearance.BackColor = Color.LightBlue;
                 }
             }
         }

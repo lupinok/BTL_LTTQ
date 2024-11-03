@@ -104,6 +104,12 @@
     <Compile Include="NhanVien.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien_DieuChuyen.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhanQuyen.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="PhieuLuong.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
@@ -127,6 +133,9 @@
       <DependentUpon>QLNS.edmx</DependentUpon>
     </Compile>
     <Compile Include="SoYeuLyLich.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="sysdiagram.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="TaiKhoan.cs">

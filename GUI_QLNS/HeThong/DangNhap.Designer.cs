@@ -35,12 +35,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.ckPassword = new DevExpress.XtraEditors.CheckEdit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckPassword.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox1.Controls.Add(this.ckPassword);
             this.groupBox1.Controls.Add(this.btnDangNhap);
             this.groupBox1.Controls.Add(this.txtMatKhau);
             this.groupBox1.Controls.Add(this.txtTenDangNhap);
@@ -55,9 +58,9 @@
             // 
             // btnDangNhap
             // 
-            this.btnDangNhap.Location = new System.Drawing.Point(160, 142);
+            this.btnDangNhap.Location = new System.Drawing.Point(292, 137);
             this.btnDangNhap.Name = "btnDangNhap";
-            this.btnDangNhap.Size = new System.Drawing.Size(117, 23);
+            this.btnDangNhap.Size = new System.Drawing.Size(117, 29);
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
@@ -97,6 +100,15 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên đăng nhập";
             // 
+            // ckPassword
+            // 
+            this.ckPassword.Location = new System.Drawing.Point(117, 121);
+            this.ckPassword.Name = "ckPassword";
+            this.ckPassword.Properties.Caption = "Hiển thị mật khẩu";
+            this.ckPassword.Size = new System.Drawing.Size(133, 24);
+            this.ckPassword.TabIndex = 5;
+            this.ckPassword.CheckedChanged += new System.EventHandler(this.ckPassword_CheckedChanged);
+            // 
             // DangNhap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -108,6 +120,7 @@
             this.Load += new System.EventHandler(this.DangNhap_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckPassword.Properties)).EndInit();
             this.ResumeLayout(false);
 
 		}
@@ -121,5 +134,6 @@
 		private System.Windows.Forms.TextBox txtTenDangNhap;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-	}
+        private DevExpress.XtraEditors.CheckEdit ckPassword;
+    }
 }

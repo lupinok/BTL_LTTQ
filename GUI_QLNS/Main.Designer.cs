@@ -125,6 +125,8 @@
             this.btnBangCong = new DevExpress.XtraBars.BarButtonItem();
             this.btnDangXuat = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnChucVu = new DevExpress.XtraBars.BarButtonItem();
+            this.btbPhongBan = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -152,8 +154,6 @@
             this.controlContainer1 = new DevExpress.XtraBars.Docking.ControlContainer();
             this.btnXoaLichSu = new DevExpress.XtraEditors.SimpleButton();
             this.lstHistory = new DevExpress.XtraEditors.ListBoxControl();
-            this.btnChucVu = new DevExpress.XtraBars.BarButtonItem();
-            this.btbPhongBan = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateTimeOffsetEdit1)).BeginInit();
@@ -402,6 +402,7 @@
             this.menu_phanquyen.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menu_phanquyen.ImageOptions.SvgImage")));
             this.menu_phanquyen.Name = "menu_phanquyen";
             this.menu_phanquyen.Tag = "MENU_02";
+            this.menu_phanquyen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_phanquyen_ItemClick);
             // 
             // menu_changePassword
             // 
@@ -410,6 +411,7 @@
             this.menu_changePassword.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menu_changePassword.ImageOptions.SvgImage")));
             this.menu_changePassword.Name = "menu_changePassword";
             this.menu_changePassword.Tag = "MENU_03";
+            this.menu_changePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_changePassword_ItemClick);
             // 
             // menu_log_system
             // 
@@ -765,7 +767,7 @@
             // 
             this.btbBoPhan.Caption = "Bộ phận";
             this.btbBoPhan.Id = 123;
-            this.btbBoPhan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("bar_cate.ImageOptions.SvgImage")));
+            this.btbBoPhan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btbBoPhan.ImageOptions.SvgImage")));
             this.btbBoPhan.Name = "btbBoPhan";
             this.btbBoPhan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btbBoPhan_ItemClick);
             // 
@@ -790,6 +792,7 @@
             this.menu_thuyenchuyen_congtac.Id = 136;
             this.menu_thuyenchuyen_congtac.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menu_thuyenchuyen_congtac.ImageOptions.SvgImage")));
             this.menu_thuyenchuyen_congtac.Name = "menu_thuyenchuyen_congtac";
+            this.menu_thuyenchuyen_congtac.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_thuyenchuyen_congtac_ItemClick);
             // 
             // menu_nghiphep
             // 
@@ -898,6 +901,22 @@
             // 
             this.barButtonItem9.Id = 156;
             this.barButtonItem9.Name = "barButtonItem9";
+            // 
+            // btnChucVu
+            // 
+            this.btnChucVu.Caption = "Chức vụ";
+            this.btnChucVu.Id = 159;
+            this.btnChucVu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnChucVu.ImageOptions.SvgImage")));
+            this.btnChucVu.Name = "btnChucVu";
+            this.btnChucVu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChucVu_ItemClick);
+            // 
+            // btbPhongBan
+            // 
+            this.btbPhongBan.Caption = "Phòng ban";
+            this.btbPhongBan.Id = 160;
+            this.btbPhongBan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btbPhongBan.ImageOptions.SvgImage")));
+            this.btbPhongBan.Name = "btbPhongBan";
+            this.btbPhongBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btbPhongBan_ItemClick);
             // 
             // ribbonPage2
             // 
@@ -1118,22 +1137,6 @@
             this.lstHistory.Name = "lstHistory";
             this.lstHistory.Size = new System.Drawing.Size(228, 507);
             this.lstHistory.TabIndex = 0;
-            // 
-            // btnChucVu
-            // 
-            this.btnChucVu.Caption = "Chức vụ";
-            this.btnChucVu.Id = 159;
-            this.btnChucVu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnChucVu.ImageOptions.SvgImage")));
-            this.btnChucVu.Name = "btnChucVu";
-            this.btnChucVu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnChucVu_ItemClick);
-            // 
-            // btbPhongBan
-            // 
-            this.btbPhongBan.Caption = "Phòng ban";
-            this.btbPhongBan.Id = 160;
-            this.btbPhongBan.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btbPhongBan.ImageOptions.SvgImage")));
-            this.btbPhongBan.Name = "btbPhongBan";
-            this.btbPhongBan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btbPhongBan_ItemClick);
             // 
             // Main
             // 

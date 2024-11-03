@@ -108,5 +108,10 @@ namespace BUS_QLNS
 			string prefix = maPhongBan.ToString() + "0";
 			return db.ChucVus.Where(x => x.MaChucVu.ToString().StartsWith(prefix)).ToList();
 		}
+
+		public List<NhanVien> getListByPhongBan(int maPhongBan)
+		{
+			return db.NhanViens.Where(x => x.MaPhongBan == maPhongBan).ToList();
+		}
 	}
 }

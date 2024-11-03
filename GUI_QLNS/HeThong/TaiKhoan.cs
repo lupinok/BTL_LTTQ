@@ -1,5 +1,6 @@
 ﻿using BUS_QLNS;
 using DevExpress.XtraEditors;
+using GUI_QLNS.NhanVien.PhongBan;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,16 +19,39 @@ namespace GUI_QLNS.HeThong
 		private LICHSU_BUS _lichsuBUS;
 		private bool _isNewRecord = false;
 		private string _currentUser;
+        private bool _isPhanQuyen = false;
 
-		public frmTaiKhoan()
+        public frmTaiKhoan()
 		{
 			InitializeComponent();
 			_taikhoanBUS = new TAIKHOAN_BUS();
 			_lichsuBUS = new LICHSU_BUS();
 			_currentUser = Program.CurrentUser;
 		}
+        public frmTaiKhoan(bool isPhanQuyen = false)
+        {
+            InitializeComponent();
+            _taikhoanBUS = new TAIKHOAN_BUS();
+            _lichsuBUS = new LICHSU_BUS();
+            _currentUser = Program.CurrentUser;
+            _isPhanQuyen = isPhanQuyen;
 
-		private void TaiKhoan_Load(object sender, EventArgs e)
+            // Nếu mở form để phân quyền, ẩn các nút chức năng
+            if (_isPhanQuyen)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
+            
+            LoadData();
+            ShowHideControls(false);
+            LoadComboBoxData();
+        }
+
+        private void TaiKhoan_Load(object sender, EventArgs e)
 		{
 			LoadData();
 			ShowHideControls(false);
@@ -166,5 +190,15 @@ namespace GUI_QLNS.HeThong
 				btnHuy.Enabled = true;
 			}
 		}
-	}
+
+        private void gvDanhSach_DoubleClick(object sender, EventArgs e)
+        {
+            if (_isPhanQuyen && gvDanhSach.FocusedRowHandle >= 0)
+            {
+                string tenDangNhap = gvDanhSach.GetFocusedRowCellValue("TenDangNhap").ToString();
+                frmPhongBan f = new frmPhongBan(tenDangNhap);
+                f.ShowDialog();
+            }
+        }
+    }
 }

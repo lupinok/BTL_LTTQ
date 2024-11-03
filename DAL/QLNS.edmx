@@ -244,9 +244,28 @@
           <Property Name="NgaySinh" Type="date" />
           <Property Name="SoDienThoai" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="100" />
-          <Property Name="NgayBatDauLamViec" Type="date" />
           <Property Name="MaPhongBan" Type="int" />
           <Property Name="MaChucVu" Type="int" />
+        </EntityType>
+        <EntityType Name="NhanVien_DieuChuyen">
+          <Key>
+            <PropertyRef Name="SoDC" />
+          </Key>
+          <Property Name="SoDC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ngay" Type="datetime" />
+          <Property Name="MaNhanVien" Type="int" />
+          <Property Name="MaPhongBan" Type="int" />
+          <Property Name="MaPhongBan2" Type="int" />
+          <Property Name="LyDoDC" Type="nvarchar" MaxLength="300" />
+          <Property Name="GhiChuDC" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="PhanQuyen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TenDangNhap" Type="nvarchar" MaxLength="100" />
+          <Property Name="MaPhongBan" Type="int" />
         </EntityType>
         <EntityType Name="PhieuLuong">
           <Key>
@@ -284,6 +303,16 @@
           <Property Name="GiaCanh" Type="nvarchar" MaxLength="255" />
           <Property Name="HinhAnh" Type="nvarchar" MaxLength="255" />
           <Property Name="QuocTich" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -437,6 +466,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__PhanQuyen__MaPho__40058253">
+          <End Role="PhongBan" Type="Self.PhongBan" Multiplicity="0..1" />
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhanQuyen__TenDa__3F115E1A">
+          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="0..1" />
+          <End Role="PhanQuyen" Type="Self.PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="TenDangNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__PhieuLuon__MaNha__7A672E12">
           <End Role="NhanVien" Type="Self.NhanVien" Multiplicity="0..1" />
           <End Role="PhieuLuong" Type="Self.PhieuLuong" Multiplicity="*" />
@@ -503,9 +556,12 @@
           <EntitySet Name="LoaiCa" EntityType="Self.LoaiCa" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoaiCong" EntityType="Self.LoaiCong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NhanVien" EntityType="Self.NhanVien" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NhanVien_DieuChuyen" EntityType="Self.NhanVien_DieuChuyen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PhanQuyen" EntityType="Self.PhanQuyen" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhieuLuong" EntityType="Self.PhieuLuong" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PhongBan" EntityType="Self.PhongBan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="SoYeuLyLich" EntityType="Self.SoYeuLyLich" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThanhToan" EntityType="Self.ThanhToan" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__BaoHiem__MaNhanV__6FE99F9F" Association="Self.FK__BaoHiem__MaNhanV__6FE99F9F">
@@ -551,6 +607,14 @@
           <AssociationSet Name="FK__NhanVien__MaPhon__797309D9" Association="Self.FK__NhanVien__MaPhon__797309D9">
             <End Role="PhongBan" EntitySet="PhongBan" />
             <End Role="NhanVien" EntitySet="NhanVien" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhanQuyen__MaPho__40058253" Association="Self.FK__PhanQuyen__MaPho__40058253">
+            <End Role="PhongBan" EntitySet="PhongBan" />
+            <End Role="PhanQuyen" EntitySet="PhanQuyen" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhanQuyen__TenDa__3F115E1A" Association="Self.FK__PhanQuyen__TenDa__3F115E1A">
+            <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+            <End Role="PhanQuyen" EntitySet="PhanQuyen" />
           </AssociationSet>
           <AssociationSet Name="FK__PhieuLuon__MaNha__7A672E12" Association="Self.FK__PhieuLuon__MaNha__7A672E12">
             <End Role="NhanVien" EntitySet="NhanVien" />
@@ -711,7 +775,6 @@
           <NavigationProperty Name="PhieuLuongs" Relationship="Self.FK__PhieuLuon__MaNha__73BA3083" FromRole="NhanVien" ToRole="PhieuLuong" />
           <NavigationProperty Name="SoYeuLyLich" Relationship="Self.FK__SoYeuLyLi__MaNha__74AE54BC" FromRole="NhanVien" ToRole="SoYeuLyLich" />
           <NavigationProperty Name="ThanhToans" Relationship="Self.FK__ThanhToan__MaNha__75A278F5" FromRole="NhanVien" ToRole="ThanhToan" />
-          <Property Name="NgayBatDauLamViec" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="PhieuLuong">
           <Key>
@@ -735,6 +798,7 @@
           <Property Name="TruongPhong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NhanViens" Relationship="Self.FK__NhanVien__MaPhon__72C60C4A" FromRole="PhongBan" ToRole="NhanVien" />
           <NavigationProperty Name="BoPhans" Relationship="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" FromRole="PhongBan" ToRole="BoPhan" />
+          <NavigationProperty Name="PhanQuyens" Relationship="BTLMonLTTQModel.FK__PhanQuyen__MaPho__40058253" FromRole="PhongBan" ToRole="PhanQuyen" />
         </EntityType>
         <EntityType Name="SoYeuLyLich">
           <Key>
@@ -764,6 +828,7 @@
           <Property Name="TrangThaiTaiKhoan" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="NgayTao" Type="DateTime" Precision="0" />
           <NavigationProperty Name="LichSuHoatDongs" Relationship="Self.FK__LichSuHoa__TenDa__70DDC3D8" FromRole="TaiKhoan" ToRole="LichSuHoatDong" />
+          <NavigationProperty Name="PhanQuyens" Relationship="BTLMonLTTQModel.FK__PhanQuyen__TenDa__3F115E1A" FromRole="TaiKhoan" ToRole="PhanQuyen" />
         </EntityType>
         <EntityType Name="ThanhToan">
           <Key>
@@ -1027,6 +1092,17 @@
             <End Role="PhongBan" EntitySet="PhongBans" />
             <End Role="BoPhan" EntitySet="BoPhans" />
           </AssociationSet>
+          <EntitySet Name="PhanQuyens" EntityType="BTLMonLTTQModel.PhanQuyen" />
+          <EntitySet Name="sysdiagrams" EntityType="BTLMonLTTQModel.sysdiagram" />
+          <AssociationSet Name="FK__PhanQuyen__MaPho__40058253" Association="BTLMonLTTQModel.FK__PhanQuyen__MaPho__40058253">
+            <End Role="PhongBan" EntitySet="PhongBans" />
+            <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+          </AssociationSet>
+          <AssociationSet Name="FK__PhanQuyen__TenDa__3F115E1A" Association="BTLMonLTTQModel.FK__PhanQuyen__TenDa__3F115E1A">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+          </AssociationSet>
+          <EntitySet Name="NhanVien_DieuChuyen" EntityType="BTLMonLTTQModel.NhanVien_DieuChuyen" />
         </EntityContainer>
         <EntityType Name="LoaiCa">
           <Key>
@@ -1167,6 +1243,62 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PhanQuyen">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MaPhongBan" Type="Int32" />
+          <NavigationProperty Name="PhongBan" Relationship="BTLMonLTTQModel.FK__PhanQuyen__MaPho__40058253" FromRole="PhanQuyen" ToRole="PhongBan" />
+          <NavigationProperty Name="TaiKhoan" Relationship="BTLMonLTTQModel.FK__PhanQuyen__TenDa__3F115E1A" FromRole="PhanQuyen" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK__PhanQuyen__MaPho__40058253">
+          <End Type="BTLMonLTTQModel.PhongBan" Role="PhongBan" Multiplicity="0..1" />
+          <End Type="BTLMonLTTQModel.PhanQuyen" Role="PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhongBan">
+              <PropertyRef Name="MaPhongBan" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="MaPhongBan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__PhanQuyen__TenDa__3F115E1A">
+          <End Type="BTLMonLTTQModel.TaiKhoan" Role="TaiKhoan" Multiplicity="0..1" />
+          <End Type="BTLMonLTTQModel.PhanQuyen" Role="PhanQuyen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="TenDangNhap" />
+            </Principal>
+            <Dependent Role="PhanQuyen">
+              <PropertyRef Name="TenDangNhap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="NhanVien_DieuChuyen">
+          <Key>
+            <PropertyRef Name="SoDC" />
+          </Key>
+          <Property Name="SoDC" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ngay" Type="DateTime" Precision="3" />
+          <Property Name="MaNhanVien" Type="Int32" />
+          <Property Name="MaPhongBan" Type="Int32" />
+          <Property Name="MaPhongBan2" Type="Int32" />
+          <Property Name="LyDoDC" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="GhiChuDC" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1287,7 +1419,6 @@
           <EntitySetMapping Name="NhanViens">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien">
               <MappingFragment StoreEntitySet="NhanVien">
-                <ScalarProperty Name="NgayBatDauLamViec" ColumnName="NgayBatDauLamViec" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
@@ -1488,6 +1619,39 @@
                 <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
                 <ScalarProperty Name="TenBoPhan" ColumnName="TenBoPhan" />
                 <ScalarProperty Name="MaBoPhan" ColumnName="MaBoPhan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PhanQuyens">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.PhanQuyen">
+              <MappingFragment StoreEntitySet="PhanQuyen">
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhanVien_DieuChuyen">
+            <EntityTypeMapping TypeName="BTLMonLTTQModel.NhanVien_DieuChuyen">
+              <MappingFragment StoreEntitySet="NhanVien_DieuChuyen">
+                <ScalarProperty Name="GhiChuDC" ColumnName="GhiChuDC" />
+                <ScalarProperty Name="LyDoDC" ColumnName="LyDoDC" />
+                <ScalarProperty Name="MaPhongBan2" ColumnName="MaPhongBan2" />
+                <ScalarProperty Name="MaPhongBan" ColumnName="MaPhongBan" />
+                <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
+                <ScalarProperty Name="Ngay" ColumnName="Ngay" />
+                <ScalarProperty Name="SoDC" ColumnName="SoDC" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

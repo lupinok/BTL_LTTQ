@@ -285,6 +285,8 @@
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsFind.AlwaysVisible = true;
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
+            this.gvDanhSach.RowStyle += new DevExpress.XtraGrid.Views.Grid.RowStyleEventHandler(this.gvDanhSach_RowStyle);
+            this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             // 
             // MaPB
             // 
