@@ -186,5 +186,50 @@ namespace GUI_QLNS
         {
             LoadLichSu();
         }
+
+        private void menu_hopdong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void menu_luongnhanvien_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void menu_kyluat_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void menu_nghiviec_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnTangCa_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
     }
 }
