@@ -102,6 +102,8 @@
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
             this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnCapNhatNgayCong = new System.Windows.Forms.ToolStripMenuItem();
+            this.cboPhongBan = new System.Windows.Forms.ComboBox();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -258,6 +260,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.cboPhongBan);
+            this.splitContainer1.Panel1.Controls.Add(this.labelControl3);
             this.splitContainer1.Panel1.Controls.Add(this.chkKhoa);
             this.splitContainer1.Panel1.Controls.Add(this.cboThang);
             this.splitContainer1.Panel1.Controls.Add(this.cboNam);
@@ -275,7 +279,7 @@
             // chkKhoa
             // 
             this.chkKhoa.AutoSize = true;
-            this.chkKhoa.Location = new System.Drawing.Point(504, 32);
+            this.chkKhoa.Location = new System.Drawing.Point(779, 30);
             this.chkKhoa.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.chkKhoa.Name = "chkKhoa";
             this.chkKhoa.Size = new System.Drawing.Size(57, 20);
@@ -1098,6 +1102,24 @@
             this.mnCapNhatNgayCong.Text = "Cập nhật ngày công";
             this.mnCapNhatNgayCong.Click += new System.EventHandler(this.mnCapNhatNgayCong_Click);
             // 
+            // cboPhongBan
+            // 
+            this.cboPhongBan.FormattingEnabled = true;
+            this.cboPhongBan.Location = new System.Drawing.Point(573, 28);
+            this.cboPhongBan.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cboPhongBan.Name = "cboPhongBan";
+            this.cboPhongBan.Size = new System.Drawing.Size(168, 24);
+            this.cboPhongBan.TabIndex = 7;
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(483, 30);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(65, 16);
+            this.labelControl3.TabIndex = 6;
+            this.labelControl3.Text = "Phòng ban:";
+            // 
             // frmBangCongChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1208,5 +1230,7 @@
         private System.Windows.Forms.ContextMenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem mnCapNhatNgayCong;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboPhongBan;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
     }
 }
