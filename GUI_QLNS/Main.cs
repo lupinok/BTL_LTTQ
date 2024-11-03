@@ -10,6 +10,7 @@ using GUI_QLNS.NhanVien.Dự_án;
 using GUI_QLNS.NhanVien.NhanVienThoiViec;
 using GUI_QLNS.NhanVien.DCNhanVien;
 using GUI_QLNS.NhanVien.PhongBan;
+using GUI_QLNS.NhanVien.Luong;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -181,7 +182,7 @@ namespace GUI_QLNS
 
         private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
         {
-            openForm(typeof(frmDaoTao));
+            openForm(typeof(frmDuAn));
         }
 
         private void menu_nghiviec_ItemClick(object sender, ItemClickEventArgs e)
@@ -200,10 +201,6 @@ namespace GUI_QLNS
             f.ShowDialog();
         }
 
-        private void menu_thuyenchuyen_congtac_ItemClick(object sender, ItemClickEventArgs e)
-        {
-            openForm(typeof(DCNhanVien));
-        }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
@@ -212,47 +209,37 @@ namespace GUI_QLNS
 
         private void menu_hopdong_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            openForm(typeof(frmHDLD));
         }
 
         private void menu_luongnhanvien_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            openForm(typeof(frmTinhLuong));
         }
 
         private void menu_kyluat_ItemClick(object sender, ItemClickEventArgs e)
         {
-
-        }
-
-        private void menu_nghiviec_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem10_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
-        }
-
-        private void barButtonItem11_ItemClick(object sender, ItemClickEventArgs e)
-        {
-
+            openForm(typeof(frmKTKL));
         }
 
         private void barButtonItem12_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            openForm(typeof(frmPhuCap));
         }
 
         private void barButtonItem13_ItemClick(object sender, ItemClickEventArgs e)
         {
-
+            openForm(typeof(frmUngLuong));
         }
 
         private void btnTangCa_ItemClick(object sender, ItemClickEventArgs e)
         {
+            openForm(typeof(frmTangCa));
+        }
 
+        private void barButtonItem10_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(frmDaoTao));
         }
     }
 }

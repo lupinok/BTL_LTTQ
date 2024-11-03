@@ -287,9 +287,6 @@
     <EmbeddedResource Include="NhanVien\ChamCong\LoaiCa.resx">
       <DependentUpon>LoaiCa.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\ChamCong\LoaiCong.resx">
-      <DependentUpon>LoaiCong.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChucVu\frmChucVu.resx">
       <DependentUpon>frmChucVu.cs</DependentUpon>
     </EmbeddedResource>

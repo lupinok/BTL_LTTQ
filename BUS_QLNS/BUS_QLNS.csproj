@@ -65,6 +65,7 @@
     <Compile Include="KyCong_BUS.cs" />
     <Compile Include="LICHSU_BUS.cs" />
     <Compile Include="LoaiCa_BUS.cs" />
+    <Compile Include="NhanVienThoiViec_BUS.cs" />
     <Compile Include="NHANVIEN_BUS.cs" />
     <Compile Include="PHANQUYEN_BUS.cs" />
     <Compile Include="PhongBan_BUS.cs" />
@@ -79,17 +80,17 @@
     <Compile Include="UngLuong_BUS.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAL\DAL_QLNS.csproj">
-      <Project>{51ED1FD1-488D-4E70-A0AB-EE706482569A}</Project>
-      <Name>DAL_QLNS</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DTO\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL\DAL_QLNS.csproj">
+      <Project>{51ed1fd1-488d-4e70-a0ab-ee706482569a}</Project>
+      <Name>DAL_QLNS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
