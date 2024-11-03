@@ -26,6 +26,7 @@ namespace DAL
             this.TangCas = new HashSet<TangCa>();
             this.ThanhToans = new HashSet<ThanhToan>();
             this.UngLuongs = new HashSet<UngLuong>();
+            this.NhanVienThoiViecs = new HashSet<NhanVienThoiViec>();
         }
     
         public int MaNhanVien { get; set; }
@@ -36,6 +37,7 @@ namespace DAL
         public Nullable<System.DateTime> NgayBatDauLamViec { get; set; }
         public Nullable<int> MaPhongBan { get; set; }
         public Nullable<int> MaChucVu { get; set; }
+        public Nullable<bool> DaThoiViec { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ChiTietDuAn> ChiTietDuAns { get; set; }
@@ -58,5 +60,7 @@ namespace DAL
         public virtual ICollection<ThanhToan> ThanhToans { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UngLuong> UngLuongs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NhanVienThoiViec> NhanVienThoiViecs { get; set; }
     }
 }

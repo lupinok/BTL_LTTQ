@@ -18,6 +18,7 @@ namespace DAL
         public TaiKhoan()
         {
             this.LichSuHoatDongs = new HashSet<LichSuHoatDong>();
+            this.PhanQuyens = new HashSet<PhanQuyen>();
         }
     
         public string TenDangNhap { get; set; }
@@ -28,5 +29,7 @@ namespace DAL
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LichSuHoatDong> LichSuHoatDongs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PhanQuyen> PhanQuyens { get; set; }
     }
 }

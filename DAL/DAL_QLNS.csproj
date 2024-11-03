@@ -56,6 +56,9 @@
     <Compile Include="BANGCONG_NHANVIEN_CHITIET.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
+    <Compile Include="BoPhan.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
     <Compile Include="ChiTietDuAn.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
@@ -96,6 +99,15 @@
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="NhanVien.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVienThoiViec.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NhanVien_DieuChuyen.cs">
+      <DependentUpon>QLNS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhanQuyen.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="PhieuLuong.cs">

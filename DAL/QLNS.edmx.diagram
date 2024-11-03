@@ -45,6 +45,14 @@
         <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaNhanVi__25518C17" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__ThanhToan__MaNha__7C4F7684" ManuallyRouted="false" />
         <AssociationConnector Association="BTLMonLTTQModel.FK__UngLuong__MaNhan__339FAB6E" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.BoPhan" Width="1.5" PointX="3" PointY="27.5" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien_DieuChuyen" Width="1.5" PointX="5.875" PointY="4.75" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVienThoiViec" Width="1.5" PointX="5.25" PointY="52.875" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhanQuyen" Width="1.5" PointX="3" PointY="10.375" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_NhanVienThoiViec_NhanVien" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhanQuyen__MaPho__06CD04F7" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhanQuyen__TenDa__07C12930" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
