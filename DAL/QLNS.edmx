@@ -9,7 +9,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MAKYCONG" Type="int" />
           <Property Name="MaNhanVien" Type="int" />
           <Property Name="NGAY" Type="datetime" />
@@ -21,6 +21,7 @@
           <Property Name="CONGCHUNHAT" Type="float" />
           <Property Name="KYHIEU" Type="nvarchar" MaxLength="50" />
           <Property Name="GHICHU" Type="nvarchar" MaxLength="500" />
+          <Property Name="NGAYCONG" Type="float" />
           <Property Name="CREATED_BY" Type="int" />
           <Property Name="CREATED_DATE" Type="datetime" />
           <Property Name="UPDATED_BY" Type="int" />
@@ -1166,6 +1167,7 @@
           <Property Name="CREATED_DATE" Type="DateTime" Precision="3" />
           <Property Name="UPDATED_BY" Type="Int32" />
           <Property Name="UPDATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="NGAYCONG" Type="Double" />
         </EntityType>
         <EntityType Name="KYCONGCHITIET">
           <Key>
@@ -1575,6 +1577,7 @@
           <EntitySetMapping Name="BANGCONG_NHANVIEN_CHITIET">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET">
               <MappingFragment StoreEntitySet="BANGCONG_NHANVIEN_CHITIET">
+                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
                 <ScalarProperty Name="UPDATED_DATE" ColumnName="UPDATED_DATE" />
                 <ScalarProperty Name="UPDATED_BY" ColumnName="UPDATED_BY" />
                 <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />

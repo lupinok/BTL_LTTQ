@@ -30,5 +30,6 @@ namespace DAL
         public Nullable<System.DateTime> CREATED_DATE { get; set; }
         public Nullable<int> UPDATED_BY { get; set; }
         public Nullable<System.DateTime> UPDATED_DATE { get; set; }
+        public Nullable<double> NGAYCONG { get; set; }
     }
 }
