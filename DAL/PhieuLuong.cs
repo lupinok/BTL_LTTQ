@@ -21,6 +21,7 @@ namespace DAL
         public Nullable<decimal> TangCa { get; set; }
         public Nullable<decimal> PhuCap { get; set; }
         public Nullable<decimal> UngLuong { get; set; }
+        public Nullable<double> NGAYCONG { get; set; }
         public Nullable<decimal> KTKL { get; set; }
         public Nullable<decimal> TienBaoHiem { get; set; }
         public Nullable<decimal> LuongNhanDuoc { get; set; }
@@ -33,7 +34,6 @@ namespace DAL
         public Nullable<System.DateTime> update_date { get; set; }
         public string delete_by { get; set; }
         public Nullable<System.DateTime> delete_date { get; set; }
-        public Nullable<double> NGAYCONG { get; set; }
     
         public virtual NhanVien NhanVien { get; set; }
     }

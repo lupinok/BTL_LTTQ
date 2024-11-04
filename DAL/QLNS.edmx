@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BTLMonLTTQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BTLMonLTTQModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BANGCONG_NHANVIEN_CHITIET">
           <Key>
             <PropertyRef Name="ID" />
@@ -786,7 +786,8 @@
             <End Role="NhanVienThoiViec" EntitySet="NhanVienThoiViec" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BTLMonLTTQModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1119,6 +1120,7 @@
           <Property Name="TangCa" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PhuCap" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="UngLuong" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="NGAYCONG" Type="Double" />
           <Property Name="KTKL" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="TienBaoHiem" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="LuongNhanDuoc" Type="Decimal" Precision="18" Scale="2" />
@@ -1132,7 +1134,6 @@
           <Property Name="delete_by" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="delete_date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="NhanVien" Relationship="Self.FK__PhieuLuon__MaNha__7A672E12" FromRole="PhieuLuong" ToRole="NhanVien" />
-          <Property Name="NGAYCONG" Type="Double" />
         </EntityType>
         <EntityType Name="PhongBan">
           <Key>
@@ -1925,7 +1926,6 @@
           <EntitySetMapping Name="PhieuLuongs">
             <EntityTypeMapping TypeName="BTLMonLTTQModel.PhieuLuong">
               <MappingFragment StoreEntitySet="PhieuLuong">
-                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
                 <ScalarProperty Name="MaPhieuLuong" ColumnName="MaPhieuLuong" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="NgayTinhLuong" ColumnName="NgayTinhLuong" />
@@ -1933,6 +1933,7 @@
                 <ScalarProperty Name="TangCa" ColumnName="TangCa" />
                 <ScalarProperty Name="PhuCap" ColumnName="PhuCap" />
                 <ScalarProperty Name="UngLuong" ColumnName="UngLuong" />
+                <ScalarProperty Name="NGAYCONG" ColumnName="NGAYCONG" />
                 <ScalarProperty Name="KTKL" ColumnName="KTKL" />
                 <ScalarProperty Name="TienBaoHiem" ColumnName="TienBaoHiem" />
                 <ScalarProperty Name="LuongNhanDuoc" ColumnName="LuongNhanDuoc" />
