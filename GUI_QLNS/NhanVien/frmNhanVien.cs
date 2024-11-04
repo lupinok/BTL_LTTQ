@@ -1,5 +1,6 @@
 ﻿using BUS_QLNS;
 using DAL;
+using GUI_QLNS.NhanVien;
 using DevExpress.XtraEditors;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,18 @@ namespace GUI_QLNS.NhanVien
 		private int? _maPhongBan = null;
 		private bool _isFilterByPhongBan = false;
 		private bool _hasEditPermission;
+		private bool openForm = false;
+		private static frmNhanVien instance;  // Thêm biến static instance
 
+		public static frmNhanVien Instance
+		{
+			get
+			{
+				if (instance == null || instance.IsDisposed)
+					instance = new frmNhanVien();
+				return instance;
+			}
+		}
 		public frmNhanVien()
 		{
 			InitializeComponent();
@@ -31,20 +43,21 @@ namespace GUI_QLNS.NhanVien
 			_currentUser = Program.CurrentUser;
 			_isFilterByPhongBan = false;
 
-            // Kiểm tra vai trò
-            string vaiTro = Properties.Settings.Default.VaiTro;
-            _hasEditPermission = vaiTro != "Chỉnh sửa" && vaiTro != "Xem";
 
-            // Ẩn các nút nếu không có quyền chỉnh sửa
-            if (!_hasEditPermission)
-            {
-                btnThem.Enabled = false;
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
-                btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
-            }
-        }
+			// Kiểm tra vai trò
+			string vaiTro = Properties.Settings.Default.VaiTro;
+			_hasEditPermission = vaiTro != "Chỉnh sửa" && vaiTro != "Xem";
+
+			// Ẩn các nút nếu không có quyền chỉnh sửa
+			if (!_hasEditPermission)
+			{
+				btnThem.Enabled = false;
+				btnSua.Enabled = false;
+				btnXoa.Enabled = false;
+				btnLuu.Enabled = false;
+				btnHuy.Enabled = false;
+			}
+		}
 
 		public frmNhanVien(int maPhongBan)
 		{
@@ -54,29 +67,29 @@ namespace GUI_QLNS.NhanVien
 			_currentUser = Program.CurrentUser;
 			_maPhongBan = maPhongBan;
 			_isFilterByPhongBan = true;
-	
-            // Kiểm tra vai trò
-            string vaiTro = Properties.Settings.Default.VaiTro;
+
+			// Kiểm tra vai trò
+			string vaiTro = Properties.Settings.Default.VaiTro;
 			// Chỉ cho phép Quản trị viên và Chỉnh sửa có quyền thao tác khi mở từ phòng ban
 			_hasEditPermission = vaiTro == "Quản trị viên" || vaiTro == "Chỉnh sửa";
 
-            // Ẩn các nút nếu không có quyền chỉnh sửa và không được mở từ form phòng ban
-            if (!_hasEditPermission)
-            {
-                btnThem.Enabled = false;
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
-                btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
-            }
-            gvDanhSach.OptionsBehavior.Editable = false;
-        }
+			// Ẩn các nút nếu không có quyền chỉnh sửa và không được mở từ form phòng ban
+			if (!_hasEditPermission)
+			{
+				btnThem.Enabled = false;
+				btnSua.Enabled = false;
+				btnXoa.Enabled = false;
+				btnLuu.Enabled = false;
+				btnHuy.Enabled = false;
+			}
+			gvDanhSach.OptionsBehavior.Editable = false;
+		}
 
 		private void NhanVien_Load(object sender, EventArgs e)
 		{
 			LoadPhongBan();
 			ShowHideControls(false);
-			
+
 			if (_isFilterByPhongBan && _maPhongBan.HasValue)
 			{
 				// Nếu mở từ form Phòng ban, lọc theo phòng ban
@@ -88,9 +101,9 @@ namespace GUI_QLNS.NhanVien
 				// Nếu mở từ form Main, hiển thị tất cả nhân viên
 				LoadData();
 			}
-			btnLuu.Enabled=false;
-			btnSua.Enabled=false;
-			btnXoa.Enabled=false;
+			btnLuu.Enabled = false;
+			btnSua.Enabled = false;
+			btnXoa.Enabled = false;
 		}
 
 		void LoadData()
@@ -105,6 +118,7 @@ namespace GUI_QLNS.NhanVien
 				// Nếu mở từ form Main, hiển thị tất cả nhân viên
 				gcDanhSach.DataSource = _nhanvienBUS.getList();
 			}
+
 			gvDanhSach.OptionsBehavior.Editable = false;
 		}
 
@@ -171,7 +185,7 @@ namespace GUI_QLNS.NhanVien
 				btnXoa.Enabled = !isEdit;
 				btnLuu.Enabled = isEdit;
 				btnHuy.Enabled = isEdit;
-				
+
 				txtMaNhanVien.Enabled = isEdit && _isNewRecord;
 				txtHoTen.Enabled = isEdit;
 				txtNgaySinh.Enabled = isEdit;
@@ -188,7 +202,7 @@ namespace GUI_QLNS.NhanVien
 				btnXoa.Enabled = false;
 				btnLuu.Enabled = false;
 				btnHuy.Enabled = false;
-				
+
 				txtMaNhanVien.Enabled = false;
 				txtHoTen.Enabled = false;
 				txtNgaySinh.Enabled = false;
@@ -222,7 +236,7 @@ namespace GUI_QLNS.NhanVien
 		{
 			_isNewRecord = false;
 			ShowHideControls(true);
-			
+
 			int manv = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
 			SYLL frm = new SYLL(manv, true);
 			frm.ShowDialog();
@@ -246,8 +260,8 @@ namespace GUI_QLNS.NhanVien
 					MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 					_lichsuBUS.ThemLichSu("Xóa nhân viên", _currentUser,
 						$"Xóa nhân viên {txtHoTen.Text}");
-                    ClearFields();
-                }
+					ClearFields();
+				}
 				catch (Exception ex)
 				{
 					MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -259,7 +273,7 @@ namespace GUI_QLNS.NhanVien
 
 		private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
-			if (string.IsNullOrEmpty(txtMaNhanVien.Text) || 
+			if (string.IsNullOrEmpty(txtMaNhanVien.Text) ||
 				string.IsNullOrEmpty(txtHoTen.Text) ||
 				string.IsNullOrEmpty(txtNgaySinh.Text) ||
 				string.IsNullOrEmpty(txtSoDienThoai.Text) ||
@@ -295,8 +309,8 @@ namespace GUI_QLNS.NhanVien
 				string action = _isNewRecord ? "Thêm" : "Cập nhật";
 				_lichsuBUS.ThemLichSu($"{action} nhân viên", _currentUser,
 					$"{action} thành công nhân viên {txtHoTen.Text}");
-                ClearFields();
-            }
+				ClearFields();
+			}
 			catch (Exception ex)
 			{
 				_lichsuBUS.ThemLichSu("Lỗi", _currentUser,
@@ -323,6 +337,7 @@ namespace GUI_QLNS.NhanVien
 				txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
 				cbMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
 				cbMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
+
 
 				// Chỉ enable các nút khi có quyền chỉnh sửa
 				if (_hasEditPermission)
@@ -367,6 +382,54 @@ namespace GUI_QLNS.NhanVien
 				int manhanvien = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
 				SYLL f = new SYLL(manhanvien);
 				f.ShowDialog();
+			}
+		}
+		private void OpenForm()
+		{
+			frmNhanVien f = frmNhanVien.Instance;
+			f.Show();
+			f.Focus();
+		}
+
+		private void btnRefesh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+		{
+            try
+            {
+                // Lấy form cha (MainForm)
+                var mainForm = this.ParentForm;
+
+                // Đóng form hiện tại
+                this.Close();
+
+                // Tạo form mới và thiết lập thuộc tính
+                Form newForm = new frmNhanVien();
+                newForm.MdiParent = mainForm;
+                newForm.Show();
+
+                // Nếu mainForm là frmMain, gọi phương thức sắp xếp form
+                if (mainForm is Main main)
+                {
+                    // Giả sử frmMain có phương thức ArrangeForm
+                    main.ArrangeForm();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi refresh: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+		private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
+		{
+			if (e.Column.Name == "DaThoiViec" && e.CellValue != null && (bool)e.CellValue)
+			{
+				Image img = Properties.Resources.check;
+				int x = e.Bounds.X + (e.Bounds.Width - 16) / 2;
+				int y = e.Bounds.Y + (e.Bounds.Height - 16) / 2;
+				// Vẽ ảnh với kích thước 16x16
+				e.Graphics.DrawImage(img, new Rectangle(x, y, 16, 16));
+				e.Handled = true;
 			}
 		}
 	}

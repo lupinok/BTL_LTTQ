@@ -112,7 +112,10 @@ namespace GUI_QLNS
                 Application.Restart();
             }
         }
-
+        public void ArrangeForm()
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
         private void menu_nhanvien_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmNhanVien));
