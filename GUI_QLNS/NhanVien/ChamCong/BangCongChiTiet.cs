@@ -345,7 +345,27 @@ namespace GUI_QLNS.NhanVien.ChamCong
             // Kiểm tra trạng thái khóa trước khi cho phép cập nhật
             if (IsKhoa)
             {
-                MessageBox.Show("Kỳ công đã bị khóa. Không thể cập nhật!", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Kỳ công đã bị khóa. Không thể cập nhật!", "Cảnh báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Lấy giá trị của cell được chọn
+            var cellValue = gvBangCongChiTiet.GetFocusedRowCellValue(gvBangCongChiTiet.FocusedColumn);
+            if (cellValue != null && cellValue.ToString() == "CN")
+            {
+                MessageBox.Show("Không thể cập nhật ngày công vào ngày Chủ nhật!", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            // Kiểm tra xem ngày được chọn có phải là Chủ nhật không
+            int ngay = int.Parse(gvBangCongChiTiet.FocusedColumn.FieldName.Replace("D", ""));
+            DateTime selectedDate = new DateTime(_nam, _thang, ngay);
+            if (selectedDate.DayOfWeek == DayOfWeek.Sunday)
+            {
+                MessageBox.Show("Không thể cập nhật ngày công vào ngày Chủ nhật!", "Thông báo", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
