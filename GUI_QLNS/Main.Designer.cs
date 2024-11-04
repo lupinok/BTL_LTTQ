@@ -155,6 +155,7 @@
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.btnXoaLichSu = new DevExpress.XtraEditors.SimpleButton();
             this.lstHistory = new DevExpress.XtraEditors.ListBoxControl();
+            this.panel1 = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemButtonEdit1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemDateTimeOffsetEdit1)).BeginInit();
@@ -166,6 +167,7 @@
             this.dockPanel1.SuspendLayout();
             this.controlContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstHistory)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ribbonControl
@@ -1121,8 +1123,7 @@
             // 
             // controlContainer1
             // 
-            this.controlContainer1.Controls.Add(this.simpleButton1);
-            this.controlContainer1.Controls.Add(this.btnXoaLichSu);
+            this.controlContainer1.Controls.Add(this.panel1);
             this.controlContainer1.Controls.Add(this.lstHistory);
             this.controlContainer1.Location = new System.Drawing.Point(6, 32);
             this.controlContainer1.Name = "controlContainer1";
@@ -1131,19 +1132,21 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.Dock = System.Windows.Forms.DockStyle.Left;
             this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.Location = new System.Drawing.Point(0, 482);
+            this.simpleButton1.Location = new System.Drawing.Point(0, 0);
             this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(25, 29);
+            this.simpleButton1.Size = new System.Drawing.Size(25, 28);
             this.simpleButton1.TabIndex = 5;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // btnXoaLichSu
             // 
+            this.btnXoaLichSu.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnXoaLichSu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoaLichSu.ImageOptions.Image")));
-            this.btnXoaLichSu.Location = new System.Drawing.Point(207, 482);
+            this.btnXoaLichSu.Location = new System.Drawing.Point(203, 0);
             this.btnXoaLichSu.Name = "btnXoaLichSu";
-            this.btnXoaLichSu.Size = new System.Drawing.Size(25, 29);
+            this.btnXoaLichSu.Size = new System.Drawing.Size(25, 28);
             this.btnXoaLichSu.TabIndex = 4;
             this.btnXoaLichSu.Click += new System.EventHandler(this.btnXoaLichSu_Click);
             // 
@@ -1155,6 +1158,16 @@
             this.lstHistory.Name = "lstHistory";
             this.lstHistory.Size = new System.Drawing.Size(228, 507);
             this.lstHistory.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.simpleButton1);
+            this.panel1.Controls.Add(this.btnXoaLichSu);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 479);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(228, 28);
+            this.panel1.TabIndex = 6;
             // 
             // Main
             // 
@@ -1182,6 +1195,7 @@
             this.dockPanel1.ResumeLayout(false);
             this.controlContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstHistory)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1317,5 +1331,6 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
         private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private System.Windows.Forms.Panel panel1;
     }
 }

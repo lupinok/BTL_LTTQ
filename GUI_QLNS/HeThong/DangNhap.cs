@@ -98,8 +98,8 @@ namespace GUI_QLNS.HeThong
 
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
-			DangNhapHeThong();
-		}
+            DangNhapHeThong();
+        }
 
 		private void txtMatKhau_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -113,6 +113,15 @@ namespace GUI_QLNS.HeThong
         {
             // Hiển thị/ẩn mật khẩu
             txtMatKhau.UseSystemPasswordChar = !ckPassword.Checked;
+        }
+
+        private void btnDangNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Ngăn không cho phát ra tiếng beep
+                DangNhapHeThong();
+            }
         }
     }
 }

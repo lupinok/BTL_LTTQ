@@ -74,10 +74,10 @@ namespace GUI_QLNS.NhanVien
 
 		private void NhanVien_Load(object sender, EventArgs e)
 		{
-            // TODO: This line of code loads data into the 'bTLMonLTTQDataSet.ChucVu' table. You can move, or remove it, as needed.
-            this.chucVuTableAdapter.Fill(this.bTLMonLTTQDataSet.ChucVu);
-            // TODO: This line of code loads data into the 'bTLMonLTTQDataSet.PhongBan' table. You can move, or remove it, as needed.
-            this.phongBanTableAdapter.Fill(this.bTLMonLTTQDataSet.PhongBan);
+            //// TODO: This line of code loads data into the 'bTLMonLTTQDataSet.ChucVu' table. You can move, or remove it, as needed.
+            //this.chucVuTableAdapter.Fill(this.bTLMonLTTQDataSet.ChucVu);
+            //// TODO: This line of code loads data into the 'bTLMonLTTQDataSet.PhongBan' table. You can move, or remove it, as needed.
+            //this.phongBanTableAdapter.Fill(this.bTLMonLTTQDataSet.PhongBan);
             LoadPhongBan();
 			ShowHideControls(false);
 			
@@ -232,12 +232,10 @@ namespace GUI_QLNS.NhanVien
 		{
 			_isNewRecord = false;
 			ShowHideControls(true);
-			
-			int manv = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
-			SYLL frm = new SYLL(manv, true);
-			frm.ShowDialog();
 			LoadData();
             splitContainer1.Panel1Collapsed = false; // Hiện panel
+			lupPhongBan.Enabled = false;
+			lupChucVu.Enabled = false;
         }
 
 		private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -344,8 +342,24 @@ namespace GUI_QLNS.NhanVien
 					txtNgaySinh.Text = ngaySinh != null ? Convert.ToDateTime(ngaySinh).ToString("dd/MM/yyyy") : "";
 					txtSoDienThoai.Text = gvDanhSach.GetFocusedRowCellValue("SoDienThoai").ToString();
 					txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
-					lupPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
-					lupChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
+
+					// Gán giá trị cho Phòng ban
+					var maPhongBan = gvDanhSach.GetFocusedRowCellValue("MaPhongBan");
+					if (maPhongBan != null)
+					{
+						lupPhongBan.EditValue = Convert.ToInt32(maPhongBan);
+						
+						// Load danh sách chức vụ của phòng ban
+						LoadChucVu(Convert.ToInt32(maPhongBan));
+						
+						// Gán giá trị cho Chức vụ
+						var maChucVu = gvDanhSach.GetFocusedRowCellValue("MaChucVu");
+						if (maChucVu != null)
+						{
+							lupChucVu.EditValue = Convert.ToInt32(maChucVu);
+						}
+					}
+
 					btnSua.Enabled = true;
 					btnXoa.Enabled = true;
 				}

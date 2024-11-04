@@ -203,5 +203,62 @@ namespace GUI_QLNS.NhanVien
 			}
 			this.Close();
 		}
-	}
+
+        private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _isEdit = true;
+            SetReadOnly(false); // Cho phép nhập liệu
+            btnLuu.Enabled = true;
+            btnHinhAnh.Enabled = true;
+        }
+
+        private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                if (_isDataChanged)
+                {
+                    var syll = new SoYeuLyLich
+                    {
+                        MaNhanVien = _manhanvien,
+                        TrinhDoHocVan = txtTrinhDoHocVan.EditValue?.ToString(),
+                        KinhNghiem = txtKinhNghiem.EditValue?.ToString(),
+                        KyNang = txtKyNang.EditValue?.ToString(),
+                        ChungChi = txtChungChi.EditValue?.ToString(),
+                        NgoaiNgu = txtNgoaiNgu.EditValue?.ToString(),
+                        NgayTao = DateTime.Now,
+                        GioiTinh = txtGioiTinh.EditValue?.ToString(),
+                        QueQuan = txtQueQuan.EditValue?.ToString(),
+                        GiaCanh = txtGiaCanh.EditValue?.ToString(),
+                        QuocTich = txtQuocTich.EditValue?.ToString()
+                    };
+
+                    _syllBUS.Update(syll);
+                    MessageBox.Show("Lưu thông tin thành công!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    _isEdit = false;
+                    _isDataChanged = false;
+                    btnLuu.Enabled = false;
+                    btnHinhAnh.Enabled = false;
+                    SetReadOnly(true);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            _isEdit = false;
+            _isDataChanged = false;
+            btnLuu.Enabled = false;
+            btnHinhAnh.Enabled = false;
+            SetReadOnly(true);
+            LoadData(); // Load lại dữ liệu gốc
+        }
+    }
 }

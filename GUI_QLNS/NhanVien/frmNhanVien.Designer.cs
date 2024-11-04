@@ -77,6 +77,7 @@ namespace GUI_QLNS.NhanVien
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.phongBanTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter();
             this.chucVuTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -401,7 +402,8 @@ namespace GUI_QLNS.NhanVien
             this.SoDienThoai,
             this.Email,
             this.MaPhongBan,
-            this.MaChucVu});
+            this.MaChucVu,
+            this.gridColumn1});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsFind.AlwaysVisible = true;
@@ -519,6 +521,16 @@ namespace GUI_QLNS.NhanVien
             // 
             this.chucVuTableAdapter.ClearBeforeFill = true;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Tình trạng thôi việc";
+            this.gridColumn1.FieldName = "DaThoiViec";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.Width = 94;
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -601,5 +613,6 @@ namespace GUI_QLNS.NhanVien
         private DevExpress.XtraEditors.LookUpEdit lupChucVu;
         private System.Windows.Forms.BindingSource chucVuBindingSource;
         private BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter chucVuTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

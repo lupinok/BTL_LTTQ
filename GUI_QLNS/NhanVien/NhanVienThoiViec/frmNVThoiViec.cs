@@ -119,9 +119,9 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
                 }
                 if (_them)
                 {
-                    
+
                     string maxSoQD = _nvtv.MaxSoQuyetDinh();
-                    int so = int.Parse(maxSoQD) ;
+                    int so = int.Parse(maxSoQD) + 1;
                     string soQDMoi = so.ToString("00000") + "/" + DateTime.Now.Year.ToString() + "/QDTV";
 
                     txtSoQD.Text = soQDMoi;
@@ -218,20 +218,28 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
         {
             if (gvDanhSach.RowCount > 0)
             {
-                soQD = gvDanhSach.GetFocusedRowCellValue("SoQD").ToString();
-                var tv = _nvtv.getItem(soQD);
+                try
+                {
+                    soQD = gvDanhSach.GetFocusedRowCellValue("SoQD").ToString();
+                    txtSoQD.Text = gvDanhSach.GetFocusedRowCellValue("SoQD").ToString();
+                    dtNgayQD.EditValue = gvDanhSach.GetFocusedRowCellValue("NgayQuyetDinh");
+                    dtNgayTV.EditValue = gvDanhSach.GetFocusedRowCellValue("NgayThoiViec");
+                    tlkNhanVien.EditValue = gvDanhSach.GetFocusedRowCellValue("MaNhanVien");
+                    txtLyDo.Text = gvDanhSach.GetFocusedRowCellValue("LyDo").ToString();
+                    txtGhiChu.Text = gvDanhSach.GetFocusedRowCellValue("GhiChu").ToString();
 
-                txtSoQD.Text = tv.SoQD;
-                dtNgayQD.EditValue = tv.NgayQuyetDinh;
-                dtNgayTV.EditValue = tv.NgayThoiViec;
-                tlkNhanVien.EditValue = tv.MaNhanVien;
-                txtLyDo.Text = tv.LyDo;
-                txtGhiChu.Text = tv.GhiChu;
-
-                _them = false;
-                _showHide(false);
-                splitContainer1.Panel1Collapsed = false;
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi load dữ liệu: " + ex.Message,
+                                  "Lỗi",
+                                  MessageBoxButtons.OK,
+                                  MessageBoxIcon.Error);
+                }
             }
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
@@ -243,5 +251,6 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
                 e.Handled = true;
             }
         }
+
     }
 }
