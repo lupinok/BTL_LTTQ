@@ -794,6 +794,7 @@
             this.menu_thuyenchuyen_congtac.Id = 136;
             this.menu_thuyenchuyen_congtac.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("menu_thuyenchuyen_congtac.ImageOptions.SvgImage")));
             this.menu_thuyenchuyen_congtac.Name = "menu_thuyenchuyen_congtac";
+            this.menu_thuyenchuyen_congtac.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.menu_thuyenchuyen_congtac_ItemClick_1);
             // 
             // menu_nghiphep
             // 
@@ -1130,6 +1131,7 @@
             // 
             // simpleButton1
             // 
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
             this.simpleButton1.Location = new System.Drawing.Point(0, 482);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(25, 29);

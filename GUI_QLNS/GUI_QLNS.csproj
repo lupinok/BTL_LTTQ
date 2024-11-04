@@ -151,6 +151,12 @@
     <Compile Include="NhanVien\ChamCong\LoaiCa.Designer.cs">
       <DependentUpon>LoaiCa.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.Designer.cs">
+      <DependentUpon>DCNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,12 +198,6 @@
     </Compile>
     <Compile Include="NhanVien\ChucVu\frmChucVu.Designer.cs">
       <DependentUpon>frmChucVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.Designer.cs">
-      <DependentUpon>DCNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\Dự án\ChiTietDuAn.cs">
       <SubType>Form</SubType>
@@ -289,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\ChucVu\frmChucVu.resx">
       <DependentUpon>frmChucVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\DCNhanVien\DCNhanVien.resx">
+      <DependentUpon>DCNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\Dự án\ChiTietDuAn.resx">
       <DependentUpon>ChiTietDuAn.cs</DependentUpon>

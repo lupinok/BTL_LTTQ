@@ -33,7 +33,6 @@
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnThem = new DevExpress.XtraBars.BarButtonItem();
-            this.btnSua = new DevExpress.XtraBars.BarButtonItem();
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
@@ -43,6 +42,8 @@
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.cbMaChucVu = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cbTenPhongBan2 = new System.Windows.Forms.ComboBox();
             this.cbHoTen = new System.Windows.Forms.ComboBox();
             this.txtGhiChu = new System.Windows.Forms.TextBox();
@@ -91,7 +92,6 @@
             this.barManager1.Form = this;
             this.barManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.btnThem,
-            this.btnSua,
             this.btnXoa,
             this.btnLuu,
             this.btnHuy});
@@ -107,7 +107,6 @@
             this.bar2.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
             this.bar2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnThem, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
@@ -122,14 +121,6 @@
             this.btnThem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnThem.ImageOptions.SvgImage")));
             this.btnThem.Name = "btnThem";
             this.btnThem.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThem_ItemClick);
-            // 
-            // btnSua
-            // 
-            this.btnSua.Caption = "Sửa";
-            this.btnSua.Id = 1;
-            this.btnSua.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
-            this.btnSua.Name = "btnSua";
-            this.btnSua.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSua_ItemClick);
             // 
             // btnXoa
             // 
@@ -173,7 +164,7 @@
             this.barDockControlTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
-            this.barDockControlTop.Size = new System.Drawing.Size(1628, 30);
+            this.barDockControlTop.Size = new System.Drawing.Size(1138, 30);
             // 
             // barDockControlBottom
             // 
@@ -181,7 +172,7 @@
             this.barDockControlBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 456);
             this.barDockControlBottom.Manager = this.barManager1;
-            this.barDockControlBottom.Size = new System.Drawing.Size(1628, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(1138, 20);
             // 
             // barDockControlLeft
             // 
@@ -195,7 +186,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(1628, 30);
+            this.barDockControlRight.Location = new System.Drawing.Point(1138, 30);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Size = new System.Drawing.Size(0, 426);
             // 
@@ -209,6 +200,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.cbMaChucVu);
+            this.splitContainer1.Panel1.Controls.Add(this.label1);
             this.splitContainer1.Panel1.Controls.Add(this.cbTenPhongBan2);
             this.splitContainer1.Panel1.Controls.Add(this.cbHoTen);
             this.splitContainer1.Panel1.Controls.Add(this.txtGhiChu);
@@ -223,22 +216,40 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.gcDanhSach);
-            this.splitContainer1.Size = new System.Drawing.Size(1628, 426);
+            this.splitContainer1.Size = new System.Drawing.Size(1138, 426);
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 28;
+            // 
+            // cbMaChucVu
+            // 
+            this.cbMaChucVu.FormattingEnabled = true;
+            this.cbMaChucVu.Location = new System.Drawing.Point(949, 4);
+            this.cbMaChucVu.Name = "cbMaChucVu";
+            this.cbMaChucVu.Size = new System.Drawing.Size(170, 24);
+            this.cbMaChucVu.TabIndex = 15;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(885, 7);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 16);
+            this.label1.TabIndex = 14;
+            this.label1.Text = "Chức vụ:";
             // 
             // cbTenPhongBan2
             // 
             this.cbTenPhongBan2.FormattingEnabled = true;
-            this.cbTenPhongBan2.Location = new System.Drawing.Point(530, 3);
+            this.cbTenPhongBan2.Location = new System.Drawing.Point(646, 3);
             this.cbTenPhongBan2.Name = "cbTenPhongBan2";
             this.cbTenPhongBan2.Size = new System.Drawing.Size(150, 24);
             this.cbTenPhongBan2.TabIndex = 13;
+            this.cbTenPhongBan2.SelectedIndexChanged += new System.EventHandler(this.cbTenPhongBan2_SelectedIndexChanged);
             // 
             // cbHoTen
             // 
             this.cbHoTen.FormattingEnabled = true;
-            this.cbHoTen.Location = new System.Drawing.Point(99, 3);
+            this.cbHoTen.Location = new System.Drawing.Point(79, 4);
             this.cbHoTen.Name = "cbHoTen";
             this.cbHoTen.Size = new System.Drawing.Size(163, 24);
             this.cbHoTen.TabIndex = 12;
@@ -246,28 +257,28 @@
             // 
             // txtGhiChu
             // 
-            this.txtGhiChu.Location = new System.Drawing.Point(99, 34);
+            this.txtGhiChu.Location = new System.Drawing.Point(587, 34);
             this.txtGhiChu.Name = "txtGhiChu";
-            this.txtGhiChu.Size = new System.Drawing.Size(1020, 23);
+            this.txtGhiChu.Size = new System.Drawing.Size(532, 23);
             this.txtGhiChu.TabIndex = 11;
             // 
             // txtLyDo
             // 
-            this.txtLyDo.Location = new System.Drawing.Point(737, 3);
+            this.txtLyDo.Location = new System.Drawing.Point(79, 37);
             this.txtLyDo.Name = "txtLyDo";
-            this.txtLyDo.Size = new System.Drawing.Size(382, 23);
+            this.txtLyDo.Size = new System.Drawing.Size(408, 23);
             this.txtLyDo.TabIndex = 10;
             // 
             // txtNgay
             // 
-            this.txtNgay.Location = new System.Drawing.Point(327, 3);
+            this.txtNgay.Location = new System.Drawing.Point(370, 3);
             this.txtNgay.Name = "txtNgay";
             this.txtNgay.Size = new System.Drawing.Size(100, 23);
             this.txtNgay.TabIndex = 8;
             // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(12, 37);
+            this.labelControl5.Location = new System.Drawing.Point(530, 37);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(47, 16);
             this.labelControl5.TabIndex = 4;
@@ -275,7 +286,7 @@
             // 
             // labelControl4
             // 
-            this.labelControl4.Location = new System.Drawing.Point(696, 6);
+            this.labelControl4.Location = new System.Drawing.Point(38, 40);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(35, 16);
             this.labelControl4.TabIndex = 3;
@@ -283,7 +294,7 @@
             // 
             // labelControl3
             // 
-            this.labelControl3.Location = new System.Drawing.Point(452, 6);
+            this.labelControl3.Location = new System.Drawing.Point(568, 7);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Size = new System.Drawing.Size(72, 16);
             this.labelControl3.TabIndex = 2;
@@ -291,7 +302,7 @@
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(288, 6);
+            this.labelControl2.Location = new System.Drawing.Point(331, 6);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(33, 16);
             this.labelControl2.TabIndex = 1;
@@ -312,7 +323,7 @@
             this.gcDanhSach.MainView = this.gvDanhSach;
             this.gcDanhSach.MenuManager = this.barManager1;
             this.gcDanhSach.Name = "gcDanhSach";
-            this.gcDanhSach.Size = new System.Drawing.Size(1628, 355);
+            this.gcDanhSach.Size = new System.Drawing.Size(1138, 355);
             this.gcDanhSach.TabIndex = 0;
             this.gcDanhSach.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDanhSach});
@@ -437,7 +448,7 @@
             this.barDockControl3.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl3.Location = new System.Drawing.Point(0, 30);
             this.barDockControl3.Manager = this.barManager1;
-            this.barDockControl3.Size = new System.Drawing.Size(1628, 0);
+            this.barDockControl3.Size = new System.Drawing.Size(1138, 0);
             // 
             // barDockControl4
             // 
@@ -445,7 +456,7 @@
             this.barDockControl4.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl4.Location = new System.Drawing.Point(0, 30);
             this.barDockControl4.Manager = this.barManager1;
-            this.barDockControl4.Size = new System.Drawing.Size(1628, 0);
+            this.barDockControl4.Size = new System.Drawing.Size(1138, 0);
             // 
             // barDockControl1
             // 
@@ -453,7 +464,7 @@
             this.barDockControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl1.Location = new System.Drawing.Point(0, 30);
             this.barDockControl1.Manager = this.barManager1;
-            this.barDockControl1.Size = new System.Drawing.Size(1628, 0);
+            this.barDockControl1.Size = new System.Drawing.Size(1138, 0);
             // 
             // barDockControl2
             // 
@@ -461,7 +472,7 @@
             this.barDockControl2.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl2.Location = new System.Drawing.Point(0, 30);
             this.barDockControl2.Manager = this.barManager1;
-            this.barDockControl2.Size = new System.Drawing.Size(1628, 0);
+            this.barDockControl2.Size = new System.Drawing.Size(1138, 0);
             // 
             // barDockControl5
             // 
@@ -469,13 +480,13 @@
             this.barDockControl5.Dock = System.Windows.Forms.DockStyle.Top;
             this.barDockControl5.Location = new System.Drawing.Point(0, 30);
             this.barDockControl5.Manager = this.barManager1;
-            this.barDockControl5.Size = new System.Drawing.Size(1628, 0);
+            this.barDockControl5.Size = new System.Drawing.Size(1138, 0);
             // 
             // DCNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1628, 476);
+            this.ClientSize = new System.Drawing.Size(1138, 476);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.barDockControl3);
             this.Controls.Add(this.barDockControl4);
@@ -507,7 +518,6 @@
         private DevExpress.XtraBars.BarManager barManager1;
         private DevExpress.XtraBars.Bar bar2;
         private DevExpress.XtraBars.BarButtonItem btnThem;
-        private DevExpress.XtraBars.BarButtonItem btnSua;
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnLuu;
         private DevExpress.XtraBars.BarButtonItem btnHuy;
@@ -544,5 +554,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn MaNhanVien;
         private System.Windows.Forms.ComboBox cbTenPhongBan2;
         private System.Windows.Forms.ComboBox cbHoTen;
+        private System.Windows.Forms.ComboBox cbMaChucVu;
+        private System.Windows.Forms.Label label1;
     }
 }
