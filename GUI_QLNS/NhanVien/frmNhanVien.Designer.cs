@@ -108,7 +108,7 @@ namespace GUI_QLNS.NhanVien
             this.btnXoa,
             this.btnLuu,
             this.btnHuy,
-            this.btnRefesh});
+           });
             this.barManager1.MainMenu = this.bar2;
             this.barManager1.MaxItemId = 14;
             this.barManager1.StatusBar = this.bar3;
