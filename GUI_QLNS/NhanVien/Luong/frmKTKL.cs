@@ -112,7 +112,7 @@ namespace GUI_QLNS.NhanVien.Luong
         }
         private void ResetValue()
         {
-            scNhanVien.SelectionStart = -1;
+            scNhanVien.SelectionStart = 0;
             txtTienThuong.Text = "";
             txtTienPhat.Text = "";
             cbLyDo.SelectedIndex = -1;
@@ -128,7 +128,7 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _them = false;
+            _them = false;  
             _showHide(false);
         }
 
@@ -164,6 +164,7 @@ namespace GUI_QLNS.NhanVien.Luong
         {
             _them = false;
             _showHide(true);
+            ResetValue();
         }
         private void SaveData()
         {
@@ -176,6 +177,8 @@ namespace GUI_QLNS.NhanVien.Luong
                     throw new Exception("Vui lòng chọn loại sự kiện");
                 if (cbLyDo.SelectedIndex == -1)
                     throw new Exception("Vui lòng chọn chi tiết sự kiện");
+                if (txtTienThuong.Text == "" || txtTienPhat.Text == "")
+                    throw new Exception("Vui lòng chọn số tiền");
 
                 var ac = new ChiTietKT_KL
                 {
@@ -199,7 +202,9 @@ namespace GUI_QLNS.NhanVien.Luong
                 throw new Exception("Vui lòng chọn loại sự kiện");
             if (cbLyDo.SelectedIndex == -1)
                 throw new Exception("Vui lòng chọn chi tiết sự kiện");
-            
+            if (txtTienThuong.Text == "" || txtTienPhat.Text == "") 
+                throw new Exception("Vui lòng chọn số tiền");
+
             var kc = new ChiTietKT_KL
             {
                 MaNhanVien = manv, // Sử dụng mã nhân viên hiện tại
