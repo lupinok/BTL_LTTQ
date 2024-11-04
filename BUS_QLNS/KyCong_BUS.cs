@@ -1,11 +1,12 @@
-﻿using DAL;
+﻿using BUS_QLNS.Interface;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BusinessLayer
 {
-    public class KyCong_BUS
+    public class KyCong_BUS 
     {
         private readonly BTLMonLTTQEntities db;
 

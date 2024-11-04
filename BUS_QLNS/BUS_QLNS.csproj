@@ -62,6 +62,11 @@
     <Compile Include="HDLDDTO.cs" />
     <Compile Include="HDLD_BUS.cs" />
     <Compile Include="Interface\IBangCongNhanVienChiTiet_BUS.cs" />
+    <Compile Include="Interface\IBoPhan_BUS.cs" />
+    <Compile Include="Interface\IChiTietDaoTao_BUS.cs" />
+    <Compile Include="Interface\IChiTietDuAn_BUS.cs" />
+    <Compile Include="Interface\IChucVu_BUS.cs" />
+    <Compile Include="Interface\IDaoTao.cs" />
     <Compile Include="Interface\INHANVIEN_BUS.cs" />
     <Compile Include="Interface\IPHANQUYEN_BUS.cs" />
     <Compile Include="Interface\IPhieuLuong_BUS.cs" />

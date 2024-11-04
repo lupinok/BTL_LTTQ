@@ -1,4 +1,5 @@
 ﻿using BUS_QLNS;
+using BUS_QLNS.Interface;
 using DAL;
 using System;
 using System.Collections.Generic;

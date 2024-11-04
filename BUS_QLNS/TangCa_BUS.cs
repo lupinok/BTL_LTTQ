@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BUS_QLNS.Interface;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.SqlServer;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BUS_QLNS
 {
-    public class TangCa_BUS
+    public class TangCa_BUS 
     {
          BTLMonLTTQEntities db = new BTLMonLTTQEntities();
         public TangCa getItem(int manv,string malc)
