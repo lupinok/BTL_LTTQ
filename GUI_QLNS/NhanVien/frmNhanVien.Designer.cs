@@ -71,13 +71,13 @@ namespace GUI_QLNS.NhanVien
             this.Email = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaPhongBan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaChucVu = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.phongBanTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter();
             this.chucVuTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter();
-            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -481,6 +481,16 @@ namespace GUI_QLNS.NhanVien
             this.MaChucVu.VisibleIndex = 6;
             this.MaChucVu.Width = 253;
             // 
+            // gridColumn1
+            // 
+            this.gridColumn1.Caption = "Tình trạng thôi việc";
+            this.gridColumn1.FieldName = "DaThoiViec";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.Width = 94;
+            // 
             // barDockControl3
             // 
             this.barDockControl3.CausesValidation = false;
@@ -520,16 +530,6 @@ namespace GUI_QLNS.NhanVien
             // chucVuTableAdapter
             // 
             this.chucVuTableAdapter.ClearBeforeFill = true;
-            // 
-            // gridColumn1
-            // 
-            this.gridColumn1.Caption = "Tình trạng thôi việc";
-            this.gridColumn1.FieldName = "DaThoiViec";
-            this.gridColumn1.MinWidth = 25;
-            this.gridColumn1.Name = "gridColumn1";
-            this.gridColumn1.Visible = true;
-            this.gridColumn1.VisibleIndex = 7;
-            this.gridColumn1.Width = 94;
             // 
             // frmNhanVien
             // 

@@ -367,6 +367,7 @@ namespace GUI_QLNS.NhanVien
 				{
 					MessageBox.Show("Lỗi load dữ liệu: " + ex.Message);
 				}
+				lupChucVu.Enabled = false;
 			}
 		}
 
