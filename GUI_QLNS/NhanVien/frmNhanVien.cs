@@ -42,7 +42,7 @@ namespace GUI_QLNS.NhanVien
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
+                
             }
         }
 
@@ -67,7 +67,7 @@ namespace GUI_QLNS.NhanVien
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
+                
             }
             gvDanhSach.OptionsBehavior.Editable = false;
         }
@@ -181,7 +181,6 @@ namespace GUI_QLNS.NhanVien
 				btnSua.Enabled = !isEdit;
 				btnXoa.Enabled = !isEdit;
 				btnLuu.Enabled = isEdit;
-				btnHuy.Enabled = isEdit;
 				
 				txtMaNhanVien.Enabled = isEdit && _isNewRecord;
 				txtHoTen.Enabled = isEdit;
@@ -198,7 +197,7 @@ namespace GUI_QLNS.NhanVien
 				btnSua.Enabled = false;
 				btnXoa.Enabled = false;
 				btnLuu.Enabled = false;
-				btnHuy.Enabled = false;
+				
 				
 				txtMaNhanVien.Enabled = false;
 				txtHoTen.Enabled = false;
@@ -322,6 +321,8 @@ namespace GUI_QLNS.NhanVien
 		private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 			ShowHideControls(false);
+			btnSua.Enabled = false;
+			btnXoa.Enabled = false;
 			ClearFields();
             splitContainer1.Panel1Collapsed = true; // Ẩn panel
         }
@@ -345,6 +346,8 @@ namespace GUI_QLNS.NhanVien
 					txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
 					lupPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
 					lupChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
+					btnSua.Enabled = true;
+					btnXoa.Enabled = true;
 				}
 				catch (Exception ex)
 				{
