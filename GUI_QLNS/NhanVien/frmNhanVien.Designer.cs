@@ -45,8 +45,11 @@ namespace GUI_QLNS.NhanVien
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cbMaChucVu = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbMaPhongBan = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.lupChucVu = new DevExpress.XtraEditors.LookUpEdit();
+            this.chucVuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bTLMonLTTQDataSet = new GUI_QLNS.BTLMonLTTQDataSet();
+            this.lupPhongBan = new DevExpress.XtraEditors.LookUpEdit();
+            this.phongBanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
@@ -72,13 +75,18 @@ namespace GUI_QLNS.NhanVien
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
+            this.phongBanTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter();
+            this.chucVuTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupChucVu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupPhongBan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phongBanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.SuspendLayout();
@@ -213,8 +221,8 @@ namespace GUI_QLNS.NhanVien
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.cbMaChucVu);
-            this.splitContainer1.Panel1.Controls.Add(this.cbMaPhongBan);
+            this.splitContainer1.Panel1.Controls.Add(this.lupChucVu);
+            this.splitContainer1.Panel1.Controls.Add(this.lupPhongBan);
             this.splitContainer1.Panel1.Controls.Add(this.txtEmail);
             this.splitContainer1.Panel1.Controls.Add(this.txtSoDienThoai);
             this.splitContainer1.Panel1.Controls.Add(this.txtNgaySinh);
@@ -235,28 +243,50 @@ namespace GUI_QLNS.NhanVien
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 22;
             // 
-            // cbMaChucVu
+            // lupChucVu
             // 
-            this.cbMaChucVu.Location = new System.Drawing.Point(566, 35);
-            this.cbMaChucVu.MenuManager = this.barManager1;
-            this.cbMaChucVu.Name = "cbMaChucVu";
-            this.cbMaChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lupChucVu.Location = new System.Drawing.Point(571, 35);
+            this.lupChucVu.MenuManager = this.barManager1;
+            this.lupChucVu.Name = "lupChucVu";
+            this.lupChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbMaChucVu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbMaChucVu.Size = new System.Drawing.Size(100, 22);
-            this.cbMaChucVu.TabIndex = 15;
+            this.lupChucVu.Properties.DataSource = this.chucVuBindingSource;
+            this.lupChucVu.Properties.DisplayMember = "TenChucVu";
+            this.lupChucVu.Properties.NullText = "Tên chức vụ";
+            this.lupChucVu.Properties.ValueMember = "MaChucVu";
+            this.lupChucVu.Size = new System.Drawing.Size(125, 22);
+            this.lupChucVu.TabIndex = 17;
+            this.lupChucVu.EditValueChanged += new System.EventHandler(this.lupChucVu_EditValueChanged);
             // 
-            // cbMaPhongBan
+            // chucVuBindingSource
             // 
-            this.cbMaPhongBan.Location = new System.Drawing.Point(347, 35);
-            this.cbMaPhongBan.MenuManager = this.barManager1;
-            this.cbMaPhongBan.Name = "cbMaPhongBan";
-            this.cbMaPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.chucVuBindingSource.DataMember = "ChucVu";
+            this.chucVuBindingSource.DataSource = this.bTLMonLTTQDataSet;
+            // 
+            // bTLMonLTTQDataSet
+            // 
+            this.bTLMonLTTQDataSet.DataSetName = "BTLMonLTTQDataSet";
+            this.bTLMonLTTQDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lupPhongBan
+            // 
+            this.lupPhongBan.Location = new System.Drawing.Point(341, 35);
+            this.lupPhongBan.MenuManager = this.barManager1;
+            this.lupPhongBan.Name = "lupPhongBan";
+            this.lupPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbMaPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbMaPhongBan.Size = new System.Drawing.Size(100, 22);
-            this.cbMaPhongBan.TabIndex = 14;
-            this.cbMaPhongBan.SelectedIndexChanged += new System.EventHandler(this.cbMaPhongBan_SelectedIndexChanged);
+            this.lupPhongBan.Properties.DataSource = this.phongBanBindingSource;
+            this.lupPhongBan.Properties.DisplayMember = "TenPhongBan";
+            this.lupPhongBan.Properties.NullText = "Tên phòng ban";
+            this.lupPhongBan.Properties.ValueMember = "MaPhongBan";
+            this.lupPhongBan.Size = new System.Drawing.Size(125, 22);
+            this.lupPhongBan.TabIndex = 16;
+            this.lupPhongBan.EditValueChanged += new System.EventHandler(this.lupPhongBan_EditValueChanged);
+            // 
+            // phongBanBindingSource
+            // 
+            this.phongBanBindingSource.DataMember = "PhongBan";
+            this.phongBanBindingSource.DataSource = this.bTLMonLTTQDataSet;
             // 
             // txtEmail
             // 
@@ -481,6 +511,14 @@ namespace GUI_QLNS.NhanVien
             this.barDockControl2.Manager = this.barManager1;
             this.barDockControl2.Size = new System.Drawing.Size(1207, 0);
             // 
+            // phongBanTableAdapter
+            // 
+            this.phongBanTableAdapter.ClearBeforeFill = true;
+            // 
+            // chucVuTableAdapter
+            // 
+            this.chucVuTableAdapter.ClearBeforeFill = true;
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -504,8 +542,11 @@ namespace GUI_QLNS.NhanVien
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupChucVu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupPhongBan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phongBanBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.ResumeLayout(false);
@@ -553,7 +594,12 @@ namespace GUI_QLNS.NhanVien
 		private System.Windows.Forms.TextBox txtNgaySinh;
 		private System.Windows.Forms.TextBox txtHoTen;
 		private System.Windows.Forms.TextBox txtMaNhanVien;
-		private DevExpress.XtraEditors.ComboBoxEdit cbMaChucVu;
-		private DevExpress.XtraEditors.ComboBoxEdit cbMaPhongBan;
-	}
+        private DevExpress.XtraEditors.LookUpEdit lupPhongBan;
+        private BTLMonLTTQDataSet bTLMonLTTQDataSet;
+        private System.Windows.Forms.BindingSource phongBanBindingSource;
+        private BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter phongBanTableAdapter;
+        private DevExpress.XtraEditors.LookUpEdit lupChucVu;
+        private System.Windows.Forms.BindingSource chucVuBindingSource;
+        private BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter chucVuTableAdapter;
+    }
 }
