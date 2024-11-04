@@ -13,6 +13,7 @@ namespace BUS_QLNS
 		{
 			return db.NhanViens.FirstOrDefault(x => x.MaNhanVien == manhanvien);
 		}
+		
 
 		public List<NhanVien> getList()
 		{
@@ -120,5 +121,6 @@ namespace BUS_QLNS
 		{
 			return db.NhanViens.Where(x => x.MaPhongBan == maPhongBan).ToList();
 		}
-	}
+        
+    }
 }

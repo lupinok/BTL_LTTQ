@@ -23,6 +23,7 @@ namespace BUS_QLNS
         {
             return (from tv in db.NhanVienThoiViecs
                     join nv in db.NhanViens on tv.MaNhanVien equals nv.MaNhanVien
+                    
                     select new
                     {
                         tv.SoQD,
@@ -40,18 +41,38 @@ namespace BUS_QLNS
                         tv.DELETED_DATE
                     }).ToList<dynamic>();
         }
+        private NHANVIEN_BUS _nhanvienBUS;
+
+        public NhanVienThoiViec_BUS()
+        {
+            _nhanvienBUS = new NHANVIEN_BUS();
+        }
 
         public NhanVienThoiViec Add(NhanVienThoiViec tv)
         {
             try
             {
+                // Kiểm tra và cập nhật trạng thái nhân viên
+                if (tv.MaNhanVien.HasValue)
+                {
+                    var nv = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == tv.MaNhanVien.Value);
+                    if (nv != null)
+                    {
+                        nv.DaThoiViec = true;
+                    }
+                }
+
+                // Thêm quyết định thôi việc
                 db.NhanVienThoiViecs.Add(tv);
+
+                // Lưu tất cả thay đổi trong một lần
                 db.SaveChanges();
                 return tv;
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi:" + ex.Message);
+                var innerException = ex.InnerException != null ? ex.InnerException.Message : "";
+                throw new Exception($"Lỗi: {ex.Message}. Chi tiết: {innerException}");
             }
         }
 
@@ -83,14 +104,28 @@ namespace BUS_QLNS
                 var _tv = db.NhanVienThoiViecs.FirstOrDefault(x => x.SoQD == soqd);
                 if (_tv != null)
                 {
+                    // Cập nhật trạng thái nhân viên
+                    if (_tv.MaNhanVien.HasValue)
+                    {
+                        var nv = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == _tv.MaNhanVien.Value);
+                        if (nv != null)
+                        {
+                            nv.DaThoiViec = false;
+                        }
+                    }
+
+                    // Cập nhật quyết định thôi việc
                     _tv.DELETED_BY = userId;
                     _tv.DELETED_DATE = DateTime.Now;
+
+                    // Lưu tất cả thay đổi trong một lần
                     db.SaveChanges();
                 }
             }
             catch (Exception ex)
             {
-                throw new Exception("Lỗi:" + ex.Message);
+                var innerException = ex.InnerException != null ? ex.InnerException.Message : "";
+                throw new Exception($"Lỗi: {ex.Message}. Chi tiết: {innerException}");
             }
         }
         public List<int> GetNhanVienDaCoQuyetDinh()
@@ -106,14 +141,13 @@ namespace BUS_QLNS
             try
             {
                 var lastQD = db.NhanVienThoiViecs
-                    .Where(x => x.DELETED_DATE == null)
                     .OrderByDescending(x => x.SoQD)
                     .FirstOrDefault();
 
                 if (lastQD != null)
                 {
-                    string currentNumber = lastQD.SoQD.Substring(0, 5);
-                    return (int.Parse(currentNumber) + 1).ToString("D5");
+                    string currentNumber = lastQD.SoQD.Split('/')[0];
+                    return currentNumber;
                 }
                 return "00000";
             }

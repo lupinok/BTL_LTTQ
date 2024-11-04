@@ -84,7 +84,7 @@
             this.btnLuu,
             this.btnHuy});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
+            this.barManager1.MaxItemId = 7;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
