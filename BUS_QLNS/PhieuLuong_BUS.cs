@@ -6,9 +6,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity.SqlServer;
 using System.Data.Entity;
+using BUS_QLNS.Interface;
 namespace BUS_QLNS
 {
-    public class PhieuLuong_BUS
+    public class PhieuLuong_BUS : IPhieuLuong_BUS
     {
         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 

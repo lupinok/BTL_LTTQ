@@ -1,11 +1,12 @@
-﻿using DAL;
+﻿using BUS_QLNS.Interface;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BUS_QLNS
 {
-	public class NHANVIEN_BUS
+	public class NHANVIEN_BUS : INHANVIEN_BUS
 	{
 		BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 

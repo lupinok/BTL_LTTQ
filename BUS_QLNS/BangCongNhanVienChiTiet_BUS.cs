@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BUS_QLNS.Interface;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,9 +8,10 @@ using System.Threading.Tasks;
 
 namespace BUS_QLNS
 {
-    public class BangCongNhanVienChiTiet_BUS
+    public class BangCongNhanVienChiTiet_BUS : IBangCongNhanVienChiTiet_BUS
     {
         BTLMonLTTQEntities db = new BTLMonLTTQEntities();
+       
         public BANGCONG_NHANVIEN_CHITIET getItem(int makycong, int manv, int ngay)
         {
             return db.BANGCONG_NHANVIEN_CHITIET.FirstOrDefault(x => x.MAKYCONG == makycong && x.MaNhanVien == manv && x.NGAY.Value.Day == ngay);
@@ -66,5 +68,7 @@ namespace BUS_QLNS
         {
             return db.BANGCONG_NHANVIEN_CHITIET.Where(x => x.MAKYCONG == makycong && x.MaNhanVien == manv && x.NGAYCONG != null).ToList().Sum(p => p.NGAYCONG.Value);
         }
+
+       
     }
 }
