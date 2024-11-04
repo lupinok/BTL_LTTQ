@@ -67,6 +67,7 @@ namespace GUI_QLNS.HeThong
                 Properties.Settings.Default.LastServerName = txtServer.Text.Trim();
                 Properties.Settings.Default.LastDatabaseName = cboDatabases.Text.Trim();
                 Properties.Settings.Default.LastUsername = txtUsername.Text.Trim();
+                Properties.Settings.Default.UseWindowsAuth = cbWindowsAuth.Checked;
                 Properties.Settings.Default.Save();
             }
             catch (Exception ex)

@@ -14,54 +14,62 @@ namespace BUS_QLNS
         {
             return db.KYCONGCHITIETs.FirstOrDefault(x => x.MAKYCONG == makycong && x.MaNhanVien == manv);
         }
-        public List<dynamic> getList(int makycong)
+        public List<dynamic> getList(int makycong, int? maPhongBan = null)
         {
-            return (from kc in db.KYCONGCHITIETs
-                    join nv in db.NhanViens on kc.MaNhanVien equals nv.MaNhanVien
-                    where kc.MAKYCONG == makycong
-                    orderby nv.MaNhanVien
-                    select new
-                    {
-                        MANV = kc.MaNhanVien,
-                        HOTEN = nv.HoTen,
-                        kc.D1,
-                        kc.D2,
-                        kc.D3,
-                        kc.D4,
-                        kc.D5,
-                        kc.D6,
-                        kc.D7,
-                        kc.D8,
-                        kc.D9,
-                        kc.D10,
-                        kc.D11,
-                        kc.D12,
-                        kc.D13,
-                        kc.D14,
-                        kc.D15,
-                        kc.D16,
-                        kc.D17,
-                        kc.D18,
-                        kc.D19,
-                        kc.D20,
-                        kc.D21,
-                        kc.D22,
-                        kc.D23,
-                        kc.D24,
-                        kc.D25,
-                        kc.D26,
-                        kc.D27,
-                        kc.D28,
-                        kc.D29,
-                        kc.D30,
-                        kc.D31,
-                        kc.NGAYCONG,
-                        kc.TONGNGAYCONG,
-                        kc.NGAYPHEP,
-                        kc.NGHIKHONGPHEP,
-                        kc.CONGCHUNHAT,
-                        kc.CONGNGAYLE
-                    }).ToList<dynamic>();
+            var query = from kc in db.KYCONGCHITIETs
+                        join nv in db.NhanViens on kc.MaNhanVien equals nv.MaNhanVien
+                        where kc.MAKYCONG == makycong
+                        orderby nv.MaNhanVien
+                        select new
+                        {
+                            MANV = kc.MaNhanVien,
+                            HOTEN = nv.HoTen,
+                            PHONGBAN = nv.MaPhongBan,
+                            kc.D1,
+                            kc.D2,
+                            kc.D3,
+                            kc.D4,
+                            kc.D5,
+                            kc.D6,
+                            kc.D7,
+                            kc.D8,
+                            kc.D9,
+                            kc.D10,
+                            kc.D11,
+                            kc.D12,
+                            kc.D13,
+                            kc.D14,
+                            kc.D15,
+                            kc.D16,
+                            kc.D17,
+                            kc.D18,
+                            kc.D19,
+                            kc.D20,
+                            kc.D21,
+                            kc.D22,
+                            kc.D23,
+                            kc.D24,
+                            kc.D25,
+                            kc.D26,
+                            kc.D27,
+                            kc.D28,
+                            kc.D29,
+                            kc.D30,
+                            kc.D31,
+                            kc.NGAYCONG,
+                            kc.TONGNGAYCONG,
+                            kc.NGAYPHEP,
+                            kc.NGHIKHONGPHEP,
+                            kc.CONGCHUNHAT,
+                            kc.CONGNGAYLE
+                        };
+
+            if (maPhongBan.HasValue)
+            {
+                query = query.Where(x => x.PHONGBAN == maPhongBan.Value);
+            }
+
+            return query.ToList<dynamic>();
         }
 
         public bool kiemTraPhatSinhKyCong(int makycong)

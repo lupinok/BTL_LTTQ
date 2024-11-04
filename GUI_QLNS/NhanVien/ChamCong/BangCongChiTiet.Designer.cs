@@ -45,6 +45,8 @@
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lupPhongBan = new DevExpress.XtraEditors.LookUpEdit();
+            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.chkKhoa = new System.Windows.Forms.CheckBox();
             this.cboThang = new System.Windows.Forms.ComboBox();
             this.cboNam = new System.Windows.Forms.ComboBox();
@@ -102,14 +104,17 @@
             this.barDockControl6 = new DevExpress.XtraBars.BarDockControl();
             this.menu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.mnCapNhatNgayCong = new System.Windows.Forms.ToolStripMenuItem();
+            this.gridControlBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lupPhongBan.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcBangCongChiTiet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBangCongChiTiet)).BeginInit();
             this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // barManager1
@@ -258,6 +263,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lupPhongBan);
+            this.splitContainer1.Panel1.Controls.Add(this.labelControl3);
             this.splitContainer1.Panel1.Controls.Add(this.chkKhoa);
             this.splitContainer1.Panel1.Controls.Add(this.cboThang);
             this.splitContainer1.Panel1.Controls.Add(this.cboNam);
@@ -272,10 +279,37 @@
             this.splitContainer1.SplitterDistance = 70;
             this.splitContainer1.TabIndex = 20;
             // 
+            // lupPhongBan
+            // 
+            this.lupPhongBan.Location = new System.Drawing.Point(556, 28);
+            this.lupPhongBan.MenuManager = this.barManager1;
+            this.lupPhongBan.Name = "lupPhongBan";
+            this.lupPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lupPhongBan.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenPhongBan", "Ten Phong Ban", 97, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
+            this.lupPhongBan.Properties.DataSource = typeof(DAL.PhongBan);
+            this.lupPhongBan.Properties.DisplayMember = "TenPhongBan";
+            this.lupPhongBan.Properties.NullText = "Tất cả phòng ban";
+            this.lupPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lupPhongBan.Properties.ValueMember = "MaPhongBan";
+            this.lupPhongBan.Size = new System.Drawing.Size(244, 22);
+            this.lupPhongBan.TabIndex = 7;
+            this.lupPhongBan.EditValueChanged += new System.EventHandler(this.lupPhongBan_EditValueChanged);
+            // 
+            // labelControl3
+            // 
+            this.labelControl3.Location = new System.Drawing.Point(483, 30);
+            this.labelControl3.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl3.Name = "labelControl3";
+            this.labelControl3.Size = new System.Drawing.Size(65, 16);
+            this.labelControl3.TabIndex = 6;
+            this.labelControl3.Text = "Phòng ban:";
+            // 
             // chkKhoa
             // 
             this.chkKhoa.AutoSize = true;
-            this.chkKhoa.Location = new System.Drawing.Point(504, 32);
+            this.chkKhoa.Location = new System.Drawing.Point(844, 29);
             this.chkKhoa.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.chkKhoa.Name = "chkKhoa";
             this.chkKhoa.Size = new System.Drawing.Size(57, 20);
@@ -1098,6 +1132,10 @@
             this.mnCapNhatNgayCong.Text = "Cập nhật ngày công";
             this.mnCapNhatNgayCong.Click += new System.EventHandler(this.mnCapNhatNgayCong_Click);
             // 
+            // gridControlBindingSource
+            // 
+            this.gridControlBindingSource.DataSource = typeof(DevExpress.XtraGrid.GridControl);
+            // 
             // frmBangCongChiTiet
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1126,9 +1164,11 @@
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.lupPhongBan.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcBangCongChiTiet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvBangCongChiTiet)).EndInit();
             this.menu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gridControlBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1208,5 +1248,8 @@
         private System.Windows.Forms.ContextMenuStrip menu;
         private System.Windows.Forms.ToolStripMenuItem mnCapNhatNgayCong;
         private System.Windows.Forms.Label label1;
+        private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LookUpEdit lupPhongBan;
+        private System.Windows.Forms.BindingSource gridControlBindingSource;
     }
 }

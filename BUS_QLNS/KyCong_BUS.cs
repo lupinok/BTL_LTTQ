@@ -7,7 +7,12 @@ namespace BusinessLayer
 {
     public class KyCong_BUS
     {
-        BTLMonLTTQEntities db = new BTLMonLTTQEntities();
+        private readonly BTLMonLTTQEntities db;
+
+        public KyCong_BUS()
+        {
+            db = new BTLMonLTTQEntities();
+        }
 
         public KYCONG getItem(int makycong)
         {
@@ -58,6 +63,7 @@ namespace BusinessLayer
                 throw new Exception("Lỗi: " + ex.Message);
             }
         }
+
         public void Delete(int makycong, string iduser)
         {
             try
@@ -94,6 +100,44 @@ namespace BusinessLayer
                     return true;
                 else
                     return false;
+            }
+        }
+
+        public void DeleteFullKyCong(int maKyCong)
+        {
+            using (var transaction = db.Database.BeginTransaction())
+            {
+                try
+                {
+                    // 1. Xóa dữ liệu từ bảng BANGCONG_NHANVIEN_CHITIET
+                    var bangCongChiTiet = db.BANGCONG_NHANVIEN_CHITIET
+                        .Where(x => x.MAKYCONG == maKyCong);
+                    db.BANGCONG_NHANVIEN_CHITIET.RemoveRange(bangCongChiTiet);
+
+                    // 2. Xóa dữ liệu từ bảng KYCONGCHITIET
+                    var kyCongChiTiet = db.KYCONGCHITIETs
+                        .Where(x => x.MAKYCONG == maKyCong);
+                    db.KYCONGCHITIETs.RemoveRange(kyCongChiTiet);
+
+                    // 3. Xóa dữ liệu từ bảng KYCONG
+                    var kyCong = db.KYCONGs.FirstOrDefault(x => x.MAKYCONG == maKyCong);
+                    if (kyCong != null)
+                    {
+                        db.KYCONGs.Remove(kyCong);
+                    }
+
+                    // Lưu tất cả thay đổi
+                    db.SaveChanges();
+                    
+                    // Commit transaction nếu tất cả thành công
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    // Rollback nếu có lỗi
+                    transaction.Rollback();
+                    throw new Exception("Lỗi xóa kỳ công: " + ex.Message);
+                }
             }
         }
     }

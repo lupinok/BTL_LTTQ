@@ -29,8 +29,38 @@ namespace GUI_QLNS.NhanVien.ChamCong
         BangCongNhanVienChiTiet_BUS _bcct_nv;
         public int _cNgay;
         frmBangCongChiTiet frmBCCC = (frmBangCongChiTiet)Application.OpenForms["frmBangCongChiTiet"];
+
+        private void DisableControlsForSunday()
+        {
+            rdgChamCong.Enabled = false;
+            rdgNgayNghi.Enabled = false;
+            btnCapNhat.Enabled = false;
+            btnReturn.Enabled = false;
+        }
+
+        private void EnableControls()
+        {
+            rdgChamCong.Enabled = true;
+            rdgNgayNghi.Enabled = true;
+            btnCapNhat.Enabled = true;
+            btnReturn.Enabled = true;
+        }
+
+        private bool IsSunday(DateTime date)
+        {
+            return date.DayOfWeek == DayOfWeek.Sunday;
+        }
+
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
+            DateTime selectedDate = cldNgayCong.SelectionRange.Start;
+            if (IsSunday(selectedDate))
+            {
+                MessageBox.Show("Không thể cập nhật ngày công vào Chủ nhật!", 
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
             string _valueChamCong = rdgChamCong.Properties.Items[rdgChamCong.SelectedIndex].Value.ToString();
             string _valueNgayNghi = rdgNgayNghi.Properties.Items[rdgNgayNghi.SelectedIndex].Value.ToString();
@@ -116,15 +146,52 @@ namespace GUI_QLNS.NhanVien.ChamCong
             DateTime dt = DateTime.Parse(nam + "-" + thang + "-" + ngay);
             cldNgayCong.SetDate(dt);
             _cNgay = dt.Day;
+
+            // Kiểm tra nếu là chủ nhật khi form load
+            if (IsSunday(dt))
+            {
+                DisableControlsForSunday();
+                MessageBox.Show("Không thể cập nhật ngày công vào Chủ nhật!", 
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void cldNgayCong_DateSelected(object sender, DateRangeEventArgs e)
         {
-            _cNgay = cldNgayCong.SelectionRange.Start.Day;
+            DateTime selectedDate = cldNgayCong.SelectionRange.Start;
+            _cNgay = selectedDate.Day;
+
+            // Kiểm tra xem ngày được chọn có phải là Chủ nhật không
+            if (IsSunday(selectedDate))
+            {
+                DisableControlsForSunday();
+                MessageBox.Show("Không thể cập nhật ngày công vào Chủ nhật!", 
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                EnableControls();
+            }
+
+            // Kiểm tra xem ngày được chọn có thuộc kỳ công hiện tại không
+            if (selectedDate.Year * 100 + selectedDate.Month != _makycong)
+            {
+                DisableControlsForSunday(); // Sử dụng cùng hàm để disable controls
+                MessageBox.Show("Ngày được chọn không thuộc kỳ công hiện tại!", 
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
+            DateTime selectedDate = cldNgayCong.SelectionRange.Start;
+            if (IsSunday(selectedDate))
+            {
+                MessageBox.Show("Không thể cập nhật ngày công vào Chủ nhật!", 
+                    "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
             SplashScreenManager.ShowForm(typeof(frmWaiting), true, true);
 
             try

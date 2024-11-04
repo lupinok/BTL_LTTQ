@@ -81,10 +81,30 @@ namespace GUI_QLNS.NhanVien.ChamCong
         {
             if (gvDanhSach.RowCount > 0)
             {
-                if (MessageBox.Show("Bạn có chắc chắn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                // Kiểm tra trạng thái khóa
+                bool isKhoa = (bool)gvDanhSach.GetFocusedRowCellValue("KHOA");
+                if (isKhoa)
                 {
-                    _bangCong.Delete(_makycong, "");
-                    loadData();
+                    MessageBox.Show("Kỳ công đã bị khóa. Không thể xóa!", "Cảnh báo", 
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                if (MessageBox.Show("Bạn có chắc chắn muốn xóa kỳ công này không?\nDữ liệu chấm công của kỳ này cũng sẽ bị xóa!", 
+                    "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    try
+                    {
+                        _bangCong.DeleteFullKyCong(_makycong);
+                        loadData();
+                        MessageBox.Show("Xóa kỳ công thành công!", "Thông báo", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Lỗi xóa kỳ công: " + ex.Message, "Lỗi", 
+                            MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
