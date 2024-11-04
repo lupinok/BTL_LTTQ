@@ -421,5 +421,34 @@ namespace GUI_QLNS.NhanVien
         {
 
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                // Lấy form cha (MainForm)
+                var mainForm = this.ParentForm;
+
+                // Đóng form hiện tại
+                this.Close();
+
+                // Tạo form mới và thiết lập thuộc tính
+                Form newForm = new frmNhanVien();
+                newForm.MdiParent = mainForm;
+                newForm.Show();
+
+                // Nếu mainForm là frmMain, gọi phương thức sắp xếp form
+                if (mainForm is Main main)
+                {
+                    // Giả sử frmMain có phương thức ArrangeForm
+                    main.ArrangeForm();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi refresh: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

@@ -68,7 +68,7 @@ namespace GUI_QLNS
                 MessageBox.Show("Lỗi khi tải lịch sử: " + ex.Message);
             }
         }
-
+        
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);

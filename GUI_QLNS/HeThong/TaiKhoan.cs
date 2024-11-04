@@ -100,6 +100,7 @@ namespace GUI_QLNS.HeThong
 			ShowHideControls(true);
 			_isNewRecord = true;
 			ClearFields();
+			txtTenDangNhap.Enabled = true;
 		}
 
 		private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
