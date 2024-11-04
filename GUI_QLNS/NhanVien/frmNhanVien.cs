@@ -48,16 +48,16 @@ namespace GUI_QLNS.NhanVien
 			string vaiTro = Properties.Settings.Default.VaiTro;
 			_hasEditPermission = vaiTro != "Chỉnh sửa" && vaiTro != "Xem";
 
-			// Ẩn các nút nếu không có quyền chỉnh sửa
-			if (!_hasEditPermission)
-			{
-				btnThem.Enabled = false;
-				btnSua.Enabled = false;
-				btnXoa.Enabled = false;
-				btnLuu.Enabled = false;
-				btnHuy.Enabled = false;
-			}
-		}
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                
+            }
+        }
 
 		public frmNhanVien(int maPhongBan)
 		{
@@ -73,38 +73,43 @@ namespace GUI_QLNS.NhanVien
 			// Chỉ cho phép Quản trị viên và Chỉnh sửa có quyền thao tác khi mở từ phòng ban
 			_hasEditPermission = vaiTro == "Quản trị viên" || vaiTro == "Chỉnh sửa";
 
-			// Ẩn các nút nếu không có quyền chỉnh sửa và không được mở từ form phòng ban
-			if (!_hasEditPermission)
-			{
-				btnThem.Enabled = false;
-				btnSua.Enabled = false;
-				btnXoa.Enabled = false;
-				btnLuu.Enabled = false;
-				btnHuy.Enabled = false;
-			}
-			gvDanhSach.OptionsBehavior.Editable = false;
-		}
+            // Ẩn các nút nếu không có quyền chỉnh sửa và không được mở từ form phòng ban
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                
+            }
+            gvDanhSach.OptionsBehavior.Editable = false;
+        }
 
 		private void NhanVien_Load(object sender, EventArgs e)
 		{
-			LoadPhongBan();
+            //// TODO: This line of code loads data into the 'bTLMonLTTQDataSet.ChucVu' table. You can move, or remove it, as needed.
+            //this.chucVuTableAdapter.Fill(this.bTLMonLTTQDataSet.ChucVu);
+            //// TODO: This line of code loads data into the 'bTLMonLTTQDataSet.PhongBan' table. You can move, or remove it, as needed.
+            //this.phongBanTableAdapter.Fill(this.bTLMonLTTQDataSet.PhongBan);
+            LoadPhongBan();
 			ShowHideControls(false);
 
 			if (_isFilterByPhongBan && _maPhongBan.HasValue)
 			{
 				// Nếu mở từ form Phòng ban, lọc theo phòng ban
 				gcDanhSach.DataSource = _nhanvienBUS.getListByPhongBan(_maPhongBan.Value);
-				cbMaPhongBan.EditValue = _maPhongBan.Value;
+				lupPhongBan.EditValue = _maPhongBan.Value;
 			}
 			else
 			{
 				// Nếu mở từ form Main, hiển thị tất cả nhân viên
 				LoadData();
 			}
-			btnLuu.Enabled = false;
-			btnSua.Enabled = false;
-			btnXoa.Enabled = false;
-		}
+			btnLuu.Enabled=false;
+			btnSua.Enabled=false;
+			btnXoa.Enabled=false;
+            splitContainer1.Panel1Collapsed = true; // Ẩn panel
+        }
 
 		void LoadData()
 		{
@@ -124,57 +129,63 @@ namespace GUI_QLNS.NhanVien
 
 		void LoadPhongBan()
 		{
-			// Load danh sách phòng ban vào cbMaPhongBan
-			cbMaPhongBan.Properties.Items.Clear();
-			var listPhongBan = _nhanvienBUS.getListPhongBan();
-			foreach (var pb in listPhongBan)
-			{
-				cbMaPhongBan.Properties.Items.Add(pb.MaPhongBan);
-			}
-		}
+            try
+            {
+                var listPhongBan = _nhanvienBUS.getListPhongBan();
+
+                lupPhongBan.Properties.DataSource = listPhongBan;
+                lupPhongBan.Properties.DisplayMember = "TenPhongBan";
+                lupPhongBan.Properties.ValueMember = "MaPhongBan";
+
+                if (listPhongBan != null && listPhongBan.Count > 0)
+                {
+                    lupPhongBan.Properties.PopulateColumns();
+                    // Ẩn tất cả các cột
+                    foreach (DevExpress.XtraEditors.Controls.LookUpColumnInfo column in lupPhongBan.Properties.Columns)
+                    {
+                        column.Visible = false;
+                    }
+                    // Chỉ hiện cột TenPhongBan
+                    lupPhongBan.Properties.Columns["TenPhongBan"].Visible = true;
+                }
+
+                lupPhongBan.Properties.ShowHeader = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load phòng ban: " + ex.Message);
+            }
+        }
 
 		void LoadChucVu(int maPhongBan)
 		{
-			// Load danh sách chức vụ tương ứng với phòng ban
-			cbMaChucVu.Properties.Items.Clear();
-			var listChucVu = _nhanvienBUS.getListChucVuByPhongBan(maPhongBan);
-			foreach (var cv in listChucVu)
-			{
-				cbMaChucVu.Properties.Items.Add(cv.MaChucVu);
-			}
-		}
+            try
+            {
+                var listChucVu = _nhanvienBUS.getListChucVuByPhongBan(maPhongBan);
 
-		private void cbMaPhongBan_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			try
-			{
-				if (cbMaPhongBan.SelectedItem != null && !string.IsNullOrEmpty(cbMaPhongBan.SelectedItem.ToString()))
-				{
-					int maPhongBan;
-					if (int.TryParse(cbMaPhongBan.SelectedItem.ToString(), out maPhongBan))
-					{
-						LoadChucVu(maPhongBan);
-						cbMaChucVu.Enabled = true;
-					}
-					else
-					{
-						cbMaChucVu.Properties.Items.Clear();
-						cbMaChucVu.Enabled = false;
-					}
-				}
-				else
-				{
-					cbMaChucVu.Properties.Items.Clear();
-					cbMaChucVu.Enabled = false;
-				}
-			}
-			catch (Exception ex)
-			{
-				MessageBox.Show("Lỗi khi chọn phòng ban: " + ex.Message);
-				cbMaChucVu.Properties.Items.Clear();
-				cbMaChucVu.Enabled = false;
-			}
-		}
+                lupChucVu.Properties.DataSource = listChucVu;
+                lupChucVu.Properties.DisplayMember = "TenChucVu";
+                lupChucVu.Properties.ValueMember = "MaChucVu";
+
+                if (listChucVu != null && listChucVu.Count > 0)
+                {
+                    lupChucVu.Properties.PopulateColumns();
+                    // Ẩn tất cả các cột
+                    foreach (DevExpress.XtraEditors.Controls.LookUpColumnInfo column in lupChucVu.Properties.Columns)
+                    {
+                        column.Visible = false;
+                    }
+                    // Chỉ hiện cột TenChucVu
+                    lupChucVu.Properties.Columns["TenChucVu"].Visible = true;
+                }
+
+                lupChucVu.Properties.ShowHeader = false;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load chức vụ: " + ex.Message);
+            }
+        }
 
 		void ShowHideControls(bool isEdit)
 		{
@@ -184,15 +195,14 @@ namespace GUI_QLNS.NhanVien
 				btnSua.Enabled = !isEdit;
 				btnXoa.Enabled = !isEdit;
 				btnLuu.Enabled = isEdit;
-				btnHuy.Enabled = isEdit;
-
+				
 				txtMaNhanVien.Enabled = isEdit && _isNewRecord;
 				txtHoTen.Enabled = isEdit;
 				txtNgaySinh.Enabled = isEdit;
 				txtSoDienThoai.Enabled = isEdit;
 				txtEmail.Enabled = isEdit;
-				cbMaPhongBan.Enabled = isEdit;
-				cbMaChucVu.Enabled = false;
+				lupPhongBan.Enabled = isEdit;
+				lupChucVu.Enabled = false;
 			}
 			else
 			{
@@ -201,15 +211,15 @@ namespace GUI_QLNS.NhanVien
 				btnSua.Enabled = false;
 				btnXoa.Enabled = false;
 				btnLuu.Enabled = false;
-				btnHuy.Enabled = false;
-
+				
+				
 				txtMaNhanVien.Enabled = false;
 				txtHoTen.Enabled = false;
 				txtNgaySinh.Enabled = false;
 				txtSoDienThoai.Enabled = false;
 				txtEmail.Enabled = false;
-				cbMaPhongBan.Enabled = false;
-				cbMaChucVu.Enabled = false;
+				lupPhongBan.Enabled = false;
+				lupChucVu.Enabled = false;
 			}
 		}
 
@@ -220,8 +230,8 @@ namespace GUI_QLNS.NhanVien
 			txtNgaySinh.Text = string.Empty;
 			txtSoDienThoai.Text = string.Empty;
 			txtEmail.Text = string.Empty;
-			cbMaPhongBan.Text = string.Empty;
-			cbMaChucVu.Text = string.Empty;
+			lupPhongBan.Text = string.Empty;
+			lupChucVu.Text = string.Empty;
 		}
 
 		private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -229,19 +239,18 @@ namespace GUI_QLNS.NhanVien
 			_isNewRecord = true;
 			ShowHideControls(true);
 			ClearFields();
-
-		}
+            splitContainer1.Panel1Collapsed = false; // Hiện panel
+        }
 
 		private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 			_isNewRecord = false;
 			ShowHideControls(true);
-
-			int manv = int.Parse(gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString());
-			SYLL frm = new SYLL(manv, true);
-			frm.ShowDialog();
 			LoadData();
-		}
+            splitContainer1.Panel1Collapsed = false; // Hiện panel
+			lupPhongBan.Enabled = false;
+			lupChucVu.Enabled = false;
+        }
 
 		private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
@@ -269,7 +278,8 @@ namespace GUI_QLNS.NhanVien
 						$"Lỗi khi xóa nhân viên: {ex.Message}");
 				}
 			}
-		}
+            splitContainer1.Panel1Collapsed = true; // Ẩn panel
+        }
 
 		private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
@@ -278,8 +288,8 @@ namespace GUI_QLNS.NhanVien
 				string.IsNullOrEmpty(txtNgaySinh.Text) ||
 				string.IsNullOrEmpty(txtSoDienThoai.Text) ||
 				string.IsNullOrEmpty(txtEmail.Text) ||
-				string.IsNullOrEmpty(cbMaPhongBan.Text) ||
-				string.IsNullOrEmpty(cbMaChucVu.Text))
+				string.IsNullOrEmpty(lupPhongBan.Text) ||
+				string.IsNullOrEmpty(lupChucVu.Text))
 			{
 				MessageBox.Show("Vui lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 				return;
@@ -289,14 +299,14 @@ namespace GUI_QLNS.NhanVien
 			{
 				var nv = new DAL.NhanVien
 				{
-					MaNhanVien = int.Parse(txtMaNhanVien.Text.Trim()),
-					HoTen = txtHoTen.Text.Trim(),
-					NgaySinh = DateTime.ParseExact(txtNgaySinh.Text.Trim(), "dd/MM/yyyy", null),
-					SoDienThoai = int.Parse(txtSoDienThoai.Text.Trim()),
-					Email = txtEmail.Text.Trim(),
-					MaPhongBan = int.Parse(cbMaPhongBan.Text.Trim()),
-					MaChucVu = int.Parse(cbMaChucVu.Text.Trim()),
-				};
+                    MaNhanVien = int.Parse(txtMaNhanVien.Text.Trim()),
+                    HoTen = txtHoTen.Text.Trim(),
+                    NgaySinh = DateTime.ParseExact(txtNgaySinh.Text.Trim(), "dd/MM/yyyy", null),
+                    SoDienThoai = int.Parse(txtSoDienThoai.Text.Trim()),
+                    Email = txtEmail.Text.Trim(),
+                    MaPhongBan = Convert.ToInt32(lupPhongBan.EditValue),
+                    MaChucVu = Convert.ToInt32(lupChucVu.EditValue),
+                };
 
 				if (_isNewRecord)
 					_nhanvienBUS.Add(nv);
@@ -317,36 +327,17 @@ namespace GUI_QLNS.NhanVien
 					$"Lỗi khi thao tác với nhân viên: {ex.Message}");
 				throw;
 			}
-		}
+            splitContainer1.Panel1Collapsed = true; // Ẩn panel
+        }
 
 		private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
 			ShowHideControls(false);
+			btnSua.Enabled = false;
+			btnXoa.Enabled = false;
 			ClearFields();
-		}
-
-		private void gvDanhSach_Click(object sender, EventArgs e)
-		{
-			if (gvDanhSach.RowCount > 0)
-			{
-				txtMaNhanVien.Text = gvDanhSach.GetFocusedRowCellValue("MaNhanVien").ToString();
-				txtHoTen.Text = gvDanhSach.GetFocusedRowCellValue("HoTen").ToString();
-				var ngaySinh = gvDanhSach.GetFocusedRowCellValue("NgaySinh");
-				txtNgaySinh.Text = ngaySinh != null ? Convert.ToDateTime(ngaySinh).ToString("dd/MM/yyyy") : "";
-				txtSoDienThoai.Text = gvDanhSach.GetFocusedRowCellValue("SoDienThoai").ToString();
-				txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
-				cbMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
-				cbMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
-
-
-				// Chỉ enable các nút khi có quyền chỉnh sửa
-				if (_hasEditPermission)
-				{
-					btnSua.Enabled = true;
-					btnXoa.Enabled = true;
-				}
-			}
-		}
+            splitContainer1.Panel1Collapsed = true; // Ẩn panel
+        }
 
 		private void gcDanhSach_Click(object sender, EventArgs e)
 		{
@@ -365,13 +356,32 @@ namespace GUI_QLNS.NhanVien
 					txtNgaySinh.Text = ngaySinh != null ? Convert.ToDateTime(ngaySinh).ToString("dd/MM/yyyy") : "";
 					txtSoDienThoai.Text = gvDanhSach.GetFocusedRowCellValue("SoDienThoai").ToString();
 					txtEmail.Text = gvDanhSach.GetFocusedRowCellValue("Email").ToString();
-					cbMaPhongBan.Text = gvDanhSach.GetFocusedRowCellValue("MaPhongBan").ToString();
-					cbMaChucVu.Text = gvDanhSach.GetFocusedRowCellValue("MaChucVu").ToString();
+
+					// Gán giá trị cho Phòng ban
+					var maPhongBan = gvDanhSach.GetFocusedRowCellValue("MaPhongBan");
+					if (maPhongBan != null)
+					{
+						lupPhongBan.EditValue = Convert.ToInt32(maPhongBan);
+						
+						// Load danh sách chức vụ của phòng ban
+						LoadChucVu(Convert.ToInt32(maPhongBan));
+						
+						// Gán giá trị cho Chức vụ
+						var maChucVu = gvDanhSach.GetFocusedRowCellValue("MaChucVu");
+						if (maChucVu != null)
+						{
+							lupChucVu.EditValue = Convert.ToInt32(maChucVu);
+						}
+					}
+
+					btnSua.Enabled = true;
+					btnXoa.Enabled = true;
 				}
 				catch (Exception ex)
 				{
 					MessageBox.Show("Lỗi load dữ liệu: " + ex.Message);
 				}
+				lupChucVu.Enabled = false;
 			}
 		}
 
@@ -384,53 +394,32 @@ namespace GUI_QLNS.NhanVien
 				f.ShowDialog();
 			}
 		}
-		private void OpenForm()
-		{
-			frmNhanVien f = frmNhanVien.Instance;
-			f.Show();
-			f.Focus();
-		}
 
-		private void btnRefesh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-		{
+        private void lupPhongBan_EditValueChanged(object sender, EventArgs e)
+        {
             try
             {
-                // Lấy form cha (MainForm)
-                var mainForm = this.ParentForm;
-
-                // Đóng form hiện tại
-                this.Close();
-
-                // Tạo form mới và thiết lập thuộc tính
-                Form newForm = new frmNhanVien();
-                newForm.MdiParent = mainForm;
-                newForm.Show();
-
-                // Nếu mainForm là frmMain, gọi phương thức sắp xếp form
-                if (mainForm is Main main)
+                if (lupPhongBan.EditValue != null)
                 {
-                    // Giả sử frmMain có phương thức ArrangeForm
-                    main.ArrangeForm();
+                    int maPhongBan = Convert.ToInt32(lupPhongBan.EditValue);
+                    LoadChucVu(maPhongBan);
+                    lupChucVu.Enabled = true;
+                }
+                else
+                {
+                    lupChucVu.Properties.DataSource = null;
+                    lupChucVu.Enabled = false;
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi refresh: " + ex.Message, "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi chọn phòng ban: " + ex.Message);
             }
         }
 
-		private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)
-		{
-			if (e.Column.Name == "DaThoiViec" && e.CellValue != null && (bool)e.CellValue)
-			{
-				Image img = Properties.Resources.check;
-				int x = e.Bounds.X + (e.Bounds.Width - 16) / 2;
-				int y = e.Bounds.Y + (e.Bounds.Height - 16) / 2;
-				// Vẽ ảnh với kích thước 16x16
-				e.Graphics.DrawImage(img, new Rectangle(x, y, 16, 16));
-				e.Handled = true;
-			}
-		}
-	}
+        private void lupChucVu_EditValueChanged(object sender, EventArgs e)
+        {
+
+        }
+    }
 }

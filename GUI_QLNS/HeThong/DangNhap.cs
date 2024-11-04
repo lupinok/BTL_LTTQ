@@ -23,8 +23,23 @@ namespace GUI_QLNS.HeThong
 			// Thêm sự kiện click cho nút đăng nhập
 			this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
 		}
+        public DangNhap(string username = null)
+        {
+            InitializeComponent();
+            _taikhoanBUS = new TAIKHOAN_BUS();
 
-		private void DangNhapHeThong()
+            // Thêm sự kiện click cho nút đăng nhập
+            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+
+            // Nếu có username được truyền vào, hiển thị lên textbox
+            if (!string.IsNullOrEmpty(username))
+            {
+                txtTenDangNhap.Text = username;
+                txtMatKhau.Focus();
+            }
+        }
+
+        private void DangNhapHeThong()
 		{
 			try
 			{
@@ -83,8 +98,8 @@ namespace GUI_QLNS.HeThong
 
 		private void btnDangNhap_Click(object sender, EventArgs e)
 		{
-			DangNhapHeThong();
-		}
+            DangNhapHeThong();
+        }
 
 		private void txtMatKhau_KeyDown(object sender, KeyEventArgs e)
 		{
@@ -98,6 +113,15 @@ namespace GUI_QLNS.HeThong
         {
             // Hiển thị/ẩn mật khẩu
             txtMatKhau.UseSystemPasswordChar = !ckPassword.Checked;
+        }
+
+        private void btnDangNhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                e.Handled = true; // Ngăn không cho phát ra tiếng beep
+                DangNhapHeThong();
+            }
         }
     }
 }

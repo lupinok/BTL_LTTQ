@@ -43,7 +43,6 @@ namespace GUI_QLNS.HeThong
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
             }
             
             LoadData();
@@ -81,7 +80,6 @@ namespace GUI_QLNS.HeThong
 			btnSua.Enabled = !isEdit;
 			btnXoa.Enabled = !isEdit;
 			btnLuu.Enabled = isEdit;
-			btnHuy.Enabled = isEdit;
 
 			txtTenDangNhap.Enabled = isEdit && _isNewRecord;
 			txtMatKhau.Enabled = isEdit;
@@ -187,7 +185,6 @@ namespace GUI_QLNS.HeThong
 				cbVaiTro.EditValue = gvDanhSach.GetFocusedRowCellValue("VaiTro").ToString();
 				btnSua.Enabled = true;
 				btnXoa.Enabled = true;
-				btnHuy.Enabled = true;
 			}
 		}
 

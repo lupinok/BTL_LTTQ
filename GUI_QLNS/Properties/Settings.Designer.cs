@@ -105,5 +105,16 @@ namespace GUI_QLNS.Properties {
                 this["UseWindowsAuth"] = value;
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-KV8OO60\\SQLEXPRESS;Initial Catalog=BTLMonLTTQ;Integrated Secu" +
+            "rity=True;Encrypt=False")]
+        public string BTLMonLTTQConnectionString1 {
+            get {
+                return ((string)(this["BTLMonLTTQConnectionString1"]));
+            }
+        }
     }
 }

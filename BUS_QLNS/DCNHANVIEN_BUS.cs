@@ -23,22 +23,22 @@ namespace BUS_QLNS
                 using (var db = new BTLMonLTTQEntities())
                 {
                     var list = (from dc in db.NhanVien_DieuChuyen
-                               join nv in db.NhanViens on dc.MaNhanVien equals nv.MaNhanVien
-                               join pb1 in db.PhongBans on dc.MaPhongBan equals pb1.MaPhongBan
-                               join pb2 in db.PhongBans on dc.MaPhongBan2 equals pb2.MaPhongBan
-                               select new
-                               {
-                                   dc.SoDC,
-                                   nv.HoTen,
-                                   dc.Ngay,
-                                   TenPhongBan = pb1.TenPhongBan,  // Phòng ban trước
-                                   TenPhongBan2 = pb2.TenPhongBan, // Phòng ban sau
-                                   dc.LyDoDC,
-                                   dc.GhiChuDC,
-                                   dc.MaNhanVien,
-                                   dc.MaPhongBan,
-                                   dc.MaPhongBan2
-                               }).ToList<dynamic>();
+                                join nv in db.NhanViens on dc.MaNhanVien equals nv.MaNhanVien
+                                join pb1 in db.PhongBans on dc.MaPhongBan equals pb1.MaPhongBan
+                                join pb2 in db.PhongBans on dc.MaPhongBan2 equals pb2.MaPhongBan
+                                select new
+                                {
+                                    dc.SoDC,
+                                    nv.HoTen,
+                                    dc.Ngay,
+                                    TenPhongBan = pb1.TenPhongBan,  // Phòng ban trước
+                                    TenPhongBan2 = pb2.TenPhongBan, // Phòng ban sau
+                                    dc.LyDoDC,
+                                    dc.GhiChuDC,
+                                    dc.MaNhanVien,
+                                    dc.MaPhongBan,
+                                    dc.MaPhongBan2
+                                }).ToList<dynamic>();
                     return list;
                 }
             }
@@ -62,20 +62,21 @@ namespace BUS_QLNS
                         var nhanVien = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == dc.MaNhanVien);
                         if (nhanVien != null)
                         {
-                            // Lưu mã phòng ban cũ vào bản ghi điều chuyển
+                            // Lưu mã phòng ban và chức vụ cũ vào bản ghi điều chuyển
                             dc.MaPhongBan = nhanVien.MaPhongBan;
+                            dc.MaChucVu = nhanVien.MaChucVu;
 
                             // Thêm lịch sử điều chuyển
                             db.NhanVien_DieuChuyen.Add(dc);
 
-                            // Cập nhật phòng ban mới cho nhân viên
+                            // Cập nhật phòng ban và chức vụ mới cho nhân viên
                             nhanVien.MaPhongBan = dc.MaPhongBan2;
+                            nhanVien.MaChucVu = dc.MaChucVu2;
                         }
 
                         db.SaveChanges();
                         transaction.Commit();
                         return dc;
-
                     }
                     catch
                     {
@@ -117,6 +118,8 @@ namespace BUS_QLNS
                         var allRecords = db.NhanVien_DieuChuyen.ToList();
                         db.NhanVien_DieuChuyen.RemoveRange(allRecords);
                         db.SaveChanges();
+                        // Reset identity về 1
+                        db.Database.ExecuteSqlCommand("DBCC CHECKIDENT ('NhanVien_DieuChuyen', RESEED, 0)");
                         transaction.Commit();
                     }
                     catch
@@ -189,6 +192,11 @@ namespace BUS_QLNS
             {
                 return db.PhongBans.ToList();
             }
+        }
+        public List<ChucVu> getListChucVuByPhongBan(int maPhongBan)
+        {
+            string prefix = maPhongBan.ToString() + "0";
+            return db.ChucVus.Where(x => x.MaChucVu.ToString().StartsWith(prefix)).ToList();
         }
 
         public List<PhongBan> GetListPhongBanExcept(int maPhongBan)

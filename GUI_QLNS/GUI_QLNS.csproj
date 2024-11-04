@@ -95,6 +95,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BTLMonLTTQDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BTLMonLTTQDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="frmWaiting.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +167,12 @@
     <Compile Include="NhanVien\ChamCong\LoaiCa.Designer.cs">
       <DependentUpon>LoaiCa.cs</DependentUpon>
     </Compile>
+    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.Designer.cs">
+      <DependentUpon>DCNhanVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="NhanVien\frmNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -203,12 +214,6 @@
     </Compile>
     <Compile Include="NhanVien\ChucVu\frmChucVu.Designer.cs">
       <DependentUpon>frmChucVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NhanVien\DCNhanVien\DCNhanVien.Designer.cs">
-      <DependentUpon>DCNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\Dự án\ChiTietDuAn.cs">
       <SubType>Form</SubType>
@@ -307,6 +312,9 @@
     <EmbeddedResource Include="NhanVien\ChucVu\frmChucVu.resx">
       <DependentUpon>frmChucVu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NhanVien\DCNhanVien\DCNhanVien.resx">
+      <DependentUpon>DCNhanVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\Dự án\ChiTietDuAn.resx">
       <DependentUpon>ChiTietDuAn.cs</DependentUpon>
     </EmbeddedResource>
@@ -363,6 +371,17 @@
     <EmbeddedResource Include="Report\rptBangLuong.resx">
       <DependentUpon>rptBangLuong.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="BTLMonLTTQDataSet.xsc">
+      <DependentUpon>BTLMonLTTQDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="BTLMonLTTQDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>BTLMonLTTQDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="BTLMonLTTQDataSet.xss">
+      <DependentUpon>BTLMonLTTQDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DevExpress.XtraGrid.GridControl.datasource" />
     <None Include="Properties\Settings.settings">

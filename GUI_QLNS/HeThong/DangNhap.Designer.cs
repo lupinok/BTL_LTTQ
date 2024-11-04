@@ -29,13 +29,13 @@
 		private void InitializeComponent()
 		{
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ckPassword = new DevExpress.XtraEditors.CheckEdit();
             this.btnDangNhap = new System.Windows.Forms.Button();
             this.txtMatKhau = new System.Windows.Forms.TextBox();
             this.txtTenDangNhap = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.ckPassword = new DevExpress.XtraEditors.CheckEdit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ckPassword.Properties)).BeginInit();
             this.SuspendLayout();
@@ -56,6 +56,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin đăng nhập";
             // 
+            // ckPassword
+            // 
+            this.ckPassword.Location = new System.Drawing.Point(117, 121);
+            this.ckPassword.Name = "ckPassword";
+            this.ckPassword.Properties.Caption = "Hiển thị mật khẩu";
+            this.ckPassword.Size = new System.Drawing.Size(133, 24);
+            this.ckPassword.TabIndex = 5;
+            this.ckPassword.CheckedChanged += new System.EventHandler(this.ckPassword_CheckedChanged);
+            // 
             // btnDangNhap
             // 
             this.btnDangNhap.Location = new System.Drawing.Point(292, 137);
@@ -64,7 +73,7 @@
             this.btnDangNhap.TabIndex = 4;
             this.btnDangNhap.Text = "Đăng nhập";
             this.btnDangNhap.UseVisualStyleBackColor = true;
-            this.btnDangNhap.Click += new System.EventHandler(this.btnDangNhap_Click);
+            this.btnDangNhap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.btnDangNhap_KeyPress);
             // 
             // txtMatKhau
             // 
@@ -99,15 +108,6 @@
             this.label1.Size = new System.Drawing.Size(93, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Tên đăng nhập";
-            // 
-            // ckPassword
-            // 
-            this.ckPassword.Location = new System.Drawing.Point(117, 121);
-            this.ckPassword.Name = "ckPassword";
-            this.ckPassword.Properties.Caption = "Hiển thị mật khẩu";
-            this.ckPassword.Size = new System.Drawing.Size(133, 24);
-            this.ckPassword.TabIndex = 5;
-            this.ckPassword.CheckedChanged += new System.EventHandler(this.ckPassword_CheckedChanged);
             // 
             // DangNhap
             // 

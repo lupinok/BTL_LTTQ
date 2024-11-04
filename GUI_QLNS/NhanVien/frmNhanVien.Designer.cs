@@ -39,15 +39,17 @@ namespace GUI_QLNS.NhanVien
             this.btnXoa = new DevExpress.XtraBars.BarButtonItem();
             this.btnLuu = new DevExpress.XtraBars.BarButtonItem();
             this.btnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.btnRefesh = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlBottom = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlLeft = new DevExpress.XtraBars.BarDockControl();
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.cbMaChucVu = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.cbMaPhongBan = new DevExpress.XtraEditors.ComboBoxEdit();
+            this.lupChucVu = new DevExpress.XtraEditors.LookUpEdit();
+            this.chucVuBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.bTLMonLTTQDataSet = new GUI_QLNS.BTLMonLTTQDataSet();
+            this.lupPhongBan = new DevExpress.XtraEditors.LookUpEdit();
+            this.phongBanBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtSoDienThoai = new System.Windows.Forms.TextBox();
             this.txtNgaySinh = new System.Windows.Forms.TextBox();
@@ -69,19 +71,23 @@ namespace GUI_QLNS.NhanVien
             this.Email = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaPhongBan = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaChucVu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.DaThoiViec = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.gridColumn1 = new DevExpress.XtraGrid.Columns.GridColumn();
             this.barDockControl3 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl4 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl1 = new DevExpress.XtraBars.BarDockControl();
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.phongBanTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter();
+            this.chucVuTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupChucVu.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupPhongBan.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phongBanBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).BeginInit();
             this.SuspendLayout();
@@ -118,8 +124,7 @@ namespace GUI_QLNS.NhanVien
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnRefesh, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -163,14 +168,6 @@ namespace GUI_QLNS.NhanVien
             this.btnHuy.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnHuy.ImageOptions.SvgImage")));
             this.btnHuy.Name = "btnHuy";
             this.btnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnHuy_ItemClick);
-            // 
-            // btnRefesh
-            // 
-            this.btnRefesh.Caption = "Tải lại ";
-            this.btnRefesh.Id = 13;
-            this.btnRefesh.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnRefesh.ImageOptions.Image")));
-            this.btnRefesh.Name = "btnRefesh";
-            this.btnRefesh.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnRefesh_ItemClick);
             // 
             // bar3
             // 
@@ -226,8 +223,8 @@ namespace GUI_QLNS.NhanVien
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.Controls.Add(this.cbMaChucVu);
-            this.splitContainer1.Panel1.Controls.Add(this.cbMaPhongBan);
+            this.splitContainer1.Panel1.Controls.Add(this.lupChucVu);
+            this.splitContainer1.Panel1.Controls.Add(this.lupPhongBan);
             this.splitContainer1.Panel1.Controls.Add(this.txtEmail);
             this.splitContainer1.Panel1.Controls.Add(this.txtSoDienThoai);
             this.splitContainer1.Panel1.Controls.Add(this.txtNgaySinh);
@@ -248,28 +245,50 @@ namespace GUI_QLNS.NhanVien
             this.splitContainer1.SplitterDistance = 67;
             this.splitContainer1.TabIndex = 22;
             // 
-            // cbMaChucVu
+            // lupChucVu
             // 
-            this.cbMaChucVu.Location = new System.Drawing.Point(566, 35);
-            this.cbMaChucVu.MenuManager = this.barManager1;
-            this.cbMaChucVu.Name = "cbMaChucVu";
-            this.cbMaChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.lupChucVu.Location = new System.Drawing.Point(571, 35);
+            this.lupChucVu.MenuManager = this.barManager1;
+            this.lupChucVu.Name = "lupChucVu";
+            this.lupChucVu.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbMaChucVu.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbMaChucVu.Size = new System.Drawing.Size(100, 22);
-            this.cbMaChucVu.TabIndex = 15;
+            this.lupChucVu.Properties.DataSource = this.chucVuBindingSource;
+            this.lupChucVu.Properties.DisplayMember = "TenChucVu";
+            this.lupChucVu.Properties.NullText = "Tên chức vụ";
+            this.lupChucVu.Properties.ValueMember = "MaChucVu";
+            this.lupChucVu.Size = new System.Drawing.Size(125, 22);
+            this.lupChucVu.TabIndex = 17;
+            this.lupChucVu.EditValueChanged += new System.EventHandler(this.lupChucVu_EditValueChanged);
             // 
-            // cbMaPhongBan
+            // chucVuBindingSource
             // 
-            this.cbMaPhongBan.Location = new System.Drawing.Point(347, 35);
-            this.cbMaPhongBan.MenuManager = this.barManager1;
-            this.cbMaPhongBan.Name = "cbMaPhongBan";
-            this.cbMaPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.chucVuBindingSource.DataMember = "ChucVu";
+            this.chucVuBindingSource.DataSource = this.bTLMonLTTQDataSet;
+            // 
+            // bTLMonLTTQDataSet
+            // 
+            this.bTLMonLTTQDataSet.DataSetName = "BTLMonLTTQDataSet";
+            this.bTLMonLTTQDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // lupPhongBan
+            // 
+            this.lupPhongBan.Location = new System.Drawing.Point(341, 35);
+            this.lupPhongBan.MenuManager = this.barManager1;
+            this.lupPhongBan.Name = "lupPhongBan";
+            this.lupPhongBan.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.cbMaPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
-            this.cbMaPhongBan.Size = new System.Drawing.Size(100, 22);
-            this.cbMaPhongBan.TabIndex = 14;
-            this.cbMaPhongBan.SelectedIndexChanged += new System.EventHandler(this.cbMaPhongBan_SelectedIndexChanged);
+            this.lupPhongBan.Properties.DataSource = this.phongBanBindingSource;
+            this.lupPhongBan.Properties.DisplayMember = "TenPhongBan";
+            this.lupPhongBan.Properties.NullText = "Tên phòng ban";
+            this.lupPhongBan.Properties.ValueMember = "MaPhongBan";
+            this.lupPhongBan.Size = new System.Drawing.Size(125, 22);
+            this.lupPhongBan.TabIndex = 16;
+            this.lupPhongBan.EditValueChanged += new System.EventHandler(this.lupPhongBan_EditValueChanged);
+            // 
+            // phongBanBindingSource
+            // 
+            this.phongBanBindingSource.DataMember = "PhongBan";
+            this.phongBanBindingSource.DataSource = this.bTLMonLTTQDataSet;
             // 
             // txtEmail
             // 
@@ -310,17 +329,17 @@ namespace GUI_QLNS.NhanVien
             // 
             this.labelControl7.Location = new System.Drawing.Point(490, 37);
             this.labelControl7.Name = "labelControl7";
-            this.labelControl7.Size = new System.Drawing.Size(70, 16);
+            this.labelControl7.Size = new System.Drawing.Size(75, 16);
             this.labelControl7.TabIndex = 6;
-            this.labelControl7.Text = "Mã chức vụ:";
+            this.labelControl7.Text = "Tên chức vụ:";
             // 
             // labelControl6
             // 
             this.labelControl6.Location = new System.Drawing.Point(244, 37);
             this.labelControl6.Name = "labelControl6";
-            this.labelControl6.Size = new System.Drawing.Size(86, 16);
+            this.labelControl6.Size = new System.Drawing.Size(91, 16);
             this.labelControl6.TabIndex = 5;
-            this.labelControl6.Text = "Mã phòng ban:";
+            this.labelControl6.Text = "Tên phòng ban:";
             // 
             // labelControl5
             // 
@@ -385,12 +404,11 @@ namespace GUI_QLNS.NhanVien
             this.Email,
             this.MaPhongBan,
             this.MaChucVu,
-            this.DaThoiViec});
+            this.gridColumn1});
             this.gvDanhSach.GridControl = this.gcDanhSach;
             this.gvDanhSach.Name = "gvDanhSach";
             this.gvDanhSach.OptionsFind.AlwaysVisible = true;
             this.gvDanhSach.OptionsView.ShowGroupPanel = false;
-            this.gvDanhSach.CustomDrawCell += new DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventHandler(this.gvDanhSach_CustomDrawCell);
             this.gvDanhSach.FocusedRowChanged += new DevExpress.XtraGrid.Views.Base.FocusedRowChangedEventHandler(this.gvDanhSach_FocusedRowChanged);
             this.gvDanhSach.DoubleClick += new System.EventHandler(this.gvDanhSach_DoubleClick);
             // 
@@ -464,15 +482,15 @@ namespace GUI_QLNS.NhanVien
             this.MaChucVu.VisibleIndex = 6;
             this.MaChucVu.Width = 253;
             // 
-            // DaThoiViec
+            // gridColumn1
             // 
-            this.DaThoiViec.Caption = "Thôi việc";
-            this.DaThoiViec.FieldName = "DaThoiViec";
-            this.DaThoiViec.MinWidth = 25;
-            this.DaThoiViec.Name = "DaThoiViec";
-            this.DaThoiViec.Visible = true;
-            this.DaThoiViec.VisibleIndex = 7;
-            this.DaThoiViec.Width = 94;
+            this.gridColumn1.Caption = "Tình trạng thôi việc";
+            this.gridColumn1.FieldName = "DaThoiViec";
+            this.gridColumn1.MinWidth = 25;
+            this.gridColumn1.Name = "gridColumn1";
+            this.gridColumn1.Visible = true;
+            this.gridColumn1.VisibleIndex = 7;
+            this.gridColumn1.Width = 94;
             // 
             // barDockControl3
             // 
@@ -506,11 +524,13 @@ namespace GUI_QLNS.NhanVien
             this.barDockControl2.Manager = this.barManager1;
             this.barDockControl2.Size = new System.Drawing.Size(1207, 0);
             // 
-            // barButtonItem1
+            // phongBanTableAdapter
             // 
-            this.barButtonItem1.Caption = "Refesh";
-            this.barButtonItem1.Id = 8;
-            this.barButtonItem1.Name = "barButtonItem1";
+            this.phongBanTableAdapter.ClearBeforeFill = true;
+            // 
+            // chucVuTableAdapter
+            // 
+            this.chucVuTableAdapter.ClearBeforeFill = true;
             // 
             // frmNhanVien
             // 
@@ -535,8 +555,11 @@ namespace GUI_QLNS.NhanVien
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaChucVu.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cbMaPhongBan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupChucVu.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chucVuBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bTLMonLTTQDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lupPhongBan.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.phongBanBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcDanhSach)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDanhSach)).EndInit();
             this.ResumeLayout(false);
@@ -584,10 +607,13 @@ namespace GUI_QLNS.NhanVien
 		private System.Windows.Forms.TextBox txtNgaySinh;
 		private System.Windows.Forms.TextBox txtHoTen;
 		private System.Windows.Forms.TextBox txtMaNhanVien;
-		private DevExpress.XtraEditors.ComboBoxEdit cbMaChucVu;
-		private DevExpress.XtraEditors.ComboBoxEdit cbMaPhongBan;
-        private DevExpress.XtraGrid.Columns.GridColumn DaThoiViec;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
-        private DevExpress.XtraBars.BarButtonItem btnRefesh;
+        private DevExpress.XtraEditors.LookUpEdit lupPhongBan;
+        private BTLMonLTTQDataSet bTLMonLTTQDataSet;
+        private System.Windows.Forms.BindingSource phongBanBindingSource;
+        private BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter phongBanTableAdapter;
+        private DevExpress.XtraEditors.LookUpEdit lupChucVu;
+        private System.Windows.Forms.BindingSource chucVuBindingSource;
+        private BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter chucVuTableAdapter;
+        private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
     }
 }

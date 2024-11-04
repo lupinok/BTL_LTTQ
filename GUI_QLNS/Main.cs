@@ -8,7 +8,6 @@ using GUI_QLNS.NhanVien.ChucVu;
 using GUI_QLNS.NhanVien.Đào_tạo;
 using GUI_QLNS.NhanVien.Dự_án;
 using GUI_QLNS.NhanVien.NhanVienThoiViec;
-using GUI_QLNS.NhanVien.DCNhanVien;
 using GUI_QLNS.NhanVien.PhongBan;
 using GUI_QLNS.NhanVien.Luong;
 using System;
@@ -20,6 +19,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GUI_QLNS.NhanVien.DCNhanVien;
 
 namespace GUI_QLNS
 {
@@ -109,7 +109,11 @@ namespace GUI_QLNS
             if (MessageBox.Show("Bạn có chắc chắn muốn đăng xuất?", "Thông báo",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Application.Restart();
+                string currentUser = Program.CurrentUser;
+                this.Hide();
+                DangNhap frmDangNhap = new DangNhap(currentUser);
+                frmDangNhap.ShowDialog();
+                this.Close();
             }
         }
         public void ArrangeForm()
@@ -243,6 +247,11 @@ namespace GUI_QLNS
         private void barButtonItem10_ItemClick_1(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmDaoTao));
+        }
+
+        private void menu_thuyenchuyen_congtac_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            openForm(typeof(DCNhanVien));
         }
     }
 }

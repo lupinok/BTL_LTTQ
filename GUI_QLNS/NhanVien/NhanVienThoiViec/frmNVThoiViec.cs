@@ -119,7 +119,7 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
                 }
                 if (_them)
                 {
-                    
+
                     string maxSoQD = _nvtv.MaxSoQuyetDinh();
                     int so = int.Parse(maxSoQD) +1 ;
                     string soQDMoi = so.ToString("00000") + "/" + DateTime.Now.Year.ToString() + "/QDTV";

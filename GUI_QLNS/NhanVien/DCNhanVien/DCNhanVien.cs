@@ -14,6 +14,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
 {
     public partial class DCNhanVien : DevExpress.XtraEditors.XtraForm
     {
+        private NHANVIEN_BUS _nhanvienBUS;
         private DCNHANVIEN_BUS _dcnhanvienBUS;
         private LICHSU_BUS _lichsuBUS;
         private string _currentUser;
@@ -30,13 +31,12 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
 
             // Kiểm tra vai trò
             string vaiTro = Properties.Settings.Default.VaiTro;
-            _hasEditPermission = vaiTro != "Xem";
+            _hasEditPermission = vaiTro != "Xem" && vaiTro != "Chỉnh sửa";
 
             // Ẩn các nút nếu không có quyền chỉnh sửa
             if (!_hasEditPermission)
             {
                 btnThem.Enabled = false;
-                btnSua.Enabled = false; 
                 btnXoa.Enabled = false;
                 btnLuu.Enabled = false;
                 btnHuy.Enabled = false;
@@ -48,7 +48,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
 
         private void gcDanhSach_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -89,7 +89,6 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
                               "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (MessageBox.Show("Bạn có chắc chắn muốn xóa toàn bộ không?", "Thông báo",
@@ -114,17 +113,25 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
             }
         }
 
-        private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            _isNewRecord = false;
-            ShowHideControls(true);
-        }
-
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             if (cbHoTen.SelectedValue == null)
             {
-                MessageBox.Show("Vui lòng chọn nhân viên", "Thông báo", 
+                MessageBox.Show("Vui lòng chọn nhân viên", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cbTenPhongBan2.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn phòng ban muốn điều chuyển", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (cbMaChucVu.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn chức vụ mới", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
@@ -137,6 +144,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
                     MaNhanVien = Convert.ToInt32(cbHoTen.SelectedValue),
                     Ngay = DateTime.ParseExact(txtNgay.Text.Trim(), "dd/MM/yyyy", null),
                     MaPhongBan2 = Convert.ToInt32(cbTenPhongBan2.SelectedValue),
+                    MaChucVu2 = Convert.ToInt32(cbMaChucVu.SelectedValue),
                     LyDoDC = txtLyDo.Text.Trim(),
                     GhiChuDC = txtGhiChu.Text.Trim()
                 };
@@ -148,7 +156,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
 
                 LoadData();
                 ShowHideControls(false);
-                MessageBox.Show("Lưu thành công!", "Thông báo", 
+                MessageBox.Show("Lưu thành công!", "Thông báo",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 string action = _isNewRecord ? "Thêm" : "Cập nhật";
                 _lichsuBUS.ThemLichSu($"{action} điều chuyển", _currentUser,
@@ -174,7 +182,6 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
             if (_hasEditPermission)
             {
                 btnThem.Enabled = !isEdit;
-                btnSua.Enabled = !isEdit;
                 btnXoa.Enabled = !isEdit;
                 btnLuu.Enabled = isEdit;
                 btnHuy.Enabled = isEdit;
@@ -182,6 +189,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
                 cbHoTen.Enabled = isEdit;
                 txtNgay.Enabled = isEdit;
                 cbTenPhongBan2.Enabled = isEdit;
+                cbMaChucVu.Enabled = false;
                 txtLyDo.Enabled = isEdit;
                 txtGhiChu.Enabled = isEdit;
             }
@@ -190,8 +198,9 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
         private void ClearFields()
         {
             cbHoTen.Text = string.Empty;
-            txtNgay.Text = string.Empty; 
+            txtNgay.Text = string.Empty;
             cbTenPhongBan2.Text = string.Empty;
+            cbMaChucVu.Text = string.Empty;
             txtLyDo.Text = string.Empty;
             txtGhiChu.Text = string.Empty;
         }
@@ -248,7 +257,6 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
 
                 if (_hasEditPermission)
                 {
-                    btnSua.Enabled = true;
                     btnXoa.Enabled = true;
                 }
             }
@@ -258,9 +266,37 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
         {
             LoadData();
             ShowHideControls(false);
-            btnXoa.Enabled=false;
-            btnLuu.Enabled=false;
-            btnSua.Enabled=false;
+            btnLuu.Enabled = false;
+        }
+
+        private void cbTenPhongBan2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cbTenPhongBan2.SelectedValue != null)
+                {
+                    var maPhongBan = (cbTenPhongBan2.SelectedValue as int?) ?? 0;
+
+                    // Load danh sách chức vụ theo phòng ban
+                    var listChucVu = _dcnhanvienBUS.getListChucVuByPhongBan(maPhongBan);
+
+                    cbMaChucVu.DataSource = new BindingSource(listChucVu, null);
+                    cbMaChucVu.DisplayMember = "TenChucVu";
+                    cbMaChucVu.ValueMember = "MaChucVu";
+                    cbMaChucVu.SelectedIndex = -1;
+                }
+                else
+                {
+                    cbMaChucVu.DataSource = null;
+                    cbMaChucVu.Items.Clear();
+                }
+                cbMaChucVu.Enabled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi load chức vụ: " + ex.Message,
+                              "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
