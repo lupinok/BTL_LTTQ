@@ -1,6 +1,7 @@
 ﻿using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.SqlServer;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,12 +28,15 @@ namespace BUS_QLNS
                 if (string.IsNullOrWhiteSpace(lc.GhiChu))
                     throw new Exception("Nội dung không được bỏ trống.");
 
+                // Kiểm tra xem nhân viên đã có loại ca này trong cùng ngày chưa
                 var exists = db.TangCas.FirstOrDefault(x =>
-                x.MaNhanVien == lc.MaNhanVien &&
-                x.MaLoaiCa == lc.MaLoaiCa);
+                    x.MaNhanVien == lc.MaNhanVien &&
+                    x.MaLoaiCa == lc.MaLoaiCa &&
+                    SqlFunctions.DatePart("day", x.create_date) == SqlFunctions.DatePart("day", lc.create_date));
 
                 if (exists != null)
-                    throw new Exception("Đã tồn tại bản ghi này cho nhân viên.");
+                    throw new Exception("Nhân viên đã có loại ca này trong ngày " + lc.create_date.Value.ToString("dd/MM/yyyy"));
+
                 db.TangCas.Add(lc);
                 db.SaveChanges();
                 return lc;
@@ -49,6 +53,14 @@ namespace BUS_QLNS
         {
             try
             {
+                var duplicate = db.TangCas.FirstOrDefault(x =>
+                   x.MaNhanVien == lc.MaNhanVien &&
+                   x.MaLoaiCa == lc.MaLoaiCa &&
+                  SqlFunctions.DatePart("day", x.create_date) == SqlFunctions.DatePart("day", lc.create_date) &&
+                   x.MaNhanVien != lc.MaNhanVien);
+
+                if (duplicate != null)
+                    throw new Exception("Nhân viên đã có loại ca này trong ngày " + lc.create_date.Value.ToString("dd/MM/yyyy"));
                 var _lc = db.TangCas.FirstOrDefault(x => x.MaNhanVien == lc.MaNhanVien && x.MaLoaiCa == lc.MaLoaiCa);
                 if (_lc != null)
                 {

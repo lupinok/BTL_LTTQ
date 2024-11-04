@@ -57,7 +57,7 @@
             this.TangCa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PhuCap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UngLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NGAYCONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TienBaoHiem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.KTKL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LuongNhanDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -114,8 +114,9 @@
             // 
             this.btnIn.Caption = "In";
             this.btnIn.Id = 1;
-            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnSua.ImageOptions.SvgImage")));
+            this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
             this.btnIn.Name = "btnIn";
+            this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
             // btnHuy
             // 
@@ -285,7 +286,7 @@
             this.TangCa,
             this.PhuCap,
             this.UngLuong,
-            this.NgayCong,
+            this.NGAYCONG,
             this.TienBaoHiem,
             this.KTKL,
             this.LuongNhanDuoc,
@@ -307,6 +308,7 @@
             this.MaKyCong.Name = "MaKyCong";
             this.MaKyCong.Visible = true;
             this.MaKyCong.VisibleIndex = 0;
+            this.MaKyCong.Width = 91;
             // 
             // HoTen
             // 
@@ -315,6 +317,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 1;
+            this.HoTen.Width = 116;
             // 
             // NgayTinhLuong
             // 
@@ -330,7 +333,7 @@
             this.LuongCoBan.Name = "LuongCoBan";
             this.LuongCoBan.Visible = true;
             this.LuongCoBan.VisibleIndex = 2;
-            this.LuongCoBan.Width = 74;
+            this.LuongCoBan.Width = 97;
             // 
             // TangCa
             // 
@@ -339,7 +342,7 @@
             this.TangCa.Name = "TangCa";
             this.TangCa.Visible = true;
             this.TangCa.VisibleIndex = 3;
-            this.TangCa.Width = 80;
+            this.TangCa.Width = 97;
             // 
             // PhuCap
             // 
@@ -348,7 +351,7 @@
             this.PhuCap.Name = "PhuCap";
             this.PhuCap.Visible = true;
             this.PhuCap.VisibleIndex = 4;
-            this.PhuCap.Width = 87;
+            this.PhuCap.Width = 105;
             // 
             // UngLuong
             // 
@@ -357,16 +360,16 @@
             this.UngLuong.Name = "UngLuong";
             this.UngLuong.Visible = true;
             this.UngLuong.VisibleIndex = 5;
-            this.UngLuong.Width = 139;
+            this.UngLuong.Width = 86;
             // 
-            // NgayCong
+            // NGAYCONG
             // 
-            this.NgayCong.Caption = "Ngày công";
-            this.NgayCong.FieldName = "NgayCong";
-            this.NgayCong.Name = "NgayCong";
-            this.NgayCong.Visible = true;
-            this.NgayCong.VisibleIndex = 6;
-            this.NgayCong.Width = 104;
+            this.NGAYCONG.Caption = "Ngày công";
+            this.NGAYCONG.FieldName = "NGAYCONG";
+            this.NGAYCONG.Name = "NGAYCONG";
+            this.NGAYCONG.Visible = true;
+            this.NGAYCONG.VisibleIndex = 6;
+            this.NGAYCONG.Width = 70;
             // 
             // TienBaoHiem
             // 
@@ -375,6 +378,7 @@
             this.TienBaoHiem.Name = "TienBaoHiem";
             this.TienBaoHiem.Visible = true;
             this.TienBaoHiem.VisibleIndex = 7;
+            this.TienBaoHiem.Width = 98;
             // 
             // KTKL
             // 
@@ -383,6 +387,7 @@
             this.KTKL.Name = "KTKL";
             this.KTKL.Visible = true;
             this.KTKL.VisibleIndex = 8;
+            this.KTKL.Width = 98;
             // 
             // LuongNhanDuoc
             // 
@@ -391,7 +396,7 @@
             this.LuongNhanDuoc.Name = "LuongNhanDuoc";
             this.LuongNhanDuoc.Visible = true;
             this.LuongNhanDuoc.VisibleIndex = 9;
-            this.LuongNhanDuoc.Width = 129;
+            this.LuongNhanDuoc.Width = 175;
             // 
             // MaNhanVien
             // 
@@ -411,7 +416,7 @@
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmTinhLuong";
-            this.Text = "frmTinhLuong";
+            this.Text = "TinhLuong";
             this.Load += new System.EventHandler(this.frmTinhLuong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -449,7 +454,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn TangCa;
         private DevExpress.XtraGrid.Columns.GridColumn PhuCap;
         private DevExpress.XtraGrid.Columns.GridColumn UngLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn NgayCong;
+        private DevExpress.XtraGrid.Columns.GridColumn NGAYCONG;
         private DevExpress.XtraGrid.Columns.GridColumn LuongNhanDuoc;
         private DevExpress.XtraGrid.Columns.GridColumn MaNhanVien;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;

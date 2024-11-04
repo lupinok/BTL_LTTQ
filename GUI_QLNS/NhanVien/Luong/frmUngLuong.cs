@@ -18,7 +18,7 @@ namespace GUI_QLNS.NhanVien.Luong
     {
         UngLuong_BUS ungluongBus;
         NHANVIEN_BUS nhanvienBus;
-        HDLD_BUS HopDongLaoDong;
+       
         bool _them;
         string maul;
         public frmUngLuong()
