@@ -329,7 +329,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Name = "frmLoaiCa";
             this.Text = "LoaiCa";
-            this.Load += new System.EventHandler(this.frmLoaiCa_Load_1);
+            this.Load += new System.EventHandler(this.frmLoaiCa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel1.PerformLayout();

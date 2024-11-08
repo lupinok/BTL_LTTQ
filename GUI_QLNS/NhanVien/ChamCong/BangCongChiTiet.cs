@@ -33,6 +33,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
         public bool IsKhoa { get; private set; }
         private frmBangCong _parentForm;
         private int? _selectedDepartmentId = null;
+        PHANQUYEN_BUS _phanQuyenBUS;
 
         public frmBangCongChiTiet(frmBangCong parentForm)
         {
@@ -66,6 +67,24 @@ namespace GUI_QLNS.NhanVien.ChamCong
             
             // Cập nhật UI dựa trên trạng thái khóa
             UpdateUIForLockedState();
+
+            // Kiểm tra vai trò của người dùng
+            var dbContext = new DAL.BTLMonLTTQEntities();
+            if (Properties.Settings.Default.VaiTro == "Quản trị viên")
+            {
+                // Nếu là admin thì hiển thị tất cả phòng ban
+                lupPhongBan.Properties.DataSource = dbContext.PhongBans.ToList();
+            }
+            else
+            {
+                // Nếu không phải admin thì chỉ hiển thị phòng ban được phân quyền
+                var phanQuyenBUS = new PHANQUYEN_BUS();
+                var dsPhongBanDuocPhanQuyen = phanQuyenBUS.GetPhongBanByTaiKhoan(Program.CurrentUser);
+                var phongBans = dbContext.PhongBans
+                    .Where(pb => dsPhongBanDuocPhanQuyen.Contains(pb.MaPhongBan))
+                    .ToList();
+                lupPhongBan.Properties.DataSource = phongBans;
+            }
         }
         public void loadBangCong()
         {

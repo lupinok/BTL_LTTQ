@@ -22,15 +22,33 @@ namespace GUI_QLNS.NhanVien.Luong
         bool _them;
         int manv;
         int mask;
+        private bool _hasEditPermission;
         public frmKTKL()
         {
             InitializeComponent();
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
         }
         void _showHide(bool kt)
         {
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = !kt;
             btnXoa.Enabled = !kt;
             cboNBD.Enabled = !kt;
@@ -267,6 +285,13 @@ namespace GUI_QLNS.NhanVien.Luong
                             cboNBD.Value = chiTiet.NgayBatDau ?? DateTime.Now;
                             cboNKT.Value = chiTiet.NgayKetThuc ?? DateTime.Now;
                         }
+                    }
+                    // Chỉ enable các nút khi có quyền chỉnh sửa
+                    if (!_hasEditPermission)
+                    {
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        btnThem.Enabled = false;
                     }
                 }
 

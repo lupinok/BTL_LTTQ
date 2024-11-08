@@ -21,15 +21,33 @@ namespace GUI_QLNS.NhanVien.Luong
         HDLD_BUS HopDongLaoDong;
         bool _them;
         string maul;
+        private bool _hasEditPermission;
         public frmUngLuong()
         {
             InitializeComponent();
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
         }
         void _showHide(bool kt)
         {
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = !kt;
             btnXoa.Enabled = !kt;
             txtGhiChu.Enabled = !kt;
@@ -226,6 +244,13 @@ namespace GUI_QLNS.NhanVien.Luong
                 btnThem.Enabled = false;
                 btnLuu.Enabled = false;
                 btnHuy.Enabled = true;
+                // Chỉ enable các nút khi có quyền chỉnh sửa
+                if (!_hasEditPermission)
+                {
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
+                    btnThem.Enabled = false;
+                }
             }
         }
 

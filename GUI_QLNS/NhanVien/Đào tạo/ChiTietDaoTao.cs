@@ -19,9 +19,23 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
         bool _them;
         int _maKhoaDaoTao;
         int _maNhanVien;
+        private bool _hasEditPermission;
         public ChiTietDaoTao()
         {
             InitializeComponent();
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
         }
         public ChiTietDaoTao(int maKhoaDaoTao)
         {
@@ -33,7 +47,11 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
         {
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = kt;
             btnXoa.Enabled = kt;
             txtMaNhanVien.Enabled = !kt;
@@ -136,6 +154,8 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
             loadData();
             loadCbDanhGia();
             splitContainer1.Panel1Collapsed = true;
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
         }
 
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -150,6 +170,7 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
         {
             _them = false;
             _showHide(false);
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -163,6 +184,7 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
                     loadData();
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -211,6 +233,13 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
 
                     btnSua.Enabled = true;
                     btnXoa.Enabled = true;
+                    // Chỉ enable các nút khi có quyền chỉnh sửa
+                    if (!_hasEditPermission)
+                    {
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        btnThem.Enabled = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -220,7 +249,6 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
                                   MessageBoxIcon.Error);
                 }
             }
-            splitContainer1.Panel1Collapsed = false;
         }
 
         private void txtTenNhanVien_Leave(object sender, EventArgs e)

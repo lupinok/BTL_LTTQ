@@ -214,6 +214,7 @@ namespace GUI_QLNS.NhanVien.PhongBan
         {
             _them = false;
             _showHide(false);
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -235,6 +236,7 @@ namespace GUI_QLNS.NhanVien.PhongBan
                     }
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -321,7 +323,6 @@ namespace GUI_QLNS.NhanVien.PhongBan
                                   MessageBoxIcon.Error);
                 }
             }
-            splitContainer1.Panel1Collapsed = false;
         }
 
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)

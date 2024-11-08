@@ -33,6 +33,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             _loaica = new LOAICA_BUS();
             _showHide(true);
             loadData();
+            splitContainer1.Panel1Collapsed = true;
         }
 
         void _showHide(bool kt)
@@ -65,6 +66,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             _showHide(false);
             _them = true;
             ResetValue();
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -72,6 +74,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             _them = false;
             _showHide(false);
             txtMaLoaiCa.Enabled = false;
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -85,6 +88,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
                     loadData();
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -101,12 +105,14 @@ namespace GUI_QLNS.NhanVien.ChamCong
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _them = false;
             _showHide(true);
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void SaveData()
@@ -142,10 +148,5 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 speHeSo.Text = gvDanhSach.GetFocusedRowCellValue("HeSo").ToString();
             }
         }
-
-		private void frmLoaiCa_Load_1(object sender, EventArgs e)
-		{
-
-		}
 	}
 }

@@ -28,7 +28,7 @@ namespace GUI_QLNS.NhanVien.ChucVu
 
             // Kiểm tra vai trò
             string vaiTro = Properties.Settings.Default.VaiTro;
-            _hasEditPermission = vaiTro != "Chỉnh sửa" && vaiTro != "Xem";
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
 
             // Ẩn các nút nếu không có quyền chỉnh sửa
             if (!_hasEditPermission)
@@ -145,6 +145,7 @@ namespace GUI_QLNS.NhanVien.ChucVu
         {
             _them = false;
             _showHide(false);
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -166,6 +167,7 @@ namespace GUI_QLNS.NhanVien.ChucVu
                     }
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -228,7 +230,6 @@ namespace GUI_QLNS.NhanVien.ChucVu
                                   MessageBoxIcon.Error);
                 }
             }
-            splitContainer1.Panel1Collapsed = false;
         }
     }
 }

@@ -17,15 +17,35 @@ namespace GUI_QLNS.NhanVien.BoPhan
         BoPhan_BUS _boPhan;
         bool _them;
         int _mabophan;
+        private bool _hasEditPermission;
         public frmBoPhan()
         {
             InitializeComponent();
+
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
+            gvDanhSach.OptionsBehavior.Editable = false;
         }
         void _showHide(bool kt)
         {
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = !kt;
             btnXoa.Enabled = !kt;
             txtMaBoPhan.Enabled = !kt;
@@ -143,6 +163,7 @@ namespace GUI_QLNS.NhanVien.BoPhan
         {
             _them = false;
             _showHide(false);
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -155,6 +176,7 @@ namespace GUI_QLNS.NhanVien.BoPhan
                     loadData();
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -197,6 +219,14 @@ namespace GUI_QLNS.NhanVien.BoPhan
                     // Enable nút Sửa và Xóa
                     btnSua.Enabled = true;
                     btnXoa.Enabled = true;
+
+                    // Chỉ enable các nút khi có quyền chỉnh sửa
+                    if (!_hasEditPermission)
+                    {
+                        btnSua.Enabled = false;
+                        btnXoa.Enabled = false;
+                        btnThem.Enabled = false;
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -206,7 +236,6 @@ namespace GUI_QLNS.NhanVien.BoPhan
                                   MessageBoxIcon.Error);
                 }
             }
-            splitContainer1.Panel1Collapsed = false;
         }
     }
 }

@@ -16,11 +16,17 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
     {
         NhanVienThoiViec_BUS _nvtv;
         NHANVIEN_BUS _nhanvien;
+        PHANQUYEN_BUS _phanquyenBUS;
+        string _currentUser;
         bool _them;
         string soQD;
         public frmNVThoiViec()
         {
             InitializeComponent();
+            _nvtv = new NhanVienThoiViec_BUS();
+            _nhanvien = new NHANVIEN_BUS();
+            _phanquyenBUS = new PHANQUYEN_BUS();
+            _currentUser = Program.CurrentUser;
         }
 
         private void frmNVThoiViec_Load(object sender, EventArgs e)
@@ -57,25 +63,57 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
             dtNgayTV.EditValue = DateTime.Now;
         }
 
-        void LoadNhanVien()
+        private void LoadNhanVien()
         {
-            // Lấy danh sách mã nhân viên đã có quyết định thôi việc
-            var nvDaCoQuyetDinh = _nvtv.GetNhanVienDaCoQuyetDinh();
-
-            // Lấy danh sách nhân viên chưa có quyết định thôi việc
-            var nhanvienList = _nhanvien.getList()
-                .Where(nv => !nvDaCoQuyetDinh.Contains(nv.MaNhanVien))
-                .Select(nv => new
+            try
+            {
+                var dsNhanVien = new List<DAL.NhanVien>();
+                
+                // Nếu là admin thì lấy tất cả nhân viên
+                if (Properties.Settings.Default.VaiTro == "Quản trị viên")
                 {
-                    MaNhanVien = nv.MaNhanVien,
-                    HoTen = nv.HoTen
-                }).ToList();
+                    dsNhanVien = _nhanvien.getList();
+                }
+                else
+                {
+                    // Lấy danh sách phòng ban được phân quyền
+                    var dsPhongBan = _phanquyenBUS.GetPhongBanByTaiKhoan(_currentUser);
+                    
+                    // Lấy nhân viên thuộc các phòng ban được phân quyền
+                    foreach (var maPhongBan in dsPhongBan)
+                    {
+                        var nhanVienPhongBan = _nhanvien.getListByPhongBan(maPhongBan);
+                        dsNhanVien.AddRange(nhanVienPhongBan);
+                    }
+                }
 
+                // Thiết lập dữ liệu cho TreeListLookUpEdit
+                tlkNhanVien.Properties.DataSource = dsNhanVien;
+                tlkNhanVien.Properties.DisplayMember = "HoTen";
+                tlkNhanVien.Properties.ValueMember = "MaNhanVien";
 
-            tlkNhanVien.Properties.DataSource = nhanvienList;
-            tlkNhanVien.Properties.ValueMember = "MaNhanVien";
-            tlkNhanVien.Properties.DisplayMember = "HoTen";
-            tlkNhanVien.Properties.NullText = "-- Chọn nhân viên --";
+                // Cấu hình hiển thị các cột trong dropdown
+                treeListLookUpEdit1TreeList.Columns.Clear();
+                treeListLookUpEdit1TreeList.Columns.Add(new DevExpress.XtraTreeList.Columns.TreeListColumn
+                {
+                    Caption = "Mã NV",
+                    FieldName = "MaNhanVien",
+                    Visible = true,
+                    Width = 80
+                });
+                treeListLookUpEdit1TreeList.Columns.Add(new DevExpress.XtraTreeList.Columns.TreeListColumn
+                {
+                    Caption = "Họ Tên",
+                    FieldName = "HoTen", 
+                    Visible = true,
+                    Width = 200
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load danh sách nhân viên: " + ex.Message,
+                              "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void LoadData()
@@ -177,7 +215,7 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
         {
             _them = false;
             _showHide(false);
-
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -188,6 +226,7 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
                 LoadNhanVien();
                 LoadData(); // Reload để cập nhật trạng thái DELETED
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -239,7 +278,6 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
                                   MessageBoxIcon.Error);
                 }
             }
-            splitContainer1.Panel1Collapsed = false;
         }
 
         private void gvDanhSach_CustomDrawCell(object sender, DevExpress.XtraGrid.Views.Base.RowCellCustomDrawEventArgs e)

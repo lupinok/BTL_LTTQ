@@ -25,15 +25,33 @@ namespace GUI_QLNS.NhanVien.Luong
         NHANVIEN_BUS nhanvienBus;
         bool _them;
         string mapc;
+        private bool _hasEditPermission;
         public frmPhuCap()
         {
             InitializeComponent();
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
         }
         void _showHide(bool kt)
         {
             btnLuu.Enabled = !kt;
             btnHuy.Enabled = !kt;
-            btnThem.Enabled = kt;
+            // Chỉ enable các nút khi có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+            }
             btnSua.Enabled = !kt;
             btnXoa.Enabled = !kt;
             cbLoaiPC.Enabled = !kt;
@@ -257,8 +275,14 @@ namespace GUI_QLNS.NhanVien.Luong
                 cbThang.Text = thang.ToString();
                 cbNam.Text = nam.ToString();
                 cbSoTien.Text = soTien.ToString("N0");
+                // Chỉ enable các nút khi có quyền chỉnh sửa
+                if (!_hasEditPermission)
+                {
+                    btnSua.Enabled = false;
+                    btnXoa.Enabled = false;
+                    btnThem.Enabled = false;
+                }
 
-               
             }
         }
     }

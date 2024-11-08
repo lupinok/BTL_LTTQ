@@ -74,10 +74,6 @@ namespace GUI_QLNS.NhanVien
 
 		private void NhanVien_Load(object sender, EventArgs e)
 		{
-            //// TODO: This line of code loads data into the 'bTLMonLTTQDataSet.ChucVu' table. You can move, or remove it, as needed.
-            //this.chucVuTableAdapter.Fill(this.bTLMonLTTQDataSet.ChucVu);
-            //// TODO: This line of code loads data into the 'bTLMonLTTQDataSet.PhongBan' table. You can move, or remove it, as needed.
-            //this.phongBanTableAdapter.Fill(this.bTLMonLTTQDataSet.PhongBan);
             LoadPhongBan();
 			ShowHideControls(false);
 			

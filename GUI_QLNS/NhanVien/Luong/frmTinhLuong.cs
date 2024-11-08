@@ -19,9 +19,21 @@ namespace GUI_QLNS.NhanVien.Luong
         BangCongNhanVienChiTiet_BUS bangcongBus;
         bool _them;
         int _maPhieu;
+        private bool _hasEditPermission;
         public frmTinhLuong()
         {
             InitializeComponent();
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnIn.Enabled = false;
+                btnHuy.Enabled = false;
+            }
         }
 
         private void frmTinhLuong_Load(object sender, EventArgs e)

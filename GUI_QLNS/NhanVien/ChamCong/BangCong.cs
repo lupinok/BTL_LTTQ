@@ -14,11 +14,15 @@ namespace GUI_QLNS.NhanVien.ChamCong
         bool _them;
         int _makycong;
         private Dictionary<int, frmBangCongChiTiet> _openDetailForms = new Dictionary<int, frmBangCongChiTiet>();
+        private bool _hasEditPermission;
 
         public frmBangCong()
         {
             InitializeComponent();
             btnXem.Enabled = false;
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
         }
 
         private void frmBangCong_Load(object sender, EventArgs e)
@@ -30,6 +34,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             _showHide(true);
             loadData();
             btnXem.Enabled = false;
+            splitContainer1.Panel1Collapsed = true;
         }
 
         void _showHide(bool kt)
@@ -68,6 +73,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             cboThang.Text = DateTime.Now.Month.ToString();
             chkKhoa.Checked = false;
             chkTrangThai .Checked = false;
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -75,6 +81,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
             _them = false;
             _showHide(false);
             // Disable editing of certain fields if necessary
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -107,6 +114,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
                     }
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -123,12 +131,14 @@ namespace GUI_QLNS.NhanVien.ChamCong
             {
                 MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             _them = false;
             _showHide(true);
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void SaveData()
@@ -184,6 +194,11 @@ namespace GUI_QLNS.NhanVien.ChamCong
                 cboThang.Text = gvDanhSach.GetFocusedRowCellValue("THANG").ToString();
                 chkKhoa.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("KHOA").ToString());
                 chkTrangThai.Checked = bool.Parse(gvDanhSach.GetFocusedRowCellValue("TRANGTHAI").ToString());
+                // Chỉ enable các nút khi có quyền chỉnh sửa
+                if (!_hasEditPermission)
+                {
+                    btnXoa.Enabled = false;
+                }
             }
             else
             {

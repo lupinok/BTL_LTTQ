@@ -57,6 +57,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
             ShowHideControls(true);
             ClearFields();
             txtNgay.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            splitContainer1.Panel1Collapsed = false;
         }
 
         private void cbHoTen_SelectedIndexChanged(object sender, EventArgs e)
@@ -111,6 +112,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
                         $"Lỗi khi xóa điều chuyển: {ex.Message}");
                 }
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -169,12 +171,14 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
                 _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
                     $"Lỗi khi thao tác với điều chuyển: {ex.Message}");
             }
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void btnHuy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ShowHideControls(false);
             ClearFields();
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void ShowHideControls(bool isEdit)
@@ -267,6 +271,7 @@ namespace GUI_QLNS.NhanVien.DCNhanVien
             LoadData();
             ShowHideControls(false);
             btnLuu.Enabled = false;
+            splitContainer1.Panel1Collapsed = true;
         }
 
         private void cbTenPhongBan2_SelectedIndexChanged(object sender, EventArgs e)

@@ -70,7 +70,7 @@ namespace GUI_QLNS.HeThong
 		{
 			// Thiết lập các giá trị cho combobox Vai trò
 			cbVaiTro.Properties.Items.Clear();
-			cbVaiTro.Properties.Items.AddRange(new string[] { "Quản trị viên", "Chỉnh sửa", "Xem" });
+			cbVaiTro.Properties.Items.AddRange(new string[] { "Quản trị viên", "Chỉnh sửa"});
 			cbVaiTro.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.DisableTextEditor;
 		}
 
@@ -100,6 +100,7 @@ namespace GUI_QLNS.HeThong
 			ShowHideControls(true);
 			_isNewRecord = true;
 			ClearFields();
+			txtTenDangNhap.Enabled = true;
 		}
 
 		private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

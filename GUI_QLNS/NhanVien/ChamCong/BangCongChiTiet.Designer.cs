@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBangCongChiTiet));
+            DevExpress.XtraGrid.GridLevelNode gridLevelNode1 = new DevExpress.XtraGrid.GridLevelNode();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.btnPhatSinh = new DevExpress.XtraBars.BarButtonItem();
@@ -290,7 +291,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TenPhongBan", "Ten Phong Ban", 97, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Near, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lupPhongBan.Properties.DataSource = typeof(DAL.PhongBan);
             this.lupPhongBan.Properties.DisplayMember = "TenPhongBan";
-            this.lupPhongBan.Properties.NullText = "Tất cả phòng ban";
+            this.lupPhongBan.Properties.NullText = "Chọn phòng ban";
             this.lupPhongBan.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lupPhongBan.Properties.ValueMember = "MaPhongBan";
             this.lupPhongBan.Size = new System.Drawing.Size(244, 22);
@@ -393,6 +394,9 @@
             // 
             this.gcBangCongChiTiet.Dock = System.Windows.Forms.DockStyle.Fill;
             this.gcBangCongChiTiet.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            gridLevelNode1.RelationName = "Level1";
+            this.gcBangCongChiTiet.LevelTree.Nodes.AddRange(new DevExpress.XtraGrid.GridLevelNode[] {
+            gridLevelNode1});
             this.gcBangCongChiTiet.Location = new System.Drawing.Point(0, 0);
             this.gcBangCongChiTiet.MainView = this.gvBangCongChiTiet;
             this.gcBangCongChiTiet.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
