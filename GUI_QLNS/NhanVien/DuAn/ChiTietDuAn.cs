@@ -15,23 +15,6 @@ namespace GUI_QLNS.NhanVien.Dự_án
 {
     public partial class ChiTietDuAn : DevExpress.XtraEditors.XtraForm
     {
-        public ChiTietDuAn()
-        {
-            InitializeComponent();
-            // Kiểm tra vai trò
-            string vaiTro = Properties.Settings.Default.VaiTro;
-            _hasEditPermission = vaiTro != "Chỉnh sửa";
-
-            // Ẩn các nút nếu không có quyền chỉnh sửa
-            if (!_hasEditPermission)
-            {
-                btnThem.Enabled = false;
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
-                btnLuu.Enabled = false;
-                btnHuy.Enabled = false;
-            }
-        }
         ChiTietDuAn_BUS _chiTietDA;
         bool _them;
         int _maDuAn;
@@ -46,6 +29,19 @@ namespace GUI_QLNS.NhanVien.Dự_án
             InitializeComponent();
             _maDuAn = maDuAn;
             _chiTietDA = new ChiTietDuAn_BUS();
+            // Kiểm tra vai trò
+            string vaiTro = Properties.Settings.Default.VaiTro;
+            _hasEditPermission = vaiTro != "Chỉnh sửa";
+
+            // Ẩn các nút nếu không có quyền chỉnh sửa
+            if (!_hasEditPermission)
+            {
+                btnThem.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnLuu.Enabled = false;
+                btnHuy.Enabled = false;
+            }
         }
 
         void _showHide(bool kt)

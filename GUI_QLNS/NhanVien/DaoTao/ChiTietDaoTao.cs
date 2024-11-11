@@ -20,9 +20,11 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
         int _maKhoaDaoTao;
         int _maNhanVien;
         private bool _hasEditPermission;
-        public ChiTietDaoTao()
+        public ChiTietDaoTao(int maKhoaDaoTao)
         {
             InitializeComponent();
+            _maKhoaDaoTao = maKhoaDaoTao;
+            _chiTietDT = new ChiTietDaoTao_BUS();
             // Kiểm tra vai trò
             string vaiTro = Properties.Settings.Default.VaiTro;
             _hasEditPermission = vaiTro != "Chỉnh sửa";
@@ -36,12 +38,6 @@ namespace GUI_QLNS.NhanVien.Đào_tạo
                 btnLuu.Enabled = false;
                 btnHuy.Enabled = false;
             }
-        }
-        public ChiTietDaoTao(int maKhoaDaoTao)
-        {
-            InitializeComponent();
-            _maKhoaDaoTao = maKhoaDaoTao;
-            _chiTietDT = new ChiTietDaoTao_BUS();
         }
         void _showHide(bool kt)
         {
