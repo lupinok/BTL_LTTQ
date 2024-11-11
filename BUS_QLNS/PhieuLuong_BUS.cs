@@ -265,8 +265,6 @@ namespace BUS_QLNS
                 + luong.KTKL - luong.UngLuong - luong.TienBaoHiem;
          
             
-
-            
         }
         public List<PhieuLuong> LayPhieuLuongTheoKyCong(int maKyCong)
         {
@@ -295,22 +293,5 @@ namespace BUS_QLNS
                 throw new Exception("Lỗi lấy phiếu lương: " + ex.Message);
             }
         }
-        public List<PhieuLuong> GetLuongByPhongBan(int maPhongBan)
-        {
-            try
-            {
-                var dsLuong = db.PhieuLuongs
-                    .Where(pl => pl.NhanVien.MaPhongBan == maPhongBan) // Giả sử có thuộc tính MaPhongBan trong NhanVien
-                    .Include(pl => pl.NhanVien) // Đảm bảo load thông tin nhân viên
-                    .ToList();
-
-                return dsLuong;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Lỗi lấy lương theo phòng ban: " + ex.Message);
-            }
-        }
-
     }
 }
