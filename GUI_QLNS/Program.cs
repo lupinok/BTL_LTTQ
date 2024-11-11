@@ -26,7 +26,7 @@ namespace GUI_QLNS
                 frmKetNoi f = new frmKetNoi();
                 if (f.ShowDialog() == DialogResult.OK)
                 {
-                    Application.Run(new DangNhap());
+                    Application.Run(new Main());
                 }
             }
             else

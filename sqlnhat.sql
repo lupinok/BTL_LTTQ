@@ -1,6 +1,7 @@
+CREATE DATABASE BTLMonLTTQ
 USE [BTLMonLTTQ]
 GO
-/****** Object:  Table [dbo].[BANGCONG_NHANVIEN_CHITIET]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[BANGCONG_NHANVIEN_CHITIET]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -28,7 +29,7 @@ CREATE TABLE [dbo].[BANGCONG_NHANVIEN_CHITIET](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BaoHiem]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[BaoHiem]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -46,7 +47,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChiTietDuAn]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[ChiTietDuAn]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -64,7 +65,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChiTietKhoaDaoTao]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[ChiTietKhoaDaoTao]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -81,7 +82,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChiTietKT_KL]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[ChiTietKT_KL]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -98,7 +99,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ChucVu]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[ChucVu]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,7 +114,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DaoTao]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[DaoTao]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -131,7 +132,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[DuAn]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[DuAn]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -150,7 +151,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HopDongLaoDong]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[HopDongLaoDong]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,7 +170,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[KT_KL]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[KT_KL]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +186,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[KYCONG]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[KYCONG]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -210,7 +211,7 @@ CREATE TABLE [dbo].[KYCONG](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[KYCONGCHITIET]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[KYCONGCHITIET]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -268,7 +269,7 @@ CREATE TABLE [dbo].[KYCONGCHITIET](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LichSuHoatDong]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[LichSuHoatDong]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -285,7 +286,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LoaiCa]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[LoaiCa]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -306,7 +307,7 @@ CREATE TABLE [dbo].[LoaiCa](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[LoaiCong]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[LoaiCong]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -327,26 +328,26 @@ CREATE TABLE [dbo].[LoaiCong](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NhanVien]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[NhanVien]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
 CREATE TABLE [dbo].[NhanVien](
-	[MaNhanVien] [int] PRIMARY KEY,
+	[MaNhanVien] [int] NOT NULL,
 	[HoTen] [nvarchar](100) NULL,
 	[NgaySinh] [date] NULL,
 	[SoDienThoai] [int] NULL,
 	[Email] [varchar](100) NULL,
-	[MaPhongBan] [int] NULL FOREIGN KEY REFERENCES PhongBan(MaPhongBan),
-	[MaChucVu] [int] NULL FOREIGN KEY REFERENCES ChucVu(MaChucVu),
-)
+	[MaPhongBan] [int] NULL,
+	[MaChucVu] [int] NULL,
+PRIMARY KEY CLUSTERED 
 (
 	[MaNhanVien] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PhieuLuong]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[PhieuLuong]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -364,7 +365,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PhongBan]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[PhongBan]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -380,7 +381,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[SoYeuLyLich]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[SoYeuLyLich]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -404,7 +405,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[TaiKhoan]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -421,7 +422,7 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[ThanhToan]    Script Date: 10/30/2024 7:47:10 AM ******/
+/****** Object:  Table [dbo].[ThanhToan]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -958,7 +959,7 @@ INSERT [dbo].[HopDongLaoDong] ([MaHopDong], [LoaiHopDong], [NgayBatDau], [NgayKe
 GO
 INSERT [dbo].[HopDongLaoDong] ([MaHopDong], [LoaiHopDong], [NgayBatDau], [NgayKetThuc], [LuongHopDong], [MaNhanVien], [NoiDungHopDong]) VALUES (50, N'Thường', CAST(N'2022-07-05' AS Date), CAST(N'2025-07-05' AS Date), CAST(6000000.00 AS Decimal(18, 2)), 50, N'Hợp đồng lao động chính thức.')
 GO
-INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (1, N'Khen thuởng', CAST(N'2024-01-15' AS Date), N'Hoàn thành xu?t s?c d? án A')
+INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (1, N'Khen thu?ng', CAST(N'2024-01-15' AS Date), N'Hoàn thành xu?t s?c d? án A')
 GO
 INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (2, N'K? lu?t', CAST(N'2024-02-10' AS Date), N'Ði làm mu?n nhi?u l?n')
 GO
@@ -966,7 +967,7 @@ INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (3,
 GO
 INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (4, N'Khen thu?ng', CAST(N'2024-04-20' AS Date), N'Sáng ki?n c?i ti?n quy trình s?n xu?t')
 GO
-INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (5, N'Kỉ luật', CAST(N'2024-05-11' AS Date), N'Không tuân th? quy d?nh an toàn lao d?ng')
+INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (5, N'K? lu?t', CAST(N'2024-05-11' AS Date), N'Không tuân th? quy d?nh an toàn lao d?ng')
 GO
 INSERT [dbo].[KT_KL] ([MaSuKien], [LoaiSuKien], [NgayDienRa], [LyDo]) VALUES (6, N'Khen thu?ng', CAST(N'2024-06-18' AS Date), N'Ðóng góp tích c?c trong ho?t d?ng tình nguy?n c?a công ty')
 GO
@@ -1404,105 +1405,105 @@ INSERT [dbo].[LoaiCong] ([MaLoaiCong], [TenLoaiCong], [HeSo], [create_by], [crea
 GO
 INSERT [dbo].[LoaiCong] ([MaLoaiCong], [TenLoaiCong], [HeSo], [create_by], [create_date], [update_by], [update_date], [delete_by], [delete_date]) VALUES (N'Cong02    ', N'Công ngày Lễ 02/09', 2, NULL, NULL, NULL, NULL, NULL, NULL)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (1, N'Nguyễn Văn An', CAST(N'1990-01-15' AS Date), 912345678, N'an.nguyen@example.com', CAST(N'2022-01-10' AS Date), 1, 102)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (1, N'Nguyễn Văn An', CAST(N'1990-01-15' AS Date), 912345678, N'an.nguyen@example.com', 1, 102)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (2, N'Trần Thị Bình', CAST(N'1985-03-22' AS Date), 912345679, N'binh.tran@example.com', CAST(N'2021-06-15' AS Date), 1, 103)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (2, N'Trần Thị Bình', CAST(N'1985-03-22' AS Date), 912345679, N'binh.tran@example.com', 1, 103)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (3, N'Lê Văn Cường', CAST(N'1992-05-30' AS Date), 912345680, N'cuong.le@example.com', CAST(N'2023-02-01' AS Date), 1, 101)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (3, N'Lê Văn Cường', CAST(N'1992-05-30' AS Date), 912345680, N'cuong.le@example.com', 1, 101)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (4, N'Phạm Văn Dũng', CAST(N'1988-07-12' AS Date), 912345681, N'dung.pham@example.com', CAST(N'2020-08-20' AS Date), 2, 203)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (4, N'Phạm Văn Dũng', CAST(N'1988-07-12' AS Date), 912345681, N'dung.pham@example.com', 2, 203)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (5, N'Nguyễn Thị Hoa', CAST(N'1995-09-05' AS Date), 912345682, N'hoa.nguyen@example.com', CAST(N'2022-11-01' AS Date), 2, 202)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (5, N'Nguyễn Thị Hoa', CAST(N'1995-09-05' AS Date), 912345682, N'hoa.nguyen@example.com', 2, 202)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (6, N'Trần Văn Hùng', CAST(N'1991-04-20' AS Date), 912345683, N'hung.tran@example.com', CAST(N'2023-03-15' AS Date), 2, 201)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (6, N'Trần Văn Hùng', CAST(N'1991-04-20' AS Date), 912345683, N'hung.tran@example.com', 2, 201)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (7, N'Lê Thị Lan', CAST(N'1989-12-10' AS Date), 912345684, N'lan.le@example.com', CAST(N'2021-04-25' AS Date), 3, 302)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (7, N'Lê Thị Lan', CAST(N'1989-12-10' AS Date), 912345684, N'lan.le@example.com', 3, 302)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (8, N'Nguyễn Văn Minh', CAST(N'1994-06-30' AS Date), 912345685, N'minh.nguyen@example.com', CAST(N'2022-05-10' AS Date), 3, 301)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (8, N'Nguyễn Văn Minh', CAST(N'1994-06-30' AS Date), 912345685, N'minh.nguyen@example.com', 3, 301)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (9, N'Trần Thị Nga', CAST(N'1993-11-15' AS Date), 912345686, N'nga.tran@example.com', CAST(N'2023-07-05' AS Date), 3, 303)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (9, N'Trần Thị Nga', CAST(N'1993-11-15' AS Date), 912345686, N'nga.tran@example.com', 3, 303)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (10, N'Phạm Văn Phát', CAST(N'1987-10-12' AS Date), 912345687, N'phat.pham@example.com', CAST(N'2021-09-20' AS Date), 4, 401)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (10, N'Phạm Văn Phát', CAST(N'1987-10-12' AS Date), 912345687, N'phat.pham@example.com', 4, 401)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (11, N'Lê Thị Quỳnh', CAST(N'1990-08-19' AS Date), 912345688, N'quynh.le@example.com', CAST(N'2022-01-10' AS Date), 4, 402)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (11, N'Lê Thị Quỳnh', CAST(N'1990-08-19' AS Date), 912345688, N'quynh.le@example.com', 4, 402)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (12, N'Nguyễn Văn Rồng', CAST(N'1986-02-05' AS Date), 912345689, N'rong.nguyen@example.com', CAST(N'2023-02-15' AS Date), 4, 403)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (12, N'Nguyễn Văn Rồng', CAST(N'1986-02-05' AS Date), 912345689, N'rong.nguyen@example.com', 4, 403)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (13, N'Trần Văn Sơn', CAST(N'1991-07-25' AS Date), 912345690, N'son.tran@example.com', CAST(N'2021-03-30' AS Date), 5, 503)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (13, N'Trần Văn Sơn', CAST(N'1991-07-25' AS Date), 912345690, N'son.tran@example.com', 5, 503)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (14, N'Nguyễn Thị Thanh', CAST(N'1995-01-12' AS Date), 912345691, N'thanh.nguyen@example.com', CAST(N'2022-05-20' AS Date), 5, 502)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (14, N'Nguyễn Thị Thanh', CAST(N'1995-01-12' AS Date), 912345691, N'thanh.nguyen@example.com', 5, 502)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (15, N'Phạm Văn Tài', CAST(N'1988-03-15' AS Date), 912345692, N'tai.pham@example.com', CAST(N'2023-06-01' AS Date), 5, 501)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (15, N'Phạm Văn Tài', CAST(N'1988-03-15' AS Date), 912345692, N'tai.pham@example.com', 5, 501)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (16, N'Lê Thị Út', CAST(N'1993-12-18' AS Date), 912345693, N'ut.le@example.com', CAST(N'2021-08-25' AS Date), 6, 603)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (16, N'Lê Thị Út', CAST(N'1993-12-18' AS Date), 912345693, N'ut.le@example.com', 6, 603)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (17, N'Nguyễn Văn Vũ', CAST(N'1992-04-30' AS Date), 912345694, N'vu.nguyen@example.com', CAST(N'2022-02-10' AS Date), 6, 602)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (17, N'Nguyễn Văn Vũ', CAST(N'1992-04-30' AS Date), 912345694, N'vu.nguyen@example.com', 6, 602)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (18, N'Trần Thị Yến', CAST(N'1990-11-25' AS Date), 912345695, N'yen.tran@example.com', CAST(N'2023-04-15' AS Date), 6, 601)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (18, N'Trần Thị Yến', CAST(N'1990-11-25' AS Date), 912345695, N'yen.tran@example.com', 6, 601)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (19, N'Lê Văn Z', CAST(N'1989-10-12' AS Date), 912345696, N'z.le@example.com', CAST(N'2021-03-10' AS Date), 7, 702)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (19, N'Lê Văn Z', CAST(N'1989-10-12' AS Date), 912345696, N'z.le@example.com', 7, 702)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (20, N'Nguyễn Thị Bích', CAST(N'1994-08-30' AS Date), 912345697, N'bich.nguyen@example.com', CAST(N'2022-09-20' AS Date), 7, 701)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (20, N'Nguyễn Thị Bích', CAST(N'1994-08-30' AS Date), 912345697, N'bich.nguyen@example.com', 7, 701)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (21, N'Trần Văn Cường', CAST(N'1986-05-22' AS Date), 912345698, N'cuong.tran@example.com', CAST(N'2023-06-25' AS Date), 7, 703)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (21, N'Trần Văn Cường', CAST(N'1986-05-22' AS Date), 912345698, N'cuong.tran@example.com', 7, 703)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (22, N'Phạm Văn Dương', CAST(N'1995-01-05' AS Date), 912345699, N'duong.pham@example.com', CAST(N'2021-07-15' AS Date), 1, 102)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (22, N'Phạm Văn Dương', CAST(N'1995-01-05' AS Date), 912345699, N'duong.pham@example.com', 1, 102)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (23, N'Lê Thị Hằng', CAST(N'1991-03-15' AS Date), 912345700, N'hang.le@example.com', CAST(N'2022-11-01' AS Date), 1, 103)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (23, N'Lê Thị Hằng', CAST(N'1991-03-15' AS Date), 912345700, N'hang.le@example.com', 1, 103)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (24, N'Nguyễn Văn Kiên', CAST(N'1987-12-10' AS Date), 912345701, N'kien.nguyen@example.com', CAST(N'2023-08-20' AS Date), 1, 101)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (24, N'Nguyễn Văn Kiên', CAST(N'1987-12-10' AS Date), 912345701, N'kien.nguyen@example.com', 1, 101)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (25, N'Trần Văn Lợi', CAST(N'1992-06-15' AS Date), 912345702, N'loi.tran@example.com', CAST(N'2021-04-30' AS Date), 2, 203)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (25, N'Trần Văn Lợi', CAST(N'1992-06-15' AS Date), 912345702, N'loi.tran@example.com', 2, 203)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (26, N'Lê Thị Mai', CAST(N'1988-10-30' AS Date), 912345703, N'mai.le@example.com', CAST(N'2022-05-15' AS Date), 2, 202)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (26, N'Lê Thị Mai', CAST(N'1988-10-30' AS Date), 912345703, N'mai.le@example.com', 2, 202)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (27, N'Nguyễn Văn Nam', CAST(N'1990-09-05' AS Date), 912345704, N'nam.nguyen@example.com', CAST(N'2023-09-01' AS Date), 2, 201)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (27, N'Nguyễn Văn Nam', CAST(N'1990-09-05' AS Date), 912345704, N'nam.nguyen@example.com', 2, 201)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (28, N'Phạm Văn Oanh', CAST(N'1994-07-20' AS Date), 912345705, N'oanh.pham@example.com', CAST(N'2021-06-10' AS Date), 3, 302)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (28, N'Phạm Văn Oanh', CAST(N'1994-07-20' AS Date), 912345705, N'oanh.pham@example.com', 3, 302)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (29, N'Lê Thị Phượng', CAST(N'1993-03-12' AS Date), 912345706, N'phuong.le@example.com', CAST(N'2022-08-25' AS Date), 3, 301)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (29, N'Lê Thị Phượng', CAST(N'1993-03-12' AS Date), 912345706, N'phuong.le@example.com', 3, 301)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (30, N'Nguyễn Văn Quang', CAST(N'1986-01-15' AS Date), 912345707, N'quang.nguyen@example.com', CAST(N'2023-02-20' AS Date), 3, 303)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (30, N'Nguyễn Văn Quang', CAST(N'1986-01-15' AS Date), 912345707, N'quang.nguyen@example.com', 3, 303)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (31, N'Trần Văn Rạng', CAST(N'1995-11-30' AS Date), 912345708, N'rang.tran@example.com', CAST(N'2021-07-01' AS Date), 4, 401)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (31, N'Trần Văn Rạng', CAST(N'1995-11-30' AS Date), 912345708, N'rang.tran@example.com', 4, 401)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (32, N'Lê Thị Sương', CAST(N'1992-04-18' AS Date), 912345709, N'suong.le@example.com', CAST(N'2022-03-10' AS Date), 4, 402)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (32, N'Lê Thị Sương', CAST(N'1992-04-18' AS Date), 912345709, N'suong.le@example.com', 4, 402)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (33, N'Nguyễn Văn Thịnh', CAST(N'1989-12-05' AS Date), 912345710, N'thinh.nguyen@example.com', CAST(N'2023-06-15' AS Date), 4, 403)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (33, N'Nguyễn Văn Thịnh', CAST(N'1989-12-05' AS Date), 912345710, N'thinh.nguyen@example.com', 4, 403)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (34, N'Phạm Văn Uy', CAST(N'1990-03-20' AS Date), 912345711, N'uy.pham@example.com', CAST(N'2021-09-10' AS Date), 5, 503)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (34, N'Phạm Văn Uy', CAST(N'1990-03-20' AS Date), 912345711, N'uy.pham@example.com', 5, 503)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (35, N'Nguyễn Thị Vân', CAST(N'1993-06-15' AS Date), 912345712, N'van.nguyen@example.com', CAST(N'2022-11-20' AS Date), 5, 502)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (35, N'Nguyễn Thị Vân', CAST(N'1993-06-15' AS Date), 912345712, N'van.nguyen@example.com', 5, 502)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (36, N'Trần Văn Vũ', CAST(N'1988-08-25' AS Date), 912345713, N'vu.tran@example.com', CAST(N'2023-01-10' AS Date), 5, 501)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (36, N'Trần Văn Vũ', CAST(N'1988-08-25' AS Date), 912345713, N'vu.tran@example.com', 5, 501)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (37, N'Lê Thị Xuân', CAST(N'1991-09-30' AS Date), 912345714, N'xuan.le@example.com', CAST(N'2021-02-15' AS Date), 6, 603)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (37, N'Lê Thị Xuân', CAST(N'1991-09-30' AS Date), 912345714, N'xuan.le@example.com', 6, 603)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (38, N'Nguyễn Văn Y', CAST(N'1992-03-05' AS Date), 912345715, N'y.nguyen@example.com', CAST(N'2022-06-05' AS Date), 6, 602)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (38, N'Nguyễn Văn Y', CAST(N'1992-03-05' AS Date), 912345715, N'y.nguyen@example.com', 6, 602)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (39, N'Trần Thị Z', CAST(N'1986-12-15' AS Date), 912345716, N'z.tran@example.com', CAST(N'2023-07-25' AS Date), 6, 601)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (39, N'Trần Thị Z', CAST(N'1986-12-15' AS Date), 912345716, N'z.tran@example.com', 6, 601)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (40, N'Phạm Văn A1', CAST(N'1994-05-18' AS Date), 912345717, N'a1.pham@example.com', CAST(N'2021-08-20' AS Date), 7, 702)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (40, N'Phạm Văn A1', CAST(N'1994-05-18' AS Date), 912345717, N'a1.pham@example.com', 7, 702)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (41, N'Lê Thị B1', CAST(N'1990-02-10' AS Date), 912345718, N'b1.le@example.com', CAST(N'2022-09-15' AS Date), 7, 701)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (41, N'Lê Thị B1', CAST(N'1990-02-10' AS Date), 912345718, N'b1.le@example.com', 7, 701)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (42, N'Nguyễn Văn C1', CAST(N'1989-07-22' AS Date), 912345719, N'c1.nguyen@example.com', CAST(N'2023-10-10' AS Date), 7, 703)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (42, N'Nguyễn Văn C1', CAST(N'1989-07-22' AS Date), 912345719, N'c1.nguyen@example.com', 7, 703)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (43, N'Trần Thị D1', CAST(N'1995-11-05' AS Date), 912345720, N'd1.tran@example.com', CAST(N'2021-11-30' AS Date), 1, 102)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (43, N'Trần Thị D1', CAST(N'1995-11-05' AS Date), 912345720, N'd1.tran@example.com', 1, 102)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (44, N'Phạm Văn E1', CAST(N'1988-06-15' AS Date), 912345721, N'e1.pham@example.com', CAST(N'2022-12-01' AS Date), 1, 103)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (44, N'Phạm Văn E1', CAST(N'1988-06-15' AS Date), 912345721, N'e1.pham@example.com', 1, 103)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (45, N'Nguyễn Thị F1', CAST(N'1991-01-30' AS Date), 912345722, N'f1.nguyen@example.com', CAST(N'2023-05-25' AS Date), 1, 101)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (45, N'Nguyễn Thị F1', CAST(N'1991-01-30' AS Date), 912345722, N'f1.nguyen@example.com', 1, 101)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (46, N'Lê Văn G1', CAST(N'1990-08-15' AS Date), 912345723, N'g1.le@example.com', CAST(N'2021-07-20' AS Date), 2, 203)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (46, N'Lê Văn G1', CAST(N'1990-08-15' AS Date), 912345723, N'g1.le@example.com', 2, 203)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (47, N'Nguyễn Văn H1', CAST(N'1994-03-25' AS Date), 912345724, N'h1.nguyen@example.com', CAST(N'2022-01-15' AS Date), 2, 202)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (47, N'Nguyễn Văn H1', CAST(N'1994-03-25' AS Date), 912345724, N'h1.nguyen@example.com', 2, 202)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (48, N'Trần Thị I1', CAST(N'1993-10-05' AS Date), 912345725, N'i1.tran@example.com', CAST(N'2023-02-28' AS Date), 2, 201)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (48, N'Trần Thị I1', CAST(N'1993-10-05' AS Date), 912345725, N'i1.tran@example.com', 2, 201)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (49, N'Phạm Văn J1', CAST(N'1986-04-20' AS Date), 912345726, N'j1.pham@example.com', CAST(N'2021-03-15' AS Date), 3, 302)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (49, N'Phạm Văn J1', CAST(N'1986-04-20' AS Date), 912345726, N'j1.pham@example.com', 3, 302)
 GO
-INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [NgayBatDauLamViec], [MaPhongBan], [MaChucVu]) VALUES (50, N'Nguyễn Thị K1', CAST(N'1992-12-30' AS Date), 912345727, N'k1.nguyen@example.com', CAST(N'2022-07-05' AS Date), 3, 301)
+INSERT [dbo].[NhanVien] ([MaNhanVien], [HoTen], [NgaySinh], [SoDienThoai], [Email], [MaPhongBan], [MaChucVu]) VALUES (50, N'Nguyễn Thị K1', CAST(N'1992-12-30' AS Date), 912345727, N'k1.nguyen@example.com', 3, 301)
 GO
 INSERT [dbo].[PhieuLuong] ([MaPhieuLuong], [NgayTinhLuong], [LuongCoBan], [LuongNhanDuoc], [TrangThaiTraLuong], [MaNhanVien]) VALUES (1, CAST(N'2024-01-31' AS Date), CAST(15000000.00 AS Decimal(18, 2)), CAST(32300000.00 AS Decimal(18, 2)), N'Đã trả', 1)
 GO
@@ -1928,7 +1929,7 @@ GO
 ALTER TABLE [dbo].[ThanhToan]  WITH CHECK ADD FOREIGN KEY([MaNhanVien])
 REFERENCES [dbo].[NhanVien] ([MaNhanVien])
 GO
-/****** Object:  Trigger [dbo].[theoDoiChucVu]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiChucVu]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -1970,7 +1971,7 @@ END;
 GO
 ALTER TABLE [dbo].[ChucVu] ENABLE TRIGGER [theoDoiChucVu]
 GO
-/****** Object:  Trigger [dbo].[theoDoiDaoTao]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiDaoTao]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2012,7 +2013,7 @@ END;
 GO
 ALTER TABLE [dbo].[DaoTao] ENABLE TRIGGER [theoDoiDaoTao]
 GO
-/****** Object:  Trigger [dbo].[theoDoiDuAn]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiDuAn]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2054,7 +2055,7 @@ END;
 GO
 ALTER TABLE [dbo].[DuAn] ENABLE TRIGGER [theoDoiDuAn]
 GO
-/****** Object:  Trigger [dbo].[theoDoiHopDong]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiHopDong]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2091,7 +2092,7 @@ END;
 GO
 ALTER TABLE [dbo].[HopDongLaoDong] ENABLE TRIGGER [theoDoiHopDong]
 GO
-/****** Object:  Trigger [dbo].[theoDoiNhanVien]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiNhanVien]    Script Date: 10/31/2024 8:57:18 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2132,7 +2133,7 @@ END;
 GO
 ALTER TABLE [dbo].[NhanVien] ENABLE TRIGGER [theoDoiNhanVien]
 GO
-/****** Object:  Trigger [dbo].[trg_AfterDelete_NhanVien]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[trg_AfterDelete_NhanVien]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2149,7 +2150,7 @@ END;
 GO
 ALTER TABLE [dbo].[NhanVien] ENABLE TRIGGER [trg_AfterDelete_NhanVien]
 GO
-/****** Object:  Trigger [dbo].[trg_AfterInsert_NhanVien]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[trg_AfterInsert_NhanVien]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2166,7 +2167,7 @@ END;
 GO
 ALTER TABLE [dbo].[NhanVien] ENABLE TRIGGER [trg_AfterInsert_NhanVien]
 GO
-/****** Object:  Trigger [dbo].[trg_AfterUpdate_NhanVien]    Script Date: 10/30/2024 7:47:11 AM ******/
+/****** Object:  Trigger [dbo].[trg_AfterUpdate_NhanVien]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2183,7 +2184,7 @@ END;
 GO
 ALTER TABLE [dbo].[NhanVien] ENABLE TRIGGER [trg_AfterUpdate_NhanVien]
 GO
-/****** Object:  Trigger [dbo].[UpdateTruongPhong]    Script Date: 10/30/2024 7:47:12 AM ******/
+/****** Object:  Trigger [dbo].[UpdateTruongPhong]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2205,7 +2206,7 @@ END;
 GO
 ALTER TABLE [dbo].[NhanVien] ENABLE TRIGGER [UpdateTruongPhong]
 GO
-/****** Object:  Trigger [dbo].[trg_CalculateLuongNhanDuoc]    Script Date: 10/30/2024 7:47:12 AM ******/
+/****** Object:  Trigger [dbo].[trg_CalculateLuongNhanDuoc]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2242,7 +2243,7 @@ END;
 GO
 ALTER TABLE [dbo].[PhieuLuong] ENABLE TRIGGER [trg_CalculateLuongNhanDuoc]
 GO
-/****** Object:  Trigger [dbo].[theoDoiPhongBan]    Script Date: 10/30/2024 7:47:13 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiPhongBan]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -2283,7 +2284,7 @@ END;
 GO
 ALTER TABLE [dbo].[PhongBan] ENABLE TRIGGER [theoDoiPhongBan]
 GO
-/****** Object:  Trigger [dbo].[theoDoiTaiKhoan]    Script Date: 10/30/2024 7:47:13 AM ******/
+/****** Object:  Trigger [dbo].[theoDoiTaiKhoan]    Script Date: 10/31/2024 8:57:19 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON

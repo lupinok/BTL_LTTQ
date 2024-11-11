@@ -20,6 +20,7 @@ namespace GUI_QLNS.NhanVien.Luong
     {
         PhieuLuong_BUS phieuLuongBus;
         BangCongNhanVienChiTiet_BUS bangcongBus;
+        PhongBan_BUS phongBanBus;
 
         List<PhieuLuong> lstPhieuLuong;
         int namky;
@@ -27,12 +28,41 @@ namespace GUI_QLNS.NhanVien.Luong
         {
             InitializeComponent();
         }
+        private void LoadPhongBan()
+        {
+            var phongBanList = phongBanBus.GetList(); 
+            cboPhongBan.DataSource = phongBanList;
+            cboPhongBan.DisplayMember = "TenPhongBan";
+            cboPhongBan.ValueMember = "MaPhongBan";
+        }
+        private void cbPhongBan_EditValueChanged(object sender, EventArgs e)
+        {
+            if (cboPhongBan.SelectedValue != null)
+            {
+                int maPhongBan = Convert.ToInt32(cboPhongBan.SelectedValue);
+                LoadLuongTheoPhongBan(maPhongBan);
+            }
+        }
 
+        private void LoadLuongTheoPhongBan(int maPhongBan)
+        {
+            try
+            {
+                var dsLuong = phieuLuongBus.GetLuongByPhongBan(maPhongBan); // Giả sử bạn có phương thức này trong PhieuLuong_BUS
+                gcHDLD.DataSource = dsLuong;
+                FormatGrid();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải lương theo phòng ban: " + ex.Message);
+            }
+        }
         private void frmTinhLuong_Load(object sender, EventArgs e)
         {
             phieuLuongBus = new PhieuLuong_BUS();
             bangcongBus = new BangCongNhanVienChiTiet_BUS();
-            
+            phongBanBus = new PhongBan_BUS();
+            LoadPhongBan();
             cbThang.SelectedIndex = DateTime.Now.Month - 1;
             cbBaoHiem.Text = DateTime.Now.Year.ToString();
         }

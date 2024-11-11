@@ -261,10 +261,10 @@ namespace BUS_QLNS
 
             decimal ngayCongDecimal = Convert.ToDecimal(tongNgayCong);
             // Tính lương thực nhận
-           var luongthucnhan = ((luong.LuongCoBan * Convert.ToDecimal(tongNgayCong)) / 30) + luong.TangCa + luong.PhuCap
+            luong.LuongNhanDuoc = ((luong.LuongCoBan * Convert.ToDecimal(tongNgayCong)) ) + luong.TangCa + luong.PhuCap
                 + luong.KTKL - luong.UngLuong - luong.TienBaoHiem;
          
-            luong.LuongNhanDuoc = luongthucnhan;
+            
 
             
         }
@@ -295,7 +295,22 @@ namespace BUS_QLNS
                 throw new Exception("Lỗi lấy phiếu lương: " + ex.Message);
             }
         }
+        public List<PhieuLuong> GetLuongByPhongBan(int maPhongBan)
+        {
+            try
+            {
+                var dsLuong = db.PhieuLuongs
+                    .Where(pl => pl.NhanVien.MaPhongBan == maPhongBan) // Giả sử có thuộc tính MaPhongBan trong NhanVien
+                    .Include(pl => pl.NhanVien) // Đảm bảo load thông tin nhân viên
+                    .ToList();
 
+                return dsLuong;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Lỗi lấy lương theo phòng ban: " + ex.Message);
+            }
+        }
 
     }
 }

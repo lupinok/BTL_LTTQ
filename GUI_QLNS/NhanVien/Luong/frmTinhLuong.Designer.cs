@@ -62,6 +62,8 @@
             this.KTKL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LuongNhanDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboPhongBan = new System.Windows.Forms.ComboBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -181,6 +183,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.cboPhongBan);
+            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.btnBangLuong);
             this.panelControl1.Controls.Add(this.cbBaoHiem);
             this.panelControl1.Controls.Add(this.cboNam);
@@ -194,7 +198,7 @@
             // 
             // btnBangLuong
             // 
-            this.btnBangLuong.Location = new System.Drawing.Point(646, 5);
+            this.btnBangLuong.Location = new System.Drawing.Point(771, 5);
             this.btnBangLuong.Name = "btnBangLuong";
             this.btnBangLuong.Size = new System.Drawing.Size(98, 23);
             this.btnBangLuong.TabIndex = 60;
@@ -219,14 +223,14 @@
             "2022",
             "2023",
             "2024"});
-            this.cbBaoHiem.Location = new System.Drawing.Point(492, 7);
+            this.cbBaoHiem.Location = new System.Drawing.Point(445, 7);
             this.cbBaoHiem.Name = "cbBaoHiem";
             this.cbBaoHiem.Size = new System.Drawing.Size(93, 21);
             this.cbBaoHiem.TabIndex = 59;
             // 
             // cboNam
             // 
-            this.cboNam.Location = new System.Drawing.Point(461, 11);
+            this.cboNam.Location = new System.Drawing.Point(414, 11);
             this.cboNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboNam.Name = "cboNam";
             this.cboNam.Size = new System.Drawing.Size(25, 13);
@@ -249,14 +253,14 @@
             "10",
             "11",
             "12"});
-            this.cbThang.Location = new System.Drawing.Point(276, 7);
+            this.cbThang.Location = new System.Drawing.Point(259, 7);
             this.cbThang.Name = "cbThang";
             this.cbThang.Size = new System.Drawing.Size(99, 21);
             this.cbThang.TabIndex = 49;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(236, 11);
+            this.labelControl8.Location = new System.Drawing.Point(219, 11);
             this.labelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(34, 13);
@@ -404,6 +408,23 @@
             this.MaNhanVien.FieldName = "MaNhanVien";
             this.MaNhanVien.Name = "MaNhanVien";
             // 
+            // cboPhongBan
+            // 
+            this.cboPhongBan.FormattingEnabled = true;
+            this.cboPhongBan.Location = new System.Drawing.Point(647, 7);
+            this.cboPhongBan.Name = "cboPhongBan";
+            this.cboPhongBan.Size = new System.Drawing.Size(93, 21);
+            this.cboPhongBan.TabIndex = 62;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(586, 10);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(55, 13);
+            this.labelControl1.TabIndex = 61;
+            this.labelControl1.Text = "Phòng ban:";
+            // 
             // frmTinhLuong
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,5 +484,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn MaKyCong;
         private DevExpress.XtraGrid.Columns.GridColumn TienBaoHiem;
         private DevExpress.XtraGrid.Columns.GridColumn KTKL;
+        private System.Windows.Forms.ComboBox cboPhongBan;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }
