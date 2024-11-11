@@ -14,6 +14,12 @@ namespace DAL
     
     public partial class KYCONG
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public KYCONG()
+        {
+            this.BANGCONG_NHANVIEN_CHITIET = new HashSet<BANGCONG_NHANVIEN_CHITIET>();
+        }
+    
         public int MAKYCONG { get; set; }
         public Nullable<int> THANG { get; set; }
         public Nullable<int> NAM { get; set; }
@@ -27,5 +33,8 @@ namespace DAL
         public Nullable<System.DateTime> update_date { get; set; }
         public string delete_by { get; set; }
         public Nullable<System.DateTime> delete_date { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BANGCONG_NHANVIEN_CHITIET> BANGCONG_NHANVIEN_CHITIET { get; set; }
     }
 }

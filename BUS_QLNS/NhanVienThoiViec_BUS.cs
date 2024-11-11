@@ -47,33 +47,39 @@ namespace BUS_QLNS
         {
             _nhanvienBUS = new NHANVIEN_BUS();
         }
-
+        private void UpdateNhanVienStatus(int maNhanVien, DateTime ngayThoiViec)
+        {
+            try
+            {
+                var nhanVien = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == maNhanVien);
+                if (nhanVien != null)
+                {
+                    nhanVien.DaThoiViec = ngayThoiViec <= DateTime.Now;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Lỗi cập nhật trạng thái nhân viên: {ex.Message}");
+            }
+        }
         public NhanVienThoiViec Add(NhanVienThoiViec tv)
         {
             try
             {
-                // Kiểm tra và cập nhật trạng thái nhân viên
-                if (tv.MaNhanVien.HasValue)
+                db.NhanVienThoiViecs.Add(tv);
+                db.SaveChanges();
+
+                if (tv.NgayThoiViec.HasValue && tv.MaNhanVien.HasValue)
                 {
-                    var nv = db.NhanViens.FirstOrDefault(x => x.MaNhanVien == tv.MaNhanVien.Value);
-                    if (nv != null)
-                    {
-                        nv.DaThoiViec = true;
-                        Console.WriteLine("ok");
-                    }
+                    UpdateNhanVienStatus(tv.MaNhanVien.Value, tv.NgayThoiViec.Value);
                 }
 
-                // Thêm quyết định thôi việc
-                db.NhanVienThoiViecs.Add(tv);
-
-                // Lưu tất cả thay đổi trong một lần
-                db.SaveChanges();
                 return tv;
             }
             catch (Exception ex)
             {
-                var innerException = ex.InnerException != null ? ex.InnerException.Message : "";
-                throw new Exception($"Lỗi: {ex.Message}. Chi tiết: {innerException}");
+                throw new Exception("Lỗi:" + ex.Message);
             }
         }
 
@@ -82,14 +88,22 @@ namespace BUS_QLNS
             try
             {
                 var _tv = db.NhanVienThoiViecs.FirstOrDefault(x => x.SoQD == tv.SoQD);
-                _tv.NgayQuyetDinh = tv.NgayQuyetDinh;
-                _tv.NgayThoiViec = tv.NgayThoiViec;
-                _tv.MaNhanVien = tv.MaNhanVien;
-                _tv.LyDo = tv.LyDo;
-                _tv.GhiChu = tv.GhiChu;
-                _tv.UPDATED_BY = tv.UPDATED_BY;
-                _tv.UPDATED_DATE = tv.UPDATED_DATE;
-                db.SaveChanges();
+                if (_tv != null)
+                {
+                    _tv.NgayQuyetDinh = tv.NgayQuyetDinh;
+                    _tv.NgayThoiViec = tv.NgayThoiViec;
+                    _tv.MaNhanVien = tv.MaNhanVien;
+                    _tv.LyDo = tv.LyDo;
+                    _tv.GhiChu = tv.GhiChu;
+                    _tv.UPDATED_BY = tv.UPDATED_BY;
+                    _tv.UPDATED_DATE = tv.UPDATED_DATE;
+                    db.SaveChanges();
+
+                    if (tv.NgayThoiViec.HasValue && tv.MaNhanVien.HasValue)
+                    {
+                        UpdateNhanVienStatus(tv.MaNhanVien.Value, tv.NgayThoiViec.Value);
+                    }
+                }
                 return tv;
             }
             catch (Exception ex)

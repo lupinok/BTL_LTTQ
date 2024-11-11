@@ -236,30 +236,96 @@ namespace GUI_QLNS.NhanVien
 
 		private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
 		{
-			if (string.IsNullOrEmpty(txtMaNhanVien.Text))
-			{
-				MessageBox.Show("Vui lòng chọn nhân viên cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-				return;
-			}
+            if (string.IsNullOrEmpty(txtMaNhanVien.Text))
+            {
+                MessageBox.Show("Vui lòng chọn nhân viên cần xóa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
-			if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-			{
-				try
-				{
-					_nhanvienBUS.Delete(int.Parse(txtMaNhanVien.Text));
-					LoadData();
-					MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-					_lichsuBUS.ThemLichSu("Xóa nhân viên", _currentUser,
-						$"Xóa nhân viên {txtHoTen.Text}");
-                    ClearFields();
+            int maNhanVien = int.Parse(txtMaNhanVien.Text);
+
+            // Kiểm tra trạng thái DaThoiViec của nhân viên
+            var nhanVien = _nhanvienBUS.getItem(maNhanVien);
+            if (nhanVien == null || nhanVien.DaThoiViec != true)
+            {
+                MessageBox.Show("Chỉ được phép xóa nhân viên đã thôi việc!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                try
+                {
+                    using (var transaction = _nhanvienBUS.db.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            // Xóa các bản ghi liên quan trong các bảng con
+                            var bangCongChiTiet = _nhanvienBUS.db.BANGCONG_NHANVIEN_CHITIET.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.BANGCONG_NHANVIEN_CHITIET.RemoveRange(bangCongChiTiet);
+
+                            var chiTietDuAn = _nhanvienBUS.db.ChiTietDuAns.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.ChiTietDuAns.RemoveRange(chiTietDuAn);
+
+                            var chiTietKhoaDaoTao = _nhanvienBUS.db.ChiTietKhoaDaoTaos.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.ChiTietKhoaDaoTaos.RemoveRange(chiTietKhoaDaoTao);
+
+                            var chiTietKTKL = _nhanvienBUS.db.ChiTietKT_KL.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.ChiTietKT_KL.RemoveRange(chiTietKTKL);
+
+                            var hopDongLD = _nhanvienBUS.db.HopDongLaoDongs.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.HopDongLaoDongs.RemoveRange(hopDongLD);
+
+                            var kyCongChiTiet = _nhanvienBUS.db.KYCONGCHITIETs.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.KYCONGCHITIETs.RemoveRange(kyCongChiTiet);
+
+                            var phieuLuong = _nhanvienBUS.db.PhieuLuongs.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.PhieuLuongs.RemoveRange(phieuLuong);
+
+                            var phuCap = _nhanvienBUS.db.PhuCaps.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.PhuCaps.RemoveRange(phuCap);
+
+                            var soYeuLyLich = _nhanvienBUS.db.SoYeuLyLiches.FirstOrDefault(x => x.MaNhanVien == maNhanVien);
+                            if (soYeuLyLich != null)
+                                _nhanvienBUS.db.SoYeuLyLiches.Remove(soYeuLyLich);
+
+                            var tangCa = _nhanvienBUS.db.TangCas.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.TangCas.RemoveRange(tangCa);
+
+                            var ungLuong = _nhanvienBUS.db.UngLuongs.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.UngLuongs.RemoveRange(ungLuong);
+
+                            var dieuChuyen = _nhanvienBUS.db.NhanVien_DieuChuyen.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.NhanVien_DieuChuyen.RemoveRange(dieuChuyen);
+
+                            var thoiViec = _nhanvienBUS.db.NhanVienThoiViecs.Where(x => x.MaNhanVien == maNhanVien);
+                            _nhanvienBUS.db.NhanVienThoiViecs.RemoveRange(thoiViec);
+
+                            // Cuối cùng xóa nhân viên
+                            _nhanvienBUS.Delete(maNhanVien);
+
+                            transaction.Commit();
+
+                            LoadData();
+                            MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            _lichsuBUS.ThemLichSu("Xóa nhân viên", _currentUser,
+                                $"Xóa nhân viên {txtHoTen.Text}");
+                            ClearFields();
+                        }
+                        catch (Exception)
+                        {
+                            transaction.Rollback();
+                            throw;
+                        }
+                    }
                 }
-				catch (Exception ex)
-				{
-					MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-					_lichsuBUS.ThemLichSu("Lỗi", _currentUser,
-						$"Lỗi khi xóa nhân viên: {ex.Message}");
-				}
-			}
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    _lichsuBUS.ThemLichSu("Lỗi", _currentUser,
+                        $"Lỗi khi xóa nhân viên: {ex.Message}");
+                }
+            }
             splitContainer1.Panel1Collapsed = true; // Ẩn panel
         }
 
@@ -402,6 +468,28 @@ namespace GUI_QLNS.NhanVien
         private void lupChucVu_EditValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            try
+            {
+                // Lấy form cha (MainForm)
+                var mainForm = this.ParentForm;
+
+                // Đóng form hiện tại
+                this.Close();
+
+                // Tạo form mới và thiết lập thuộc tính
+                Form newForm = new frmNhanVien();
+                newForm.MdiParent = mainForm;
+                newForm.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi refresh: " + ex.Message, "Lỗi",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

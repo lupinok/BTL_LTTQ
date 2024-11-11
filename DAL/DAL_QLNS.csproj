@@ -95,9 +95,6 @@
     <Compile Include="LoaiCa.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
-    <Compile Include="LoaiCong.cs">
-      <DependentUpon>QLNS.tt</DependentUpon>
-    </Compile>
     <Compile Include="NhanVien.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
@@ -142,9 +139,6 @@
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="TangCa.cs">
-      <DependentUpon>QLNS.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ThanhToan.cs">
       <DependentUpon>QLNS.tt</DependentUpon>
     </Compile>
     <Compile Include="UngLuong.cs">

@@ -78,6 +78,7 @@ namespace GUI_QLNS.NhanVien
             this.barDockControl2 = new DevExpress.XtraBars.BarDockControl();
             this.phongBanTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.PhongBanTableAdapter();
             this.chucVuTableAdapter = new GUI_QLNS.BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -107,9 +108,10 @@ namespace GUI_QLNS.NhanVien
             this.btnSua,
             this.btnXoa,
             this.btnLuu,
-            this.btnHuy});
+            this.btnHuy,
+            this.barButtonItem1});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 6;
+            this.barManager1.MaxItemId = 7;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar2
@@ -123,7 +125,8 @@ namespace GUI_QLNS.NhanVien
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnSua, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnXoa, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnLuu, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHuy, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.barButtonItem1, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
             this.bar2.OptionsBar.MultiLine = true;
             this.bar2.OptionsBar.UseWholeRow = true;
             this.bar2.Text = "Main menu";
@@ -531,6 +534,14 @@ namespace GUI_QLNS.NhanVien
             // 
             this.chucVuTableAdapter.ClearBeforeFill = true;
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Tải lại";
+            this.barButtonItem1.Id = 6;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // frmNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -614,5 +625,6 @@ namespace GUI_QLNS.NhanVien
         private System.Windows.Forms.BindingSource chucVuBindingSource;
         private BTLMonLTTQDataSetTableAdapters.ChucVuTableAdapter chucVuTableAdapter;
         private DevExpress.XtraGrid.Columns.GridColumn gridColumn1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

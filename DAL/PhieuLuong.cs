@@ -21,7 +21,7 @@ namespace DAL
         public Nullable<decimal> TangCa { get; set; }
         public Nullable<decimal> PhuCap { get; set; }
         public Nullable<decimal> UngLuong { get; set; }
-        public Nullable<double> NgayCong { get; set; }
+        public Nullable<double> NGAYCONG { get; set; }
         public Nullable<decimal> KTKL { get; set; }
         public Nullable<decimal> TienBaoHiem { get; set; }
         public Nullable<decimal> LuongNhanDuoc { get; set; }

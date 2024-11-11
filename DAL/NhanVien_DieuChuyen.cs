@@ -23,5 +23,7 @@ namespace DAL
         public string GhiChuDC { get; set; }
         public Nullable<int> MaChucVu { get; set; }
         public Nullable<int> MaChucVu2 { get; set; }
+    
+        public virtual NhanVien NhanVien { get; set; }
     }
 }

@@ -7,7 +7,7 @@ namespace BUS_QLNS
 {
 	public class NHANVIEN_BUS
 	{
-		BTLMonLTTQEntities db = new BTLMonLTTQEntities();
+		public BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 
 		public NhanVien getItem(int manhanvien)
 		{

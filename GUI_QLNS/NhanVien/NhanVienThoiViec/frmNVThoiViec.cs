@@ -91,6 +91,7 @@ namespace GUI_QLNS.NhanVien.NhanVienThoiViec
                 tlkNhanVien.Properties.DataSource = dsNhanVien;
                 tlkNhanVien.Properties.DisplayMember = "HoTen";
                 tlkNhanVien.Properties.ValueMember = "MaNhanVien";
+                tlkNhanVien.Properties.NullText = "-- Chọn nhân viên --";
 
                 // Cấu hình hiển thị các cột trong dropdown
                 treeListLookUpEdit1TreeList.Columns.Clear();

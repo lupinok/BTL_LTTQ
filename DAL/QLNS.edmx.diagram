@@ -4,55 +4,56 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="8d85b8b8268941c9811f7d4e05bd9261" Name="Diagram1">
-        <EntityTypeShape EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.BoPhan" Width="1.5" PointX="3" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietDuAn" Width="1.5" PointX="11.25" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietKhoaDaoTao" Width="1.5" PointX="11.25" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietKT_KL" Width="1.5" PointX="11.25" PointY="31.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.ChucVu" Width="1.5" PointX="3.75" PointY="31" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.DaoTao" Width="1.5" PointX="9" PointY="20.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.DuAn" Width="1.5" PointX="9" PointY="16.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.HopDongLaoDong" Width="1.5" PointX="8.25" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.KT_KL" Width="1.5" PointX="9" PointY="48.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONG" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONGCHITIET" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.LichSuHoatDong" Width="1.5" PointX="3" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCa" Width="1.5" PointX="12" PointY="20.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCong" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien" Width="1.5" PointX="6" PointY="26.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien_DieuChuyen" Width="1.5" PointX="0.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVienThoiViec" Width="1.5" PointX="8.25" PointY="29" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.PhanQuyen" Width="1.5" PointX="3" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.PhieuLuong" Width="1.5" PointX="8.25" PointY="33.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.PhongBan" Width="1.5" PointX="0.75" PointY="27.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.PhuCap" Width="1.5" PointX="8.25" PointY="39.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.SoYeuLyLich" Width="1.5" PointX="8.25" PointY="43.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="23.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.TangCa" Width="1.5" PointX="14.25" PointY="26.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.ThanhToan" Width="1.5" PointX="8.25" PointY="52.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BTLMonLTTQModel.UngLuong" Width="1.5" PointX="8.25" PointY="55.75" IsExpanded="true" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietDu__MaDuA__7C4F7684" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietDu__MaNha__7D439ABD" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKh__MaDao__7E37BEF6" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKh__MaNha__7F2BE32F" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKT__MaNha__00200768" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKT__MaSuK__01142BA1" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__NhanVien__MaChuc__03F0984C" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__HopDongLa__MaNha__02084FDA" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__LichSuHoa__TenDa__02FC7413" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaLoaiCa__0B91BA14" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__NhanVien__MaPhon__04E4BC85" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__PhieuLuon__MaNha__7A672E12" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__PhuCap__MaNhanVi__09A971A2" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__SoYeuLyLi__MaNha__0A9D95DB" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaNhanVi__0C85DE4D" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__ThanhToan__MaNha__0D7A0286" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__UngLuong__MaNhan__0E6E26BF" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK_NhanVienThoiViec_NhanVien" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__PhanQuyen__MaPho__06CD04F7" ManuallyRouted="false" />
-        <AssociationConnector Association="BTLMonLTTQModel.FK__PhanQuyen__TenDa__07C12930" ManuallyRouted="false" />
+      <Diagram DiagramId="8d85b8b8268941c9811f7d4e05bd9261" Name="Diagram1" ZoomLevel="47">
+        <EntityTypeShape EntityType="BTLMonLTTQModel.BANGCONG_NHANVIEN_CHITIET" Width="1.5" PointX="11.25" PointY="30.875" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.BoPhan" Width="1.5" PointX="3" PointY="82.625" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietDuAn" Width="1.5" PointX="8.25" PointY="40" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietKhoaDaoTao" Width="1.5" PointX="8.25" PointY="37.125" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.ChiTietKT_KL" Width="1.5" PointX="11.25" PointY="36.25" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.ChucVu" Width="1.5" PointX="3.75" PointY="34.25" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.DaoTao" Width="1.5" PointX="6" PointY="42" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.DuAn" Width="1.5" PointX="6" PointY="45.875" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.HopDongLaoDong" Width="1.5" PointX="8.25" PointY="52.875" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.KT_KL" Width="1.5" PointX="9" PointY="50.125" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONG" Width="1.5" PointX="9" PointY="27.25" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.KYCONGCHITIET" Width="1.5" PointX="8.25" PointY="70" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.LichSuHoatDong" Width="1.5" PointX="3" PointY="31.125" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.LoaiCa" Width="1.5" PointX="6" PointY="31.75" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien" Width="1.5" PointX="6" PointY="35.5" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVien_DieuChuyen" Width="1.5" PointX="8.25" PointY="57.75" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.NhanVienThoiViec" Width="1.5" PointX="8.25" PointY="61.5" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhanQuyen" Width="1.5" PointX="3" PointY="37.125" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhieuLuong" Width="1.5" PointX="8.25" PointY="44" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhongBan" Width="1.5" PointX="0.75" PointY="37" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.PhuCap" Width="1.5" PointX="8.25" PointY="21.75" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.SoYeuLyLich" Width="1.5" PointX="8.25" PointY="65.75" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.TaiKhoan" Width="1.5" PointX="0.75" PointY="33" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.TangCa" Width="1.5" PointX="8.25" PointY="32.125" />
+        <EntityTypeShape EntityType="BTLMonLTTQModel.UngLuong" Width="1.5" PointX="8.25" PointY="17.25" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_BANGCONG_NHANVIEN_CHITIET_KYCONG" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_BANGCONG_NHANVIEN_CHITIET_NhanVien" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_BOPHAN_PHONGBAN" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietDu__MaDuA__7A672E12" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietDu__MaNha__7B5B524B" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKh__MaDao__7C4F7684" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKh__MaNha__7D439ABD" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKT__MaNha__7E37BEF6" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__ChiTietKT__MaSuK__7F2BE32F" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__NhanVien__MaChuc__02FC7413" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__HopDongLa__MaNha__00200768" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_KYCONGCHITIET_NhanVien" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__LichSuHoa__TenDa__02084FDA" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaLoaiCa__0B91BA14" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__NhanVien__MaPhon__03F0984C" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhieuLuon__MaNha__7A672E12" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhuCap__MaNhanVi__09A971A2" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__SoYeuLyLi__MaNha__0A9D95DB" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__TangCa__MaNhanVi__0C85DE4D" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__UngLuong__MaNhan__0D7A0286" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_NhanVien_DieuChuyen_NhanVien" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK_NhanVienThoiViec_NhanVien" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhanQuyen__MaPho__06CD04F7" />
+        <AssociationConnector Association="BTLMonLTTQModel.FK__PhanQuyen__TenDa__07C12930" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -244,7 +244,7 @@ namespace BUS_QLNS
                 && SqlFunctions.DatePart("month", x.NGAY) == thang
                 && SqlFunctions.DatePart("year", x.NGAY) == nam);
 
-               luong.NgayCong = ngaycong.NGAYCONG;
+               luong.NGAYCONG = ngaycong.NGAYCONG;
 
             // Tính khen thưởng/kỷ luật
             luong.KTKL = db.ChiTietKT_KL
@@ -253,7 +253,7 @@ namespace BUS_QLNS
                     && SqlFunctions.DatePart("year", x.NgayKetThuc) == nam)
                 .Sum(x => x.TienThuongPhat) ?? 0;
 
-            decimal ngayCongDecimal = Convert.ToDecimal(luong.NgayCong ?? 0);
+            decimal ngayCongDecimal = Convert.ToDecimal(luong.NGAYCONG ?? 0);
             // Tính lương thực nhận
             luong.LuongNhanDuoc = (luong.LuongCoBan * ngayCongDecimal) / 30 + luong.TangCa + luong.PhuCap
                 + luong.KTKL - luong.UngLuong - luong.TienBaoHiem/12;

@@ -39,7 +39,6 @@ namespace DAL
         public virtual DbSet<KYCONGCHITIET> KYCONGCHITIETs { get; set; }
         public virtual DbSet<LichSuHoatDong> LichSuHoatDongs { get; set; }
         public virtual DbSet<LoaiCa> LoaiCas { get; set; }
-        public virtual DbSet<LoaiCong> LoaiCongs { get; set; }
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<NhanVien_DieuChuyen> NhanVien_DieuChuyen { get; set; }
         public virtual DbSet<NhanVienThoiViec> NhanVienThoiViecs { get; set; }
@@ -50,7 +49,6 @@ namespace DAL
         public virtual DbSet<SoYeuLyLich> SoYeuLyLiches { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoans { get; set; }
         public virtual DbSet<TangCa> TangCas { get; set; }
-        public virtual DbSet<ThanhToan> ThanhToans { get; set; }
         public virtual DbSet<UngLuong> UngLuongs { get; set; }
     }
 }

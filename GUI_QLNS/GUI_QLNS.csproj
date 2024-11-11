@@ -204,16 +204,16 @@
     <Compile Include="NhanVien\ChucVu\frmChucVu.Designer.cs">
       <DependentUpon>frmChucVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Dự án\ChiTietDuAn.cs">
+    <Compile Include="NhanVien\DuAn\ChiTietDuAn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Dự án\ChiTietDuAn.Designer.cs">
+    <Compile Include="NhanVien\DuAn\ChiTietDuAn.Designer.cs">
       <DependentUpon>ChiTietDuAn.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Dự án\frmDuAn.cs">
+    <Compile Include="NhanVien\DuAn\frmDuAn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Dự án\frmDuAn.Designer.cs">
+    <Compile Include="NhanVien\DuAn\frmDuAn.Designer.cs">
       <DependentUpon>frmDuAn.cs</DependentUpon>
     </Compile>
     <Compile Include="NhanVien\frmNhanVien.cs">
@@ -243,16 +243,16 @@
     <Compile Include="NhanVien\SYLL.Designer.cs">
       <DependentUpon>SYLL.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Đào tạo\ChiTietDaoTao.cs">
+    <Compile Include="NhanVien\DaoTao\ChiTietDaoTao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Đào tạo\ChiTietDaoTao.Designer.cs">
+    <Compile Include="NhanVien\DaoTao\ChiTietDaoTao.Designer.cs">
       <DependentUpon>ChiTietDaoTao.cs</DependentUpon>
     </Compile>
-    <Compile Include="NhanVien\Đào tạo\frmDaoTao.cs">
+    <Compile Include="NhanVien\DaoTao\frmDaoTao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NhanVien\Đào tạo\frmDaoTao.Designer.cs">
+    <Compile Include="NhanVien\DaoTao\frmDaoTao.Designer.cs">
       <DependentUpon>frmDaoTao.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -298,10 +298,10 @@
     <EmbeddedResource Include="NhanVien\DCNhanVien\DCNhanVien.resx">
       <DependentUpon>DCNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Dự án\ChiTietDuAn.resx">
+    <EmbeddedResource Include="NhanVien\DuAn\ChiTietDuAn.resx">
       <DependentUpon>ChiTietDuAn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Dự án\frmDuAn.resx">
+    <EmbeddedResource Include="NhanVien\DuAn\frmDuAn.resx">
       <DependentUpon>frmDuAn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NhanVien\frmNhanVien.resx">
@@ -334,10 +334,10 @@
     <EmbeddedResource Include="NhanVien\SYLL.resx">
       <DependentUpon>SYLL.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Đào tạo\ChiTietDaoTao.resx">
+    <EmbeddedResource Include="NhanVien\DaoTao\ChiTietDaoTao.resx">
       <DependentUpon>ChiTietDaoTao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NhanVien\Đào tạo\frmDaoTao.resx">
+    <EmbeddedResource Include="NhanVien\DaoTao\frmDaoTao.resx">
       <DependentUpon>frmDaoTao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -394,6 +394,56 @@
     <None Include="Resources\ic_bhxh.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="NhanVien\Images\SYLL\NV%281%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2810%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2811%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2812%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2813%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2814%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2815%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2816%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2817%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2818%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2819%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%282%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2820%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2821%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2822%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2823%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2824%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2825%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2826%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2827%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2828%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2829%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%283%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2830%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2831%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2832%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2833%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2834%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2835%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2836%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2837%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2838%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2839%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%284%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2840%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2841%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2842%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2843%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2844%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2845%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2846%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2847%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2848%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2849%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%285%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%2850%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%286%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%287%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%288%29.jpg" />
+    <Content Include="NhanVien\Images\SYLL\NV%289%29.jpg" />
     <Content Include="Resources\delete1.png" />
   </ItemGroup>
   <ItemGroup />
