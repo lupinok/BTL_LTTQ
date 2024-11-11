@@ -22,12 +22,7 @@ namespace GUI_QLNS
             // Kiểm tra kết nối trước
             if (TryConnectWithSavedSettings())
             {
-                // Nếu không kết nối được, hiện form kết nối
-                frmKetNoi f = new frmKetNoi();
-                if (f.ShowDialog() == DialogResult.OK)
-                {
                     Application.Run(new DangNhap());
-                }
             }
             else
             {

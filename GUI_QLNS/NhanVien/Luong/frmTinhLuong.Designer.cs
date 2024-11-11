@@ -187,7 +187,7 @@
             this.panelControl1.Controls.Add(this.labelControl8);
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelControl1.Location = new System.Drawing.Point(0, 30);
-            this.panelControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelControl1.Margin = new System.Windows.Forms.Padding(4);
             this.panelControl1.Name = "panelControl1";
             this.panelControl1.Size = new System.Drawing.Size(1323, 65);
             this.panelControl1.TabIndex = 7;
@@ -195,7 +195,7 @@
             // btnBangLuong
             // 
             this.btnBangLuong.Location = new System.Drawing.Point(754, 6);
-            this.btnBangLuong.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBangLuong.Margin = new System.Windows.Forms.Padding(4);
             this.btnBangLuong.Name = "btnBangLuong";
             this.btnBangLuong.Size = new System.Drawing.Size(114, 28);
             this.btnBangLuong.TabIndex = 60;
@@ -221,7 +221,7 @@
             "2023",
             "2024"});
             this.cbBaoHiem.Location = new System.Drawing.Point(574, 9);
-            this.cbBaoHiem.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbBaoHiem.Margin = new System.Windows.Forms.Padding(4);
             this.cbBaoHiem.Name = "cbBaoHiem";
             this.cbBaoHiem.Size = new System.Drawing.Size(108, 24);
             this.cbBaoHiem.TabIndex = 59;
@@ -252,7 +252,7 @@
             "11",
             "12"});
             this.cbThang.Location = new System.Drawing.Point(322, 9);
-            this.cbThang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbThang.Margin = new System.Windows.Forms.Padding(4);
             this.cbThang.Name = "cbThang";
             this.cbThang.Size = new System.Drawing.Size(115, 24);
             this.cbThang.TabIndex = 49;
@@ -269,10 +269,10 @@
             // gcHDLD
             // 
             this.gcHDLD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.gcHDLD.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcHDLD.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(4);
             this.gcHDLD.Location = new System.Drawing.Point(0, 95);
             this.gcHDLD.MainView = this.gvHDLD;
-            this.gcHDLD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gcHDLD.Margin = new System.Windows.Forms.Padding(4);
             this.gcHDLD.MenuManager = this.barManager1;
             this.gcHDLD.Name = "gcHDLD";
             this.gcHDLD.Size = new System.Drawing.Size(1323, 551);
@@ -317,7 +317,7 @@
             this.MaKyCong.Name = "MaKyCong";
             this.MaKyCong.Visible = true;
             this.MaKyCong.VisibleIndex = 0;
-            this.MaKyCong.Width = 87;
+            this.MaKyCong.Width = 59;
             // 
             // HoTen
             // 
@@ -327,7 +327,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 1;
-            this.HoTen.Width = 87;
+            this.HoTen.Width = 108;
             // 
             // NgayTinhLuong
             // 
@@ -345,7 +345,7 @@
             this.LuongCoBan.Name = "LuongCoBan";
             this.LuongCoBan.Visible = true;
             this.LuongCoBan.VisibleIndex = 2;
-            this.LuongCoBan.Width = 86;
+            this.LuongCoBan.Width = 69;
             // 
             // TangCa
             // 
@@ -355,7 +355,7 @@
             this.TangCa.Name = "TangCa";
             this.TangCa.Visible = true;
             this.TangCa.VisibleIndex = 3;
-            this.TangCa.Width = 93;
+            this.TangCa.Width = 72;
             // 
             // PhuCap
             // 
@@ -365,7 +365,7 @@
             this.PhuCap.Name = "PhuCap";
             this.PhuCap.Visible = true;
             this.PhuCap.VisibleIndex = 4;
-            this.PhuCap.Width = 101;
+            this.PhuCap.Width = 69;
             // 
             // UngLuong
             // 
@@ -375,17 +375,17 @@
             this.UngLuong.Name = "UngLuong";
             this.UngLuong.Visible = true;
             this.UngLuong.VisibleIndex = 5;
-            this.UngLuong.Width = 162;
+            this.UngLuong.Width = 72;
             // 
             // NgayCong
             // 
             this.NgayCong.Caption = "Ngày công";
-            this.NgayCong.FieldName = "NgayCong";
+            this.NgayCong.FieldName = "NGAYCONG";
             this.NgayCong.MinWidth = 23;
             this.NgayCong.Name = "NgayCong";
             this.NgayCong.Visible = true;
             this.NgayCong.VisibleIndex = 6;
-            this.NgayCong.Width = 121;
+            this.NgayCong.Width = 61;
             // 
             // TienBaoHiem
             // 
@@ -395,7 +395,7 @@
             this.TienBaoHiem.Name = "TienBaoHiem";
             this.TienBaoHiem.Visible = true;
             this.TienBaoHiem.VisibleIndex = 7;
-            this.TienBaoHiem.Width = 87;
+            this.TienBaoHiem.Width = 84;
             // 
             // KTKL
             // 
@@ -405,7 +405,7 @@
             this.KTKL.Name = "KTKL";
             this.KTKL.Visible = true;
             this.KTKL.VisibleIndex = 8;
-            this.KTKL.Width = 87;
+            this.KTKL.Width = 96;
             // 
             // LuongNhanDuoc
             // 
@@ -415,7 +415,7 @@
             this.LuongNhanDuoc.Name = "LuongNhanDuoc";
             this.LuongNhanDuoc.Visible = true;
             this.LuongNhanDuoc.VisibleIndex = 9;
-            this.LuongNhanDuoc.Width = 150;
+            this.LuongNhanDuoc.Width = 112;
             // 
             // MaNhanVien
             // 
@@ -436,7 +436,7 @@
             this.Controls.Add(this.barDockControlRight);
             this.Controls.Add(this.barDockControlBottom);
             this.Controls.Add(this.barDockControlTop);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTinhLuong";
             this.Text = "frmTinhLuong";
             this.Load += new System.EventHandler(this.frmTinhLuong_Load);
