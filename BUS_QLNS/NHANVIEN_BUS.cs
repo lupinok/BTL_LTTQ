@@ -1,11 +1,12 @@
-﻿using DAL;
+﻿using BUS_QLNS.Interface;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace BUS_QLNS
 {
-	public class NHANVIEN_BUS
+	public class NHANVIEN_BUS : INHANVIEN_BUS
 	{
 		public BTLMonLTTQEntities db = new BTLMonLTTQEntities();
 
@@ -13,6 +14,7 @@ namespace BUS_QLNS
 		{
 			return db.NhanViens.FirstOrDefault(x => x.MaNhanVien == manhanvien);
 		}
+		
 
 		public List<NhanVien> getList()
 		{
@@ -120,5 +122,6 @@ namespace BUS_QLNS
 		{
 			return db.NhanViens.Where(x => x.MaPhongBan == maPhongBan).ToList();
 		}
-	}
+        
+    }
 }

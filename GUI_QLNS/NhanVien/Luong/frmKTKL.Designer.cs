@@ -259,8 +259,8 @@
             // 
             this.cbSuKien.FormattingEnabled = true;
             this.cbSuKien.Items.AddRange(new object[] {
-            "Khen thu?ng",
-            "K? lu?t"});
+            "Khen thưởng",
+            "Kỷ luật"});
             this.cbSuKien.Location = new System.Drawing.Point(77, 42);
             this.cbSuKien.Name = "cbSuKien";
             this.cbSuKien.Size = new System.Drawing.Size(153, 21);

@@ -57,11 +57,13 @@
             this.TangCa = new DevExpress.XtraGrid.Columns.GridColumn();
             this.PhuCap = new DevExpress.XtraGrid.Columns.GridColumn();
             this.UngLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.NgayCong = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.NGAYCONG = new DevExpress.XtraGrid.Columns.GridColumn();
             this.TienBaoHiem = new DevExpress.XtraGrid.Columns.GridColumn();
             this.KTKL = new DevExpress.XtraGrid.Columns.GridColumn();
             this.LuongNhanDuoc = new DevExpress.XtraGrid.Columns.GridColumn();
             this.MaNhanVien = new DevExpress.XtraGrid.Columns.GridColumn();
+            this.cboPhongBan = new System.Windows.Forms.ComboBox();
+            this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
@@ -116,6 +118,7 @@
             this.btnIn.Id = 1;
             this.btnIn.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btnIn.ImageOptions.SvgImage")));
             this.btnIn.Name = "btnIn";
+            this.btnIn.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnIn_ItemClick);
             // 
             // btnHuy
             // 
@@ -180,6 +183,8 @@
             // 
             // panelControl1
             // 
+            this.panelControl1.Controls.Add(this.cboPhongBan);
+            this.panelControl1.Controls.Add(this.labelControl1);
             this.panelControl1.Controls.Add(this.btnBangLuong);
             this.panelControl1.Controls.Add(this.cbBaoHiem);
             this.panelControl1.Controls.Add(this.cboNam);
@@ -194,8 +199,7 @@
             // 
             // btnBangLuong
             // 
-            this.btnBangLuong.Location = new System.Drawing.Point(754, 6);
-            this.btnBangLuong.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBangLuong.Location = new System.Drawing.Point(771, 5);
             this.btnBangLuong.Name = "btnBangLuong";
             this.btnBangLuong.Size = new System.Drawing.Size(114, 28);
             this.btnBangLuong.TabIndex = 60;
@@ -220,16 +224,15 @@
             "2022",
             "2023",
             "2024"});
-            this.cbBaoHiem.Location = new System.Drawing.Point(574, 9);
-            this.cbBaoHiem.Margin = new System.Windows.Forms.Padding(4);
+            this.cbBaoHiem.Location = new System.Drawing.Point(445, 7);
             this.cbBaoHiem.Name = "cbBaoHiem";
             this.cbBaoHiem.Size = new System.Drawing.Size(108, 24);
             this.cbBaoHiem.TabIndex = 59;
             // 
             // cboNam
             // 
-            this.cboNam.Location = new System.Drawing.Point(538, 14);
-            this.cboNam.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cboNam.Location = new System.Drawing.Point(414, 11);
+            this.cboNam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cboNam.Name = "cboNam";
             this.cboNam.Size = new System.Drawing.Size(31, 16);
             this.cboNam.TabIndex = 58;
@@ -251,16 +254,15 @@
             "10",
             "11",
             "12"});
-            this.cbThang.Location = new System.Drawing.Point(322, 9);
-            this.cbThang.Margin = new System.Windows.Forms.Padding(4);
+            this.cbThang.Location = new System.Drawing.Point(259, 7);
             this.cbThang.Name = "cbThang";
             this.cbThang.Size = new System.Drawing.Size(115, 24);
             this.cbThang.TabIndex = 49;
             // 
             // labelControl8
             // 
-            this.labelControl8.Location = new System.Drawing.Point(275, 14);
-            this.labelControl8.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.labelControl8.Location = new System.Drawing.Point(219, 11);
+            this.labelControl8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labelControl8.Name = "labelControl8";
             this.labelControl8.Size = new System.Drawing.Size(41, 16);
             this.labelControl8.TabIndex = 48;
@@ -291,7 +293,7 @@
             this.TangCa,
             this.PhuCap,
             this.UngLuong,
-            this.NgayCong,
+            this.NGAYCONG,
             this.TienBaoHiem,
             this.KTKL,
             this.LuongNhanDuoc,
@@ -317,7 +319,7 @@
             this.MaKyCong.Name = "MaKyCong";
             this.MaKyCong.Visible = true;
             this.MaKyCong.VisibleIndex = 0;
-            this.MaKyCong.Width = 59;
+            this.MaKyCong.Width = 91;
             // 
             // HoTen
             // 
@@ -327,7 +329,7 @@
             this.HoTen.Name = "HoTen";
             this.HoTen.Visible = true;
             this.HoTen.VisibleIndex = 1;
-            this.HoTen.Width = 108;
+            this.HoTen.Width = 116;
             // 
             // NgayTinhLuong
             // 
@@ -345,7 +347,7 @@
             this.LuongCoBan.Name = "LuongCoBan";
             this.LuongCoBan.Visible = true;
             this.LuongCoBan.VisibleIndex = 2;
-            this.LuongCoBan.Width = 69;
+            this.LuongCoBan.Width = 97;
             // 
             // TangCa
             // 
@@ -355,7 +357,7 @@
             this.TangCa.Name = "TangCa";
             this.TangCa.Visible = true;
             this.TangCa.VisibleIndex = 3;
-            this.TangCa.Width = 72;
+            this.TangCa.Width = 97;
             // 
             // PhuCap
             // 
@@ -365,7 +367,7 @@
             this.PhuCap.Name = "PhuCap";
             this.PhuCap.Visible = true;
             this.PhuCap.VisibleIndex = 4;
-            this.PhuCap.Width = 69;
+            this.PhuCap.Width = 105;
             // 
             // UngLuong
             // 
@@ -375,17 +377,16 @@
             this.UngLuong.Name = "UngLuong";
             this.UngLuong.Visible = true;
             this.UngLuong.VisibleIndex = 5;
-            this.UngLuong.Width = 72;
+            this.UngLuong.Width = 86;
             // 
-            // NgayCong
+            // NGAYCONG
             // 
-            this.NgayCong.Caption = "Ngày công";
-            this.NgayCong.FieldName = "NGAYCONG";
-            this.NgayCong.MinWidth = 23;
-            this.NgayCong.Name = "NgayCong";
-            this.NgayCong.Visible = true;
-            this.NgayCong.VisibleIndex = 6;
-            this.NgayCong.Width = 61;
+            this.NGAYCONG.Caption = "Ngày công";
+            this.NGAYCONG.FieldName = "NGAYCONG";
+            this.NGAYCONG.Name = "NGAYCONG";
+            this.NGAYCONG.Visible = true;
+            this.NGAYCONG.VisibleIndex = 6;
+            this.NGAYCONG.Width = 70;
             // 
             // TienBaoHiem
             // 
@@ -395,7 +396,7 @@
             this.TienBaoHiem.Name = "TienBaoHiem";
             this.TienBaoHiem.Visible = true;
             this.TienBaoHiem.VisibleIndex = 7;
-            this.TienBaoHiem.Width = 84;
+            this.TienBaoHiem.Width = 98;
             // 
             // KTKL
             // 
@@ -405,7 +406,7 @@
             this.KTKL.Name = "KTKL";
             this.KTKL.Visible = true;
             this.KTKL.VisibleIndex = 8;
-            this.KTKL.Width = 96;
+            this.KTKL.Width = 98;
             // 
             // LuongNhanDuoc
             // 
@@ -415,7 +416,7 @@
             this.LuongNhanDuoc.Name = "LuongNhanDuoc";
             this.LuongNhanDuoc.Visible = true;
             this.LuongNhanDuoc.VisibleIndex = 9;
-            this.LuongNhanDuoc.Width = 112;
+            this.LuongNhanDuoc.Width = 175;
             // 
             // MaNhanVien
             // 
@@ -424,6 +425,23 @@
             this.MaNhanVien.MinWidth = 23;
             this.MaNhanVien.Name = "MaNhanVien";
             this.MaNhanVien.Width = 87;
+            // 
+            // cboPhongBan
+            // 
+            this.cboPhongBan.FormattingEnabled = true;
+            this.cboPhongBan.Location = new System.Drawing.Point(647, 7);
+            this.cboPhongBan.Name = "cboPhongBan";
+            this.cboPhongBan.Size = new System.Drawing.Size(93, 21);
+            this.cboPhongBan.TabIndex = 62;
+            // 
+            // labelControl1
+            // 
+            this.labelControl1.Location = new System.Drawing.Point(586, 10);
+            this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.labelControl1.Name = "labelControl1";
+            this.labelControl1.Size = new System.Drawing.Size(55, 13);
+            this.labelControl1.TabIndex = 61;
+            this.labelControl1.Text = "Phòng ban:";
             // 
             // frmTinhLuong
             // 
@@ -438,7 +456,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmTinhLuong";
-            this.Text = "frmTinhLuong";
+            this.Text = "TinhLuong";
             this.Load += new System.EventHandler(this.frmTinhLuong_Load);
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -476,7 +494,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn TangCa;
         private DevExpress.XtraGrid.Columns.GridColumn PhuCap;
         private DevExpress.XtraGrid.Columns.GridColumn UngLuong;
-        private DevExpress.XtraGrid.Columns.GridColumn NgayCong;
+        private DevExpress.XtraGrid.Columns.GridColumn NGAYCONG;
         private DevExpress.XtraGrid.Columns.GridColumn LuongNhanDuoc;
         private DevExpress.XtraGrid.Columns.GridColumn MaNhanVien;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
@@ -485,5 +503,7 @@
         private DevExpress.XtraGrid.Columns.GridColumn MaKyCong;
         private DevExpress.XtraGrid.Columns.GridColumn TienBaoHiem;
         private DevExpress.XtraGrid.Columns.GridColumn KTKL;
+        private System.Windows.Forms.ComboBox cboPhongBan;
+        private DevExpress.XtraEditors.LabelControl labelControl1;
     }
 }

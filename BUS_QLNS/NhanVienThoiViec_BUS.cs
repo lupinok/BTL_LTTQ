@@ -1,4 +1,5 @@
 ﻿using BUS_QLNS;
+using BUS_QLNS.Interface;
 using DAL;
 using System;
 using System.Collections.Generic;
@@ -23,7 +24,7 @@ namespace BUS_QLNS
         {
             return (from tv in db.NhanVienThoiViecs
                     join nv in db.NhanViens on tv.MaNhanVien equals nv.MaNhanVien
-
+                    
                     select new
                     {
                         tv.SoQD,

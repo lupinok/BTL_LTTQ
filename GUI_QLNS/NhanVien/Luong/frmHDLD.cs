@@ -19,7 +19,7 @@ namespace GUI_QLNS.NhanVien.Luong
         NHANVIEN_BUS nhanvienBus;
        
         int mahd;
-        int mabh;
+        
         bool _them;
         private bool _hasEditPermission;
         public frmHDLD()
@@ -128,8 +128,10 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+           
             _them = false;
             _showHide(false);
+            txtSHD.Enabled = false;
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -241,12 +243,12 @@ namespace GUI_QLNS.NhanVien.Luong
         {
             try
             {
-
+               
                 _them = true;
                 _showHide(false);
                 if (gvHDLD.RowCount > 0)
                 {
-                   
+                    txtSHD.Enabled = false;
                     // Lấy mã hợp đồng từ dòng được chọn
                     mahd = int.Parse(gvHDLD.GetFocusedRowCellValue("MaHopDong").ToString());
 
@@ -275,7 +277,8 @@ namespace GUI_QLNS.NhanVien.Luong
                     // Load thông tin bảo hiểm
                     cbBaoHiem.Text = gvHDLD.GetFocusedRowCellValue("TenBaoHiem")?.ToString();
                     txtMD.Text = gvHDLD.GetFocusedRowCellValue("MucDong")?.ToString();
-
+                    
+                    btnLuu.Enabled = false;
                     btnHuy.Enabled = true;
                     // Chỉ enable các nút khi có quyền chỉnh sửa
                     if (!_hasEditPermission)

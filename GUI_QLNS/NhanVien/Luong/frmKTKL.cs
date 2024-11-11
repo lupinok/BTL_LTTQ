@@ -84,7 +84,7 @@ namespace GUI_QLNS.NhanVien.Luong
                 cbLyDo.DisplayMember = "LyDo";
                 cbLyDo.ValueMember = "MaSuKien";
 
-                if (loaiSK == "Khen thu?ng")
+                if (loaiSK == "Khen thưởng")
                 {
                     txtTienPhat.Text = "0";
                     txtTienThuong.Text = "";
@@ -130,7 +130,7 @@ namespace GUI_QLNS.NhanVien.Luong
         }
         private void ResetValue()
         {
-            scNhanVien.SelectionStart = -1;
+            scNhanVien.SelectionStart = 0;
             txtTienThuong.Text = "";
             txtTienPhat.Text = "";
             cbLyDo.SelectedIndex = -1;
@@ -146,7 +146,7 @@ namespace GUI_QLNS.NhanVien.Luong
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            _them = false;
+            _them = false;  
             _showHide(false);
         }
 
@@ -182,6 +182,7 @@ namespace GUI_QLNS.NhanVien.Luong
         {
             _them = false;
             _showHide(true);
+            ResetValue();
         }
         private void SaveData()
         {
@@ -194,13 +195,15 @@ namespace GUI_QLNS.NhanVien.Luong
                     throw new Exception("Vui lòng chọn loại sự kiện");
                 if (cbLyDo.SelectedIndex == -1)
                     throw new Exception("Vui lòng chọn chi tiết sự kiện");
+                if (txtTienThuong.Text == "" || txtTienPhat.Text == "")
+                    throw new Exception("Vui lòng chọn số tiền");
 
                 var ac = new ChiTietKT_KL
                 {
                     MaNhanVien = int.Parse(scNhanVien.EditValue.ToString()),
                     MaSuKien = int.Parse(cbLyDo.SelectedValue.ToString()),
                     ChiTiet = cbLyDo.Text,
-                    TienThuongPhat = cbSuKien.Text == "Khen thu?ng"
+                    TienThuongPhat = cbSuKien.Text == "Khen thưởng"
                         ? decimal.Parse(txtTienThuong.Text.Replace(",", ""))  // Chuyển sang decimal
                         : decimal.Parse(txtTienPhat.Text.Replace(",", "")),
                     NgayBatDau = cboNBD.Value,     // Lấy giá trị từ DateTimePicker
@@ -217,13 +220,15 @@ namespace GUI_QLNS.NhanVien.Luong
                 throw new Exception("Vui lòng chọn loại sự kiện");
             if (cbLyDo.SelectedIndex == -1)
                 throw new Exception("Vui lòng chọn chi tiết sự kiện");
-            
+            if (txtTienThuong.Text == "" || txtTienPhat.Text == "") 
+                throw new Exception("Vui lòng chọn số tiền");
+
             var kc = new ChiTietKT_KL
             {
                 MaNhanVien = manv, // Sử dụng mã nhân viên hiện tại
                 MaSuKien = mask,   // Sử dụng mã sự kiện hiện tại
                 ChiTiet = cbLyDo.Text,
-                TienThuongPhat = cbSuKien.Text == "Khen thu?ng"
+                TienThuongPhat = cbSuKien.Text == "Khen thưởng"
                     ? decimal.Parse(txtTienThuong.Text.Replace(",", ""))  // Chuyển sang decimal
                     : decimal.Parse(txtTienPhat.Text.Replace(",", "")),
                 NgayBatDau = cboNBD.Value,     // Lấy giá trị từ DateTimePicker
@@ -267,12 +272,12 @@ namespace GUI_QLNS.NhanVien.Luong
                     if (chiTiet != null)
                     {
                         // Set số tiền thưởng/phạt
-                        if (suKien.LoaiSuKien == "Khen thu?ng")
+                        if (suKien.LoaiSuKien == "Khen thưởng")
                         {
                             txtTienThuong.Text = chiTiet.TienThuongPhat.ToString();
                             txtTienPhat.Text = "0";
                             txtTienPhat.Enabled = false;
-                            txtTienThuong.Enabled = false;
+                            txtTienThuong.Enabled = true;
                             cboNBD.Value = chiTiet.NgayBatDau ?? DateTime.Now;
                             cboNKT.Value = chiTiet.NgayKetThuc ?? DateTime.Now;
                         }
@@ -281,7 +286,7 @@ namespace GUI_QLNS.NhanVien.Luong
                             txtTienPhat.Text = chiTiet.TienThuongPhat.ToString();
                             txtTienThuong.Text = "0";
                             txtTienThuong.Enabled = false;
-                            txtTienPhat.Enabled = false;
+                            txtTienPhat.Enabled = true;
                             cboNBD.Value = chiTiet.NgayBatDau ?? DateTime.Now;
                             cboNKT.Value = chiTiet.NgayKetThuc ?? DateTime.Now;
                         }

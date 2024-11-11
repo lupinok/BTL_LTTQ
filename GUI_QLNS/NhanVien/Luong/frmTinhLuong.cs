@@ -1,6 +1,7 @@
 ﻿using BUS_QLNS;
 using DAL;
 using DevExpress.XtraEditors;
+using GUI_QLNS.Report;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -10,6 +11,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraReports.UI;
+using System.Windows.Documents;
 
 namespace GUI_QLNS.NhanVien.Luong
 {
@@ -17,9 +20,10 @@ namespace GUI_QLNS.NhanVien.Luong
     {
         PhieuLuong_BUS phieuLuongBus;
         BangCongNhanVienChiTiet_BUS bangcongBus;
-        bool _them;
-        int _maPhieu;
-        private bool _hasEditPermission;
+        PhongBan_BUS phongBanBus;
+
+        List<PhieuLuong> lstPhieuLuong;
+        int namky;
         public frmTinhLuong()
         {
             InitializeComponent();
@@ -35,12 +39,10 @@ namespace GUI_QLNS.NhanVien.Luong
             //    btnHuy.Enabled = false;
             //}
         }
-
         private void frmTinhLuong_Load(object sender, EventArgs e)
         {
             phieuLuongBus = new PhieuLuong_BUS();
             bangcongBus = new BangCongNhanVienChiTiet_BUS();
-            _them = false;
             cbThang.SelectedIndex = DateTime.Now.Month - 1;
             cbBaoHiem.Text = DateTime.Now.Year.ToString();
         }
@@ -85,22 +87,40 @@ namespace GUI_QLNS.NhanVien.Luong
                     return;
                 }
 
+                int maKyCong = (int)kyCong.MAKYCONG;
 
                 // Kiểm tra xem đã tính lương chưa
-                var dsLuong = phieuLuongBus.LayPhieuLuongTheoKyCong((int)kyCong.MAKYCONG);
+                var dsLuong = phieuLuongBus.LayPhieuLuongTheoKyCong(maKyCong);
                 if (dsLuong == null || !dsLuong.Any())
                 {
                     if (MessageBox.Show("Chưa tính lương cho tháng này. Bạn có muốn tính lương không?",
                         "Thông báo", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        TinhLuongTheoKyCong((int)kyCong.MAKYCONG);
+                        // Tính và lưu lương mới
+                        dsLuong = phieuLuongBus.TinhLuong(maKyCong);
+                        lstPhieuLuong = phieuLuongBus.getList(maKyCong);
+                        namky = maKyCong;
                     }
-                    return;
+                    else
+                    {
+                        return;
+                    }
+                }
+                else
+
+                {
+                    dsLuong = phieuLuongBus.TinhLuong(maKyCong);
+                    gcHDLD.DataSource = dsLuong;
+                    // Nếu đã có dữ liệu, lưu lại để in
+                    lstPhieuLuong = phieuLuongBus.getList(maKyCong);
+                    namky = maKyCong;
                 }
 
-                // Nếu đã tính lương rồi thì hiển thị
-                gcHDLD.DataSource = dsLuong;
+                
                 FormatGrid();
+
+                gcHDLD.RefreshDataSource();
+                gvHDLD.RefreshData();
             }
             catch (Exception ex)
             {
@@ -122,11 +142,12 @@ namespace GUI_QLNS.NhanVien.Luong
                     }
                 }
 
-                // Tính lương mới
                 dsLuong = phieuLuongBus.TinhLuong(maKyCong);
 
                 // Hiển thị kết quả
                 gcHDLD.DataSource = dsLuong;
+                lstPhieuLuong = phieuLuongBus.getList(maKyCong);
+                namky = maKyCong;
                 FormatGrid();
 
                 MessageBox.Show("Tính lương thành công!");
@@ -138,7 +159,19 @@ namespace GUI_QLNS.NhanVien.Luong
         }
         private void FormatGrid()
         {
-            // Format các cột tiền tệ
+
+            // Điều chỉnh chiều cao của dòng nếu cần
+            gvHDLD.RowHeight = 25;  // Có thể điều chỉnh số này
+
+            // Đảm bảo không có padding dư thừa
+            gvHDLD.Appearance.Row.TextOptions.WordWrap = DevExpress.Utils.WordWrap.NoWrap;
+
+            gvHDLD.Columns["NGAYCONG"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gvHDLD.Columns["NGAYCONG"].DisplayFormat.FormatString = "#,##0";
+
+            // Đảm bảo cột hiển thị đúng kiểu số
+            gvHDLD.Columns["NGAYCONG"].UnboundType = DevExpress.Data.UnboundColumnType.Decimal;
+
             gvHDLD.Columns["LuongCoBan"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             gvHDLD.Columns["LuongCoBan"].DisplayFormat.FormatString = "N0";
             gvHDLD.Columns["TangCa"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
@@ -151,6 +184,15 @@ namespace GUI_QLNS.NhanVien.Luong
             gvHDLD.Columns["KTKL"].DisplayFormat.FormatString = "N0";
             gvHDLD.Columns["LuongNhanDuoc"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             gvHDLD.Columns["LuongNhanDuoc"].DisplayFormat.FormatString = "N0";
+            gvHDLD.Columns["TienBaoHiem"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
+            gvHDLD.Columns["TienBaoHiem"].DisplayFormat.FormatString = "N0";
+            
+        }
+
+        private void btnIn_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            rptBangLuong rpt = new rptBangLuong(lstPhieuLuong,namky);
+            rpt.ShowPreviewDialog();
         }
     }
 }

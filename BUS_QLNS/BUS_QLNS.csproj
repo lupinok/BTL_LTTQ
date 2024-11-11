@@ -61,6 +61,16 @@
     <Compile Include="BangCongNhanVienChiTiet_BUS.cs" />
     <Compile Include="HDLDDTO.cs" />
     <Compile Include="HDLD_BUS.cs" />
+    <Compile Include="Interface\IBangCongNhanVienChiTiet_BUS.cs" />
+    <Compile Include="Interface\IBoPhan_BUS.cs" />
+    <Compile Include="Interface\IChiTietDaoTao_BUS.cs" />
+    <Compile Include="Interface\IChiTietDuAn_BUS.cs" />
+    <Compile Include="Interface\IChucVu_BUS.cs" />
+    <Compile Include="Interface\IDaoTao.cs" />
+    <Compile Include="Interface\INHANVIEN_BUS.cs" />
+    <Compile Include="Interface\IPHANQUYEN_BUS.cs" />
+    <Compile Include="Interface\IPhieuLuong_BUS.cs" />
+    <Compile Include="Interface\IPhongBan_BUS.cs" />
     <Compile Include="KyCongChiTiet_BUS.cs" />
     <Compile Include="KyCong_BUS.cs" />
     <Compile Include="LICHSU_BUS.cs" />
@@ -83,9 +93,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DTO\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL_QLNS.csproj">
       <Project>{51ed1fd1-488d-4e70-a0ab-ee706482569a}</Project>

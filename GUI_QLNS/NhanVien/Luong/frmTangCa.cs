@@ -137,12 +137,14 @@ namespace GUI_QLNS.NhanVien.Luong
                     loadData();
                 }
             }
+
         }
 
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
             {
+                
                 SaveData();
                 loadData();
                 _them = false;
@@ -218,7 +220,7 @@ namespace GUI_QLNS.NhanVien.Luong
             if (cbSoGio.SelectedIndex == -1)
                 throw new Exception("Vui lòng chọn số giờ");
 
-            var bc = tangcaBus.getItem(maNV, maLoaiCa);
+            var bc = tangcaBus.getItem(manv, malc);
             if (bc != null)
             {
                 bc.MaNhanVien = maNV;
@@ -231,8 +233,9 @@ namespace GUI_QLNS.NhanVien.Luong
                 bc.GhiChu = txtGhiChu.Text;
                 bc.create_by = "";
                 bc.create_date = cboTgian.Value;
+                tangcaBus.Update(bc);
             };
-            tangcaBus.Update(bc);
+            
 
         }
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BUS_QLNS.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace BUS_QLNS
 {
-    public class SupportFun
+    public class SupportFun 
     {
         // Đếm số ngày làm việc trong tháng
         public static int demSoNgayLamViecTrongThang(int thang, int nam)

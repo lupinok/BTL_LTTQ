@@ -1314,9 +1314,6 @@
         private DevExpress.XtraBars.Docking2010.DocumentManager documentManager1;
         private DevExpress.XtraBars.Docking2010.Views.Tabbed.TabbedView tabbedView1;
         private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
-        private DevExpress.XtraBars.Docking.DockPanel dmHistory;
-        private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
-        private DevExpress.XtraBars.Docking.DockManager dockManager1;
         private DevExpress.XtraBars.BarButtonItem btnDangXuat;
         private DevExpress.XtraBars.BarButtonItem barButtonItem9;
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;

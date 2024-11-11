@@ -68,7 +68,7 @@ namespace GUI_QLNS
                 MessageBox.Show("Lỗi khi tải lịch sử: " + ex.Message);
             }
         }
-
+        
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
@@ -116,7 +116,10 @@ namespace GUI_QLNS
                 this.Close();
             }
         }
-
+        public void ArrangeForm()
+        {
+            LayoutMdi(MdiLayout.TileVertical);
+        }
         private void menu_nhanvien_ItemClick(object sender, ItemClickEventArgs e)
         {
             openForm(typeof(frmNhanVien));

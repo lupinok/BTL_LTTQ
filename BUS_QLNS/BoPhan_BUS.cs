@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using BUS_QLNS.Interface;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace BUS_QLNS
 {
-    public class BoPhan_BUS
+    public class BoPhan_BUS : IBoPhan_BUS
     {
         private readonly BTLMonLTTQEntities db;
         public BoPhan_BUS()

@@ -237,5 +237,11 @@ namespace GUI_QLNS.NhanVien.BoPhan
                 }
             }
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            this.OnLoad(e);  // Gọi lại sự kiện Load của form
+            loadData();
+        }
     }
 }
