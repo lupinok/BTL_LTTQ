@@ -25,15 +25,15 @@ namespace GUI_QLNS.NhanVien.Luong
             InitializeComponent();
             // Kiểm tra vai trò
             string vaiTro = Properties.Settings.Default.VaiTro;
-            _hasEditPermission = vaiTro != "Chỉnh sửa";
+            //_hasEditPermission = vaiTro != "Chỉnh sửa";
 
-            // Ẩn các nút nếu không có quyền chỉnh sửa
-            if (!_hasEditPermission)
-            {
-                btnThem.Enabled = false;
-                btnIn.Enabled = false;
-                btnHuy.Enabled = false;
-            }
+            //// Ẩn các nút nếu không có quyền chỉnh sửa
+            //if (!_hasEditPermission)
+            //{
+            //    btnThem.Enabled = false;
+            //    btnIn.Enabled = false;
+            //    btnHuy.Enabled = false;
+            //}
         }
 
         private void frmTinhLuong_Load(object sender, EventArgs e)
