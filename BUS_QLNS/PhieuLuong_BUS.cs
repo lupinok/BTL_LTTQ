@@ -134,8 +134,6 @@ namespace BUS_QLNS
         {
             try
             {
-                // Tạo mã phiếu lương theo format: NămTháng
-                // Ví dụ: 202401 cho tháng 1 năm 2024
                 return int.Parse($"{nam}{thang:D2}");
             }
             catch (Exception ex)
