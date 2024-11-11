@@ -12,7 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraReports.UI;
-using System.Windows.Documents;
 
 namespace GUI_QLNS.NhanVien.Luong
 {

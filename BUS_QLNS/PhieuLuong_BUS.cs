@@ -259,8 +259,8 @@ namespace BUS_QLNS
 
             decimal ngayCongDecimal = Convert.ToDecimal(tongNgayCong);
             // Tính lương thực nhận
-            luong.LuongNhanDuoc = ((luong.LuongCoBan * Convert.ToDecimal(tongNgayCong)) ) + luong.TangCa + luong.PhuCap
-                + luong.KTKL - luong.UngLuong - luong.TienBaoHiem;
+            luong.LuongNhanDuoc = (luong.LuongCoBan * Convert.ToDecimal(tongNgayCong))/25 + luong.TangCa + luong.PhuCap
+                + luong.KTKL - luong.UngLuong - luong.TienBaoHiem/12;
          
             
         }
