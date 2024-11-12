@@ -62,12 +62,6 @@ namespace GUI_QLNS.NhanVien.Luong
 
             gcUngLuong.DataSource = ungluongBus.getList();
             gvUngLuong.OptionsBehavior.Editable = false;
-
-
-
-
-
-            // Format cột tiền tệ
             gvUngLuong.Columns["SoTien"].DisplayFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
             gvUngLuong.Columns["SoTien"].DisplayFormat.FormatString = "N0";
         }
@@ -199,25 +193,23 @@ namespace GUI_QLNS.NhanVien.Luong
             else
                if (scNhanVien.EditValue == null)
                 throw new Exception("Vui lòng chọn nhân viên");
-            
-            var bc = new UngLuong
-            
+
+            var bc = ungluongBus.getItem(maul);
+            if (bc == null)
+
             {
-                MaNhanVien = maNV,
-                HoTen = hoTen,             
-                SoTien = soTien,
-                Thang = thang,
-                Nam = nam,
-                GhiChu = txtGhiChu.Text,
-                
-                create_date = DateTime.Now,
-                update_by = null
-                
+                bc.MaNhanVien = maNV;
+                bc.HoTen = hoTen;
+                bc.SoTien = soTien;
+                bc.Thang = thang;
+                bc.Nam = nam;
+                bc.GhiChu = txtGhiChu.Text;
+
+                bc.create_date = DateTime.Now;
+                bc.update_by = null;
+                ungluongBus.Update(bc);
             };
-            ungluongBus.Update(bc);
-
         }
-
         private void gvUngLuong_Click(object sender, EventArgs e)
         {
             _them = true;
@@ -238,13 +230,11 @@ namespace GUI_QLNS.NhanVien.Luong
                 cbThang.Text = thang.ToString();
                 cbNam.Text = nam.ToString();
                 txtSoTien.Text = soTien.ToString("N0");
-                // Enable các nút chức năng phù hợp
                 btnSua.Enabled = true;
                 btnXoa.Enabled = true;
                 btnThem.Enabled = false;
                 btnLuu.Enabled = false;
                 btnHuy.Enabled = true;
-                // Chỉ enable các nút khi có quyền chỉnh sửa
                 if (!_hasEditPermission)
                 {
                     btnSua.Enabled = false;

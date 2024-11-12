@@ -215,21 +215,21 @@ namespace GUI_QLNS.NhanVien.Luong
                     }
 
                     // Cập nhật hợp đồng
-                    HopDongLaoDong hdld = new HopDongLaoDong
+                    HopDongLaoDong hdld = hdldBus.getItem(mahd);
+                    if (hdld == null)
                     {
-                        MaHopDong = mahd,
-                        MaNhanVien = int.Parse(scNhanVien.EditValue.ToString()),
-                        LoaiHopDong = cbLoaiHD.Text,
-                        NgayBatDau = dateNBD.Value,
-                        NgayKetThuc = dateNKT.Value,
-                        LuongHopDong = decimal.Parse(txtLuong.Text),
-                        NoiDungHopDong = txtGhiChu.Text,
-                        TenBaoHiem = cbBaoHiem.Text,
-                        MucDong = decimal.Parse(txtMD.Text),
-                        update_by = DateTime.Now.ToString()
+                        hdld.MaHopDong = mahd;
+                        hdld.MaNhanVien = int.Parse(scNhanVien.EditValue.ToString());
+                        hdld.LoaiHopDong = cbLoaiHD.Text;
+                        hdld.NgayBatDau = dateNBD.Value;
+                        hdld.NgayKetThuc = dateNKT.Value;
+                        hdld.LuongHopDong = decimal.Parse(txtLuong.Text);
+                        hdld.NoiDungHopDong = txtGhiChu.Text;
+                        hdld.TenBaoHiem = cbBaoHiem.Text;
+                        hdld.MucDong = decimal.Parse(txtMD.Text);
+                        hdld.update_by = DateTime.Now.ToString();
+                        hdldBus.Update(hdld);
                     };
-
-                    hdldBus.Update(hdld);
                 }
                 MessageBox.Show("Lưu thành công!");
             }

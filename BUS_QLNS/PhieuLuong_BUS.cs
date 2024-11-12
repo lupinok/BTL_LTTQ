@@ -24,18 +24,6 @@ namespace BUS_QLNS
                 var dsPhieuLuong = db.PhieuLuongs
                     .Where(x => x.MaKyCong == makycong)
                     .ToList();
-
-                // Log để kiểm tra dữ liệu
-                foreach (var pl in dsPhieuLuong)
-                {
-                    System.Diagnostics.Debug.WriteLine(
-                        $"GetList - MaNV: {pl.MaNhanVien}, " +
-                        $"MaKyCong: {makycong}, " +
-                        $"NgayCong: {pl.NGAYCONG}, " +
-                        $"LuongNhanDuoc: {pl.LuongNhanDuoc:N0}"
-                    );
-                }
-
                 return dsPhieuLuong;
             }
             catch (Exception ex)
@@ -244,10 +232,6 @@ namespace BUS_QLNS
        .Select(x => x.NGAYCONG)
        .DefaultIfEmpty(0)
        .Sum();
-
-            
-            System.Diagnostics.Debug.WriteLine($"MaNV: {nv.MaNhanVien}, MaKyCong: {maKyCong}, NGAYCONG: {tongNgayCong},luongthucnhan : {luong.LuongNhanDuoc}");
-
             luong.NGAYCONG = tongNgayCong;
 
             // Tính khen thưởng/kỷ luật
@@ -272,17 +256,6 @@ namespace BUS_QLNS
             .Where(x => x.MaKyCong == maKyCong)
             .Include(x => x.NhanVien)  // Đảm bảo load thông tin nhân viên
             .ToList();
-
-                // Kiểm tra và log dữ liệu để debug
-                foreach (var pl in dsPhieuLuong)
-                {
-                    System.Diagnostics.Debug.WriteLine(
-                        $"MaNV: {pl.MaNhanVien}, " +
-                        $"NgayCong: {pl.NGAYCONG}, " +
-                        $"LuongNhanDuoc: {pl.LuongNhanDuoc:N0}"
-                    );
-                }
-
                 return dsPhieuLuong;
 
             }

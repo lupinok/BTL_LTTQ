@@ -223,20 +223,21 @@ namespace GUI_QLNS.NhanVien.Luong
             if (txtTienThuong.Text == "" || txtTienPhat.Text == "") 
                 throw new Exception("Vui lòng chọn số tiền");
 
-            var kc = new ChiTietKT_KL
+            var kc = phucapBus.getItem(manv, mask);
+            if (kc != null)
             {
-                MaNhanVien = manv, // Sử dụng mã nhân viên hiện tại
-                MaSuKien = mask,   // Sử dụng mã sự kiện hiện tại
-                ChiTiet = cbLyDo.Text,
-                TienThuongPhat = cbSuKien.Text == "Khen thưởng"
+                kc.MaNhanVien = manv;
+                kc.MaSuKien = mask;
+                kc.ChiTiet = cbLyDo.Text;
+                kc.TienThuongPhat = cbSuKien.Text == "Khen thưởng"
                     ? decimal.Parse(txtTienThuong.Text.Replace(",", ""))  // Chuyển sang decimal
-                    : decimal.Parse(txtTienPhat.Text.Replace(",", "")),
-                NgayBatDau = cboNBD.Value,     // Lấy giá trị từ DateTimePicker
-                NgayKetThuc = cboNKT.Value,
-                update_by = "",
-                update_date = DateTime.Now
+                    : decimal.Parse(txtTienPhat.Text.Replace(",", ""));
+                kc.NgayBatDau = cboNBD.Value;     // Lấy giá trị từ DateTimePicker
+                kc.NgayKetThuc = cboNKT.Value;
+                kc.update_by = "";
+                kc.update_date = DateTime.Now;
+                phucapBus.Update(kc);
             };
-            phucapBus.Update(kc);
 
         }
 
