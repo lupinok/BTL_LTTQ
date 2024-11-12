@@ -28,8 +28,6 @@ namespace BUS_QLNS
             {
                 if (string.IsNullOrWhiteSpace(lc.GhiChu))
                     throw new Exception("Nội dung không được bỏ trống.");
-
-                // Kiểm tra xem nhân viên đã có loại ca này trong cùng ngày chưa
                 var exists = db.TangCas.FirstOrDefault(x =>
                     x.MaNhanVien == lc.MaNhanVien &&
                     x.MaLoaiCa == lc.MaLoaiCa &&

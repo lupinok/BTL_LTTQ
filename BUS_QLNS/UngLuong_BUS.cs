@@ -32,7 +32,7 @@ namespace BUS_QLNS
                     throw new Exception("Không tìm thấy chức vụ của nhân viên");
 
                 // Kiểm tra số tiền ứng có vượt quá lương chức vụ không
-                return soTienUng <= chucVu.LuongChucVu;
+                return soTienUng <= chucVu.LuongChucVu/2;
             }
             catch (Exception ex)
             {
@@ -99,7 +99,7 @@ namespace BUS_QLNS
                     x.Thang == thang &&
                     x.Nam == nam);
 
-                return check != null; // Trả về true nếu đã tồn tại, false nếu chưa tồn tại
+                return check != null; 
             }
             catch (Exception ex)
             {

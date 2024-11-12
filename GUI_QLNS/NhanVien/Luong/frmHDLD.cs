@@ -171,7 +171,6 @@ namespace GUI_QLNS.NhanVien.Luong
             {
                 if (_them)
                 {
-                    // Kiểm tra dữ liệu đầu vào
                     if (string.IsNullOrEmpty(txtSHD.Text) || string.IsNullOrEmpty(txtLuong.Text) || 
                         scNhanVien.EditValue == null)
                     {
@@ -179,7 +178,6 @@ namespace GUI_QLNS.NhanVien.Luong
                         return;
                     }
 
-                    // Kiểm tra trùng
                     int maNV = int.Parse(scNhanVien.EditValue.ToString());
                     int maHD = int.Parse(txtSHD.Text);
                     if (hdldBus.KiemTraTrung(maNV, maHD))
@@ -207,7 +205,6 @@ namespace GUI_QLNS.NhanVien.Luong
                 }
                 else
                 {
-                    // Kiểm tra dữ liệu đầu vào
                     if (string.IsNullOrEmpty(txtLuong.Text) || scNhanVien.EditValue == null)
                     {
                         MessageBox.Show("Vui lòng nhập đầy đủ thông tin bắt buộc!");
@@ -249,19 +246,12 @@ namespace GUI_QLNS.NhanVien.Luong
                 if (gvHDLD.RowCount > 0)
                 {
                     txtSHD.Enabled = false;
-                    // Lấy mã hợp đồng từ dòng được chọn
                     mahd = int.Parse(gvHDLD.GetFocusedRowCellValue("MaHopDong").ToString());
-
-                    // Load thông tin hợp đồng
                     txtSHD.Text = mahd.ToString();
                     txtLuong.Text = gvHDLD.GetFocusedRowCellValue("LuongHopDong").ToString();
                     txtGhiChu.Text = gvHDLD.GetFocusedRowCellValue("NoiDungHopDong")?.ToString();
-
-                    // Load thông tin nhân viên
                     int maNV = int.Parse(gvHDLD.GetFocusedRowCellValue("MaNhanVien").ToString());
                     scNhanVien.EditValue = maNV;
-
-                    // Load thông tin loại hợp đồng và ngày tháng
                     cbLoaiHD.Text = gvHDLD.GetFocusedRowCellValue("LoaiHopDong").ToString();
 
                     if (DateTime.TryParse(gvHDLD.GetFocusedRowCellValue("NgayBatDau").ToString(), out DateTime ngayBD))
@@ -273,14 +263,11 @@ namespace GUI_QLNS.NhanVien.Luong
                     {
                         dateNKT.Value = ngayKT;
                     }
-
-                    // Load thông tin bảo hiểm
                     cbBaoHiem.Text = gvHDLD.GetFocusedRowCellValue("TenBaoHiem")?.ToString();
                     txtMD.Text = gvHDLD.GetFocusedRowCellValue("MucDong")?.ToString();
                     
                     btnLuu.Enabled = false;
                     btnHuy.Enabled = true;
-                    // Chỉ enable các nút khi có quyền chỉnh sửa
                     if (!_hasEditPermission)
                     {
                         btnSua.Enabled = false;

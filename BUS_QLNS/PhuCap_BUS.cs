@@ -79,7 +79,7 @@ namespace BUS_QLNS
                     x.Thang == thang &&
                     x.Nam == nam);
 
-                return check != null; // Trả về true nếu đã tồn tại, false nếu chưa tồn tại
+                return check != null; 
             }
             catch (Exception ex)
             {

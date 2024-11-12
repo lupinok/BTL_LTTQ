@@ -260,19 +260,14 @@ namespace GUI_QLNS.NhanVien.Luong
                 {
                     // Set loại sự kiện (Khen thưởng/Kỷ luật)
                     cbSuKien.Text = suKien.LoaiSuKien;
-
-                    // Load danh sách chi tiết theo loại
                     var danhSachSK = phucapBus.getListSuKienTheoLoai(suKien.LoaiSuKien);
                     cbLyDo.DataSource = danhSachSK;
                     cbLyDo.DisplayMember = "ChiTiet";
                     cbLyDo.ValueMember = "MaSuKien";
                     cbLyDo.SelectedValue = mask;
-
-                    // Lấy chi tiết khen thưởng/kỷ luật
                     var chiTiet = phucapBus.getLyDo(mask);
                     if (chiTiet != null)
                     {
-                        // Set số tiền thưởng/phạt
                         if (suKien.LoaiSuKien == "Khen thưởng")
                         {
                             txtTienThuong.Text = chiTiet.TienThuongPhat.ToString();

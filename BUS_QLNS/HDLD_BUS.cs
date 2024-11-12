@@ -28,7 +28,6 @@ namespace BUS_QLNS
             foreach (var item in lst)
             {
                 hd = new HDLDDTO();
-                // Map thông tin hợp đồng
                 hd.MaHopDong = item.MaHopDong;
                 hd.LoaiHopDong = item.LoaiHopDong;
                 hd.NgayBatDau = item.NgayBatDau;
@@ -38,8 +37,6 @@ namespace BUS_QLNS
                 hd.MaNhanVien = item.MaNhanVien;
                 hd.TenBaoHiem = item.TenBaoHiem;
                 hd.MucDong = item.MucDong;
-
-                // Map thông tin nhân viên
                 var nv = db.NhanViens.FirstOrDefault(n => n.MaNhanVien == hd.MaNhanVien);
                 hd.HoTen = nv.HoTen;
                 hd.create_date = item.create_date;
@@ -67,8 +64,6 @@ namespace BUS_QLNS
                 throw new Exception("Lỗi: " + ex.Message);
             }
         }
-
-
         public HopDongLaoDong Update(HopDongLaoDong lc)
         {
             try
@@ -103,13 +98,12 @@ namespace BUS_QLNS
         public bool KiemTraTrung(int maNV, int mahd)
         {
             try
-            {
-                // Kiểm tra xem đã tồn tại bản ghi nào thỏa mãn các điều kiện
+            {               
                 var check = db.HopDongLaoDongs.FirstOrDefault(x =>
                     x.MaNhanVien == maNV &&
                     x.MaHopDong == mahd);
 
-                return check != null; // Trả về true nếu đã tồn tại, false nếu chưa tồn tại
+                return check != null; 
             }
             catch (Exception ex)
             {

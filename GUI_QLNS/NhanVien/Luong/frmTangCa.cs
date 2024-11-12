@@ -143,8 +143,7 @@ namespace GUI_QLNS.NhanVien.Luong
         private void btnLuu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             try
-            {
-                
+            {             
                 SaveData();
                 loadData();
                 _them = false;

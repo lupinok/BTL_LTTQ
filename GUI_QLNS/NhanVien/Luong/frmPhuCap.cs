@@ -96,8 +96,7 @@ namespace GUI_QLNS.NhanVien.Luong
         }
         void loadLoaiPC()
         {
-            // Tạo danh sách loại phụ cấp
-            // Tạo danh sách loại phụ cấp từ Dictionary
+
             var listPC = mucPhuCap.Select(x => new
             {
                 MaPhuCap = "PC" + (Array.IndexOf(mucPhuCap.Keys.ToArray(), x.Key) + 1).ToString(),
