@@ -173,7 +173,7 @@
             this.barDockControlTop.Location = new System.Drawing.Point(0, 0);
             this.barDockControlTop.Manager = this.barManager1;
             this.barDockControlTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlTop.Size = new System.Drawing.Size(794, 24);
+            this.barDockControlTop.Size = new System.Drawing.Size(925, 24);
             // 
             // barDockControlBottom
             // 
@@ -182,7 +182,7 @@
             this.barDockControlBottom.Location = new System.Drawing.Point(0, 394);
             this.barDockControlBottom.Manager = this.barManager1;
             this.barDockControlBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.barDockControlBottom.Size = new System.Drawing.Size(794, 20);
+            this.barDockControlBottom.Size = new System.Drawing.Size(925, 20);
             // 
             // barDockControlLeft
             // 
@@ -197,7 +197,7 @@
             // 
             this.barDockControlRight.CausesValidation = false;
             this.barDockControlRight.Dock = System.Windows.Forms.DockStyle.Right;
-            this.barDockControlRight.Location = new System.Drawing.Point(794, 24);
+            this.barDockControlRight.Location = new System.Drawing.Point(925, 24);
             this.barDockControlRight.Manager = this.barManager1;
             this.barDockControlRight.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.barDockControlRight.Size = new System.Drawing.Size(0, 370);
@@ -229,7 +229,7 @@
             this.splitContainerControl1.Panel2.Controls.Add(this.cboNBD);
             this.splitContainerControl1.Panel2.Controls.Add(this.labelControl2);
             this.splitContainerControl1.Panel2.Text = "Panel2";
-            this.splitContainerControl1.Size = new System.Drawing.Size(794, 105);
+            this.splitContainerControl1.Size = new System.Drawing.Size(925, 105);
             this.splitContainerControl1.SplitterPosition = 0;
             this.splitContainerControl1.TabIndex = 17;
             // 
@@ -367,11 +367,12 @@
             // 
             // gcPhuCap
             // 
-            this.gcPhuCap.Location = new System.Drawing.Point(0, 126);
+            this.gcPhuCap.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gcPhuCap.Location = new System.Drawing.Point(0, 129);
             this.gcPhuCap.MainView = this.gvPhuCap;
             this.gcPhuCap.MenuManager = this.barManager1;
             this.gcPhuCap.Name = "gcPhuCap";
-            this.gcPhuCap.Size = new System.Drawing.Size(794, 268);
+            this.gcPhuCap.Size = new System.Drawing.Size(925, 265);
             this.gcPhuCap.TabIndex = 18;
             this.gcPhuCap.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvPhuCap});
@@ -447,7 +448,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(794, 414);
+            this.ClientSize = new System.Drawing.Size(925, 414);
             this.Controls.Add(this.gcPhuCap);
             this.Controls.Add(this.splitContainerControl1);
             this.Controls.Add(this.barDockControlLeft);
