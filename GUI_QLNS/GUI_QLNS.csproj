@@ -92,10 +92,10 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BTLMonLTTQDataSet.Designer.cs">
+    <Compile Include="BTLMonLTTQDataSet1.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BTLMonLTTQDataSet.xsd</DependentUpon>
+      <DependentUpon>BTLMonLTTQDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="frmWaiting.cs">
       <SubType>Form</SubType>
@@ -368,16 +368,16 @@
     <EmbeddedResource Include="Report\rptBangLuong.resx">
       <DependentUpon>rptBangLuong.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="BTLMonLTTQDataSet.xsc">
-      <DependentUpon>BTLMonLTTQDataSet.xsd</DependentUpon>
+    <None Include="BTLMonLTTQDataSet1.xsc">
+      <DependentUpon>BTLMonLTTQDataSet1.xsd</DependentUpon>
     </None>
-    <None Include="BTLMonLTTQDataSet.xsd">
+    <None Include="BTLMonLTTQDataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>BTLMonLTTQDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>BTLMonLTTQDataSet1.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="BTLMonLTTQDataSet.xss">
-      <DependentUpon>BTLMonLTTQDataSet.xsd</DependentUpon>
+    <None Include="BTLMonLTTQDataSet1.xss">
+      <DependentUpon>BTLMonLTTQDataSet1.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DevExpress.XtraGrid.GridControl.datasource" />
