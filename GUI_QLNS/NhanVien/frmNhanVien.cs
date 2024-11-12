@@ -361,6 +361,21 @@ namespace GUI_QLNS.NhanVien
 				return;
 			}
 
+			// Kiểm tra số điện thoại phải đủ 10 số
+			if (txtSoDienThoai.Text.Trim().Length != 10 || !txtSoDienThoai.Text.All(char.IsDigit))
+			{
+				MessageBox.Show("Số điện thoại phải có đúng 10 chữ số!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
+			// Kiểm tra định dạng email
+			string emailPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+			if (!System.Text.RegularExpressions.Regex.IsMatch(txtEmail.Text.Trim(), emailPattern))
+			{
+				MessageBox.Show("Email không đúng định dạng!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
 			try
 			{
 				var nv = new DAL.NhanVien
