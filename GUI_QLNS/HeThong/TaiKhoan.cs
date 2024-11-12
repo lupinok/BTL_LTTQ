@@ -139,6 +139,13 @@ namespace GUI_QLNS.HeThong
 				return;
 			}
 
+			// Thêm kiểm tra độ dài mật khẩu
+			if (txtMatKhau.Text.Trim().Length < 6)
+			{
+				MessageBox.Show("Mật khẩu phải có ít nhất 6 ký tự", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+				return;
+			}
+
 			try
 			{
 				var tk = new DAL.TaiKhoan
