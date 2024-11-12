@@ -78,6 +78,7 @@ namespace GUI_QLNS.NhanVien.ChamCong
                     .Where(pb => dsPhongBanDuocPhanQuyen.Contains(pb.MaPhongBan))
                     .ToList();
                 lupPhongBan.Properties.DataSource = phongBans;
+                btnPhatSinh.Enabled = false;
                 btnTaiLai.Enabled = false;
                 btnXem.Enabled = false;
             }
